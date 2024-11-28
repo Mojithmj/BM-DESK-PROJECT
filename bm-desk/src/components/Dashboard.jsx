@@ -12,7 +12,6 @@ import {
   YAxis,
   CartesianGrid,
   Tooltip,
-  Legend,
   ResponsiveContainer,
 } from "recharts";
 
@@ -25,15 +24,14 @@ function Dashboard() {
 
   // graph
   const data = [
-    { name: "09.00 am", uv: 1000, pv: 2400, amt: 2400 },
-    { name: "01.00 pm", uv: 3000, pv: 1398, amt: 2210 },
-    { name: "05.00 pm", uv: 2000, pv: 9800, amt: 2290 },
-    { name: "09.00 pm", uv: 2780, pv: 3908, amt: 2000 },
+    { time: "09:00 AM", value: 30 },
+    { time: "01:00 PM", value: 40 },
+    { time: "05:00 PM", value: 30 },
+    { time: "09:00 PM", value: 120 },
   ];
 
   return (
     <div>
-      
       {/* Activity dashboard */}
       <div className="flex flex-row justify-between p-2 w-full ">
         <div className="font-semibold 2xl:text-[32px] lg:text-[22px] md:text-[18px] text-[16px] normal font-inter text-[#4E5969]">
@@ -382,6 +380,7 @@ function Dashboard() {
       {/* bottom part */}
 
       <div className=" justify-between 2xl:w-[762px] 2xl:h-[538px] lg:w-[660px] lg;[450px] md:w-[350px] md:h-[450px] border-[5px] border-[#E9EBEC] rounded-2xl">
+        {/* Ticket productivity */}
         <div className="flex justify-between px-[16px] py-[19px]">
           <div className="text-[20px] font-semibold normal font-inter text-[#4E5969]">
             Tickets Productivity Chart
@@ -399,26 +398,50 @@ function Dashboard() {
         {/* Graph */}
         <div>
           <div className="w-full h-[300px]">
-          <ResponsiveContainer>
-  <LineChart data={data}>
-    <CartesianGrid strokeDasharray="3 3" />
-    <XAxis dataKey="name" />
-    {/* Adjust the Y-axis with the desired ticks */}
-    <YAxis ticks={[0, 30, 60, 90, 120]} />
-    <Tooltip />
-    <Legend />
-    <Line
-      type="monotone"
-      dataKey="pv"
-      stroke="#0000ff" // Set line color to blue
-      strokeWidth={2}
-    />
-  </LineChart>
-</ResponsiveContainer>;
+            <ResponsiveContainer width="100%" height={400}>
+              <LineChart
+                data={data}
+                margin={{ top: 10, right: 10, left: 10, bottom: 30 }}
+              >
+                {/* Adjust spacing and hide axis lines */}
+                <XAxis
+                  dataKey="time"
+                  axisLine={false}
+                  tickLine={false}
+                  tick={{ fontSize: "0.675rem", fill: "#ADB5BD" }}
+                  padding={{ bottom: 40 }} // Adds extra space between X-axis labels and line
+                />
+                <YAxis
+                  axisLine={false}
+                  tickLine={false}
+                  tick={{ fontSize: "0.675rem", fill: "#ADB5BD" }}
+                />
+                <Tooltip />
+                <defs>
+                  {/* Define a gradient for the area fill */}
+                  <linearGradient id="blueGradient" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stopColor="#165DFF" stopOpacity={0.8} />
+                    <stop offset="100%" stopColor="#165DFF" stopOpacity={0} />
+                  </linearGradient>
+                </defs>
+                <Line
+                  type="monotone"
+                  dataKey="value"
+                  stroke="#165DFF" // Line color
+                  strokeWidth={4}
+                  fill="url(#blueGradient)" // Use gradient for the fill
+                  fillOpacity={1} // Ensure full gradient effect
+                />
+              </LineChart>
+            </ResponsiveContainer>
           </div>
         </div>
+
+{/* card */}
+<div>
+  
+</div>
       </div>
-     
     </div>
   );
 }
