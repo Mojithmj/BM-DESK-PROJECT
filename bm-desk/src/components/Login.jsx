@@ -39,7 +39,7 @@ function Login() {
   };
 
   return (
-    <div className="relative flex h-screen">
+    <div className="relative flex h-screen ">
       <div className="relative hidden md:block">
         <div className="overflow-hidden w-[50vw] h-screen">
           <img src={group1} alt="Group" className="w-full h-full object-cover" />

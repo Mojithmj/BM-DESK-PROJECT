@@ -12,7 +12,7 @@ function Sidebar() {
   return (
     <div>
       {/* Sidebar */}
-      <div className="flex flex-col h-screen border-r-[1px] border-[#E5E6EB] 2xl:w-[281px] lg:w-[210px] md:w-[180px] w-[160px] px-4 py-8 gap-5">
+      <div className="flex flex-col h-screen border-r-[1px] bg-[white] border-[#E5E6EB] 2xl:w-[281px] lg:w-[210px] md:w-[180px] w-[160px] px-4 py-8 gap-5">
         {/* Dashboard */}
         <div className="group">
           <div className="flex flex-row items-center px-4 py-3 gap-2 rounded-[4px] cursor-pointer border border-white group-hover:border-[#BEDAFF] group-hover:bg-[#E8F3FF]">

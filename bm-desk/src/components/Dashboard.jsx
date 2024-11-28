@@ -5,8 +5,16 @@ import Avatariamge from "../assets/Avatar Image.png";
 import { HiArrowRight } from "react-icons/hi";
 import Ticketimageone from "../assets/Avatarimageone.png";
 import Ticketimagetwo from "../assets/Avatarimagetwo.png";
-import {LineChart,Line,XAxis,YAxis,CartesianGrid,Tooltip,Legend,ResponsiveContainer} from 'recharts';
-
+import {
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Legend,
+  ResponsiveContainer,
+} from "recharts";
 
 function Dashboard() {
   const [DropdownOpen, setDropdownOpen] = useState(false);
@@ -17,32 +25,32 @@ function Dashboard() {
 
   // graph
   const data = [
-    { name: 'Page A', uv: 4000, pv: 2400, amt: 2400 },
-    { name: 'Page B', uv: 3000, pv: 1398, amt: 2210 },
-    { name: 'Page C', uv: 2000, pv: 9800, amt: 2290 },
-    { name: 'Page D', uv: 2780, pv: 3908, amt: 2000 },
-    { name: 'Page E', uv: 1890, pv: 4800, amt: 2181 },
-    { name: 'Page F', uv: 2390, pv: 3800, amt: 2500 },
-    { name: 'Page G', uv: 3490, pv: 4300, amt: 2100 },
+    { name: "09.00 am", uv: 1000, pv: 2400, amt: 2400 },
+    { name: "01.00 pm", uv: 3000, pv: 1398, amt: 2210 },
+    { name: "05.00 pm", uv: 2000, pv: 9800, amt: 2290 },
+    { name: "09.00 pm", uv: 2780, pv: 3908, amt: 2000 },
   ];
 
   return (
     <div>
+      
       {/* Activity dashboard */}
-      <div className="flex flex-row justify-between p-2 w-full">
+      <div className="flex flex-row justify-between p-2 w-full ">
         <div className="font-semibold 2xl:text-[32px] lg:text-[22px] md:text-[18px] text-[16px] normal font-inter text-[#4E5969]">
           Activity Dashboard
         </div>
 
-        
-          <div className="relative flex flex-row justify-center items-center gap-5 2xl:w-[153px] 2xl:h-[50px] lg:w-[140px] lg:h-[30px] md:w-[110px] md:h-[20px] py-[10px] px-[21px] rounded-md bg-[#E8F3FF] cursor-pointer" onClick={triggerDropdown}>
+        <div
+          className="relative flex flex-row justify-center items-center gap-5 2xl:w-[153px] 2xl:h-[50px] lg:w-[140px] lg:h-[30px] md:w-[110px] md:h-[20px] py-[10px] px-[21px] rounded-md bg-[#E8F3FF] cursor-pointer"
+          onClick={triggerDropdown}
+        >
           <div className="font-inter font-normal 2xl:text-lg lg:text-[14px] md:text-[8px] text-[#1D2129]">
             All Time
           </div>
           <div className="2xl:w-[20px] 2xl:h-[18px] md:h-[16px] text-[24px] text-[#C8CAD8] mt-[-4px]">
             <RiArrowDropDownLine />
           </div>
-        
+
           {DropdownOpen && (
             <div className="absolute top-[60px] left-0 w-full bg-white border border-gray-300 rounded-md shadow-lg z-10">
               <ul className="py-2">
@@ -59,7 +67,6 @@ function Dashboard() {
             </div>
           )}
         </div>
-    
       </div>
 
       <div className="flex flex-col gap-3 w-full">
@@ -364,8 +371,6 @@ function Dashboard() {
                         Sept 06
                       </p>
                     </div>
-                  
-
                   </div>
                 </div>
               </div>
@@ -374,38 +379,45 @@ function Dashboard() {
         </div>
       </div>
 
-{/* bottom part */}
-      
-        <div className=" justify-between 2xl:w-[762px] 2xl:h-[538px] lg:w-[660px] lg;[450px] md:w-[350px] md:h-[450px] border-[5px] border-[#E9EBEC] rounded-2xl">
-          <div className="flex justify-between px-[16px] py-[19px]">
-        <div className="text-[20px] font-semibold normal font-inter text-[#4E5969]">
-          Tickets Productivity Chart
+      {/* bottom part */}
+
+      <div className=" justify-between 2xl:w-[762px] 2xl:h-[538px] lg:w-[660px] lg;[450px] md:w-[350px] md:h-[450px] border-[5px] border-[#E9EBEC] rounded-2xl">
+        <div className="flex justify-between px-[16px] py-[19px]">
+          <div className="text-[20px] font-semibold normal font-inter text-[#4E5969]">
+            Tickets Productivity Chart
           </div>
           <div className="flex">
-          <div className="text-[13px] font-normal font-poppins text-[#1D2129]">Today</div>
-          <div className="h-[24px] w-[24px] text-[22px] text-[#1D2129]"><RiArrowDropDownLine /></div>
+            <div className="text-[13px] font-normal font-poppins text-[#1D2129]">
+              Today
+            </div>
+            <div className="h-[24px] w-[24px] text-[22px] text-[#1D2129]">
+              <RiArrowDropDownLine />
+            </div>
           </div>
-          </div>
+        </div>
 
-{/* Graph */}
-<div>
-<div className="w-full h-[300px]">
-<ResponsiveContainer>
-        <LineChart data={data}>
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="name" />
-          <YAxis />
-          <Tooltip />
-          <Legend />
-          <Line type="monotone" dataKey="pv" stroke="#8884d8" strokeWidth={2} />
-        </LineChart>
-      </ResponsiveContainer>
-</div>
-</div>
-
+        {/* Graph */}
+        <div>
+          <div className="w-full h-[300px]">
+          <ResponsiveContainer>
+  <LineChart data={data}>
+    <CartesianGrid strokeDasharray="3 3" />
+    <XAxis dataKey="name" />
+    {/* Adjust the Y-axis with the desired ticks */}
+    <YAxis ticks={[0, 30, 60, 90, 120]} />
+    <Tooltip />
+    <Legend />
+    <Line
+      type="monotone"
+      dataKey="pv"
+      stroke="#0000ff" // Set line color to blue
+      strokeWidth={2}
+    />
+  </LineChart>
+</ResponsiveContainer>;
           </div>
-          
-            
+        </div>
+      </div>
      
     </div>
   );
