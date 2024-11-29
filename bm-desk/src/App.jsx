@@ -3,6 +3,9 @@ import './App.css'
 import Layout from './components/Layout'
 import Dashboard from './components/Dashboard'
 import Login from './components/Login'
+import Productivity from './components/Productivity';
+import AssignedTickets from './components/AssignedTickets';
+
 
 function App() {
 
@@ -15,6 +18,11 @@ function App() {
         <Route index element={<Dashboard/>}/>
         </Route>
         <Route path='/login' element={<Login/>}/>
+        <Route path='/productivity' element={<Productivity/>}/>
+        <Route path='/assignedtickets' element={<AssignedTickets/>}/>
+
+
+
       </Routes>
     </BrowserRouter>
   </div>

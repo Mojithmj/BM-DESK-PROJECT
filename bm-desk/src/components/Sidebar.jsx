@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { RiHomeLine, RiArrowDropDownLine } from "react-icons/ri";
 import { BsGraphUpArrow } from "react-icons/bs";
+import { useNavigate } from "react-router-dom";
+
 
 function Sidebar() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -8,6 +10,18 @@ function Sidebar() {
   const toggleDropdown = () => {
     setIsDropdownOpen((prevState) => !prevState);
   };
+
+  const navigate = useNavigate();
+
+  const handleNavigate = ()=>{
+    navigate('/productivity')
+
+
+  }
+
+  
+  
+
 
   return (
     <div>
@@ -26,8 +40,25 @@ function Sidebar() {
         </div>
 
         {/* Productivity */}
-        <div className="group">
+        {/* <div className="group">
           <div className="flex flex-row gap-2 items-center rounded-[4px] px-4 py-3 cursor-pointer border border-white group-hover:border-[#BEDAFF] group-hover:bg-[#E8F3FF]">
+            <div className="2xl:text-[20px] lg:text-[18px] md:text-[16px] text-[14px] text-[#86909C] group-hover:text-[#165DFF]">
+              <BsGraphUpArrow />
+            </div>
+            <div className="2xl:text-base lg:text-sm md:text-[11px] text-[10px] font-medium normal text-[#4E5969] group-hover:text-[#165DFF]">
+              My Productivity
+            </div>
+          </div>
+        </div> */}
+
+
+
+         {/* Productivity */}
+         <div className="group">
+          <div 
+            className="flex flex-row gap-2 items-center rounded-[4px] px-4 py-3 cursor-pointer border border-white group-hover:border-[#BEDAFF] group-hover:bg-[#E8F3FF]"
+            onClick={() => handleNavigate('/productivity')} // Navigate to productivity
+          >
             <div className="2xl:text-[20px] lg:text-[18px] md:text-[16px] text-[14px] text-[#86909C] group-hover:text-[#165DFF]">
               <BsGraphUpArrow />
             </div>
@@ -126,7 +157,9 @@ function Sidebar() {
                     stroke-linejoin="round"
                   />
                 </svg>
-                <div className="2xl:text-[14px] lg:text-xs md:text-[11px] text-[10px] whitespace-nowrap  font-medium normal text-[#4E5969] flex-1  group-hover:text-[#165DFF]">
+                <div className="2xl:text-[14px] lg:text-xs md:text-[11px] text-[10px] whitespace-nowrap  font-medium normal text-[#4E5969] flex-1  group-hover:text-[#165DFF]" 
+               
+                >
                   Assigned Tickets
                 </div>
               </div>
