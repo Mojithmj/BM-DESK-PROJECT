@@ -6,73 +6,104 @@ import { HiArrowRight } from "react-icons/hi";
 import Ticketimageone from "../assets/Avatarimageone.png";
 import Ticketimagetwo from "../assets/Avatarimagetwo.png";
 import {
-  LineChart,
-  Line,
+  AreaChart,
+  Area,
   XAxis,
   YAxis,
-  CartesianGrid,
   Tooltip,
-  Legend,
   ResponsiveContainer,
 } from "recharts";
+import { LuChevronRight } from "react-icons/lu";
 
 function Dashboard() {
+  // all time dropdown
   const [DropdownOpen, setDropdownOpen] = useState(false);
+  const [alltimeOption, setAlltimeOption] = useState("All Time");
+  // today dropdown
+  const [todaydrop, setTodaydrop] = useState(false);
+  const [selectedOption, setSelectedOption] = useState("Today");
 
+// all time dropdown
   const triggerDropdown = () => {
     setDropdownOpen((prevState) => !prevState);
+  };
+  const alltimeOptionClick = (option) => {
+    setAlltimeOption(option); // Update the selected option
+    setDropdownOpen(false); // Close the dropdown
+  };
+  const todayDropdown = () => {
+    setTodaydrop(!todaydrop);
+  };
+const handleOptionClick = (option) => {
+    setSelectedOption(option); // Update the selected option
+    setTodaydrop(false); // Close the dropdown
   };
 
   // graph
   const data = [
-    { name: "09.00 am", uv: 1000, pv: 2400, amt: 2400 },
-    { name: "01.00 pm", uv: 3000, pv: 1398, amt: 2210 },
-    { name: "05.00 pm", uv: 2000, pv: 9800, amt: 2290 },
-    { name: "09.00 pm", uv: 2780, pv: 3908, amt: 2000 },
+    { time: "9:30 AM", uv: 30 },
+    { time: "9:34 AM", uv: 33},
+    { time: "11:30 AM", uv: 40 },
+    { time: "2:00 PM", uv: 25 },
+    { time: "4:00 PM", uv: 50 },
+    { time: "6:00 PM", uv: 40 },
+    { time: "8:00 PM", uv: 110 },
+    { time: "9:00 PM", uv: 100 },
   ];
 
   return (
     <div>
-      
       {/* Activity dashboard */}
       <div className="flex flex-row justify-between p-2 w-full ">
         <div className="font-semibold 2xl:text-[32px] lg:text-[22px] md:text-[18px] text-[16px] normal font-inter text-[#4E5969]">
           Activity Dashboard
         </div>
-
-        <div
-          className="relative flex flex-row justify-center items-center gap-5 2xl:w-[153px] 2xl:h-[50px] lg:w-[140px] lg:h-[30px] md:w-[110px] md:h-[20px] py-[10px] px-[21px] rounded-md bg-[#E8F3FF] cursor-pointer"
-          onClick={triggerDropdown}
-        >
-          <div className="font-inter font-normal 2xl:text-lg lg:text-[14px] md:text-[8px] text-[#1D2129]">
-            All Time
-          </div>
-          <div className="2xl:w-[20px] 2xl:h-[18px] md:h-[16px] text-[24px] text-[#C8CAD8] mt-[-4px]">
-            <RiArrowDropDownLine />
-          </div>
-
-          {DropdownOpen && (
-            <div className="absolute top-[60px] left-0 w-full bg-white border border-gray-300 rounded-md shadow-lg z-10">
-              <ul className="py-2">
-                <li className="px-4 py-2 hover:bg-[#E8F3FF] cursor-pointer">
-                  Option 1
-                </li>
-                <li className="px-4 py-2 hover:bg-[#E8F3FF] cursor-pointer">
-                  Option 2
-                </li>
-                <li className="px-4 py-2 hover:bg-[#E8F3FF] cursor-pointer">
-                  Option 3
-                </li>
-              </ul>
-            </div>
-          )}
+        <div className="relative">
+      {/* Dropdown Trigger */}
+      <div
+        className="flex flex-row justify-center items-center gap-5 2xl:w-[153px] 2xl:h-[50px] lg:w-[140px] lg:h-[30px] md:w-[110px] md:h-[20px] py-[10px] px-[21px] rounded-md bg-[#E8F3FF] cursor-pointer"
+        onClick={triggerDropdown}
+      >
+        <div className="font-inter font-normal 2xl:text-lg lg:text-[12px] md:text-[8px] text-[#1D2129]">
+          {alltimeOption}
         </div>
+        <div className="2xl:w-[20px] 2xl:h-[18px] md:h-[16px] text-[24px] text-[#C8CAD8] mt-[-4px]">
+          <RiArrowDropDownLine />
+        </div>
+      </div>
+
+      {/* Dropdown Menu */}
+      {DropdownOpen && (
+        <div className="absolute text-nowrap top-[40px] left-0 w-full bg-white border border-gray-300 rounded-xl shadow-lg z-10">
+          <ul className="py-2">
+            <li
+              className="px-4 py-2 font-inter font-normal 2xl:text-lg lg:text-[14px] md:text-[8px] text-[#1D2129] hover:bg-[#E8F3FF] cursor-pointer"
+              onClick={() => alltimeOptionClick("Option 1")}
+            >
+              Option 1
+            </li>
+            <li
+              className="px-4 py-2 font-inter font-normal 2xl:text-lg lg:text-[14px] md:text-[8px] text-[#1D2129] hover:bg-[#E8F3FF] cursor-pointer"
+              onClick={() => alltimeOptionClick("Option 2")}
+            >
+              Option 2
+            </li>
+            <li
+              className="px-4 py-2 font-inter font-normal 2xl:text-lg lg:text-[14px] md:text-[8px] text-[#1D2129] hover:bg-[#E8F3FF] cursor-pointer"
+              onClick={() => alltimeOptionClick("Option 3")}
+            >
+              Option 3
+            </li>
+          </ul>
+        </div>
+      )}
+    </div>
       </div>
 
       <div className="flex flex-col gap-3 w-full">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-[20px]">
-          {/* Card */}
-          <div className="border-[1px]  2xl:p-[36px] lg:p-[25px] md:[20px] rounded-2xl text-[#E5E6EB]  bg-[#FFF]  justify-center items-center">
+          {/* 1 Card */}
+          <div className="border-[1px]  2xl:p-[36px] lg:p-[10px] md:[5px] rounded-2xl text-[#E5E6EB]  bg-[#FFF]  justify-center items-center">
             <div className="flex flex-col gap-[36px]">
               {/* profile name */}
               <div className="flex flex-row items-center justify-between">
@@ -121,7 +152,7 @@ function Dashboard() {
 
               {/* botom card */}
               <div className="flex flex-row 2xl:gap-[16px] lg:gap-[10px] md:gap-[2px] justify-center items-center">
-                <div className="border-[0.44px] border-[#E5E6EB] rounded-[9px] flex flex-row items-center gap-[9px] px-3 py-[6px]">
+                <div className="border-[0.44px] border-[#E5E6EB] rounded-[9px] flex flex-row items-center gap-[9px] px-2 py-[6px]">
                   <div>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -149,7 +180,7 @@ function Dashboard() {
                 </div>
 
                 {/* 2 */}
-                <div className="border-[0.44px] border-[#E5E6EB] rounded-[9px] flex flex-row items-center gap-[9px] px-3 py-[6px]">
+                <div className="border-[0.44px] border-[#E5E6EB] rounded-[9px] flex flex-row items-center gap-[9px] px-2 py-[6px]">
                   <div>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -178,7 +209,7 @@ function Dashboard() {
 
                 {/* 3 */}
 
-                <div className="border-[0.44px] border-[#E5E6EB] rounded-[9px] flex flex-row items-center gap-[9px] px-3 py-[6px]">
+                <div className="border-[0.44px] border-[#E5E6EB] rounded-[9px] flex flex-row items-center gap-[9px] px-2 py-[6px]">
                   <div>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -210,7 +241,7 @@ function Dashboard() {
 
           {/* 2nd card */}
 
-          <div className="flex flex-col justify-between border-[1px]  2xl:p-[36px] lg:p-[22px] md:p-[20px]  rounded-2xl text-[#E5E6EB]  bg-[#FFF] ">
+          <div className="flex flex-col justify-between border-[1px]  2xl:p-[36px] lg:p-[10px] md:p-[5px]  rounded-2xl text-[#E5E6EB]  bg-[#FFF] ">
             <div className="flex flex-row items-center justify-between">
               <div className="text-[#4E5969] font-inter font-semibold normal 2xl:text-[18px] lg:text-[16px] md:text-[12px]">
                 <p>Assigned </p>Tickets
@@ -221,7 +252,7 @@ function Dashboard() {
             </div>
 
             <div className="flex flex-row 2xl:gap-[15px] justify-center  lg:gap-[10px] md:gap-[8px] items-center">
-              <div className="bg-[#E8F3FF] p-[19px]">
+              <div className="bg-[#E8F3FF] 2xl:p-[19px] lg:p-[10px]">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="40"
@@ -238,7 +269,7 @@ function Dashboard() {
                 </svg>
               </div>
 
-              <div className="2xl:text-[68px] lg:text-[54px] normal font-semibold font-inter text-[#165DFF]">
+              <div className="2xl:text-[68px] lg:text-[46px] normal font-semibold font-inter text-[#165DFF]">
                 32
               </div>
             </div>
@@ -255,7 +286,7 @@ function Dashboard() {
 
           {/* 3rd card */}
 
-          <div className="flex flex-col justify-between border-[1px]  2xl:p-[36px] lg:p-[25px] md:p-[20px]  rounded-2xl text-[#E5E6EB]  bg-[#FFF] ">
+          <div className="flex flex-col justify-between border-[1px]  2xl:p-[36px] lg:p-[10px] md:p-[5px]  rounded-2xl text-[#E5E6EB]  bg-[#FFF] ">
             <div className="flex flex-row items-center justify-between">
               <div className="text-[#4E5969] font-inter font-semibold normal 2xl:text-[18px] lg:text-[16px] md:text-[12px]">
                 <p>To Do</p>
@@ -266,7 +297,7 @@ function Dashboard() {
             </div>
 
             <div className="flex flex-row 2xl:gap-[15px] justify-center lg:gap-[10px] md:gap-[8px] items-center">
-              <div className="bg-[#FFF7E8] p-[19px]">
+              <div className="bg-[#FFF7E8] 2xl:p-[19px] lg:p-[10px]">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="41"
@@ -283,7 +314,7 @@ function Dashboard() {
                 </svg>
               </div>
 
-              <div className="2xl:text-[68px] lg:text-[54px] normal font-semibold font-inter text-[#FF7D00]">
+              <div className="2xl:text-[68px] lg:text-[46px] normal font-semibold font-inter text-[#FF7D00]">
                 32
               </div>
             </div>
@@ -298,9 +329,9 @@ function Dashboard() {
             </div>
           </div>
 
+          {/* 4th Card */}
           <div>
-            {/* 4th Card */}
-            <div className="flex h-full flex-col justify-between  border-[1px]  px-[16px] 2xl:py-[32px] lg:py-[28px]  rounded-2xl text-[#E5E6EB] bg-[#FFF]">
+            <div className="flex h-full flex-col justify-between  border-[1px]  px-[16px] 2xl:py-[32px] lg:py-[10px]  rounded-2xl text-[#E5E6EB] bg-[#FFF]">
               <div className="flex flex-col gap-[27px]">
                 {/* Header */}
                 <div className="flex flex-row items-center justify-between">
@@ -376,49 +407,418 @@ function Dashboard() {
               </div>
             </div>
           </div>
+
+          {/* 5 card bottom */}
+          <div className="col-span-2   border-[1px] border-[#E9EBEC] rounded-2xl">
+            {/* Ticket productivity */}
+            <div className="flex justify-between px-[16px] py-[19px]">
+              <div className="text-[20px] font-semibold normal font-inter text-[#4E5969]">
+                Tickets Productivity Chart
+              </div>
+              <div className="relative">
+      {/* Trigger Button */}
+      <div className="flex cursor-pointer" onClick={todayDropdown}>
+        <div className="text-[13px] font-normal font-poppins text-[#1D2129]">
+          {selectedOption}
+        </div>
+        <div className="h-[24px] w-[24px] text-[22px] text-[#1D2129]">
+          <RiArrowDropDownLine />
         </div>
       </div>
 
-      {/* bottom part */}
-
-      <div className=" justify-between 2xl:w-[762px] 2xl:h-[538px] lg:w-[660px] lg;[450px] md:w-[350px] md:h-[450px] border-[5px] border-[#E9EBEC] rounded-2xl">
-        <div className="flex justify-between px-[16px] py-[19px]">
-          <div className="text-[20px] font-semibold normal font-inter text-[#4E5969]">
-            Tickets Productivity Chart
-          </div>
-          <div className="flex">
-            <div className="text-[13px] font-normal font-poppins text-[#1D2129]">
-              Today
-            </div>
-            <div className="h-[24px] w-[24px] text-[22px] text-[#1D2129]">
-              <RiArrowDropDownLine />
-            </div>
-          </div>
+      {/* Dropdown Menu */}
+      {todaydrop && (
+        <div className="absolute top-[40px]  left-0 text-nowrap bg-white border border-gray-300 rounded-xl shadow-lg z-10">
+          <ul>
+            <li
+              className="px-4 py-2 text-[13px] font-normal font-poppins text-[#1D2129] cursor-pointer"
+              onClick={() => handleOptionClick("Option 1")}
+            >
+              Option 1
+            </li>
+            <li
+              className="px-4 py-2 text-[13px] font-normal font-poppins text-[#1D2129] cursor-pointer"
+              onClick={() => handleOptionClick("Option 2")}
+            >
+              Option 2
+            </li>
+            <li
+              className="px-4 py-2 text-[13px] font-normal font-poppins text-[#1D2129] cursor-pointer"
+              onClick={() => handleOptionClick("Option 3")}
+            >
+              Option 3
+            </li>
+          </ul>
         </div>
+      )}
+    </div>
+</div>
 
-        {/* Graph */}
-        <div>
-          <div className="w-full h-[300px]">
-          <ResponsiveContainer>
-  <LineChart data={data}>
-    <CartesianGrid strokeDasharray="3 3" />
-    <XAxis dataKey="name" />
-    {/* Adjust the Y-axis with the desired ticks */}
-    <YAxis ticks={[0, 30, 60, 90, 120]} />
-    <Tooltip />
-    <Legend />
-    <Line
-      type="monotone"
-      dataKey="pv"
-      stroke="#0000ff" // Set line color to blue
-      strokeWidth={2}
-    />
-  </LineChart>
-</ResponsiveContainer>;
+            {/* Graph */}
+            <div>
+              <div className="w-full h-[300px]">
+                <ResponsiveContainer width="100%" height="100%">
+                  <AreaChart
+                    width={500}
+                    height={400}
+                    data={data}
+                    margin={{
+                      top: 10,
+                      right: 0,
+                      left: 0,
+                      bottom: 0,
+                    }}
+                  >
+                    {/* Define the gradient */}
+                    <defs>
+                      <linearGradient
+                        id="paint0_linear_485_8262"
+                        x1="-338.468"
+                        y1="0.834473"
+                        x2="-338.468"
+                        y2="297.662"
+                        gradientUnits="userSpaceOnUse"
+                      >
+                        <stop
+                          offset="0.00617284"
+                          stopColor="#165DFF"
+                          stopOpacity={0.9998039}
+                        />
+                        <stop
+                          offset="1"
+                          stopColor="#B7CDFF"
+                          stopOpacity={0.180392}
+                        />
+                      </linearGradient>
+                    </defs>
+
+                    <XAxis
+                      dataKey="time"
+                      tick={{ fontSize: "0.675rem", fill: "#ADB5BD" }}
+                      axisLine={false}
+                      tickLine={false}
+                    />
+                    <YAxis
+                      tick={{ fontSize: "0.675rem", fill: "#ADB5BD" }}
+                      axisLine={false}
+                      tickLine={false}
+                      tickFormatter={(value) => value} // No special formatting needed
+                    />
+                    <Tooltip />
+                    <Area
+                      type="monotone"
+                      dataKey="uv"
+                      stroke="#165DFF"
+                      strokeWidth={4}
+                      fill="url(#paint0_linear_485_8262)" // Apply the existing gradient
+                    />
+                  </AreaChart>
+                </ResponsiveContainer>
+              </div>
+            </div>
+          </div>
+
+          {/* 6 card bottom */}
+          <div className="col-span-2 flex flex-col gap-[27px] px-[20px] py-[32px]  border-[1px] border-[#E9EBEC] rounded-2xl">
+            <div className="flex justify-between">
+              <div className="text-[20px] font-semibold normal font-inter text-[#4E5969]">
+                Recent Tickets
+              </div>
+              <div className="h-[28px] w-[28px] text-[22px] text-[#181D27]">
+                <HiArrowRight />
+              </div>
+            </div>
+            {/* card */}
+            <div className="flex flex-col gap-[8px]">
+              {/* 1 */}
+              <div className="flex justify-between border-[1px] rounded-[8px] border-[#E5E6EB] bg-[#FFF] px-[8px] py-[6px]">
+                <div className="flex gap-[16px]">
+                  <div className="border-[0.5px] 2xl:w-[40px] lg:w-[40px] justify-center text-[#0E42D2] border-[#E5E6EB] rounded-[7px] ">
+                    <svg
+                      width="35"
+                      height="35"
+                      viewBox="0 0 493 493"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <g clip-path="url(#clip0_1082_5675)">
+                        <rect
+                          width="492.479"
+                          height="492.479"
+                          rx="98.4957"
+                          fill="white"
+                        ></rect>
+                        <path
+                          fill-rule="evenodd"
+                          clip-rule="evenodd"
+                          d="M259.998 121.307C257.962 122.032 254.802 123.872 252.977 125.396C246.976 130.405 127.996 246.877 124.437 251.226C118.517 258.459 117.316 268.369 121.402 276.255C123.63 280.554 136.966 295.148 143.675 300.628C146.622 303.035 150.004 305.004 151.189 305.004C152.375 305.004 155.766 303.341 158.726 301.308C173.911 290.876 192.985 299.902 192.985 317.521C192.985 323.226 191.585 326.992 187.412 332.52C185.215 335.429 184.604 337.532 184.845 341.365C185.015 344.083 208.585 367.644 213.516 370.026C218.565 372.463 226.647 372.671 231.862 370.497C236.144 368.713 234.712 370.067 309.957 296.677C342.989 264.459 368.255 239.036 369.629 236.632C372.834 231.025 372.922 221.255 369.819 215.454C368.643 213.253 362.301 205.937 355.729 199.195C346.222 189.443 343.222 186.938 341.05 186.938C339.55 186.938 335.328 188.739 331.668 190.94C326.012 194.343 324.175 194.942 319.398 194.942C312.417 194.942 306.156 191.96 301.877 186.595C299.019 183.013 298.81 182.189 298.81 174.556C298.81 166.682 298.957 166.156 302.571 161.138C305.256 157.41 306.333 154.882 306.333 152.304C306.333 149.007 305.177 147.536 293.042 135.391C282.554 124.895 278.904 121.86 275.739 121.001C270.451 119.565 264.567 119.68 259.998 121.307Z"
+                          fill="#165DFF"
+                        ></path>
+                      </g>
+                      <defs>
+                        <clipPath id="clip0_1082_5675">
+                          <rect
+                            width="492.479"
+                            height="492.479"
+                            fill="white"
+                          ></rect>
+                        </clipPath>
+                      </defs>
+                    </svg>
+                  </div>
+
+                  <div className="flex 2xl:gap-[20px] lg:gap-[10px]">
+                    <div>
+                      <p className="text-[14px] font-inter font-semibold text-[#1D2129] ">
+                        Benchmark Learning (Educore)
+                      </p>
+                      <p className="font-inter text-[#86909C] text-[12px] font-normal">
+                        Glitches in the repoert card of y...
+                      </p>
+                    </div>
+                    <div className=" inline-flex   items-center  text-[#FFE4BA] mt-[-10px]">
+                      <p className="border-[1px] rounded-[4px] border-[#FFE4BA] 2xl:p-[9px] lg:p-[3px] bg[#FFF] text-[10px] font-normal text-[#FF7D00] leading-none">
+                        Critical
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div className="w-[24px] h-[24px] text-[#86909C]">
+                  <HiArrowRight />
+                </div>
+              </div>
+              {/* 2 */}
+              <div className="flex justify-between border-[1px] rounded-[8px] border-[#E5E6EB] bg-[#FFF] px-[8px] py-[6px]">
+                <div className="flex gap-[16px]">
+                  <div className="border-[0.5px] 2xl:w-[40px] lg:w-[40px] justify-center text-[#0E42D2] border-[#E5E6EB] rounded-[7px] ">
+                    <svg
+                      width="35"
+                      height="35"
+                      viewBox="0 0 493 493"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <g clip-path="url(#clip0_1082_5675)">
+                        <rect
+                          width="492.479"
+                          height="492.479"
+                          rx="98.4957"
+                          fill="white"
+                        ></rect>
+                        <path
+                          fill-rule="evenodd"
+                          clip-rule="evenodd"
+                          d="M259.998 121.307C257.962 122.032 254.802 123.872 252.977 125.396C246.976 130.405 127.996 246.877 124.437 251.226C118.517 258.459 117.316 268.369 121.402 276.255C123.63 280.554 136.966 295.148 143.675 300.628C146.622 303.035 150.004 305.004 151.189 305.004C152.375 305.004 155.766 303.341 158.726 301.308C173.911 290.876 192.985 299.902 192.985 317.521C192.985 323.226 191.585 326.992 187.412 332.52C185.215 335.429 184.604 337.532 184.845 341.365C185.015 344.083 208.585 367.644 213.516 370.026C218.565 372.463 226.647 372.671 231.862 370.497C236.144 368.713 234.712 370.067 309.957 296.677C342.989 264.459 368.255 239.036 369.629 236.632C372.834 231.025 372.922 221.255 369.819 215.454C368.643 213.253 362.301 205.937 355.729 199.195C346.222 189.443 343.222 186.938 341.05 186.938C339.55 186.938 335.328 188.739 331.668 190.94C326.012 194.343 324.175 194.942 319.398 194.942C312.417 194.942 306.156 191.96 301.877 186.595C299.019 183.013 298.81 182.189 298.81 174.556C298.81 166.682 298.957 166.156 302.571 161.138C305.256 157.41 306.333 154.882 306.333 152.304C306.333 149.007 305.177 147.536 293.042 135.391C282.554 124.895 278.904 121.86 275.739 121.001C270.451 119.565 264.567 119.68 259.998 121.307Z"
+                          fill="#165DFF"
+                        ></path>
+                      </g>
+                      <defs>
+                        <clipPath id="clip0_1082_5675">
+                          <rect
+                            width="492.479"
+                            height="492.479"
+                            fill="white"
+                          ></rect>
+                        </clipPath>
+                      </defs>
+                    </svg>
+                  </div>
+
+                  <div className="flex 2xl:gap-[20px] lg:gap-[10px]">
+                    <div>
+                      <p className="text-[14px] font-inter font-semibold text-[#1D2129] ">
+                        Benchmark School Manager
+                      </p>
+                      <p className="font-inter text-[#86909C] text-[12px] font-normal">
+                        Glitches in the repoert card of y...
+                      </p>
+                    </div>
+                    <div className="inline-flex  items-center  text-[#FFE4BA] mt-[-10px]">
+                      <p className="border-[1px] rounded-[4px] border-[#FFE4BA] 2xl:p-[9px] lg:p-[3px] bg[#FFF] text-[10px] font-normal text-[#FF7D00] leading-none">
+                        Critical
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div className="w-[24px] h-[24px] text-[#86909C]">
+                  <HiArrowRight />
+                </div>
+              </div>
+              {/* 3 */}
+              <div className="flex justify-between border-[1px] rounded-[8px] border-[#E5E6EB] bg-[#FFF] px-[8px] py-[6px]">
+                <div className="flex gap-[16px]">
+                  <div className="border-[0.5px] 2xl:w-[40px] lg:w-[40px] justify-center text-[#0E42D2] border-[#E5E6EB] rounded-[7px] ">
+                    <svg
+                      width="35"
+                      height="35"
+                      viewBox="0 0 493 493"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <g clip-path="url(#clip0_1082_5675)">
+                        <rect
+                          width="492.479"
+                          height="492.479"
+                          rx="98.4957"
+                          fill="white"
+                        ></rect>
+                        <path
+                          fill-rule="evenodd"
+                          clip-rule="evenodd"
+                          d="M259.998 121.307C257.962 122.032 254.802 123.872 252.977 125.396C246.976 130.405 127.996 246.877 124.437 251.226C118.517 258.459 117.316 268.369 121.402 276.255C123.63 280.554 136.966 295.148 143.675 300.628C146.622 303.035 150.004 305.004 151.189 305.004C152.375 305.004 155.766 303.341 158.726 301.308C173.911 290.876 192.985 299.902 192.985 317.521C192.985 323.226 191.585 326.992 187.412 332.52C185.215 335.429 184.604 337.532 184.845 341.365C185.015 344.083 208.585 367.644 213.516 370.026C218.565 372.463 226.647 372.671 231.862 370.497C236.144 368.713 234.712 370.067 309.957 296.677C342.989 264.459 368.255 239.036 369.629 236.632C372.834 231.025 372.922 221.255 369.819 215.454C368.643 213.253 362.301 205.937 355.729 199.195C346.222 189.443 343.222 186.938 341.05 186.938C339.55 186.938 335.328 188.739 331.668 190.94C326.012 194.343 324.175 194.942 319.398 194.942C312.417 194.942 306.156 191.96 301.877 186.595C299.019 183.013 298.81 182.189 298.81 174.556C298.81 166.682 298.957 166.156 302.571 161.138C305.256 157.41 306.333 154.882 306.333 152.304C306.333 149.007 305.177 147.536 293.042 135.391C282.554 124.895 278.904 121.86 275.739 121.001C270.451 119.565 264.567 119.68 259.998 121.307Z"
+                          fill="#165DFF"
+                        ></path>
+                      </g>
+                      <defs>
+                        <clipPath id="clip0_1082_5675">
+                          <rect
+                            width="492.479"
+                            height="492.479"
+                            fill="white"
+                          ></rect>
+                        </clipPath>
+                      </defs>
+                    </svg>
+                  </div>
+
+                  <div className="flex 2xl:gap-[20px] lg:gap-[10px]">
+                    <div>
+                      <p className="text-[14px] font-inter font-semibold text-[#1D2129] ">
+                        BM Asset Management System
+                      </p>
+                      <p className="font-inter text-[#86909C] text-[12px] font-normal">
+                        Glitches in the repoert card of y...
+                      </p>
+                    </div>
+                    <div className="inline-flex  items-center  text-[#FFE4BA] mt-[-10px]">
+                      <p className="border-[1px] rounded-[4px]  border-[#FFE4BA] 2xl:p-[9px] lg:p-[3px] bg[#FFF] text-[10px] font-normal text-[#FF7D00] leading-none">
+                        Critical
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div className="w-[24px] h-[24px] text-[#86909C]">
+                  <HiArrowRight />
+                </div>
+              </div>
+              {/* 4 */}
+              <div className="flex justify-between border-[1px] rounded-[8px] border-[#E5E6EB] bg-[#FFF] px-[8px] py-[6px]">
+                <div className="flex gap-[16px]">
+                  <div className="border-[0.5px] 2xl:w-[40px] lg:w-[40px] justify-center text-[#0E42D2] border-[#E5E6EB] rounded-[7px] ">
+                    <svg
+                      width="35"
+                      height="35"
+                      viewBox="0 0 493 493"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <g clip-path="url(#clip0_1082_5675)">
+                        <rect
+                          width="492.479"
+                          height="492.479"
+                          rx="98.4957"
+                          fill="white"
+                        ></rect>
+                        <path
+                          fill-rule="evenodd"
+                          clip-rule="evenodd"
+                          d="M259.998 121.307C257.962 122.032 254.802 123.872 252.977 125.396C246.976 130.405 127.996 246.877 124.437 251.226C118.517 258.459 117.316 268.369 121.402 276.255C123.63 280.554 136.966 295.148 143.675 300.628C146.622 303.035 150.004 305.004 151.189 305.004C152.375 305.004 155.766 303.341 158.726 301.308C173.911 290.876 192.985 299.902 192.985 317.521C192.985 323.226 191.585 326.992 187.412 332.52C185.215 335.429 184.604 337.532 184.845 341.365C185.015 344.083 208.585 367.644 213.516 370.026C218.565 372.463 226.647 372.671 231.862 370.497C236.144 368.713 234.712 370.067 309.957 296.677C342.989 264.459 368.255 239.036 369.629 236.632C372.834 231.025 372.922 221.255 369.819 215.454C368.643 213.253 362.301 205.937 355.729 199.195C346.222 189.443 343.222 186.938 341.05 186.938C339.55 186.938 335.328 188.739 331.668 190.94C326.012 194.343 324.175 194.942 319.398 194.942C312.417 194.942 306.156 191.96 301.877 186.595C299.019 183.013 298.81 182.189 298.81 174.556C298.81 166.682 298.957 166.156 302.571 161.138C305.256 157.41 306.333 154.882 306.333 152.304C306.333 149.007 305.177 147.536 293.042 135.391C282.554 124.895 278.904 121.86 275.739 121.001C270.451 119.565 264.567 119.68 259.998 121.307Z"
+                          fill="#165DFF"
+                        ></path>
+                      </g>
+                      <defs>
+                        <clipPath id="clip0_1082_5675">
+                          <rect
+                            width="492.479"
+                            height="492.479"
+                            fill="white"
+                          ></rect>
+                        </clipPath>
+                      </defs>
+                    </svg>
+                  </div>
+
+                  <div className="flex 2xl:gap-[20px] lg:gap-[10px]">
+                    <div>
+                      <p className="text-[14px] font-inter font-semibold text-[#1D2129] ">
+                        DocMe - For Schools
+                      </p>
+                      <p className="font-inter text-[#86909C] text-[12px] font-normal">
+                        Glitches in the repoert card of y...
+                      </p>
+                    </div>
+                    <div className="inline-flex  items-center  text-[#FFE4BA] mt-[-10px]">
+                      <p className="border-[1px] rounded-[4px] border-[#FFE4BA] 2xl:p-[9px] lg:p-[3px] bg[#FFF] text-[10px] font-normal text-[#FF7D00] leading-none">
+                        Critical
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div className="w-[24px] h-[24px] text-[#86909C]">
+                  <HiArrowRight />
+                </div>
+              </div>
+              {/* 5 */}
+              <div className="flex justify-between border-[1px] rounded-[8px] border-[#E5E6EB] bg-[#FFF] px-[8px] py-[6px]">
+                <div className="flex gap-[16px]">
+                  <div className="border-[0.5px] 2xl:w-[40px] lg:w-[40px] justify-center text-[#0E42D2] border-[#E5E6EB] rounded-[7px] ">
+                    <svg
+                      width="35"
+                      height="35"
+                      viewBox="0 0 493 493"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <g clip-path="url(#clip0_1082_5675)">
+                        <rect
+                          width="492.479"
+                          height="492.479"
+                          rx="98.4957"
+                          fill="white"
+                        ></rect>
+                        <path
+                          fill-rule="evenodd"
+                          clip-rule="evenodd"
+                          d="M259.998 121.307C257.962 122.032 254.802 123.872 252.977 125.396C246.976 130.405 127.996 246.877 124.437 251.226C118.517 258.459 117.316 268.369 121.402 276.255C123.63 280.554 136.966 295.148 143.675 300.628C146.622 303.035 150.004 305.004 151.189 305.004C152.375 305.004 155.766 303.341 158.726 301.308C173.911 290.876 192.985 299.902 192.985 317.521C192.985 323.226 191.585 326.992 187.412 332.52C185.215 335.429 184.604 337.532 184.845 341.365C185.015 344.083 208.585 367.644 213.516 370.026C218.565 372.463 226.647 372.671 231.862 370.497C236.144 368.713 234.712 370.067 309.957 296.677C342.989 264.459 368.255 239.036 369.629 236.632C372.834 231.025 372.922 221.255 369.819 215.454C368.643 213.253 362.301 205.937 355.729 199.195C346.222 189.443 343.222 186.938 341.05 186.938C339.55 186.938 335.328 188.739 331.668 190.94C326.012 194.343 324.175 194.942 319.398 194.942C312.417 194.942 306.156 191.96 301.877 186.595C299.019 183.013 298.81 182.189 298.81 174.556C298.81 166.682 298.957 166.156 302.571 161.138C305.256 157.41 306.333 154.882 306.333 152.304C306.333 149.007 305.177 147.536 293.042 135.391C282.554 124.895 278.904 121.86 275.739 121.001C270.451 119.565 264.567 119.68 259.998 121.307Z"
+                          fill="#165DFF"
+                        ></path>
+                      </g>
+                      <defs>
+                        <clipPath id="clip0_1082_5675">
+                          <rect
+                            width="492.479"
+                            height="492.479"
+                            fill="white"
+                          ></rect>
+                        </clipPath>
+                      </defs>
+                    </svg>
+                  </div>
+
+                  <div className="flex 2xl:gap-[20px] lg:gap-[10px]">
+                    <div>
+                      <p className="text-[14px] font-inter font-semibold text-[#1D2129] ">
+                        Benchmark Learning (Educore)
+                      </p>
+                      <p className="font-inter text-[#86909C] text-[12px] font-normal">
+                        Glitches in the repoert card of y...
+                      </p>
+                    </div>
+                    <div className="inline-flex  items-center  text-[#FFE4BA] mt-[-10px]">
+                      <p className="border-[1px] rounded-[4px] border-[#FFE4BA] 2xl:p-[9px] lg:p-[3px] bg[#FFF] text-[10px] font-normal text-[#FF7D00] leading-none">
+                        Critical
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div className="w-[24px] h-[24px] text-[#86909C]">
+                  <HiArrowRight />
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-     
     </div>
   );
 }

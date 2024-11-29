@@ -100,7 +100,7 @@ function Login() {
               >
                 Username
               </label>
-              <div className="w-full rounded-lg border-[#CED4DA] overflow-hidden border-[1px]">
+              <div className="w-full rounded-[5px] border-[#CED4DA] overflow-hidden border-[1px]">
                 <input
                   id="username"
                   type="text"
@@ -116,7 +116,7 @@ function Login() {
               >
                 Password
               </label>
-              <div className="flex items-center relative w-full rounded-lg border-[#CED4DA] overflow-hidden border-[1px]">
+              <div className="flex items-center relative w-full rounded-[5px] border-[#CED4DA] overflow-hidden border-[1px]">
                 <input
                   id="password"
                   type={passwordVisible ? "text" : "password"}
@@ -153,11 +153,11 @@ function Login() {
             <div className="flex flex-col gap-2">
               <button
                 type="submit"
-                className="w-full py-2 rounded-lg bg-[#0095FF] text-white font-bold text-[14px] md:text-[16px] hover:bg-blue-700"
+                className="w-full py-2 rounded-[5px] bg-[#0095FF] text-white font-bold text-[14px] md:text-[16px] hover:bg-blue-700"
               >
                 Sign In
               </button>
-              <button className="w-full py-2 rounded-lg border border-[#0095FF] text-[#0095FF] flex items-center justify-center gap-2 hover:bg-blue-100">
+              <button className="w-full py-2 rounded-[5px] border border-[#0095FF] text-[#0095FF] flex items-center justify-center gap-2 hover:bg-blue-100">
                 <img
                   src={image3}
                   alt="Google Icon"
