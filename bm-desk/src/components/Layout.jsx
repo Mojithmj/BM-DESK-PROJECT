@@ -13,12 +13,12 @@ function Layout() {
 
       {/* Main layout */}
 
-      <div className=" fixed w-full top-16 md:w-[250px] md:block hidden">
+      <div className="fixed w-full top-16 md:w-[250px] md:block hidden">
         <Sidebar />
       </div>
-      <div className="absolute left-64 top-24 w-[calc(100%_-_280px)]">
+      <div className="fixed left-60 top-20 w-[calc(100%_-_220px)] p-2">
         
-          <div className="max-h-[95vh] overflow-y-auto"> 
+          <div className="max-h-[85vh] overflow-y-auto pr-4"> 
           <Outlet />
           </div>
         
