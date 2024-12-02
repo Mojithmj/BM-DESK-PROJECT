@@ -125,7 +125,7 @@ function Productivity() {
               <div className="flex items-center gap-2 px-4 py-2 bg-[#F8F9FB] rounded-[3px] border-[1.5px] border-[#F2F3F5] ">
                 <FiSearch className="text-black" />
                 <Input
-                  placeholder="Search here...."
+                  placeholder="Search"
                   className="border-none shadow-none !outline-none !p-0 !h-full"
                 />
               </div>
@@ -140,7 +140,7 @@ function Productivity() {
 
           {/* Table */}
           <div className="max-h-[60vh] overflow-y-auto pr-4">
-            <Table className=" border-[1px]">
+            <Table className=" border-[1px] !rounded overflow-hidden">
               <TableHeader>
                 <TableRow className="bg-[#F2F3F5] hover:bg-[#4E5969] pointer-events-none">
                   <TableHead className="text-[#4E5969] px-2 py-[15px] text-[12px]">
@@ -212,7 +212,7 @@ function Productivity() {
                 className="text-[#165DFF] mt-4"
                 disabled={loading} // Disable the button while loading
               >
-                {loading ? "Loading..." : "Load for more data...."}
+                {loading ? "Loading..." : "Load more data...."}
               </button>
           </div>
         </div>
@@ -222,3 +222,6 @@ function Productivity() {
 }
 
 export default Productivity;
+
+
+
