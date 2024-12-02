@@ -85,7 +85,14 @@ function AssignedTickets() {
   ];
 
   const newHeaders = [
-git 
+    "Sl No",
+    "Ticket Number",
+    "Project Name",
+    "Subject",
+    "Expected Date",
+    "Expected Delivery Date",
+    "Severity",
+    "Ticket Action",
     // {
     //   id: 1,
     //   value: "slno",
