@@ -19,6 +19,10 @@ function Sidebar() {
   const handle = () =>{
     navigate('/assignedtickets')
   }
+
+  const action = () =>{
+    navigate('/actionedtickets')
+  }
   
 
   return (
@@ -237,7 +241,8 @@ function Sidebar() {
                     stroke="CurrentColor"
                   />
                 </svg>
-                <div className="2xl:text-[14px] lg:text-xs md:text-[11px] text-[10px] whitespace-nowrap font-medium normal text-[#4E5969] flex-1 group-hover:text-[#165DFF]">
+                <div className="2xl:text-[14px] lg:text-xs md:text-[11px] text-[10px] whitespace-nowrap font-medium normal text-[#4E5969] flex-1 group-hover:text-[#165DFF]"
+                onClick={()=> action('/actionedtickets')}>
                   My Tickets
                 </div>
               </div>
