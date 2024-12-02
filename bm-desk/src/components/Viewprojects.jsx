@@ -16,30 +16,26 @@ import {
   TableRow,
 } from "@/components/ui/table";
 
-function Opentickets() {
+function Viewproject() {
   const [activeTab, setActiveTab] = useState("all-tickets");
 
   const [data, setData] = useState([
     // Initial data (can be populated from an API or mock data)
     {
       id: 1,
-      ticketnumber: "TCKT5642",
       projectname: "Benchmark School Diary",
-      subject: "Benchmark Assets Inc",
-      expecteddate: "06-09-2024",
-      expecteddeliveydate: "-- -- --",
-      severity: "Critical",
-      ticketaction: "Action",
+      projectmanager: "Reneeja X",
+      category: "Cordova Cloud Solution",
+      createddate: "06-09-2024",
+      enddate: "06-09-2024",
     },
     {
       id: 2,
-      ticketnumber: "TCKT7564",
       projectname: "Safetri",
-      subject: "TC NUmbering Iss..",
-      expecteddate: "06-09-2024",
-      expecteddeliveydate: "-- -- --",
-      severity: "Critical",
-      ticketaction: "Action",
+      projectmanager: "Aneesh khalid",
+      category: "Cordova Cloud Solution",
+      createddate: "06-09-2024",
+      enddate: "06-09-2024",
     },
     // Repeat similar objects as needed
   ]);
@@ -60,23 +56,19 @@ function Opentickets() {
       const moreData = [
         {
           id: 3,
-          ticketnumber: "TCKT5642",
           projectname: "Benchmark School Diary",
-          subject: "Benchmark Assets Inc",
-          expecteddate: "06-09-2024",
-          expecteddeliveydate: "-- -- --",
-          severity: "Critical",
-          ticketaction: "Action",
+          projectmanager: "Reneeja X",
+          category: "Cordova Cloud Solution",
+          createddate: "06-09-2024",
+          enddate: "06-09-2024",
         },
         {
-          id: 2,
-          ticketnumber: "TCKT7564",
+          id: 4,
           projectname: "Safetri",
-          subject: "TC NUmbering Iss..",
-          expecteddate: "06-09-2024",
-          expecteddeliveydate: "-- -- --",
-          severity: "Critical",
-          ticketaction: "Action",
+          projectmanager: "Aneesh khalid",
+          category: "Cordova Cloud Solution",
+          createddate: "06-09-2024",
+          enddate: "06-09-2024",
         },
       ];
       setData((prevData) => [...prevData, ...moreData]); // Add new data to existing data
@@ -89,7 +81,7 @@ function Opentickets() {
       <div className="fixed top-24 left-64 w-[calc(100%_-_280px)]">
         <div className="flex flex-col gap-8">
           <div className="">
-            <Pheader title="Open Tickets" />
+            <Pheader title="View Projects" />
           </div>
 
           {/* Tabs */}
@@ -138,52 +130,24 @@ function Opentickets() {
                     Sl No
                   </TableHead>
 
-                  <TableHead className="text-[#4E5969] h-full px-2 py-[15px] text-[12px] font-medium flex gap-2 items-center">
-                    <div className="flex items-center gap-[4px]">
-                    Ticket Number
-                    <HiOutlineArrowSmallDown />
-                    </div>
-                  </TableHead>
-                  
-
-                  <TableHead className="text-[#4E5969] px-2 py-[15px] text-[12px] font-medium">
-                  <div className="flex items-center gap-[4px]">
+                  <TableHead className="text-[#4E5969] px-2 py-[15px] text-[12px]">
                     Project Name
-                    <HiOutlineArrowSmallDown />
-                    </div>
                   </TableHead>
-                  
-                  <TableHead className="text-[#4E5969] px-2 py-[15px] text-[12px] font-medium">
-                  <div className="flex items-center gap-[4px]">
-                    Subject
-                    <HiOutlineArrowSmallDown />
-                    </div>
 
+                  <TableHead className="text-[#4E5969] h-full px-2 py-[15px] text-[12px] font-medium flex gap-2 items-center">
+                    Project Manager
                   </TableHead>
 
                   <TableHead className="text-[#4E5969] px-2 py-[15px] text-[12px] font-medium">
-                  <div className="flex items-center gap-[4px]">
-                    Expected Date
-                    <HiOutlineArrowSmallDown />
-                    </div>
+                    Category
                   </TableHead>
 
                   <TableHead className="text-[#4E5969] px-2 py-[15px] text-[12px] font-medium">
-                  <div className="flex items-center gap-[4px]">
-                    Expected Delivery Date
-                    <HiOutlineArrowSmallDown />
-                    </div>
+                    Created Date
                   </TableHead>
 
                   <TableHead className="text-[#4E5969] px-2 py-[15px] text-[12px] font-medium">
-                  <div className="flex items-center gap-[4px]">
-                    Severity
-                    <HiOutlineArrowSmallDown />
-                    </div>
-                  </TableHead>
-
-                  <TableHead className="text-[#4E5969] px-2 py-[15px] text-[12px] font-medium">
-                    Ticket Action
+                    End Date
                   </TableHead>
                 </TableRow>
               </TableHeader>
@@ -193,35 +157,20 @@ function Opentickets() {
                     <TableCell className="text-[#1D2129] px-2 py-[15px] text-[14px] font-normal">
                       {(index + 1).toString().padStart(2, "0")}
                     </TableCell>
-                    <TableCell className="text-[#165DFF] px-2 py-[15px] text-[12px] font-normal">
-                      {row.ticketnumber}
-                    </TableCell>
-                    <TableCell className="text-[#1D2129] px-2 py-[15px] text-[14px] font-normal">
+                    <TableCell className="text-[#1D2129] px-2 py-[15px] text-[12px] font-normal">
                       {row.projectname}
                     </TableCell>
                     <TableCell className="text-[#1D2129] px-2 py-[15px] text-[14px] font-normal">
-                      {row.subject}
+                      {row.projectmanager}
                     </TableCell>
                     <TableCell className="text-[#1D2129] px-2 py-[15px] text-[14px] font-normal">
-                      {row.expecteddate}
+                      {row.category}
                     </TableCell>
                     <TableCell className="text-[#1D2129] px-2 py-[15px] text-[14px] font-normal">
-                      {row.expecteddeliveydate}
+                      {row.createddate}
                     </TableCell>
-                    <TableCell className="text-[#1D2129] px-2 py-[15px]">
-                      <div className="text-[12px] rounded-[6px] font-medium text-[#CB2634] px-[2.5px] py-[2.5px] pl-[15px] bg-[#FFECE8]">
-                        {row.severity}
-                      </div>
-                    </TableCell>
-                    <TableCell>
-                      <div className="flex items-center justify-center 2xl:px-[12px] 2xl:py-[4px] lg:px-[4px] lg:[1px]  gap-[8px] lg:[4px] border-[1px] border-[#0E42D2] bg-[#FFF] rounded-[4px]">
-                        <div className=" 2xl:px-[2px] 2xl:py-[15px] lg:px-[2px] lg:py-[8px] text-[#0E42D2] text-[12px] font-normal">
-                          {row.ticketaction}
-                        </div>
-                        <div className="text-[#0E42D2] w-[20px] h-[20px] mt-[5px]">
-                          <HiChevronDown />
-                        </div>
-                      </div>
+                    <TableCell className="text-[#1D2129] px-2 py-[15px] text-[14px] font-normal">
+                      {row.enddate}
                     </TableCell>
                   </TableRow>
                 ))}
@@ -241,4 +190,4 @@ function Opentickets() {
   );
 }
 
-export default Opentickets;
+export default Viewproject;

@@ -16,7 +16,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 
-function Opentickets() {
+function Closedtickets() {
   const [activeTab, setActiveTab] = useState("all-tickets");
 
   const [data, setData] = useState([
@@ -26,20 +26,20 @@ function Opentickets() {
       ticketnumber: "TCKT5642",
       projectname: "Benchmark School Diary",
       subject: "Benchmark Assets Inc",
-      expecteddate: "06-09-2024",
-      expecteddeliveydate: "-- -- --",
+      createdby: "Muhammad Althaf",
+      createddate: "06-09-2024",
+      closeddate:"06-09-2024",
       severity: "Critical",
-      ticketaction: "Action",
     },
     {
-      id: 2,
-      ticketnumber: "TCKT7564",
-      projectname: "Safetri",
-      subject: "TC NUmbering Iss..",
-      expecteddate: "06-09-2024",
-      expecteddeliveydate: "-- -- --",
-      severity: "Critical",
-      ticketaction: "Action",
+        id: 2,
+        ticketnumber: "TCKT5642",
+        projectname: "Benchmark School Diary",
+        subject: "Benchmark Assets Inc",
+        createdby: "Muhammad Althaf",
+        createddate: "06-09-2024",
+        closeddate:"06-09-2024",
+        severity: "Critical",
     },
     // Repeat similar objects as needed
   ]);
@@ -59,24 +59,24 @@ function Opentickets() {
     setTimeout(() => {
       const moreData = [
         {
-          id: 3,
-          ticketnumber: "TCKT5642",
-          projectname: "Benchmark School Diary",
-          subject: "Benchmark Assets Inc",
-          expecteddate: "06-09-2024",
-          expecteddeliveydate: "-- -- --",
-          severity: "Critical",
-          ticketaction: "Action",
+            id: 3,
+            ticketnumber: "TCKT5642",
+            projectname: "Benchmark School Diary",
+            subject: "Benchmark Assets Inc",
+            createdby: "Muhammad Althaf",
+            createddate: "06-09-2024",
+            closeddate:"06-09-2024",
+            severity: "Critical",
         },
         {
-          id: 2,
-          ticketnumber: "TCKT7564",
-          projectname: "Safetri",
-          subject: "TC NUmbering Iss..",
-          expecteddate: "06-09-2024",
-          expecteddeliveydate: "-- -- --",
-          severity: "Critical",
-          ticketaction: "Action",
+            id: 4,
+            ticketnumber: "TCKT5642",
+            projectname: "Benchmark School Diary",
+            subject: "Benchmark Assets Inc",
+            createdby: "Muhammad Althaf",
+            createddate: "06-09-2024",
+            closeddate:"06-09-2024",
+            severity: "Critical",
         },
       ];
       setData((prevData) => [...prevData, ...moreData]); // Add new data to existing data
@@ -89,7 +89,7 @@ function Opentickets() {
       <div className="fixed top-24 left-64 w-[calc(100%_-_280px)]">
         <div className="flex flex-col gap-8">
           <div className="">
-            <Pheader title="Open Tickets" />
+            <Pheader title="Closed Tickets" />
           </div>
 
           {/* Tabs */}
@@ -163,27 +163,30 @@ function Opentickets() {
 
                   <TableHead className="text-[#4E5969] px-2 py-[15px] text-[12px] font-medium">
                   <div className="flex items-center gap-[4px]">
-                    Expected Date
+                    Created By
                     <HiOutlineArrowSmallDown />
                     </div>
                   </TableHead>
 
                   <TableHead className="text-[#4E5969] px-2 py-[15px] text-[12px] font-medium">
                   <div className="flex items-center gap-[4px]">
-                    Expected Delivery Date
+                    Created Date
                     <HiOutlineArrowSmallDown />
                     </div>
                   </TableHead>
 
+                  <TableHead className="text-[#4E5969] px-2 py-[15px] text-[12px] font-medium">
+                  <div className="flex items-center gap-[4px]">
+                    Closed Date
+                    <HiOutlineArrowSmallDown />
+                    </div>
+                  </TableHead>
+                  
                   <TableHead className="text-[#4E5969] px-2 py-[15px] text-[12px] font-medium">
                   <div className="flex items-center gap-[4px]">
                     Severity
                     <HiOutlineArrowSmallDown />
                     </div>
-                  </TableHead>
-
-                  <TableHead className="text-[#4E5969] px-2 py-[15px] text-[12px] font-medium">
-                    Ticket Action
                   </TableHead>
                 </TableRow>
               </TableHeader>
@@ -203,26 +206,20 @@ function Opentickets() {
                       {row.subject}
                     </TableCell>
                     <TableCell className="text-[#1D2129] px-2 py-[15px] text-[14px] font-normal">
-                      {row.expecteddate}
+                      {row.createdby}
                     </TableCell>
                     <TableCell className="text-[#1D2129] px-2 py-[15px] text-[14px] font-normal">
-                      {row.expecteddeliveydate}
+                      {row.createddate}
+                    </TableCell>
+                    <TableCell className="text-[#1D2129] px-2 py-[15px] text-[14px] font-normal">
+                      {row.closeddate}
                     </TableCell>
                     <TableCell className="text-[#1D2129] px-2 py-[15px]">
                       <div className="text-[12px] rounded-[6px] font-medium text-[#CB2634] px-[2.5px] py-[2.5px] pl-[15px] bg-[#FFECE8]">
                         {row.severity}
                       </div>
                     </TableCell>
-                    <TableCell>
-                      <div className="flex items-center justify-center 2xl:px-[12px] 2xl:py-[4px] lg:px-[4px] lg:[1px]  gap-[8px] lg:[4px] border-[1px] border-[#0E42D2] bg-[#FFF] rounded-[4px]">
-                        <div className=" 2xl:px-[2px] 2xl:py-[15px] lg:px-[2px] lg:py-[8px] text-[#0E42D2] text-[12px] font-normal">
-                          {row.ticketaction}
-                        </div>
-                        <div className="text-[#0E42D2] w-[20px] h-[20px] mt-[5px]">
-                          <HiChevronDown />
-                        </div>
-                      </div>
-                    </TableCell>
+
                   </TableRow>
                 ))}
               </TableBody>
@@ -241,4 +238,4 @@ function Opentickets() {
   );
 }
 
-export default Opentickets;
+export default Closedtickets;

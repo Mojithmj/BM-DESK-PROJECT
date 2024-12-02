@@ -5,6 +5,9 @@ import Dashboard from './components/Dashboard'
 import Login from './components/Login'
 import Productivity from './components/Productivity';
 import AssignedTickets from './components/AssignedTickets';
+import Opentickets from './components/Opentickets';
+import Closedtickets from './components/Closedtickets';
+import Viewproject from './components/Viewprojects';
 
 
 function App() {
@@ -17,6 +20,8 @@ function App() {
         <Route path="/" element={<Layout />}>
         <Route index element={<Dashboard/>}/>
         <Route path='/opentickets' element={<Opentickets/>}/>
+        <Route path='/closedtickets' element={<Closedtickets/>}/>
+        <Route path='/viewproject' element={<Viewproject/>}/>
         </Route>
         <Route path='/login' element={<Login/>}/>
         <Route path='/productivity' element={<Productivity/>}/>

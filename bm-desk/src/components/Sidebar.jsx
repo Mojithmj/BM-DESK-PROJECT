@@ -19,10 +19,6 @@ function Sidebar() {
 
   }
 
-  
-  
-
-
   return (
     <div>
       {/* Sidebar */}
