@@ -1,56 +1,49 @@
 import React, { useState } from "react";
 import Navbar from "./Navbar";
 import Sidebar from "./Sidebar";
+import { Input } from "@/components/ui/input";
 import Pheader from "./Pheader";
 import { FiSearch } from "react-icons/fi";
-import { Input } from "@/components/ui/input";
-import { HiChevronDown } from "react-icons/hi2";
-import { HiOutlineArrowSmallDown } from "react-icons/hi2";
+import ReusableTable from "./ReusableTable";
+import { IoMdArrowDown } from "react-icons/io";
 
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
+function AssignedTickets() {
+  const [activeTab, setActiveTab] = useState("alltickets");
+  const [loading, setLoading] = useState(false); // To track loading state
 
-function Opentickets() {
-  const [activeTab, setActiveTab] = useState("all-tickets");
-
+  // State to manage table data
   const [data, setData] = useState([
-    // Initial data (can be populated from an API or mock data)
     {
       id: 1,
-      ticketnumber: "TCKT5642",
-      projectname: "Benchmark School Diary",
-      subject: "Benchmark Assets Inc",
-      expecteddate: "06-09-2024",
-      expecteddeliveydate: "-- -- --",
+      ticketNumber: "2024-12-01",
+      assignedTickets: 20,
+      projectName: "   Project 1",
+      subject: 15,
+      expectedDate: "20-09-2023",
+      expectedDeliveryDate: "20-10-2024",
       severity: "Critical",
-      ticketaction: "Action",
     },
     {
       id: 2,
-      ticketnumber: "TCKT7564",
-      projectname: "Safetri",
-      subject: "TC NUmbering Iss..",
-      expecteddate: "06-09-2024",
-      expecteddeliveydate: "-- -- --",
-      severity: "Critical",
-      ticketaction: "Action",
+      ticketNumber: "2024-12-01",
+      assignedTickets: 20,
+      projectName: "   Project 1",
+      subject: 15,
+      expectedDate: "20-09-2023",
+      expectedDeliveryDate: "20-10-2024",
+      severity: "Minor",
     },
-    // Repeat similar objects as needed
+    {
+      id: 3,
+      ticketNumber: "2024-12-01",
+      assignedTickets: 20,
+      projectName: "   Project 1",
+      subject: 15,
+      expectedDate: "20-09-2023",
+      expectedDeliveryDate: "20-10-2024",
+      severity: "Major",
+    },
   ]);
-  const [loading, setLoading] = useState(false); // To track loading state
-
-  const tabs = [
-    { value: "all-tickets", label: "All Tickets" },
-    { value: "major", label: "Major" },
-    { value: "critical", label: "Critical" },
-    { value: "minor", label: "Minor" },
-  ];
 
   const loadMoreData = () => {
     setLoading(true); // Start loading
@@ -59,180 +52,139 @@ function Opentickets() {
     setTimeout(() => {
       const moreData = [
         {
-          id: 3,
-          ticketnumber: "TCKT5642",
-          projectname: "Benchmark School Diary",
-          subject: "Benchmark Assets Inc",
-          expecteddate: "06-09-2024",
-          expecteddeliveydate: "-- -- --",
+          id: 4,
+          ticketNumber: "2024-12-02",
+          assignedTickets: 25,
+          projectName: "Project 2",
+          subject: 10,
+          expectedDate: "21-09-2023",
+          expectedDeliveryDate: "21-10-2024",
           severity: "Critical",
-          ticketaction: "Action",
         },
         {
-          id: 2,
-          ticketnumber: "TCKT7564",
-          projectname: "Safetri",
-          subject: "TC NUmbering Iss..",
-          expecteddate: "06-09-2024",
-          expecteddeliveydate: "-- -- --",
-          severity: "Critical",
-          ticketaction: "Action",
+          id: 5,
+          ticketNumber: "2024-12-03",
+          assignedTickets: 30,
+          projectName: "Project 3",
+          subject: 20,
+          expectedDate: "22-09-2023",
+          expectedDeliveryDate: "22-10-2024",
+          severity: "Minor",
         },
       ];
       setData((prevData) => [...prevData, ...moreData]); // Add new data to existing data
       setLoading(false); // Stop loading
-    }, 100); // Simulate a 2-second delay for loading data
+    }, 1000); // Simulate a 1-second delay for loading data
   };
+
+  const tabs = [
+    { value: "alltickets", label: "All Tickets" },
+    { value: "major", label: "Major" },
+    { value: "critical", label: "Critical" },
+    { value: "minor", label: "Minor" },
+  ];
+
+  const newHeaders = [
+    "Sl No",
+    "Ticket Number",
+    "Project Name",
+    "Subject",
+    "Expected Date",
+    "Expected Delivery Date",
+    "Severity",
+    "Ticket Action",
+    // {
+    //   id: 1,
+    //   value: "slno",
+    //   label: "Sl No",
+    // },
+    // {
+    //   id: 2,
+    //   value: "ticketnumber",
+    //   label: "Sl No",
+    // },
+    // {
+    //   id: 1,
+    //   value: "slno",
+    //   label: "Sl No",
+    // },
+    // {
+    //   id: 1,
+    //   value: "slno",
+    //   label: "Sl No",
+    // },
+    // {
+    //   id: 1,
+    //   value: "slno",
+    //   label: "Sl No",
+    // },
+    // {
+    //   id: 1,
+    //   value: "slno",
+    //   label: "Sl No",
+    // },
+  ];
 
   return (
     <div>
+      
       <div className="fixed top-24 left-64 w-[calc(100%_-_280px)]">
         <div className="flex flex-col gap-8">
-          <div className="">
+          <div>
             <Pheader title="Open Tickets" />
           </div>
-
           {/* Tabs */}
           <div className="flex justify-between items-center">
             <div>
-              <div className="flex items-center">
+              <div className="flex items-center gap-2">
                 {tabs.map((tab) => (
                   <button
                     key={tab.value}
                     onClick={() => setActiveTab(tab.value)}
-                    className={`font-inter text-[16px] font-normal px-[16px] rounded-[4px] py-[8px] transition-colors ${
+                    className={`font-inter text-[16px] font-normal p-[6px] rounded-[4px] px-4 transition-colors ${
                       activeTab === tab.value
-                        ? "bg-[#1D2129] text-[#FFFFFF]"
-                        : "bg-gray-50 text-black "
+                        ? "bg-black text-white"
+                        : "bg-gray-50 text-black"
                     }`}
                   >
-                    <div className="text-[16px] font-normal">{tab.label}</div>
+                    {tab.label}
                   </button>
                 ))}
               </div>
             </div>
 
             <div className="flex items-center gap-5">
-              <div className="flex items-center gap-2 px-4 py-2 bg-[#F8F9FB] rounded-[3px] border-[1.5px] border-[#F2F3F5] ">
-                <FiSearch className=" w-[22px] h-[22px] text-[#111815]" />
+              <div className="flex items-center gap-2 px-4 py-2 bg-[#F8F9FB] rounded-[3px] border-[1.5px] border-[#F2F3F5]">
+                <FiSearch className="text-black" />
                 <Input
-                  placeholder="Search here...."
-                  className="text-[#111815] text-[16px] border-none shadow-none !outline-none font-normal !p-0 !h-full"
+                  placeholder="Search Ticket"
+                  className="border-none shadow-none !outline-none !p-0 !h-full"
                 />
               </div>
               <button
                 type="button"
-                className="text-[#FFF] bg-[#165DFF] text-[16px] font-normal focus:ring-4  rounded-[5px]  px-[16px] py-[8px]"
+                className="text-white bg-blue-600 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-[5px] text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
               >
                 Create New Ticket
               </button>
             </div>
           </div>
-
           {/* Table */}
-          <div className="max-h-[60vh] overflow-y-auto pr-4">
-            <Table className=" border-[1px]">
-              <TableHeader>
-                <TableRow className="bg-[#F2F3F5] hover:bg-[#4E5969] pointer-events-none">
-                  <TableHead className="text-[#4E5969] px-2 py-[15px] text-[12px]">
-                    Sl No
-                  </TableHead>
+          <div>
+            {activeTab==="alltickets" && <ReusableTable  headers={newHeaders} data={data}  />}
+            {activeTab==="major" && <ReusableTable  headers={newHeaders} data={data.filter(data1 => data1.severity=== "Major")}  />}
+            {activeTab==="minor" && <ReusableTable  headers={newHeaders} data={data.filter(data1 => data1.severity=== "Minor")}  />}
 
-                  <TableHead className="text-[#4E5969] h-full px-2 py-[15px] text-[12px] font-medium flex gap-2 items-center">
-                    <div className="flex items-center gap-[4px]">
-                    Ticket Number
-                    <HiOutlineArrowSmallDown />
-                    </div>
-                  </TableHead>
-                  
+            {activeTab==="critical" && <ReusableTable  headers={newHeaders} data={data.filter(data1 => data1.severity=== "Critical")}  />}
 
-                  <TableHead className="text-[#4E5969] px-2 py-[15px] text-[12px] font-medium">
-                  <div className="flex items-center gap-[4px]">
-                    Project Name
-                    <HiOutlineArrowSmallDown />
-                    </div>
-                  </TableHead>
-                  
-                  <TableHead className="text-[#4E5969] px-2 py-[15px] text-[12px] font-medium">
-                  <div className="flex items-center gap-[4px]">
-                    Subject
-                    <HiOutlineArrowSmallDown />
-                    </div>
-
-                  </TableHead>
-
-                  <TableHead className="text-[#4E5969] px-2 py-[15px] text-[12px] font-medium">
-                  <div className="flex items-center gap-[4px]">
-                    Expected Date
-                    <HiOutlineArrowSmallDown />
-                    </div>
-                  </TableHead>
-
-                  <TableHead className="text-[#4E5969] px-2 py-[15px] text-[12px] font-medium">
-                  <div className="flex items-center gap-[4px]">
-                    Expected Delivery Date
-                    <HiOutlineArrowSmallDown />
-                    </div>
-                  </TableHead>
-
-                  <TableHead className="text-[#4E5969] px-2 py-[15px] text-[12px] font-medium">
-                  <div className="flex items-center gap-[4px]">
-                    Severity
-                    <HiOutlineArrowSmallDown />
-                    </div>
-                  </TableHead>
-
-                  <TableHead className="text-[#4E5969] px-2 py-[15px] text-[12px] font-medium">
-                    Ticket Action
-                  </TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {data.map((row, index) => (
-                  <TableRow key={row.id}>
-                    <TableCell className="text-[#1D2129] px-2 py-[15px] text-[14px] font-normal">
-                      {(index + 1).toString().padStart(2, "0")}
-                    </TableCell>
-                    <TableCell className="text-[#165DFF] px-2 py-[15px] text-[12px] font-normal">
-                      {row.ticketnumber}
-                    </TableCell>
-                    <TableCell className="text-[#1D2129] px-2 py-[15px] text-[14px] font-normal">
-                      {row.projectname}
-                    </TableCell>
-                    <TableCell className="text-[#1D2129] px-2 py-[15px] text-[14px] font-normal">
-                      {row.subject}
-                    </TableCell>
-                    <TableCell className="text-[#1D2129] px-2 py-[15px] text-[14px] font-normal">
-                      {row.expecteddate}
-                    </TableCell>
-                    <TableCell className="text-[#1D2129] px-2 py-[15px] text-[14px] font-normal">
-                      {row.expecteddeliveydate}
-                    </TableCell>
-                    <TableCell className="text-[#1D2129] px-2 py-[15px]">
-                      <div className="text-[12px] rounded-[6px] font-medium text-[#CB2634] px-[2.5px] py-[2.5px] pl-[15px] bg-[#FFECE8]">
-                        {row.severity}
-                      </div>
-                    </TableCell>
-                    <TableCell>
-                      <div className="flex items-center justify-center 2xl:px-[12px] 2xl:py-[4px] lg:px-[4px] lg:[1px]  gap-[8px] lg:[4px] border-[1px] border-[#0E42D2] bg-[#FFF] rounded-[4px]">
-                        <div className=" 2xl:px-[2px] 2xl:py-[15px] lg:px-[2px] lg:py-[8px] text-[#0E42D2] text-[12px] font-normal">
-                          {row.ticketaction}
-                        </div>
-                        <div className="text-[#0E42D2] w-[20px] h-[20px] mt-[5px]">
-                          <HiChevronDown />
-                        </div>
-                      </div>
-                    </TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
+          </div>
+          <div className="flex justify-start">
             <button
               onClick={loadMoreData}
-              className="text-[#165DFF] mt-4 text-[16px] font-normal font-inter"
+              className="text-[#165DFF] -mt-8"
               disabled={loading} // Disable the button while loading
             >
-              {loading ? "Loading..." : "Load more Tickets..."}
+              {loading ? "Loading..." : "Load more Tickets...."}
             </button>
           </div>
         </div>
@@ -241,4 +193,4 @@ function Opentickets() {
   );
 }
 
-export default Opentickets;
+export default AssignedTickets;

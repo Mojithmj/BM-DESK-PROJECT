@@ -38,8 +38,8 @@ function ReusableTable({ data, headers }) {
                 key={index}
                 className="text-[#4E5969] px-2 py-[15px] text-[12px]"
               >
-                {/* {header} */}
-                <div style={{ display: "flex" }}>
+                {header}
+                {/* <div style={{ display: "flex" }}>
                   {heading.icon && (
                     <img
                       src={heading.icon}
@@ -48,7 +48,7 @@ function ReusableTable({ data, headers }) {
                     />
                   )}
                   {heading.title && <span>{capitalizeFirstLetter(heading.title)}</span>}
-                </div>
+                </div> */}
               </TableHead>
             ))}
           </TableRow>

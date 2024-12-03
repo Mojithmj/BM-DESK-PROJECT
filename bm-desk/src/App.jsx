@@ -8,6 +8,7 @@ import AssignedTickets from './components/AssignedTickets';
 import Opentickets from './components/Opentickets';
 import Closedtickets from './components/Closedtickets';
 import Viewproject from './components/Viewprojects';
+import Tables from './components/Tables';
 
 
 function App() {
