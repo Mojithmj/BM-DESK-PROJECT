@@ -10,8 +10,8 @@ import { IoMdArrowDown } from "react-icons/io";
 function Closedtickets() {
   const [activeTab, setActiveTab] = useState("alltickets");
   const [loading, setLoading] = useState(false); // To track loading state
+  const [visibleDataCount, setVisibleDataCount] = useState(6); // Number of tickets visible initially
 
-  
   // State to manage table data
   const [data, setData] = useState([
     {
@@ -19,7 +19,7 @@ function Closedtickets() {
       ticketnumber: "TCKT5642",
       projectname: "Project 1",
       subject: 15,
-     createdby: "Mohammad Althaf",
+      createdby: "Mohammad Althaf",
       createddate: "20-10-2024",
       closeddate: "20-10-2024",
       severity: "Critical",
@@ -29,7 +29,7 @@ function Closedtickets() {
       ticketnumber: "TCKT5643",
       projectname: "Project 1",
       subject: 15,
-     createdby: "Mohammad Althaf",
+      createdby: "Mohammad Althaf",
       createddate: "20-10-2024",
       closeddate: "20-10-2024",
       severity: "Minor",
@@ -39,7 +39,7 @@ function Closedtickets() {
       ticketnumber: "TCKT5644",
       projectname: "Project 1",
       subject: 15,
-     createdby: "Mohammad Althaf",
+      createdby: "Mohammad Althaf",
       createddate: "20-10-2024",
       closeddate: "20-10-2024",
       severity: "Major",
@@ -49,31 +49,8 @@ function Closedtickets() {
   const loadMoreData = () => {
     setLoading(true); // Start loading
 
-    // Simulate fetching more data (e.g., from an API)
     setTimeout(() => {
-      const moreData = [
-        {
-          id: 4,
-          ticketnumber: "TCKT5642",
-          projectname: "Project 1",
-      subject: 15,
-     createdby: "Mohammad Althaf",
-      createddate: "20-10-2024",
-      closeddate: "20-10-2024",
-          severity: "Critical",
-        },
-        {
-          id: 5,
-          ticketnumber: "TCKT5646",
-          projectname: "Project 1",
-      subject: 15,
-     createdby: "Mohammad Althaf",
-      createddate: "20-10-2024",
-      closeddate: "20-10-2024",
-          severity: "Major",
-        },
-      ];
-      setData((prevData) => [...prevData, ...moreData]); // Add new data to existing data
+      setVisibleDataCount((prevCount) => prevCount + 6); // Show 6 more tickets
       setLoading(false); // Stop loading
     }, 1000); // Simulate a 1-second delay for loading data
   };
@@ -110,7 +87,6 @@ function Closedtickets() {
       value: "projectname",
       label: "Project Name",
       icon: <IoMdArrowDown />,
-        
     },
     {
       id: 4,
@@ -144,9 +120,12 @@ function Closedtickets() {
       label: "Severity",
       icon: <IoMdArrowDown />,
     },
-
-
   ];
+
+  const filteredData =
+    activeTab === "alltickets"
+      ? data.slice(0, visibleDataCount) // Show limited data for "All Tickets"
+      : data.filter((ticket) => ticket.severity.toLowerCase() === activeTab);
 
   return (
     <div>
@@ -192,22 +171,19 @@ function Closedtickets() {
             </div>
           </div>
           {/* Table */}
-          <div>
-            {activeTab==="alltickets" && <ReusableTable  headers={newHeaders} data={data}  />}
-            {activeTab==="major" && <ReusableTable  headers={newHeaders} data={data.filter(data1 => data1.severity=== "Major")}  />}
-            {activeTab==="minor" && <ReusableTable  headers={newHeaders} data={data.filter(data1 => data1.severity=== "Minor")}  />}
-            {activeTab==="critical" && <ReusableTable  headers={newHeaders} data={data.filter(data1 => data1.severity=== "Critical")}  />}
-
-          </div>
-          <div className="flex justify-start">
-            <button
-              onClick={loadMoreData}
-              className="text-[#165DFF] -mt-8"
-              disabled={loading} // Disable the button while loading
-            >
-              {loading ? "Loading..." : "Load more Tickets...."}
-            </button>
-          </div>
+          <ReusableTable headers={newHeaders} data={filteredData} />
+          {/* Show "Load More" button only for "All Tickets" tab */}
+          {activeTab === "alltickets" && visibleDataCount < data.length && (
+            <div className="flex justify-start">
+              <button
+                onClick={loadMoreData}
+                className="text-[#165DFF] -mt-8"
+                disabled={loading}
+              >
+                {loading ? "Loading..." : "Load more Tickets..."}
+              </button>
+            </div>
+          )}
         </div>
       </div>
     </div>
