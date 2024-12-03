@@ -10,8 +10,8 @@ import { IoMdArrowDown } from "react-icons/io";
 function AssignedTickets() {
   const [activeTab, setActiveTab] = useState("alltickets");
   const [loading, setLoading] = useState(false); // To track loading state
+  const [visibleDataCount, setVisibleDataCount] = useState(6); // Number of tickets visible initially
 
-  
   // State to manage table data
   const [data, setData] = useState([
     {
@@ -41,34 +41,31 @@ function AssignedTickets() {
       expecteddeliverydate: "20-10-2024",
       severity: "Major",
     },
+    {
+      id: 4,
+      ticketnumber: "TCKT5644",
+      projectname: "Project 1",
+      subject: 15,
+      expecteddate: "20-09-2023",
+      expecteddeliverydate: "20-10-2024",
+      severity: "Minor",
+    },
+    {
+      id: 5,
+      ticketnumber: "TCKT5644",
+      projectname: "Project 1",
+      subject: 15,
+      expecteddate: "20-09-2023",
+      expecteddeliverydate: "20-10-2024",
+      severity: "Critical",
+    },
   ]);
 
   const loadMoreData = () => {
     setLoading(true); // Start loading
 
-    // Simulate fetching more data (e.g., from an API)
     setTimeout(() => {
-      const moreData = [
-        {
-          id: 4,
-          ticketnumber: "TCKT5642",
-          projectname: "Project 1",
-          subject: 15,
-          expecteddate: "20-09-2023",
-          expecteddeliverydate: "20-10-2024",
-          severity: "Critical",
-        },
-        {
-          id: 5,
-          ticketnumber: "TCKT5646",
-          projectname: "Project 1",
-          subject: 15,
-          expecteddate: "20-09-2023",
-          expecteddeliverydate: "20-10-2024",
-          severity: "Major",
-        },
-      ];
-      setData((prevData) => [...prevData, ...moreData]); // Add new data to existing data
+      setVisibleDataCount((prevCount) => prevCount + 6); // Show 6 more tickets
       setLoading(false); // Stop loading
     }, 1000); // Simulate a 1-second delay for loading data
   };
@@ -81,14 +78,6 @@ function AssignedTickets() {
   ];
 
   const newHeaders = [
-    // "Sl No",
-    // "Ticket Number",
-    // "Project Name",
-    // "Subject",
-    // "Expected Date",
-    // "Expected Delivery Date",
-    // "Severity",
-    // "Ticket Action",
     {
       id: 1,
       value: "slno",
@@ -98,14 +87,15 @@ function AssignedTickets() {
       id: 2,
       value: "ticketnumber",
       label: "Ticket Number",
+      icon: <IoMdArrowDown />,
     },
     {
       id: 3,
       value: "projectname",
       label: "Project Name",
-      // icon: <IoMdArrowDown />,
-        
-    //   icon: iconab,
+      icon: <IoMdArrowDown />,
+
+      //   icon: iconab,
     },
     {
       id: 4,
@@ -134,9 +124,12 @@ function AssignedTickets() {
       value: "ticketaction",
       label: "Ticket Action",
     },
-
-
   ];
+
+  const filteredData =
+    activeTab === "alltickets"
+      ? data.slice(0, visibleDataCount) // Show limited data for "All Tickets"
+      : data.filter((ticket) => ticket.severity.toLowerCase() === activeTab);
 
   return (
     <div>
@@ -191,22 +184,19 @@ function AssignedTickets() {
             </div>
           </div>
           {/* Table */}
-          <div>
-            {activeTab==="alltickets" && <ReusableTable  headers={newHeaders} data={data}  />}
-            {activeTab==="major" && <ReusableTable  headers={newHeaders} data={data.filter(data1 => data1.severity=== "Major")}  />}
-            {activeTab==="minor" && <ReusableTable  headers={newHeaders} data={data.filter(data1 => data1.severity=== "Minor")}  />}
-            {activeTab==="critical" && <ReusableTable  headers={newHeaders} data={data.filter(data1 => data1.severity=== "Critical")}  />}
-
-          </div>
-          <div className="flex justify-start">
-            <button
-              onClick={loadMoreData}
-              className="text-[#165DFF] -mt-8"
-              disabled={loading} // Disable the button while loading
-            >
-              {loading ? "Loading..." : "Load more Tickets...."}
-            </button>
-          </div>
+          <ReusableTable headers={newHeaders} data={filteredData} />
+          {/* Show "Load More" button only for "All Tickets" tab */}
+          {activeTab === "alltickets" && visibleDataCount < data.length && (
+            <div className="flex justify-start">
+              <button
+                onClick={loadMoreData}
+                className="text-[#165DFF] -mt-8"
+                disabled={loading}
+              >
+                {loading ? "Loading..." : "Load more Tickets..."}
+              </button>
+            </div>
+          )}
         </div>
       </div>
     </div>

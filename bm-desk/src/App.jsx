@@ -9,7 +9,8 @@ import Opentickets from './components/Opentickets';
 import Closedtickets from './components/Closedtickets';
 import Viewproject from './components/Viewprojects';
 import ActionedTickets from './components/ActionedTickets';
-import Tables from './components/Tables';
+import TicketApprovals from './components/TicketApprovals';
+import AccountSettings from './components/AccountSettings';
 
 
 function App() {
@@ -24,11 +25,14 @@ function App() {
         <Route path='/opentickets' element={<Opentickets/>}/>
         <Route path='/closedtickets' element={<Closedtickets/>}/>
         <Route path='/viewproject' element={<Viewproject/>}/>
+        <Route path='/ticketapprovals' element={<TicketApprovals/>}/>
+        <Route path='/accountsettings' element={<AccountSettings/>}/>
         </Route>
         <Route path='/login' element={<Login/>}/>
         <Route path='/productivity' element={<Productivity/>}/>
         <Route path='/assignedtickets' element={<AssignedTickets/>}/>
         <Route path='/actionedtickets' element={<ActionedTickets/>}/>
+        
 
 
       </Routes>

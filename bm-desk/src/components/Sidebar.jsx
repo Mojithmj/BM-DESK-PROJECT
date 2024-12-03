@@ -51,21 +51,18 @@ function Sidebar() {
             <div className="2xl:text-[20px] lg:text-[18px] md:text-[16px] text-[14px]  group-hover:text-[#165DFF]">
               <RiHomeLine />
             </div>
-            <div className="2xl:text-base lg:text-sm md:text-[11px] text-[10px] font-medium normal  group-hover:text-[#165DFF]">
+            <div className="2xl:text-base lg:text-sm md:text-[11px] text-[10px] font-medium normal text-[#4E5969] group-hover:text-[#165DFF]"
+            onClick={()=> navigate('/')}>
               Dashboards
             </div>
           </div>
         </div>
 
-        {/* Productivity */}
-        <div className="group">
-          <div
-            className={`flex flex-row gap-2 items-center rounded-[4px] px-4 py-3 cursor-pointer border ${
-              selectedTab === "productivity"
-                ? "border-[#BEDAFF] bg-[#E8F3FF] text-[#165DFF]"
-                : "border-white text-[#4E5969] group-hover:border-[#BEDAFF] group-hover:bg-[#E8F3FF] group-hover:text-[#165DFF]"
-            }`}
-            onClick={handleNavigate}
+         {/* Productivity */}
+         <div className="group">
+          <div 
+            className="flex flex-row gap-2 items-center rounded-[4px] px-4 py-3 cursor-pointer border border-white group-hover:border-[#BEDAFF] group-hover:bg-[#E8F3FF]"
+            onClick={()=> navigate('/productivity')} // Navigate to productivity
           >
             <div className="2xl:text-[20px] lg:text-[18px] md:text-[16px] text-[14px]  group-hover:text-[#165DFF]">
               <BsGraphUpArrow />
@@ -156,11 +153,8 @@ function Sidebar() {
                 </div>
               </div>
 
-              <div
-                className="group px-10 py-2 gap-2  flex flex-row items-center text-[#4E5969] text-sm hover:bg-[#E8F3FF] hover:text-[#165DFF] rounded cursor-pointer"
-                onClick={() => 
-                  handle("/assignedtickets")
-                }
+              <div className="group px-10 py-2 gap-2  flex flex-row items-center text-[#4E5969] text-sm hover:bg-[#E8F3FF] hover:text-[#165DFF] rounded cursor-pointer"
+              onClick={()=> navigate('/assignedtickets')}
               >
                 {/* Assigned Tickets */}
                 <svg
@@ -247,7 +241,8 @@ function Sidebar() {
                     stroke-linejoin="round"
                   />
                 </svg>
-                <div className="2xl:text-[14px] lg:text-xs md:text-[11px] whitespace-nowrap text-[10px] font-medium normal text-[#4E5969] flex-1 group-hover:text-[#165DFF]">
+                <div className="2xl:text-[14px] lg:text-xs md:text-[11px] whitespace-nowrap text-[10px] font-medium normal text-[#4E5969] flex-1 group-hover:text-[#165DFF]"
+                onClick={()=> navigate('/ticketapprovals')}>
                   Ticket Approvals
                 </div>
               </div>
@@ -282,8 +277,9 @@ function Sidebar() {
                     stroke="CurrentColor"
                   />
                 </svg>
-                <div className="2xl:text-[14px] lg:text-xs md:text-[11px] text-[10px] whitespace-nowrap font-medium normal text-[#4E5969] flex-1 group-hover:text-[#165DFF]">
-                  My Actioned Tickets
+                <div className="2xl:text-[14px] lg:text-xs md:text-[11px] text-[10px] whitespace-nowrap font-medium normal text-[#4E5969] flex-1 group-hover:text-[#165DFF]"
+                onClick={()=> navigate('/actionedtickets')}>
+                  My Tickets
                 </div>
               </div>
             </div>
