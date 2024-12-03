@@ -8,6 +8,7 @@ import AssignedTickets from './components/AssignedTickets';
 import Opentickets from './components/Opentickets';
 import Closedtickets from './components/Closedtickets';
 import Viewproject from './components/Viewprojects';
+import ActionedTickets from './components/ActionedTickets';
 import Tables from './components/Tables';
 
 
@@ -27,7 +28,7 @@ function App() {
         <Route path='/login' element={<Login/>}/>
         <Route path='/productivity' element={<Productivity/>}/>
         <Route path='/assignedtickets' element={<AssignedTickets/>}/>
-        <Route path='/ab' element={<Tables/>}/>
+        <Route path='/actionedtickets' element={<ActionedTickets/>}/>
 
 
       </Routes>
