@@ -26,7 +26,7 @@ function Navbar() {
         {/* Middle Section: Search Features */}
         <div className="flex items-center gap-2 bg-[#E8F3FF] p-2 rounded-md w-[150px] md:w-[200px] lg:w-[300px] 2xl:w-[463px] text-[#0E42D2]">
           <FiSearch className="w-[10px] h-[10px] md:w-[15px] md:h-[15px] lg:w-[22px] lg:h-[22px] 2xl:w-[24px] 2xl:h-[24px]" />
-          <span className="text-[10px] md:text-[11px] lg:text-[12px] 2xl:text-sm">Search Features</span>
+          <span  className="text-[10px] md:text-[11px] lg:text-[12px] 2xl:text-sm">Search Features</span>
         </div>
 
         {/* Right Section: Icons and Profile */}

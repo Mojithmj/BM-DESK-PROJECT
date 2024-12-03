@@ -3,9 +3,9 @@ import { RiHomeLine, RiArrowDropDownLine } from "react-icons/ri";
 import { BsGraphUpArrow } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
 
-
 function Sidebar() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [selectedTab, setSelectedTab] = useState("");
 
   const toggleDropdown = () => {
     setIsDropdownOpen((prevState) => !prevState);
@@ -13,18 +13,26 @@ function Sidebar() {
 
   const navigate = useNavigate();
 
-  const handleNavigate = ()=>{
-    navigate('/productivity')
-  }
-  const handle = () =>{
-    navigate('/assignedtickets')
-  }
-  const open=()=>{
-    navigate('/opentickets')
-  }  
-  const closed=()=>{
-    navigate('/closedtickets')
-  }  
+  const handleNavigate = () => {
+    setSelectedTab("productivity");
+    navigate("/productivity");
+  };
+  const handle = () => {
+    setSelectedTab("assignedtickets");
+    navigate("/assignedtickets");
+  };
+  const open = () => {
+    setSelectedTab("opentickets");
+    navigate("/opentickets");
+  };
+  const closed = () => {
+    setSelectedTab("closedtickets");
+    navigate("/closedtickets");
+  };
+  const viewproject = () => {
+    setSelectedTab("viewproject");
+    navigate("/viewproject");
+  };
 
   return (
     <div>
@@ -32,39 +40,54 @@ function Sidebar() {
       <div className="flex flex-col h-screen border-r-[1px]  border-[#E5E6EB] 2xl:w-[250px] lg:w-[210px] md:w-[180px] w-[160px] px-4 py-8 gap-5">
         {/* Dashboard */}
         <div className="group">
-          <div className="flex flex-row items-center px-4 py-3 gap-2 rounded-[4px] cursor-pointer border border-white group-hover:border-[#BEDAFF] group-hover:bg-[#E8F3FF]">
-            <div className="2xl:text-[20px] lg:text-[18px] md:text-[16px] text-[14px] text-[#86909C] group-hover:text-[#165DFF]">
+          <div
+            className={`flex flex-row items-center px-4 py-3 gap-2 rounded-[4px] cursor-pointer border ${
+              selectedTab === "dashboard"
+                ? "border-[#BEDAFF] bg-[#E8F3FF] text-[#165DFF]"
+                : "border-white text-[#4E5969] group-hover:border-[#BEDAFF] group-hover:bg-[#E8F3FF] group-hover:text-[#165DFF]"
+            }`}
+            onClick={() => setSelectedTab("dashboard")}
+          >
+            <div className="2xl:text-[20px] lg:text-[18px] md:text-[16px] text-[14px]  group-hover:text-[#165DFF]">
               <RiHomeLine />
             </div>
-            <div className="2xl:text-base lg:text-sm md:text-[11px] text-[10px] font-medium normal text-[#4E5969] group-hover:text-[#165DFF]">
+            <div className="2xl:text-base lg:text-sm md:text-[11px] text-[10px] font-medium normal  group-hover:text-[#165DFF]">
               Dashboards
             </div>
           </div>
         </div>
 
-         {/* Productivity */}
-         <div className="group">
-          <div 
-            className="flex flex-row gap-2 items-center rounded-[4px] px-4 py-3 cursor-pointer border border-white group-hover:border-[#BEDAFF] group-hover:bg-[#E8F3FF]"
-            onClick={() => handleNavigate('/productivity')} // Navigate to productivity
+        {/* Productivity */}
+        <div className="group">
+          <div
+            className={`flex flex-row gap-2 items-center rounded-[4px] px-4 py-3 cursor-pointer border ${
+              selectedTab === "productivity"
+                ? "border-[#BEDAFF] bg-[#E8F3FF] text-[#165DFF]"
+                : "border-white text-[#4E5969] group-hover:border-[#BEDAFF] group-hover:bg-[#E8F3FF] group-hover:text-[#165DFF]"
+            }`}
+            onClick={handleNavigate}
           >
-            <div className="2xl:text-[20px] lg:text-[18px] md:text-[16px] text-[14px] text-[#86909C] group-hover:text-[#165DFF]">
+            <div className="2xl:text-[20px] lg:text-[18px] md:text-[16px] text-[14px]  group-hover:text-[#165DFF]">
               <BsGraphUpArrow />
             </div>
-            <div className="2xl:text-base lg:text-sm md:text-[11px] text-[10px] font-medium normal text-[#4E5969] group-hover:text-[#165DFF]">
+            <div className="2xl:text-base lg:text-sm md:text-[11px] text-[10px] font-medium normal  group-hover:text-[#165DFF]">
               My Productivity
             </div>
           </div>
         </div>
 
         {/* Tickets */}
-        <div >
-          <div className="group">
-            <div
-              className="flex flex-row items-center px-4 py-3 gap-2 rounded-[4px] cursor-pointer border border-white group-hover:border-[#BEDAFF] group-hover:bg-[#E8F3FF]"
-              onClick={toggleDropdown}
-            >
-              <div className="2xl:text-[20px] lg:text-[17px] md:text-[16px] text-[14px] text-[#86909C] group-hover:text-[#165DFF]">
+        <div>
+          <div
+            className={`group rounded-[4px] cursor-pointer border ${
+              selectedTab === "tickets"
+                ? "border-[#BEDAFF] bg-[#E8F3FF] text-[#165DFF]"
+                : "border-white text-[#4E5969] group-hover:border-[#BEDAFF] group-hover:bg-[#E8F3FF] group-hover:text-[#165DFF]"
+            }`}
+            onClick={() => setSelectedTab("tickets")}
+          >
+            <div className="flex flex-row items-center px-4 py-3 gap-2 rounded-[4px] cursor-pointer border border-white group-hover:border-[#BEDAFF] group-hover:bg-[#E8F3FF]">
+              <div className="2xl:text-[20px] lg:text-[17px] md:text-[16px] text-[14px]  group-hover:text-[#165DFF]">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="20"
@@ -89,18 +112,25 @@ function Sidebar() {
                   />
                 </svg>
               </div>
-              <div className="2xl:text-base lg:text-sm md:text-[11px] text-[10px] font-medium normal text-[#4E5969] flex-1 group-hover:text-[#165DFF]">
+              <div className="2xl:text-base lg:text-sm md:text-[11px] text-[10px] font-medium normal  flex-1 group-hover:text-[#165DFF]">
                 Tickets
               </div>
-              <div className="text-[#86909C] group-hover:text-[#165DFF] text-2xl w-[19px] h-[19px]">
+              <div
+                className=" group-hover:text-[#165DFF] text-2xl w-[19px] h-[19px]"
+                onClick={(e) => { 
+                  e.stopPropagation(); // Prevent parent div's onClick from firing
+                  toggleDropdown();
+                }}
+              >
                 <RiArrowDropDownLine />
               </div>
             </div>
           </div>
           {isDropdownOpen && (
             <div>
-              <div className="group px-10 py-2 gap-2 flex flex-row items-center text-[#4E5969] text-sm hover:bg-[#E8F3FF] hover:text-[#165DFF] rounded cursor-pointer">
-                <svg className="shrink-0"
+              <div  className="group px-10 py-2 gap-2 flex flex-row items-center text-[#4E5969] text-sm hover:bg-[#E8F3FF] hover:text-[#165DFF] rounded cursor-pointer">
+                <svg
+                  className="shrink-0"
                   xmlns="http://www.w3.org/2000/svg"
                   width="18"
                   height="18"
@@ -114,21 +144,27 @@ function Sidebar() {
                     fill="#86909C"
                     stroke="Currentcolor"
                     stroke-width="0.5"
-              
                   />
                 </svg>
-                <div className="2xl:text-[14px] lg:text-[12px] md:text-[11px] text-[10px] whitespace-nowrap font-medium normal text-[#4E5969] flex-1 group-hover:text-[#165DFF]"
-                onClick={()=> open('/opentickets')}>
+                <div
+                  className="2xl:text-[14px] lg:text-[12px] md:text-[11px] text-[10px] whitespace-nowrap font-medium normal text-[#4E5969] flex-1 group-hover:text-[#165DFF]"
+                  onClick={() => 
+                    open("/opentickets")
+                  }
+                >
                   Open Tickets
                 </div>
               </div>
 
-              <div className="group px-10 py-2 gap-2  flex flex-row items-center text-[#4E5969] text-sm hover:bg-[#E8F3FF] hover:text-[#165DFF] rounded cursor-pointer"
-              onClick={() => handle('/assignedtickets')}
+              <div
+                className="group px-10 py-2 gap-2  flex flex-row items-center text-[#4E5969] text-sm hover:bg-[#E8F3FF] hover:text-[#165DFF] rounded cursor-pointer"
+                onClick={() => 
+                  handle("/assignedtickets")
+                }
               >
                 {/* Assigned Tickets */}
                 <svg
-                 className="shrink-0"
+                  className="shrink-0"
                   xmlns="http://www.w3.org/2000/svg"
                   width="20"
                   height="20"
@@ -150,16 +186,14 @@ function Sidebar() {
                     stroke-linejoin="round"
                   />
                 </svg>
-                <div className="2xl:text-[14px] lg:text-xs md:text-[11px] text-[10px] whitespace-nowrap  font-medium normal text-[#4E5969] flex-1  group-hover:text-[#165DFF]" 
-               
-                >
+                <div className="2xl:text-[14px] lg:text-xs md:text-[11px] text-[10px] whitespace-nowrap  font-medium normal text-[#4E5969] flex-1  group-hover:text-[#165DFF]">
                   Assigned Tickets
                 </div>
               </div>
 
               <div className="group px-10 py-2 gap-2  flex flex-row items-center text-[#4E5969] text-sm hover:bg-[#E8F3FF] hover:text-[#165DFF] rounded cursor-pointer">
                 <svg
-                className="shrink-0"
+                  className="shrink-0"
                   xmlns="http://www.w3.org/2000/svg"
                   width="20"
                   height="20"
@@ -172,14 +206,19 @@ function Sidebar() {
                     stroke="currentColor"
                   />
                 </svg>
-                <div className="2xl:text-[14px] lg:text-xs md:text-[11px] whitespace-nowrap text-[10px] font-medium normal text-[#4E5969] flex-1 group-hover:text-[#165DFF]" onClick={()=> closed('/closedickets')}>
+                <div
+                  className="2xl:text-[14px] lg:text-xs md:text-[11px] whitespace-nowrap text-[10px] font-medium normal text-[#4E5969] flex-1 group-hover:text-[#165DFF]"
+                  onClick={() => 
+                    closed("/closedtickets")
+                  }
+                >
                   Closed Tickets
                 </div>
               </div>
 
               <div className="group px-10 py-2 gap-2  flex flex-row items-center text-[#4E5969] text-sm hover:bg-[#E8F3FF] hover:text-[#165DFF] rounded cursor-pointer">
                 <svg
-                className="shrink-0"
+                  className="shrink-0"
                   xmlns="http://www.w3.org/2000/svg"
                   width="20"
                   height="20"
@@ -215,7 +254,7 @@ function Sidebar() {
 
               <div className="group px-10 py-2 gap-2  flex flex-row items-center text-[#4E5969] text-sm hover:bg-[#E8F3FF] hover:text-[#165DFF] rounded cursor-pointer">
                 <svg
-                className="shrink-0"
+                  className="shrink-0"
                   xmlns="http://www.w3.org/2000/svg"
                   width="20"
                   height="20"
@@ -253,8 +292,15 @@ function Sidebar() {
 
         {/* View Projects */}
         <div className="group">
-          <div className="flex flex-row items-center rounded-[4px] px-4 py-3 gap-2 cursor-pointer border border-white group-hover:border-[#BEDAFF] group-hover:bg-[#E8F3FF]">
-            <div className="2xl:text-[20px] lg:text-[18px] md:text-[16px] text-[14px] text-[#86909C] group-hover:text-[#165DFF]">
+          <div
+            className={`flex flex-row items-center px-4 py-3 gap-2 rounded-[4px] cursor-pointer border ${
+              selectedTab === "view project"
+                ? "border-[#BEDAFF] bg-[#E8F3FF] text-[#165DFF]"
+                : "border-white text-[#4E5969] group-hover:border-[#BEDAFF] group-hover:bg-[#E8F3FF] group-hover:text-[#165DFF]"
+            }`}
+            onClick={() => setSelectedTab("view project")}
+          >
+            <div className="2xl:text-[20px] lg:text-[18px] md:text-[16px] text-[14px]  group-hover:text-[#165DFF]">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="20"
@@ -292,7 +338,10 @@ function Sidebar() {
                 />
               </svg>
             </div>
-            <div className="2xl:text-base lg:text-sm md:text-[11px] text-[10px] font-medium normal text-[#4E5969] group-hover:text-[#165DFF]">
+            <div
+              className="2xl:text-base lg:text-sm md:text-[11px] text-[10px] font-medium normal  group-hover:text-[#165DFF]"
+              onClick={viewproject}
+            >
               View Projects
             </div>
           </div>

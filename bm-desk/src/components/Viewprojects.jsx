@@ -1,52 +1,44 @@
 import React, { useState } from "react";
 import Navbar from "./Navbar";
 import Sidebar from "./Sidebar";
+import { Input } from "@/components/ui/input";
 import Pheader from "./Pheader";
 import { FiSearch } from "react-icons/fi";
-import { Input } from "@/components/ui/input";
-import { HiChevronDown } from "react-icons/hi2";
-import { HiOutlineArrowSmallDown } from "react-icons/hi2";
+import ReusableTable from "./ReusableTable";
+import { IoMdArrowDown } from "react-icons/io";
 
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
+function Closedtickets() {
+  const [activeTab, setActiveTab] = useState("alltickets");
+  const [loading, setLoading] = useState(false); // To track loading state
 
-function Viewproject() {
-  const [activeTab, setActiveTab] = useState("all-tickets");
-
+  
+  // State to manage table data
   const [data, setData] = useState([
-    // Initial data (can be populated from an API or mock data)
     {
       id: 1,
-      projectname: "Benchmark School Diary",
-      projectmanager: "Reneeja X",
-      category: "Cordova Cloud Solution",
-      createddate: "06-09-2024",
-      enddate: "06-09-2024",
+      projectname: "Project 1",
+      projectmanager:"Reneeja",
+     category: "Cordova Cloud Solution",
+      createddate: "20-10-2024",
+      enddate: "20-10-2024",
     },
     {
       id: 2,
-      projectname: "Safetri",
-      projectmanager: "Aneesh khalid",
-      category: "Cordova Cloud Solution",
-      createddate: "06-09-2024",
-      enddate: "06-09-2024",
+      projectname: "Project 1",
+      projectmanager:"Aneesh Khalid",
+     category: "Cordova Cloud Solution",
+      createddate: "20-10-2024",
+      enddate: "20-10-2024",
     },
-    // Repeat similar objects as needed
+    {
+      id: 3,
+      projectname: "Project 1",
+      projectmanager:"Reneeja",
+     category: "Cordova Cloud Solution",
+      createddate: "20-10-2024",
+      enddate: "20-10-2024",
+    },
   ]);
-  const [loading, setLoading] = useState(false); // To track loading state
-
-  const tabs = [
-    { value: "all-tickets", label: "All Tickets" },
-    { value: "major", label: "Major" },
-    { value: "critical", label: "Critical" },
-    { value: "minor", label: "Minor" },
-  ];
 
   const loadMoreData = () => {
     setLoading(true); // Start loading
@@ -55,133 +47,140 @@ function Viewproject() {
     setTimeout(() => {
       const moreData = [
         {
-          id: 3,
-          projectname: "Benchmark School Diary",
-          projectmanager: "Reneeja X",
-          category: "Cordova Cloud Solution",
-          createddate: "06-09-2024",
-          enddate: "06-09-2024",
+          id: 4,
+          projectname: "Project 1",
+      projectmanager:"Aneesh Khalid",
+     category: "Cordova Cloud Solution",
+      createddate: "20-10-2024",
+      enddate: "20-10-2024",
         },
         {
-          id: 4,
-          projectname: "Safetri",
-          projectmanager: "Aneesh khalid",
-          category: "Cordova Cloud Solution",
-          createddate: "06-09-2024",
-          enddate: "06-09-2024",
+          id: 5,
+          projectname: "Project 1",
+      projectmanager:"Reneeja",
+     category: "Cordova Cloud Solution",
+      createddate: "20-10-2024",
+      endddate: "20-10-2024",
         },
       ];
       setData((prevData) => [...prevData, ...moreData]); // Add new data to existing data
       setLoading(false); // Stop loading
-    }, 100); // Simulate a 2-second delay for loading data
+    }, 1000); // Simulate a 1-second delay for loading data
   };
+
+  const tabs = [
+    { value: "alltickets", label: "All Tickets" },
+    { value: "major", label: "Major" },
+    { value: "critical", label: "Critical" },
+    { value: "minor", label: "Minor" },
+  ];
+
+  const newHeaders = [
+    // "Sl No",
+    // "Ticket Number",
+    // "Project Name",
+    // "Subject",
+    // "Expected Date",
+    // "Expected Delivery Date",
+    // "Severity",
+    // "Ticket Action",
+    {
+      id: 1,
+      value: "slno",
+      label: "Sl No",
+    },
+    {
+      id: 2,
+      value: "projectname",
+      label: "Project Name",
+     
+    },
+    {
+      id: 3,
+      value: "projectmanager",
+      label: "Project Manager",
+    
+        
+    },
+    {
+      id: 4,
+      value: "category",
+      label: "Category",
+
+    },
+
+    {
+      id: 5,
+      value: "createddate",
+      label: "Created Date",
+  
+    },
+    {
+      id: 6,
+      value: "enddate",
+      label: "End Date",
+    
+    },
+      ];
 
   return (
     <div>
       <div className="fixed top-24 left-64 w-[calc(100%_-_280px)]">
         <div className="flex flex-col gap-8">
-          <div className="">
+          <div>
             <Pheader title="View Projects" />
           </div>
-
           {/* Tabs */}
           <div className="flex justify-between items-center">
             <div>
-              <div className="flex items-center">
+              <div className="flex items-center gap-2">
                 {tabs.map((tab) => (
                   <button
                     key={tab.value}
                     onClick={() => setActiveTab(tab.value)}
-                    className={`font-inter text-[16px] font-normal px-[16px] rounded-[4px] py-[8px] transition-colors ${
+                    className={`font-inter text-[16px] font-normal p-[6px] rounded-[4px] px-4 transition-colors ${
                       activeTab === tab.value
-                        ? "bg-[#1D2129] text-[#FFFFFF]"
-                        : "bg-gray-50 text-black "
+                        ? "bg-black text-white"
+                        : "bg-gray-50 text-black"
                     }`}
                   >
-                    <div className="text-[16px] font-normal">{tab.label}</div>
+                    {tab.label}
                   </button>
                 ))}
               </div>
             </div>
 
             <div className="flex items-center gap-5">
-              <div className="flex items-center gap-2 px-4 py-2 bg-[#F8F9FB] rounded-[3px] border-[1.5px] border-[#F2F3F5] ">
-                <FiSearch className=" w-[22px] h-[22px] text-[#111815]" />
+              <div className="flex items-center gap-2 px-4 py-2 bg-[#F8F9FB] rounded-[3px] border-[1.5px] border-[#F2F3F5]">
+                <FiSearch className="text-black" />
                 <Input
-                  placeholder="Search here...."
-                  className="text-[#111815] text-[16px] border-none shadow-none !outline-none font-normal !p-0 !h-full"
+                  placeholder="Search Ticket"
+                  className="border-none shadow-none !outline-none !p-0 !h-full"
                 />
               </div>
               <button
                 type="button"
-                className="text-[#FFF] bg-[#165DFF] text-[16px] font-normal focus:ring-4  rounded-[5px]  px-[16px] py-[8px]"
+                className="text-white bg-blue-600 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-[5px] text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
               >
                 Create New Ticket
               </button>
             </div>
           </div>
-
           {/* Table */}
-          <div className="max-h-[60vh] overflow-y-auto pr-4">
-            <Table className=" border-[1px]">
-              <TableHeader>
-                <TableRow className="bg-[#F2F3F5] hover:bg-[#4E5969] pointer-events-none">
-                  <TableHead className="text-[#4E5969] px-2 py-[15px] text-[12px]">
-                    Sl No
-                  </TableHead>
+          <div>
+            {activeTab==="alltickets" && <ReusableTable  headers={newHeaders} data={data}  />}
+            {activeTab==="major" && <ReusableTable  headers={newHeaders} data={data.filter(data1 => data1.severity=== "Major")}  />}
+            {activeTab==="minor" && <ReusableTable  headers={newHeaders} data={data.filter(data1 => data1.severity=== "Minor")}  />}
+            {activeTab==="critical" && <ReusableTable  headers={newHeaders} data={data.filter(data1 => data1.severity=== "Critical")}  />}
 
-                  <TableHead className="text-[#4E5969] px-2 py-[15px] text-[12px]">
-                    Project Name
-                  </TableHead>
-
-                  <TableHead className="text-[#4E5969] h-full px-2 py-[15px] text-[12px] font-medium flex gap-2 items-center">
-                    Project Manager
-                  </TableHead>
-
-                  <TableHead className="text-[#4E5969] px-2 py-[15px] text-[12px] font-medium">
-                    Category
-                  </TableHead>
-
-                  <TableHead className="text-[#4E5969] px-2 py-[15px] text-[12px] font-medium">
-                    Created Date
-                  </TableHead>
-
-                  <TableHead className="text-[#4E5969] px-2 py-[15px] text-[12px] font-medium">
-                    End Date
-                  </TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {data.map((row, index) => (
-                  <TableRow key={row.id}>
-                    <TableCell className="text-[#1D2129] px-2 py-[15px] text-[14px] font-normal">
-                      {(index + 1).toString().padStart(2, "0")}
-                    </TableCell>
-                    <TableCell className="text-[#1D2129] px-2 py-[15px] text-[12px] font-normal">
-                      {row.projectname}
-                    </TableCell>
-                    <TableCell className="text-[#1D2129] px-2 py-[15px] text-[14px] font-normal">
-                      {row.projectmanager}
-                    </TableCell>
-                    <TableCell className="text-[#1D2129] px-2 py-[15px] text-[14px] font-normal">
-                      {row.category}
-                    </TableCell>
-                    <TableCell className="text-[#1D2129] px-2 py-[15px] text-[14px] font-normal">
-                      {row.createddate}
-                    </TableCell>
-                    <TableCell className="text-[#1D2129] px-2 py-[15px] text-[14px] font-normal">
-                      {row.enddate}
-                    </TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
+          </div>
+          <div className="flex justify-start">
             <button
               onClick={loadMoreData}
-              className="text-[#165DFF] mt-4 text-[16px] font-normal font-inter"
+              className="text-[#165DFF] -mt-8"
               disabled={loading} // Disable the button while loading
             >
-              {loading ? "Loading..." : "Load more Tickets..."}
+              {loading ? "Loading..." : "Load more Tickets...."}
             </button>
           </div>
         </div>
@@ -190,4 +189,4 @@ function Viewproject() {
   );
 }
 
-export default Viewproject;
+export default Closedtickets;
