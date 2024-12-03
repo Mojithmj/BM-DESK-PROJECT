@@ -41,9 +41,20 @@ function Productivity() {
       escalated: 1,
       growthRate: "30%",
     },
+    {
+      id: 3,
+      date: "2024-12-02",
+      assignedTickets: 8,
+      selfAssignedTickets: 5,
+      resolvedTickets: 3,
+      returnedTickets: 2,
+      escalated: 1,
+      growthRate: "30%",
+    },
     // Repeat similar objects as needed
   ]);
   const [loading, setLoading] = useState(false); // To track loading state
+  const [visibleCount, setVisibleCount] = useState(6); // Tickets visible count
 
   const tabs = [
     { value: "all-time", label: "All Time" },
@@ -51,36 +62,41 @@ function Productivity() {
     { value: "this-year", label: "This Year" },
   ];
 
-  const loadMoreData = () => {
-    setLoading(true); // Start loading
+  // Function to filter data based on activeTab
+  const getFilteredData = () => {
+    const currentDate = new Date();
 
-    // Simulate fetching more data (e.g., from an API)
+    if (activeTab === "this-month") {
+      return data.filter((item) => {
+        const itemDate = new Date(item.date);
+        return (
+          itemDate.getFullYear() === currentDate.getFullYear() &&
+          itemDate.getMonth() === currentDate.getMonth()
+        );
+      });
+    }
+
+    if (activeTab === "this-year") {
+      return data.filter((item) => {
+        const itemDate = new Date(item.date);
+        return itemDate.getFullYear() === currentDate.getFullYear();
+      });
+    }
+
+    // Default: All Time
+    return data;
+  };
+
+  const filteredData = getFilteredData();
+  const visibleData = filteredData.slice(0, visibleCount); // Limit visible data
+
+  const loadMoreData = () => {
+    setLoading(true);
+
     setTimeout(() => {
-      const moreData = [
-        {
-          id: 2,
-          date: "2024-11-26",
-          assignedTickets: 12,
-          selfAssignedTickets: 7,
-          resolvedTickets: 9,
-          returnedTickets: 3,
-          escalated: 0,
-          growthRate: "15%",
-        },
-        {
-          id: 3,
-          date: "2024-11-27",
-          assignedTickets: 14,
-          selfAssignedTickets: 8,
-          resolvedTickets: 10,
-          returnedTickets: 1,
-          escalated: 2,
-          growthRate: "20%",
-        },
-      ];
-      setData((prevData) => [...prevData, ...moreData]); // Add new data to existing data
-      setLoading(false); // Stop loading
-    }, 100); // Simulate a 2-second delay for loading data
+      setVisibleCount((prevCount) => prevCount + 6); // Show 6 more tickets
+      setLoading(false);
+    }, 2000);
   };
 
   return (
@@ -98,7 +114,7 @@ function Productivity() {
       <div className="fixed top-24 left-64 w-[calc(100%_-_280px)]">
         <div className="flex flex-col gap-8">
           <div className="">
-            <Pheader title="My Productivity"/>
+            <Pheader title="My Productivity" />
           </div>
 
           {/* Tabs */}
@@ -170,7 +186,7 @@ function Productivity() {
                 </TableRow>
               </TableHeader>
               <TableBody>
-                {data.map((row, index) => (
+                {visibleData.map((row, index) => (
                   <TableRow key={row.id}>
                     <TableCell className="text-[#1D2129] px-2 py-[15px]">
                       {index + 1}
@@ -195,7 +211,7 @@ function Productivity() {
                     </TableCell>
                     <TableCell>
                       <div className="flex items-center">
-                        <IoIosArrowRoundDown className="bg-[#FFECE8] text-[#F53F3F]"/>
+                        <IoIosArrowRoundDown className="bg-[#FFECE8] text-[#F53F3F]" />
                         <div className=" px-2 py-[15px] text-[#F53F3F] font-bold ">
                           {row.growthRate}
                         </div>
@@ -204,16 +220,16 @@ function Productivity() {
                   </TableRow>
                 ))}
               </TableBody>
-
-
             </Table>
-            <button
+            {visibleData.length < filteredData.length && (
+              <button
                 onClick={loadMoreData}
-                className="text-[#165DFF] mt-4"
-                disabled={loading} // Disable the button while loading
+                className="text-blue-600 mt-4"
+                disabled={loading}
               >
-                {loading ? "Loading..." : "Load more data...."}
+                {loading ? "Loading..." : "Load More Data"}
               </button>
+            )}
           </div>
         </div>
       </div>
@@ -222,6 +238,3 @@ function Productivity() {
 }
 
 export default Productivity;
-
-
-
