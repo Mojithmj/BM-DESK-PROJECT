@@ -3,7 +3,6 @@ import Pheader from "./Pheader";
 import { FiSearch } from "react-icons/fi";
 import { Input } from "@/components/ui/input";
 import ReusableTable from "./ReusableTable";
-import { IoMdArrowDown } from "react-icons/io";
 
 function TicketApprovals() {
   const [activeTab, setActiveTab] = useState("alltickets");
@@ -84,25 +83,24 @@ function TicketApprovals() {
       severity: "Minor",
     },
   ]);
-
   const newHeaders = [
     { id: 1, value: "slno", label: "Sl No" },
     {
       id: 2,
       value: "ticketnumber",
       label: "Ticket Number",
-      icon: <IoMdArrowDown />,
+      sortable: true,
     },
     {
       id: 3,
       value: "projectname",
       label: "Project Name",
-      icon: <IoMdArrowDown />,
+      sortable: true,
     },
-    { id: 4, value: "createdby", label: "Created By" },
-    { id: 5, value: "status", label: "Status" },
-    { id: 6, value: "severity", label: "Severity" },
-    { id: 7, value: "ticketaction", label: "Actions" },
+    { id: 4, value: "createdby", label: "Created By", sortable: true },
+    { id: 5, value: "status", label: "Status", sortable: true },
+    { id: 6, value: "severity", label: "Severity", sortable: true },
+    { id: 7, value: "ticketaction", label: "Actions", sortable: false },
   ];
 
   const filteredData =
@@ -150,7 +148,7 @@ function TicketApprovals() {
               </button>
             </div>
           </div>
-          <ReusableTable headers={newHeaders} data={filteredData} />
+          <ReusableTable headers={newHeaders} data={filteredData} defaultSortConfig={{ key: "ticketnumber", direction: "ascending" }}/>
           {/* Show "Load More" button only for "All Tickets" tab */}
           {activeTab === "alltickets" && visibleDataCount < data.length && (
             <div className="flex justify-start">

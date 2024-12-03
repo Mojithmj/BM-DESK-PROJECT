@@ -5,7 +5,7 @@ import { Input } from "@/components/ui/input";
 import Pheader from "./Pheader";
 import { FiSearch } from "react-icons/fi";
 import ReusableTable from "./ReusableTable";
-import { IoMdArrowDown } from "react-icons/io";
+
 
 function AssignedTickets() {
   const [activeTab, setActiveTab] = useState("alltickets");
@@ -74,46 +74,52 @@ function AssignedTickets() {
       id: 1,
       value: "slno",
       label: "Sl No",
+      sortable: false
     },
     {
       id: 2,
       value: "ticketnumber",
       label: "Ticket Number",
+      sortable: true
     },
     {
       id: 3,
       value: "projectname",
       label: "Project Name",
-      // icon: <IoMdArrowDown />,
-        
-    //   icon: iconab,
+      sortable: true   
+  
     },
     {
       id: 4,
       value: "subject",
       label: "Subject",
+      sortable: true
     },
 
     {
       id: 5,
       value: "expecteddate",
       label: "Expected Date",
+      sortable: true
     },
     {
       id: 6,
       value: "expecteddeliverydate",
       label: "Expected delivery Date",
+      sortable: true
     },
 
     {
       id: 7,
       value: "severity",
       label: "Severity",
+      sortable: true
     },
     {
       id: 8,
       value: "ticketaction",
       label: "Ticket Action",
+      sortable: false
     },
 
 
@@ -177,7 +183,7 @@ function AssignedTickets() {
             </div>
           </div>
          {/* Table */}
-         <ReusableTable headers={newHeaders} data={filteredData} />
+         <ReusableTable headers={newHeaders} data={filteredData} defaultSortConfig={{ key: "expecteddeliverydate", direction: "ascending" }}/>
           {/* Show "Load More" button only for "All Tickets" tab */}
           {activeTab === "alltickets" && visibleDataCount < data.length && (
             <div className="flex justify-start">

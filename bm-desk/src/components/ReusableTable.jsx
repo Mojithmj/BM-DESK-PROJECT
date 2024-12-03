@@ -15,18 +15,69 @@ import {
   DropdownMenuItem,
 } from "@/components/ui/dropdown-menu";
 import { Button } from "./ui/button";
+import { IoMdArrowDown, IoMdArrowUp } from "react-icons/io";
 
-function ReusableTable({ data, headers, currentTab }) {
+function ReusableTable({ data, headers, currentTab, defaultSortConfig }) {
   // State to manage visible tickets
   const [visibleCount, setVisibleCount] = useState(6);
+  // const [sortConfig, setSortConfig] = useState({
+  //   key: "projectname", // Default column to sort by
+  //   direction: "ascending", // Default sort direction
+  // });
+
+  const [sortConfig, setSortConfig] = useState(
+    defaultSortConfig || { key: "projectname", direction: "ascending" }
+  );
+
+  // Sort the data based on the current sortConfig
+  const sortedData = React.useMemo(() => {
+    const sortableData = [...data];
+    sortableData.sort((a, b) => {
+      const aValue = a[sortConfig.key];
+      const bValue = b[sortConfig.key];
+
+      if (
+        sortConfig.key === "requireddate" ||
+        sortConfig.key === "expecteddate"
+      ) {
+        // Parse dates for comparison
+        const dateA = new Date(aValue.split("-").reverse().join("-"));
+        const dateB = new Date(bValue.split("-").reverse().join("-"));
+        return sortConfig.direction === "ascending"
+          ? dateA - dateB
+          : dateB - dateA;
+      }
+
+      // Default sorting for non-date fields
+      if (aValue < bValue) {
+        return sortConfig.direction === "ascending" ? -1 : 1;
+      }
+      if (aValue > bValue) {
+        return sortConfig.direction === "ascending" ? 1 : -1;
+      }
+      return 0;
+    });
+    return sortableData;
+  }, [data, sortConfig]);
 
   // Filter tickets based on visible count
   const visibleData =
-    currentTab === "All Tickets" ? data.slice(0, visibleCount) : data;
+    currentTab === "All Tickets"
+      ? sortedData.slice(0, visibleCount)
+      : sortedData;
 
   // Handle Load More button click
   const handleLoadMore = () => {
     setVisibleCount((prevCount) => prevCount + 6); // Increase visible tickets by 6
+  };
+
+  // Function to handle sorting
+  const handleSort = (column) => {
+    let direction = "ascending";
+    if (sortConfig.key === column && sortConfig.direction === "ascending") {
+      direction = "descending";
+    }
+    setSortConfig({ key: column, direction });
   };
 
   return (
@@ -34,15 +85,32 @@ function ReusableTable({ data, headers, currentTab }) {
       <Table className="border-[1px] !rounded overflow-hidden">
         {/* Table Headers */}
         <TableHeader>
-          <TableRow className="bg-[#F2F3F5] pointer-events-none">
+          <TableRow className="bg-[#F2F3F5] hover:bg-[#F2F3F5]">
             {headers.map((header) => (
               <TableHead
                 key={header.id}
-                className="text-[#4E5969] px-2 py-[15px] text-[12px]"
+                className={`text-[#4E5969] px-2 py-[15px] text-[12px] ${
+                  header.sortable ? "cursor-pointer" : ""
+                }`}
+                onClick={() => header.sortable && handleSort(header.value)}
               >
                 <div className="flex items-center gap-2">
                   <span>{header.label}</span>
                   {header.icon && <span className="mr-2">{header.icon}</span>}
+                  {header.sortable && (
+                    <span>
+                      {sortConfig.key === header.value ? (
+                        sortConfig.direction === "ascending" ? (
+                          <IoMdArrowUp /> // Up arrow for ascending
+                        ) : (
+                          <IoMdArrowDown /> // Down arrow for descending
+                        )
+                      ) : (
+                        // Default icon for unsorted sortable columns
+                        <IoMdArrowUp className="text-gray-400" />
+                      )}
+                    </span>
+                  )}
                 </div>
               </TableHead>
             ))}

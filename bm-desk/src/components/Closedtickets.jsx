@@ -5,7 +5,6 @@ import { Input } from "@/components/ui/input";
 import Pheader from "./Pheader";
 import { FiSearch } from "react-icons/fi";
 import ReusableTable from "./ReusableTable";
-import { IoMdArrowDown } from "react-icons/io";
 
 function Closedtickets() {
   const [activeTab, setActiveTab] = useState("alltickets");
@@ -80,45 +79,52 @@ function Closedtickets() {
       id: 2,
       value: "ticketnumber",
       label: "Ticket Number",
-      icon: <IoMdArrowDown />,
+      // icon: <IoMdArrowDown />,
+      sortable: true,
     },
     {
       id: 3,
       value: "projectname",
       label: "Project Name",
-      icon: <IoMdArrowDown />,
+      // icon: <IoMdArrowDown />,
+      sortable: true,
     },
     {
       id: 4,
       value: "subject",
       label: "Subject",
-      icon: <IoMdArrowDown />,
+      // icon: <IoMdArrowDown />,
+      sortable: true,
     },
 
     {
       id: 5,
       value: "createdby",
       label: "Created By",
-      icon: <IoMdArrowDown />,
+      // icon: <IoMdArrowDown />,
+      sortable: true,
     },
     {
       id: 6,
       value: "createddate",
       label: "Created Date",
-      icon: <IoMdArrowDown />,
+      // icon: <IoMdArrowDown />,
+      sortable: true,
     },
     {
       id: 6,
       value: "closeddate",
       label: "Closed Date",
-      icon: <IoMdArrowDown />,
+      // icon: <IoMdArrowDown />,
+      sortable: true,
     },
 
     {
       id: 7,
       value: "severity",
       label: "Severity",
-      icon: <IoMdArrowDown />,
+      // icon: <IoMdArrowDown />,
+      sortable: true,
     },
   ];
 
@@ -171,7 +177,7 @@ function Closedtickets() {
             </div>
           </div>
           {/* Table */}
-          <ReusableTable headers={newHeaders} data={filteredData} />
+          <ReusableTable headers={newHeaders} data={filteredData} defaultSortConfig={{ key: "closeddate", direction: "ascending" }}/>
           {/* Show "Load More" button only for "All Tickets" tab */}
           {activeTab === "alltickets" && visibleDataCount < data.length && (
             <div className="flex justify-start">
