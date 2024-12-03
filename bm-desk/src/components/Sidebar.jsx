@@ -13,14 +13,8 @@ function Sidebar() {
 
   const navigate = useNavigate();
 
-  const handleNavigate = () => {
-    setSelectedTab("productivity");
-    navigate("/productivity");
-  };
-  const handle = () => {
-    setSelectedTab("assignedtickets");
-    navigate("/assignedtickets");
-  };
+
+
   const open = () => {
     setSelectedTab("opentickets");
     navigate("/opentickets");
@@ -40,7 +34,7 @@ function Sidebar() {
       <div className="flex flex-col h-screen border-r-[1px]  border-[#E5E6EB] 2xl:w-[250px] lg:w-[210px] md:w-[180px] w-[160px] px-4 py-8 gap-5">
         {/* Dashboard */}
         <div className="group">
-          <div
+        <div
             className={`flex flex-row items-center px-4 py-3 gap-2 rounded-[4px] cursor-pointer border ${
               selectedTab === "dashboard"
                 ? "border-[#BEDAFF] bg-[#E8F3FF] text-[#165DFF]"
@@ -51,7 +45,7 @@ function Sidebar() {
             <div className="2xl:text-[20px] lg:text-[18px] md:text-[16px] text-[14px]  group-hover:text-[#165DFF]">
               <RiHomeLine />
             </div>
-            <div className="2xl:text-base lg:text-sm md:text-[11px] text-[10px] font-medium normal text-[#4E5969] group-hover:text-[#165DFF]"
+            <div className="2xl:text-base lg:text-sm md:text-[11px] text-[10px] font-medium normal  group-hover:text-[#165DFF]"
             onClick={()=> navigate('/')}>
               Dashboards
             </div>
@@ -59,7 +53,14 @@ function Sidebar() {
         </div>
 
          {/* Productivity */}
-         <div className="group">
+         <div
+            className={`group border ${
+              selectedTab === "productivity"
+                ? "border-[#BEDAFF] bg-[#E8F3FF] text-[#165DFF]"
+                : "border-white text-[#4E5969] group-hover:border-[#BEDAFF] group-hover:bg-[#E8F3FF] group-hover:text-[#165DFF]"
+            }`}
+            onClick={() => setSelectedTab("productivity")}
+          >
           <div 
             className="flex flex-row gap-2 items-center rounded-[4px] px-4 py-3 cursor-pointer border border-white group-hover:border-[#BEDAFF] group-hover:bg-[#E8F3FF]"
             onClick={()=> navigate('/productivity')} // Navigate to productivity
@@ -67,7 +68,8 @@ function Sidebar() {
             <div className="2xl:text-[20px] lg:text-[18px] md:text-[16px] text-[14px]  group-hover:text-[#165DFF]">
               <BsGraphUpArrow />
             </div>
-            <div className="2xl:text-base lg:text-sm md:text-[11px] text-[10px] font-medium normal  group-hover:text-[#165DFF]">
+            <div className="2xl:text-base lg:text-sm md:text-[11px] text-[10px] font-medium normal  group-hover:text-[#165DFF]"
+            onClick={()=> navigate('/productivity')}>
               My Productivity
             </div>
           </div>
@@ -180,7 +182,8 @@ function Sidebar() {
                     stroke-linejoin="round"
                   />
                 </svg>
-                <div className="2xl:text-[14px] lg:text-xs md:text-[11px] text-[10px] whitespace-nowrap  font-medium normal text-[#4E5969] flex-1  group-hover:text-[#165DFF]">
+                <div className="2xl:text-[14px] lg:text-xs md:text-[11px] text-[10px] whitespace-nowrap  font-medium normal text-[#4E5969] flex-1  group-hover:text-[#165DFF]"
+                onClick={()=> navigate('/assignedtickets')}>
                   Assigned Tickets
                 </div>
               </div>

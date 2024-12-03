@@ -89,6 +89,7 @@ function AssignedTickets() {
     }, 1000); // Simulate a 1-second delay for loading data
   };
 
+
   const tabs = [
     { value: "alltickets", label: "All Tickets" },
     { value: "major", label: "Major" },
@@ -121,8 +122,6 @@ function AssignedTickets() {
       value: "projectname",
       label: "Project Name",
       icon: <IoMdArrowDown />,
-        
-    
     },
     {
       id: 4,
@@ -155,8 +154,6 @@ function AssignedTickets() {
       value: "ticketaction",
       label: "Ticket Action",
     },
-
-
   ];
   const filteredData =
   activeTab === "alltickets"
@@ -184,7 +181,7 @@ function AssignedTickets() {
                         : "bg-gray-50 text-black"
                     }`}
                   >
-                    {tab.label}
+                    {tab.label} 
                   </button>
                 ))}
               </div>
