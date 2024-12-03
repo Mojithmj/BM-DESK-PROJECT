@@ -20,10 +20,6 @@ import { IoMdArrowDown, IoMdArrowUp } from "react-icons/io";
 function ReusableTable({ data, headers, currentTab, defaultSortConfig }) {
   // State to manage visible tickets
   const [visibleCount, setVisibleCount] = useState(6);
-  // const [sortConfig, setSortConfig] = useState({
-  //   key: "projectname", // Default column to sort by
-  //   direction: "ascending", // Default sort direction
-  // });
 
   const [sortConfig, setSortConfig] = useState(
     defaultSortConfig || { key: "projectname", direction: "ascending" }
