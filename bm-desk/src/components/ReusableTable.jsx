@@ -16,6 +16,20 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Button } from "./ui/button";
 import { IoMdArrowDown, IoMdArrowUp } from "react-icons/io";
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 function ReusableTable({ data, headers, currentTab, defaultSortConfig }) {
   // State to manage visible tickets
@@ -25,26 +39,65 @@ function ReusableTable({ data, headers, currentTab, defaultSortConfig }) {
     defaultSortConfig || { key: "projectname", direction: "ascending" }
   );
 
-  // Sort the data based on the current sortConfig
+  const [selectedTicket, setSelectedTicket] = useState(null); // State to manage selected ticket for Sheet
+
   const sortedData = React.useMemo(() => {
     const sortableData = [...data];
+
+    const severityOrder = {
+      Critical: 1,
+      Major: 2,
+      Minor: 3,
+    };
+
+    const dateFields = [
+      "requireddate",
+      "expecteddate",
+      "expecteddeliverydate",
+      "closeddate",
+      "createddate",
+    ];
+
     sortableData.sort((a, b) => {
       const aValue = a[sortConfig.key];
       const bValue = b[sortConfig.key];
 
-      if (
-        sortConfig.key === "requireddate" ||
-        sortConfig.key === "expecteddate"
-      ) {
-        // Parse dates for comparison
-        const dateA = new Date(aValue.split("-").reverse().join("-"));
-        const dateB = new Date(bValue.split("-").reverse().join("-"));
+      if (sortConfig.key === "severity") {
+        const aRank = severityOrder[aValue] || Infinity; // Default rank if not found
+        const bRank = severityOrder[bValue] || Infinity;
+
+        return sortConfig.direction === "ascending"
+          ? aRank - bRank
+          : bRank - aRank;
+      }
+
+      if (dateFields.includes(sortConfig.key)) {
+        const isAMissing = aValue === "--" || aValue === undefined;
+        const isBMissing = bValue === "--" || bValue === undefined;
+
+        if (isAMissing && isBMissing) return 0;
+        if (isAMissing) return sortConfig.direction === "ascending" ? 1 : -1;
+        if (isBMissing) return sortConfig.direction === "ascending" ? -1 : 1;
+
+        const dateA =
+          aValue && aValue !== "--"
+            ? new Date(aValue.split("-").reverse().join("-"))
+            : null;
+        const dateB =
+          bValue && bValue !== "--"
+            ? new Date(bValue.split("-").reverse().join("-"))
+            : null;
+
+        if (dateA && !dateB)
+          return sortConfig.direction === "ascending" ? -1 : 1;
+        if (!dateA && dateB)
+          return sortConfig.direction === "ascending" ? 1 : -1;
+
         return sortConfig.direction === "ascending"
           ? dateA - dateB
           : dateB - dateA;
       }
 
-      // Default sorting for non-date fields
       if (aValue < bValue) {
         return sortConfig.direction === "ascending" ? -1 : 1;
       }
@@ -53,6 +106,7 @@ function ReusableTable({ data, headers, currentTab, defaultSortConfig }) {
       }
       return 0;
     });
+
     return sortableData;
   }, [data, sortConfig]);
 
@@ -129,7 +183,43 @@ function ReusableTable({ data, headers, currentTab, defaultSortConfig }) {
                     key={header.id}
                     className="text-[#1D2129] px-2 py-[15px]"
                   >
-                    {header.value === "severity" ? (
+                    {header.value === "ticketnumber" ? (
+                      // Add SheetTrigger to ticket number
+                      <Sheet>
+                        <SheetTrigger
+                          onClick={() => setSelectedTicket(row)} // Pass ticket data to Sheet
+                          className="text-blue-600 underline cursor-pointer"
+                        >
+                          {row[header.value]}
+                        </SheetTrigger>
+                        <SheetContent className="bg-white">
+                          <SheetHeader>
+                            <SheetTitle>Ticket Details</SheetTitle>
+                            <SheetDescription>
+                              {/* Dynamically display ticket details */}
+                              <div>
+                                <p>
+                                  <strong>Ticket Number:</strong>{" "}
+                                  {selectedTicket?.ticketnumber}
+                                </p>
+                                <p>
+                                  <strong>Severity:</strong>{" "}
+                                  {selectedTicket?.severity}
+                                </p>
+                                <p>
+                                  <strong>Project Name:</strong>{" "}
+                                  {selectedTicket?.projectname}
+                                </p>
+                                <p>
+                                  <strong>Description:</strong>{" "}
+                                  {selectedTicket?.description || "N/A"}
+                                </p>
+                              </div>
+                            </SheetDescription>
+                          </SheetHeader>
+                        </SheetContent>
+                      </Sheet>
+                    ) : header.value === "severity" ? (
                       // Custom logic for severity column
                       <Badge
                         className="text-[12px] font-medium rounded px-2 py-1"

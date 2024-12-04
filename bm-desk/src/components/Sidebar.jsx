@@ -14,29 +14,21 @@ function Sidebar() {
 
   return (
     <div>
-
       <div className="flex flex-col h-screen border-r-[1px]  border-[#E5E6EB] 2xl:w-[250px] lg:w-[210px] md:w-[180px] w-[160px] px-4 py-8 gap-5">
         {/* Dashboard */}
         <div className="group" onClick={() => navigate("/")}>
           <div className="flex flex-row gap-2 items-center rounded-[4px] px-4 py-3 cursor-pointer border border-white group-hover:border-[#BEDAFF] group-hover:bg-[#E8F3FF] text-[#4E5969]">
-          <div className="2xl:text-[20px] lg:text-[18px] md:text-[16px] text-[14px]  group-hover:text-[#165DFF]">
+            <div className="2xl:text-[20px] lg:text-[18px] md:text-[16px] text-[14px]  group-hover:text-[#165DFF]">
               <RiHomeLine />
             </div>
-            <div
-              className="2xl:text-base lg:text-sm md:text-[11px] text-[10px] font-medium normal  group-hover:text-[#165DFF]"
-              
-            >
+            <div className="2xl:text-base lg:text-sm md:text-[11px] text-[10px] font-medium normal  group-hover:text-[#165DFF]">
               Dashboards
             </div>
           </div>
         </div>
-          
-            
 
         {/* Productivity */}
-        <div
-          className="group"
-        >
+        <div className="group">
           <div
             className="flex flex-row gap-2 items-center text-[#4E5969] rounded-[4px] px-4 py-3 cursor-pointer border border-white group-hover:border-[#BEDAFF] group-hover:bg-[#E8F3FF]"
             onClick={() => navigate("/productivity")} // Navigate to productivity
@@ -44,10 +36,7 @@ function Sidebar() {
             <div className="2xl:text-[20px] lg:text-[18px] md:text-[16px] text-[14px]  group-hover:text-[#165DFF]">
               <BsGraphUpArrow />
             </div>
-            <div
-              className="2xl:text-base lg:text-sm md:text-[11px] text-[10px] font-medium normal  group-hover:text-[#165DFF]"
-          
-            >
+            <div className="2xl:text-base lg:text-sm md:text-[11px] text-[10px] font-medium normal  group-hover:text-[#165DFF]">
               My Productivity
             </div>
           </div>
@@ -55,10 +44,11 @@ function Sidebar() {
 
         {/* Tickets */}
         <div>
-          <div
-            className="group rounded-[4px] cursor-pointer"
-          >
-            <div onClick={() => toggleDropdown()} className="flex flex-row items-center text-[#4E5969] px-4 py-3 gap-2 rounded-[4px] cursor-pointer border border-white group-hover:border-[#BEDAFF] group-hover:bg-[#E8F3FF]">
+          <div className="group rounded-[4px] cursor-pointer">
+            <div
+              onClick={() => toggleDropdown()}
+              className="flex flex-row items-center text-[#4E5969] px-4 py-3 gap-2 rounded-[4px] cursor-pointer border border-white group-hover:border-[#BEDAFF] group-hover:bg-[#E8F3FF]"
+            >
               <div className="2xl:text-[20px] lg:text-[17px] md:text-[16px] text-[14px]  group-hover:text-[#165DFF]">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -87,17 +77,17 @@ function Sidebar() {
               <div className="2xl:text-base lg:text-sm md:text-[11px] text-[10px] font-medium normal  flex-1 group-hover:text-[#165DFF]">
                 Tickets
               </div>
-              <div
-                className=" group-hover:text-[#165DFF] text-2xl w-[19px] h-[19px]"
-                
-              >
+              <div className=" group-hover:text-[#165DFF] text-2xl w-[19px] h-[19px]">
                 <RiArrowDropDownLine />
               </div>
             </div>
           </div>
           {isDropdownOpen && (
             <div>
-              <div onClick={() => navigate("/opentickets")} className="group px-10 py-2 gap-2 flex flex-row items-center text-[#4E5969] text-sm hover:bg-[#E8F3FF] hover:text-[#165DFF] rounded-[4px] hover:border-[1px] hover:border-[#BEDAFF] cursor-pointer">
+              <div
+                onClick={() => navigate("/opentickets")}
+                className="group px-10 py-2 gap-2 flex flex-row items-center text-[#4E5969] text-sm hover:bg-[#E8F3FF] hover:text-[#165DFF] rounded-[4px] hover:border-[1px] hover:border-[#BEDAFF] cursor-pointer"
+              >
                 <svg
                   className="shrink-0"
                   xmlns="http://www.w3.org/2000/svg"
@@ -115,10 +105,7 @@ function Sidebar() {
                     stroke-width="0.5"
                   />
                 </svg>
-                <div
-                  className="2xl:text-[14px] lg:text-[12px] md:text-[11px] text-[10px] whitespace-nowrap font-medium normal text-[#4E5969] flex-1 group-hover:text-[#165DFF]"
-                  
-                >
+                <div className="2xl:text-[14px] lg:text-[12px] md:text-[11px] text-[10px] whitespace-nowrap font-medium normal text-[#4E5969] flex-1 group-hover:text-[#165DFF]">
                   Open Tickets
                 </div>
               </div>
@@ -159,7 +146,10 @@ function Sidebar() {
                 </div>
               </div>
 
-              <div onClick={() => navigate("/closedtickets")} className="group px-10 py-2 gap-2  flex flex-row items-center text-[#4E5969] text-sm hover:bg-[#E8F3FF] hover:text-[#165DFF] rounded-[4px] hover:border-[1px] hover:border-[#BEDAFF] cursor-pointer">
+              <div
+                onClick={() => navigate("/closedtickets")}
+                className="group px-10 py-2 gap-2  flex flex-row items-center text-[#4E5969] text-sm hover:bg-[#E8F3FF] hover:text-[#165DFF] rounded-[4px] hover:border-[1px] hover:border-[#BEDAFF] cursor-pointer"
+              >
                 <svg
                   className="shrink-0"
                   xmlns="http://www.w3.org/2000/svg"
@@ -174,15 +164,15 @@ function Sidebar() {
                     stroke="currentColor"
                   />
                 </svg>
-                <div
-                  className="2xl:text-[14px] lg:text-xs md:text-[11px] whitespace-nowrap text-[10px] font-medium normal text-[#4E5969] flex-1 group-hover:text-[#165DFF]"
-                  
-                >
+                <div className="2xl:text-[14px] lg:text-xs md:text-[11px] whitespace-nowrap text-[10px] font-medium normal text-[#4E5969] flex-1 group-hover:text-[#165DFF]">
                   Closed Tickets
                 </div>
               </div>
 
-              <div onClick={() => navigate("/ticketapprovals")} className="group px-10 py-2 gap-2  flex flex-row items-center text-[#4E5969] text-sm hover:bg-[#E8F3FF] hover:text-[#165DFF] rounded-[4px] hover:border-[1px] hover:border-[#BEDAFF] cursor-pointer">
+              <div
+                onClick={() => navigate("/ticketapprovals")}
+                className="group px-10 py-2 gap-2  flex flex-row items-center text-[#4E5969] text-sm hover:bg-[#E8F3FF] hover:text-[#165DFF] rounded-[4px] hover:border-[1px] hover:border-[#BEDAFF] cursor-pointer"
+              >
                 <svg
                   className="shrink-0"
                   xmlns="http://www.w3.org/2000/svg"
@@ -213,15 +203,15 @@ function Sidebar() {
                     stroke-linejoin="round"
                   />
                 </svg>
-                <div
-                  className="2xl:text-[14px] lg:text-xs md:text-[11px] whitespace-nowrap text-[10px] font-medium normal text-[#4E5969] flex-1 group-hover:text-[#165DFF]"
-                  
-                >
+                <div className="2xl:text-[14px] lg:text-xs md:text-[11px] whitespace-nowrap text-[10px] font-medium normal text-[#4E5969] flex-1 group-hover:text-[#165DFF]">
                   Ticket Approvals
                 </div>
               </div>
 
-              <div onClick={() => navigate("/actionedtickets")} className="group px-10 py-2 gap-2  flex flex-row items-center text-[#4E5969] text-sm hover:bg-[#E8F3FF] hover:text-[#165DFF] rounded-[4px] hover:border-[1px] hover:border-[#BEDAFF] cursor-pointer">
+              <div
+                onClick={() => navigate("/actionedtickets")}
+                className="group px-10 py-2 gap-2  flex flex-row items-center text-[#4E5969] text-sm hover:bg-[#E8F3FF] hover:text-[#165DFF] rounded-[4px] hover:border-[1px] hover:border-[#BEDAFF] cursor-pointer"
+              >
                 <svg
                   className="shrink-0"
                   xmlns="http://www.w3.org/2000/svg"
@@ -251,10 +241,7 @@ function Sidebar() {
                     stroke="CurrentColor"
                   />
                 </svg>
-                <div
-                  className="2xl:text-[14px] lg:text-xs md:text-[11px] text-[10px] whitespace-nowrap font-medium normal text-[#4E5969] flex-1 group-hover:text-[#165DFF]"
-                  
-                >
+                <div className="2xl:text-[14px] lg:text-xs md:text-[11px] text-[10px] whitespace-nowrap font-medium normal text-[#4E5969] flex-1 group-hover:text-[#165DFF]">
                   My Tickets
                 </div>
               </div>
@@ -264,9 +251,7 @@ function Sidebar() {
 
         {/* View Projects */}
         <div className="group" onClick={() => navigate("/viewproject")}>
-          <div
-            className="flex flex-row gap-2 items-center text-[#4E5969] rounded-[4px] px-4 py-3 cursor-pointer border border-white group-hover:border-[#BEDAFF] group-hover:bg-[#E8F3FF]"
-          >
+          <div className="flex flex-row gap-2 items-center text-[#4E5969] rounded-[4px] px-4 py-3 cursor-pointer border border-white group-hover:border-[#BEDAFF] group-hover:bg-[#E8F3FF]">
             <div className="2xl:text-[20px] lg:text-[18px] md:text-[16px] text-[14px]  group-hover:text-[#165DFF]">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -305,10 +290,7 @@ function Sidebar() {
                 />
               </svg>
             </div>
-            <div
-              className="2xl:text-base lg:text-sm md:text-[11px] text-[10px] font-medium normal  group-hover:text-[#165DFF]"
-              
-            >
+            <div className="2xl:text-base lg:text-sm md:text-[11px] text-[10px] font-medium normal  group-hover:text-[#165DFF]">
               View Projects
             </div>
           </div>

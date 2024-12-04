@@ -18,55 +18,55 @@ function AssignedTickets() {
     {
       id: 1,
       ticketnumber: "TCKT5642",
-      projectname: "Project 1",
+      projectname: "Project A",
       subject: 15,
-      expecteddate: "20-05-2023",
-      expecteddeliverydate: "20-10-2024",
+      // expecteddate: "20-05-2023",
+      expecteddeliverydate: "20-10-2023",
       severity: "Critical",
     },
     {
       id: 2,
       ticketnumber: "TCKT5643",
-      projectname: "Project 1",
+      projectname: "Project B",
       subject: 15,
-      expecteddate: "20-06-2023",
-      expecteddeliverydate: "20-10-2024",
+      // expecteddate: "20-06-2023",
+      // expecteddeliverydate: "20-10-2024",
       severity: "Minor",
     },
     {
       id: 3,
       ticketnumber: "TCKT5644",
-      projectname: "Project 1",
+      projectname: "Project C",
       subject: 15,
       expecteddate: "20-09-2024",
-      expecteddeliverydate: "20-10-2024",
+      expecteddeliverydate: "20-09-2024",
       severity: "Major",
     },
     {
       id: 4,
       ticketnumber: "TCKT5644",
-      projectname: "Project 1",
+      projectname: "Project D",
       subject: 15,
       expecteddate: "20-12-2023",
-      expecteddeliverydate: "20-10-2024",
+      expecteddeliverydate: "20-02-2024",
       severity: "Major",
     },
     {
       id: 5,
       ticketnumber: "TCKT5644",
-      projectname: "Project 1",
+      projectname: "Project E",
       subject: 15,
       expecteddate: "20-02-2023",
-      expecteddeliverydate: "20-10-2024",
+      expecteddeliverydate: "19-10-2024",
       severity: "Major",
     },
     {
       id: 6,
       ticketnumber: "TCKT5644",
-      projectname: "Project 1",
+      projectname: "Project F",
       subject: 15,
       expecteddate: "20-11-2023",
-      expecteddeliverydate: "20-10-2024",
+      expecteddeliverydate: "20-10-2022",
       severity: "Major",
     },
     {
@@ -75,7 +75,7 @@ function AssignedTickets() {
       projectname: "Project 1",
       subject: 15,
       expecteddate: "20-09-2023",
-      expecteddeliverydate: "20-10-2024",
+      expecteddeliverydate: "20-10-2021",
       severity: "Major",
     },
   ]);
@@ -212,7 +212,7 @@ function AssignedTickets() {
             </div>
           </div>
           {/* Table */}
-          <ReusableTable headers={newHeaders} data={filteredData} defaultSortConfig={{ key: "expecteddate", direction: "ascending" }}/>
+          <ReusableTable headers={newHeaders} data={filteredData} defaultSortConfig={{ key: "expecteddate", direction: "descending" }}/>
           {/* Show "Load More" button only for "All Tickets" tab */}
           {activeTab === "alltickets" && visibleDataCount < data.length && (
             <div className="flex justify-start">

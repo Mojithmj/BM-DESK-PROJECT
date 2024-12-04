@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import Navbar from "./Navbar";
-import Sidebar from "./Sidebar";
 import { Input } from "@/components/ui/input";
 import Pheader from "./Pheader";
 import { FiSearch } from "react-icons/fi";
@@ -16,31 +14,31 @@ function Closedtickets() {
     {
       id: 1,
       ticketnumber: "TCKT5642",
-      projectname: "Project 1",
+      projectname: "Project A",
       subject: 15,
       createdby: "Mohammad Althaf",
-      createddate: "20-10-2024",
-      closeddate: "20-10-2024",
+      createddate: "25-05-2024",
+      closeddate: "20-06-2024",
       severity: "Critical",
     },
     {
       id: 2,
       ticketnumber: "TCKT5643",
-      projectname: "Project 1",
-      subject: 15,
+      projectname: "Project B",
+      subject: 1,
       createdby: "Mohammad Althaf",
-      createddate: "20-10-2024",
-      closeddate: "20-10-2024",
+      // createddate: "27-02-2023",
+      closeddate: "20-07-2024",
       severity: "Minor",
     },
     {
       id: 3,
       ticketnumber: "TCKT5644",
-      projectname: "Project 1",
-      subject: 15,
+      projectname: "Project C",
+      subject: 10,
       createdby: "Mohammad Althaf",
       createddate: "20-10-2024",
-      closeddate: "20-10-2024",
+      // closeddate: "20-10-2024",
       severity: "Major",
     },
   ]);
