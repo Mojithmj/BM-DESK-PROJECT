@@ -4,7 +4,7 @@ import Sidebar from "./Sidebar";
 import Pheader from "./Pheader";
 import { FiSearch } from "react-icons/fi";
 import { Input } from "@/components/ui/input";
-import { IoMdArrowDown } from "react-icons/io";
+// import { IoMdArrowDown } from "react-icons/io";
 import ReusableTable from "./ReusableTable";
 
 function ActionedTickets() {
@@ -26,18 +26,20 @@ function ActionedTickets() {
       projectname: "Benchmark School Dairy",
 
       subject: "Benchmark Assets Inc...	",
-      requireddate: "20-10-2024",
-      expecteddate: "20-09-2023",
+      requireddate: "17-08-2024",
+      expecteddate: "17-08-2024",
       status: "Closed",
       severity: "Critical",
     },
+
+
     {
       id: 2,
-      ticketnumber: "TCKT7564",
-      projectname: "Safetri",
-      subject: "TC Numbering Issue",
-      requireddate: "20-10-2024",
-      expecteddate: "20-09-2023",
+      ticketnumber: "TCKT5642",
+      projectname: "Benchmark Learning (Educore)",
+      subject: "To Change The Hierarch",
+      requireddate: "27-07-2024",
+      expecteddate: "20-08-2023",
       status: "Closed",
       severity: "Critical",
     },
@@ -46,10 +48,20 @@ function ActionedTickets() {
       ticketnumber: "TCKT5642",
       projectname: "Benchmark Learning (Educore)",
       subject: "To Change The Hierarch",
-      requireddate: "20-10-2024",
+      requireddate: "27-12-2024",
+      expecteddate: "20-06-2023",
+      status: "Closed",
+      severity: "Minor",
+    },
+    {
+      id: 4,
+      ticketnumber: "TCKT5000",
+      projectname: "Benchmark Learning (Educore)",
+      subject: "To Change The Hierarch",
+      requireddate: "27-01-2024",
       expecteddate: "20-09-2023",
       status: "Closed",
-      severity: "Critical",
+      severity: "Major",
     },
   ]);
 
@@ -75,45 +87,50 @@ function ActionedTickets() {
       id: 2,
       value: "ticketnumber",
       label: "Ticket Number",
-      icon: <IoMdArrowDown />,
+      // icon: <IoMdArrowDown />,
+      sortable: true,
     },
     {
       id: 3,
       value: "projectname",
       label: "Project Name",
-      icon: <IoMdArrowDown />,
-
-      //   icon: iconab,
+      // icon: <IoMdArrowDown />,
+      sortable: true,
     },
     {
       id: 4,
       value: "subject",
       label: "Subject",
-      icon: <IoMdArrowDown />,
+      // icon: <IoMdArrowDown />,
+      sortable: true,
     },
     {
       id: 5,
       value: "requireddate",
       label: "Required Date",
-      icon: <IoMdArrowDown />,
+      // icon: <IoMdArrowDown />,
+      sortable: true,
     },
     {
       id: 6,
       value: "expecteddate",
       label: "Expected Date",
-      icon: <IoMdArrowDown />,
+      // icon: <IoMdArrowDown />,
+      sortable: true,
     },
     {
       id: 7,
       value: "status",
       label: "Status",
-      icon: <IoMdArrowDown />,
+      // icon: <IoMdArrowDown />,
+      sortable: true,
     },
     {
       id: 8,
       value: "severity",
       label: "Severity",
-      icon: <IoMdArrowDown />,
+      // icon: <IoMdArrowDown />,
+      sortable: true,
     },
   ];
 
@@ -174,7 +191,7 @@ function ActionedTickets() {
             </div>
           </div>
           {/* Table */}
-          <ReusableTable headers={newHeaders} data={filteredData} />
+          <ReusableTable headers={newHeaders} data={filteredData} defaultSortConfig={{ key: "requireddate", direction: "ascending" }}/>
           {/* Show "Load More" button only for "All Tickets" tab */}
           {activeTab === "alltickets" && visibleDataCount < data.length && (
             <div className="flex justify-start">

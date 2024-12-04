@@ -20,7 +20,7 @@ function AssignedTickets() {
       ticketnumber: "TCKT5642",
       projectname: "Project 1",
       subject: 15,
-      expecteddate: "20-09-2023",
+      expecteddate: "20-05-2023",
       expecteddeliverydate: "20-10-2024",
       severity: "Critical",
     },
@@ -29,7 +29,7 @@ function AssignedTickets() {
       ticketnumber: "TCKT5643",
       projectname: "Project 1",
       subject: 15,
-      expecteddate: "20-09-2023",
+      expecteddate: "20-06-2023",
       expecteddeliverydate: "20-10-2024",
       severity: "Minor",
     },
@@ -38,7 +38,7 @@ function AssignedTickets() {
       ticketnumber: "TCKT5644",
       projectname: "Project 1",
       subject: 15,
-      expecteddate: "20-09-2023",
+      expecteddate: "20-09-2024",
       expecteddeliverydate: "20-10-2024",
       severity: "Major",
     },
@@ -47,7 +47,7 @@ function AssignedTickets() {
       ticketnumber: "TCKT5644",
       projectname: "Project 1",
       subject: 15,
-      expecteddate: "20-09-2023",
+      expecteddate: "20-12-2023",
       expecteddeliverydate: "20-10-2024",
       severity: "Major",
     },
@@ -56,7 +56,7 @@ function AssignedTickets() {
       ticketnumber: "TCKT5644",
       projectname: "Project 1",
       subject: 15,
-      expecteddate: "20-09-2023",
+      expecteddate: "20-02-2023",
       expecteddeliverydate: "20-10-2024",
       severity: "Major",
     },
@@ -65,7 +65,7 @@ function AssignedTickets() {
       ticketnumber: "TCKT5644",
       projectname: "Project 1",
       subject: 15,
-      expecteddate: "20-09-2023",
+      expecteddate: "20-11-2023",
       expecteddeliverydate: "20-10-2024",
       severity: "Major",
     },
@@ -110,49 +110,57 @@ function AssignedTickets() {
       id: 1,
       value: "slno",
       label: "Sl No",
+      sortable: false
     },
     {
       id: 2,
       value: "ticketnumber",
       label: "Ticket Number",
-      icon: <IoMdArrowDown />,
+      // icon: <IoMdArrowDown />,
+      sortable: true
     },
     {
       id: 3,
       value: "projectname",
       label: "Project Name",
-      icon: <IoMdArrowDown />,
+      // icon: <IoMdArrowDown />,
+      sortable: true
     },
     {
       id: 4,
       value: "subject",
       label: "Subject",
-      icon: <IoMdArrowDown />,
+      // icon: <IoMdArrowDown />,
+      sortable: true
     },
 
     {
       id: 5,
       value: "expecteddate",
       label: "Expected Date",
-      icon: <IoMdArrowDown />,
+      // icon: <IoMdArrowDown />,
+      sortable: true
     },
     {
       id: 6,
       value: "expecteddeliverydate",
       label: "Expected delivery Date",
-      icon: <IoMdArrowDown />,
+      // icon: <IoMdArrowDown />,
+      sortable: true
     },
 
     {
       id: 7,
       value: "severity",
       label: "Severity",
-      icon: <IoMdArrowDown />,
+      // icon: <IoMdArrowDown />,
+      sortable: true
     },
     {
       id: 8,
       value: "ticketaction",
       label: "Ticket Action",
+      sortable: false
     },
   ];
   const filteredData =
@@ -204,7 +212,7 @@ function AssignedTickets() {
             </div>
           </div>
           {/* Table */}
-          <ReusableTable headers={newHeaders} data={filteredData} />
+          <ReusableTable headers={newHeaders} data={filteredData} defaultSortConfig={{ key: "expecteddate", direction: "ascending" }}/>
           {/* Show "Load More" button only for "All Tickets" tab */}
           {activeTab === "alltickets" && visibleDataCount < data.length && (
             <div className="flex justify-start">
