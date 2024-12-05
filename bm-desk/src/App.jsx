@@ -11,6 +11,7 @@ import Viewproject from './components/Viewprojects';
 import ActionedTickets from './components/ActionedTickets';
 import TicketApprovals from './components/TicketApprovals';
 import AccountSettings from './components/AccountSettings';
+import Editaccountsettings from './components/Editaccountsettings';
 
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
         <Route path='/viewproject' element={<Viewproject/>}/>
         <Route path='/ticketapprovals' element={<TicketApprovals/>}/>
         <Route path='/accountsettings' element={<AccountSettings/>}/>
+        <Route path='/editaccountsettings' element={<Editaccountsettings/>}/>
         </Route>
         <Route path='/login' element={<Login/>}/>
         <Route path='/productivity' element={<Productivity/>}/>

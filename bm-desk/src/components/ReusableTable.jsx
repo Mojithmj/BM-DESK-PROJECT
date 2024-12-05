@@ -24,12 +24,12 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
+// import {
+//   Accordion,
+//   AccordionContent,
+//   AccordionItem,
+//   AccordionTrigger,
+// } from "@/components/ui/accordion";
 
 function ReusableTable({ data, headers, currentTab, defaultSortConfig }) {
   // State to manage visible tickets
