@@ -139,6 +139,11 @@ function AssignedTickets() {
     ? data.slice(0, visibleDataCount) // Show limited data for "All Tickets"
     : data.filter((ticket) => ticket.severity.toLowerCase() === activeTab);
 
+
+
+
+
+
   return (
     <div>
       {/* Navbar */}

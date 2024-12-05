@@ -1,11 +1,10 @@
 import React, { useState } from "react";
-import Navbar from "./Navbar";
-import Sidebar from "./Sidebar";
+
 import { Input } from "@/components/ui/input";
 import Pheader from "./Pheader";
 import { FiSearch } from "react-icons/fi";
 import ReusableTable from "./ReusableTable";
-import { IoMdArrowDown } from "react-icons/io";
+
 
 function AssignedTickets() {
   const [activeTab, setActiveTab] = useState("alltickets");
