@@ -16,20 +16,8 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Button } from "./ui/button";
 import { IoMdArrowDown, IoMdArrowUp } from "react-icons/io";
-import {
-  Sheet,
-  SheetContent,
-  SheetDescription,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "@/components/ui/sheet";
-// import {
-//   Accordion,
-//   AccordionContent,
-//   AccordionItem,
-//   AccordionTrigger,
-// } from "@/components/ui/accordion";
+
+import TicketsSidebar from "./TicketsSidebar";
 
 function ReusableTable({ data, headers, currentTab, defaultSortConfig }) {
   const [visibleCount, setVisibleCount] = useState(6);
