@@ -7,6 +7,7 @@ import { FiSearch } from "react-icons/fi";
 import ReusableTable from "./ReusableTable";
 
 
+
 function AssignedTickets() {
   const [activeTab, setActiveTab] = useState("alltickets");
   const [loading, setLoading] = useState(false); // To track loading state
@@ -69,6 +70,9 @@ function AssignedTickets() {
     { value: "critical", label: "Critical" },
     { value: "minor", label: "Minor" },
   ];
+
+
+
 
   const newHeaders = [
     // "Sl No",
@@ -191,6 +195,7 @@ function AssignedTickets() {
               <button
                 type="button"
                 className="text-white bg-blue-600 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-[5px] text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+                
               >
                 Create New Ticket
               </button>

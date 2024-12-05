@@ -4,21 +4,29 @@ import { Input } from "@/components/ui/input";
 import Pheader from "./Pheader";
 import { FiSearch } from "react-icons/fi";
 import ReusableTable from "./ReusableTable";
-
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import { Label } from "@/components/ui/label";
+// import { Input } from "@/components/ui/input";
 
 function AssignedTickets() {
   const [activeTab, setActiveTab] = useState("alltickets");
   const [loading, setLoading] = useState(false); // To track loading state
   const [visibleDataCount, setVisibleDataCount] = useState(6); // Number of tickets visible initially
 
-  
   // State to manage table data
   const [data, setData] = useState([
     {
       id: 1,
       ticketnumber: "TCKT5642",
       projectname: "Project A",
-      subject: 15,
+      subject: "A",
       // expecteddate: "20-05-2023",
       expecteddeliverydate: "20-10-2023",
       severity: "Critical",
@@ -27,7 +35,7 @@ function AssignedTickets() {
       id: 2,
       ticketnumber: "TCKT5643",
       projectname: "Project B",
-      subject: 15,
+      subject: "Hello",
       // expecteddate: "20-06-2023",
       // expecteddeliverydate: "20-10-2024",
       severity: "Minor",
@@ -36,7 +44,7 @@ function AssignedTickets() {
       id: 3,
       ticketnumber: "TCKT5644",
       projectname: "Project C",
-      subject: 15,
+      subject: "B",
       expecteddate: "20-09-2024",
       expecteddeliverydate: "20-09-2024",
       severity: "Major",
@@ -45,7 +53,7 @@ function AssignedTickets() {
       id: 4,
       ticketnumber: "TCKT5644",
       projectname: "Project D",
-      subject: 15,
+      subject: "Z",
       expecteddate: "20-12-2023",
       expecteddeliverydate: "20-02-2024",
       severity: "Major",
@@ -54,7 +62,7 @@ function AssignedTickets() {
       id: 5,
       ticketnumber: "TCKT5644",
       projectname: "Project E",
-      subject: 15,
+      subject: "N",
       expecteddate: "20-02-2023",
       expecteddeliverydate: "19-10-2024",
       severity: "Major",
@@ -63,7 +71,7 @@ function AssignedTickets() {
       id: 6,
       ticketnumber: "TCKT5644",
       projectname: "Project F",
-      subject: 15,
+      subject: "V",
       expecteddate: "20-11-2023",
       expecteddeliverydate: "20-10-2022",
       severity: "Major",
@@ -72,7 +80,7 @@ function AssignedTickets() {
       id: 7,
       ticketnumber: "TCKT5644",
       projectname: "Project 1",
-      subject: 15,
+      subject: "Y",
       expecteddate: "20-09-2023",
       expecteddeliverydate: "20-10-2021",
       severity: "Major",
@@ -88,7 +96,6 @@ function AssignedTickets() {
     }, 1000); // Simulate a 1-second delay for loading data
   };
 
-
   const tabs = [
     { value: "alltickets", label: "All Tickets" },
     { value: "major", label: "Major" },
@@ -97,40 +104,32 @@ function AssignedTickets() {
   ];
 
   const newHeaders = [
-    // "Sl No",
-    // "Ticket Number",
-    // "Project Name",
-    // "Subject",
-    // "Expected Date",
-    // "Expected Delivery Date",
-    // "Severity",
-    // "Ticket Action",
     {
       id: 1,
       value: "slno",
       label: "Sl No",
-      sortable: false
+      sortable: false,
     },
     {
       id: 2,
       value: "ticketnumber",
       label: "Ticket Number",
       // icon: <IoMdArrowDown />,
-      sortable: true
+      sortable: true,
     },
     {
       id: 3,
       value: "projectname",
       label: "Project Name",
       // icon: <IoMdArrowDown />,
-      sortable: true
+      sortable: true,
     },
     {
       id: 4,
       value: "subject",
       label: "Subject",
       // icon: <IoMdArrowDown />,
-      sortable: true
+      sortable: true,
     },
 
     {
@@ -138,14 +137,14 @@ function AssignedTickets() {
       value: "expecteddate",
       label: "Expected Date",
       // icon: <IoMdArrowDown />,
-      sortable: true
+      sortable: true,
     },
     {
       id: 6,
       value: "expecteddeliverydate",
       label: "Expected delivery Date",
       // icon: <IoMdArrowDown />,
-      sortable: true
+      sortable: true,
     },
 
     {
@@ -153,19 +152,19 @@ function AssignedTickets() {
       value: "severity",
       label: "Severity",
       // icon: <IoMdArrowDown />,
-      sortable: true
+      sortable: true,
     },
     {
       id: 8,
       value: "ticketaction",
       label: "Ticket Action",
-      sortable: false
+      sortable: false,
     },
   ];
   const filteredData =
-  activeTab === "alltickets"
-    ? data.slice(0, visibleDataCount) // Show limited data for "All Tickets"
-    : data.filter((ticket) => ticket.severity.toLowerCase() === activeTab);
+    activeTab === "alltickets"
+      ? data.slice(0, visibleDataCount) // Show limited data for "All Tickets"
+      : data.filter((ticket) => ticket.severity.toLowerCase() === activeTab);
 
   return (
     <div>
@@ -188,7 +187,7 @@ function AssignedTickets() {
                         : "bg-gray-50 text-black"
                     }`}
                   >
-                    {tab.label} 
+                    {tab.label}
                   </button>
                 ))}
               </div>
@@ -202,16 +201,69 @@ function AssignedTickets() {
                   className="border-none shadow-none !outline-none !p-0 !h-full"
                 />
               </div>
-              <button
+              {/* <button
                 type="button"
                 className="text-white bg-blue-600 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-[5px] text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
               >
                 Create New Ticket
-              </button>
+              </button> */}
+              <div>
+                <Dialog>
+                  {/* This button will act as the trigger for opening the dialog */}
+                  <DialogTrigger asChild>
+                    <button
+                      type="button"
+                      className="text-white bg-blue-600 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-[5px] text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+                    >
+                      Create New Ticket
+                    </button>
+                  </DialogTrigger>
+
+                  <DialogContent className="bg-white">
+                    <DialogHeader>
+                      <DialogTitle className="text-[#165DFF] text-[32px]">
+                        New Ticket
+                      </DialogTitle>
+                      <p className="text-[16px]">Submit a New Ticket</p>
+                      <div className="grid gap-4 py-4">
+                        <div className="grid grid-cols-4 items-center gap-4">
+                          <Label htmlFor="name" className="text-right">
+                            Name
+                          </Label>
+                          <Input
+                            id="name"
+                            value="Pedro Duarte"
+                            className="col-span-3"
+                          />
+                        </div>
+                        <div className="grid grid-cols-4 items-center gap-4">
+                          <Label htmlFor="username" className="text-right">
+                            Username
+                          </Label>
+                          <Input
+                            id="username"
+                            value="@peduarte"
+                            className="col-span-3"
+                          />
+                        </div>
+                      </div>
+                      <DialogDescription>
+                        This action cannot be undone. This will permanently
+                        delete your account and remove your data from our
+                        servers.
+                      </DialogDescription>
+                    </DialogHeader>
+                  </DialogContent>
+                </Dialog>
+              </div>
             </div>
           </div>
           {/* Table */}
-          <ReusableTable headers={newHeaders} data={filteredData} defaultSortConfig={{ key: "expecteddate", direction: "descending" }}/>
+          <ReusableTable
+            headers={newHeaders}
+            data={filteredData}
+            defaultSortConfig={{ key: "expecteddate", direction: "descending" }}
+          />
           {/* Show "Load More" button only for "All Tickets" tab */}
           {activeTab === "alltickets" && visibleDataCount < data.length && (
             <div className="flex justify-start">
