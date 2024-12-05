@@ -52,9 +52,9 @@ function Closedtickets() {
   };
   const tabs = [
     { value: "alltickets", label: "All Tickets" },
-    { value: "major", label: "Major" },
-    { value: "critical", label: "Critical" },
-    { value: "minor", label: "Minor" },
+    // { value: "major", label: "Major" },
+    // { value: "critical", label: "Critical" },
+    // { value: "minor", label: "Minor" },
   ];
 
   const newHeaders = [

@@ -3,62 +3,61 @@ import Avatariamge from "../assets/Avatar Image.png";
 import { FaCamera } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import Editaccountsettings from "./Editaccountsettings";
-
+import Privacyaccountsettings from "./Privacyaccountsettings";
 
 function AccountSettings() {
   // Set the default active tab to "profile"
-  const navigate=useNavigate();
+  const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState("profile");
 
   const tabs = [
     { value: "profile", label: "Profile" },
-    { value: "passwordandsecurity", label: "Password & Security" },
+    { value: "privacyandsecurity", label: "Privacy & Security" },
   ];
 
-  const [inputValues,setInputValues]=useState({
-    firstname:"",
-    lastname:"",
-    phonenumber:"",
-    emailaddress:"",
-    designation:""
-  })
+  const [inputValues, setInputValues] = useState({
+    firstname: "",
+    lastname: "",
+    phonenumber: "",
+    emailaddress: "",
+    designation: "",
+  });
 
-  const inputchange=(field,value)=>{
-    setInputValues((prev)=>({...prev,[field]:value}))
-  }
+  const inputchange = (field, value) => {
+    setInputValues((prev) => ({ ...prev, [field]: value }));
+  };
   const inputs = [
     {
       label: "First Name",
       placeholder: "Enter Your First Name",
-      value:inputValues.firstname,
-      field:"firstname"
+      value: inputValues.firstname,
+      field: "firstname",
     },
     {
       label: "Last Name",
       placeholder: "Enter Your Last Name",
-      value:inputValues.lastname,
-      field:"lastname"
+      value: inputValues.lastname,
+      field: "lastname",
     },
     {
       label: "Phone Number",
       placeholder: "Type Your Phone Number",
-      value:inputValues.phonenumber,
-      field:"phonenumber"
+      value: inputValues.phonenumber,
+      field: "phonenumber",
     },
     {
       label: "Email Address",
       placeholder: "Enter Your Email Address",
-      value:inputValues.emailaddress,
-      field:"emailaddress"
+      value: inputValues.emailaddress,
+      field: "emailaddress",
     },
     {
       label: "Designation",
       placeholder: "Role Description",
-      value:inputValues.designation,
-      field:"designation"
+      value: inputValues.designation,
+      field: "designation",
     },
   ];
-
 
   return (
     <div>
@@ -101,7 +100,7 @@ function AccountSettings() {
                         />
                       </svg>
                     )}
-                    {tab.value === "passwordandsecurity" && (
+                    {tab.value === "privacyandsecurity" && (
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="24"
@@ -133,36 +132,39 @@ function AccountSettings() {
             {/* Profile Settings */}
             <div className="h-[calc(85vh_-_130px)] overflow-y-auto overflow-auto pr-3 w-full">
               {activeTab === "profile" && (
-                <div className=" flex flex-col gap-10">
-
+                <div className=" flex flex-col gap-10 ">
                   {/* content to be displayed */}
                   <div className="flex justify-between w-full">
-                  <div>
-                    <p className="text-[#4E5969]  text-[20px]  font-medium">
-                      Profile Settings
-                    </p>
-                    <p className="text-[#4E5969] text-[16px] font-">
-                      Personal & Profile Information Settings
-                    </p>
-                  </div>
-                  <div onClick={()=>{navigate('/editaccountsettings')}}>
-                  <button className="gap-[10px] bg-[#1D2129] rounded-[4px] text-[#FFFFFF] flex items-center px-4 py-2 ">
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width="20"
-    height="21"
-    viewBox="0 0 20 21"
-    fill="none"
-    className="mr-2"
-  >
-    <path
-      d="M11.7167 8L12.5 8.78333L4.93333 16.3333H4.16667V15.5667L11.7167 8ZM14.7167 3C14.5083 3 14.2917 3.08333 14.1333 3.24167L12.6083 4.76667L15.7333 7.89167L17.2583 6.36667C17.5833 6.04167 17.5833 5.5 17.2583 5.19167L15.3083 3.24167C15.1417 3.075 14.9333 3 14.7167 3ZM11.7167 5.65833L2.5 14.875V18H5.625L14.8417 8.78333L11.7167 5.65833Z"
-      fill="white"
-    />
-  </svg>
-  <span>Edit Profile</span>
-</button>
-                  </div>
+                    <div>
+                      <p className="text-[#4E5969]  text-[20px]  font-medium">
+                        Profile Settings
+                      </p>
+                      <p className="text-[#4E5969] text-[16px] font-">
+                        Personal & Profile Information Settings
+                      </p>
+                    </div>
+                    <div
+                      onClick={() => {
+                        navigate("/editaccountsettings");
+                      }}
+                    >
+                      <button className="gap-[10px] bg-[#1D2129] rounded-[4px] text-[#FFFFFF] flex items-center px-4 py-2 ">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="20"
+                          height="21"
+                          viewBox="0 0 20 21"
+                          fill="none"
+                          className="mr-2"
+                        >
+                          <path
+                            d="M11.7167 8L12.5 8.78333L4.93333 16.3333H4.16667V15.5667L11.7167 8ZM14.7167 3C14.5083 3 14.2917 3.08333 14.1333 3.24167L12.6083 4.76667L15.7333 7.89167L17.2583 6.36667C17.5833 6.04167 17.5833 5.5 17.2583 5.19167L15.3083 3.24167C15.1417 3.075 14.9333 3 14.7167 3ZM11.7167 5.65833L2.5 14.875V18H5.625L14.8417 8.78333L11.7167 5.65833Z"
+                            fill="white"
+                          />
+                        </svg>
+                        <span>Edit Profile</span>
+                      </button>
+                    </div>
                   </div>
 
                   {/* imag and icon */}
@@ -188,33 +190,39 @@ function AccountSettings() {
                     </div>
                     {/* input */}
                     <div className="grid grid-cols-2 gap-8">
-  {inputs.length > 0 ? (
-    inputs.map((input) => (
-      <div key={input.field} className="mb-4">
-        <p className="text-[#1D2129] text-[16px] font-medium">
-          {input.label}
-        </p>
-        <input
-          type="text"
-          value={input.value}
-          placeholder={input.placeholder}
-          disabled
-          className="text-[#86909C] px-[16px] py-[10px] border-[1px] rounded-[4px] border-[#CED4DA] w-full"
-        />
-      </div>
-    ))
-  ) : (
-    <Editaccountsettings
-      inputs={inputs}
-      onInputChange={inputchange}
-    />
-  )}
-</div>
-
+                      {inputs.length > 0 ? (
+                        inputs.map((input) => (
+                          <div key={input.field} className="mb-4">
+                            <p className="text-[#1D2129] text-[16px] font-medium">
+                              {input.label}
+                            </p>
+                            <input
+                              type="text"
+                              value={input.value}
+                              placeholder={input.placeholder}
+                              disabled
+                              className="text-[#86909C] px-[16px] py-[10px] border-[1px] rounded-[4px] border-[#CED4DA] w-full"
+                            />
+                          </div>
+                        ))
+                      ) : (
+                        <Editaccountsettings
+                          inputs={inputs}
+                          onInputChange={inputchange}
+                        />
+                      )}
+                    </div>
                   </div>
-                 
                 </div>
               )}
+
+              <div>
+                {activeTab === "privacyandsecurity" && (
+                  <div>
+                    <Privacyaccountsettings />
+                  </div>
+                )}
+              </div>
             </div>
           </div>
         </div>

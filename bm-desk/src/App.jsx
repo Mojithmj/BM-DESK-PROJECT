@@ -12,6 +12,7 @@ import ActionedTickets from './components/ActionedTickets';
 import TicketApprovals from './components/TicketApprovals';
 import AccountSettings from './components/AccountSettings';
 import Editaccountsettings from './components/Editaccountsettings';
+import Privacyaccountsettings from './components/Privacyaccountsettings';
 
 
 
@@ -30,11 +31,13 @@ function App() {
         <Route path='/ticketapprovals' element={<TicketApprovals/>}/>
         <Route path='/accountsettings' element={<AccountSettings/>}/>
         <Route path='/editaccountsettings' element={<Editaccountsettings/>}/>
+       
         </Route>
         <Route path='/login' element={<Login/>}/>
         <Route path='/productivity' element={<Productivity/>}/>
         <Route path='/assignedtickets' element={<AssignedTickets/>}/>
         <Route path='/actionedtickets' element={<ActionedTickets/>}/>
+        <Route path='/privacyaccountsettings' element={<Privacyaccountsettings/>}/>
         
         
 
