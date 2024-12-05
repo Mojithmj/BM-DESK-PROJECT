@@ -1,61 +1,37 @@
 import React, { useState } from "react";
 import Avatariamge from "../assets/Avatar Image.png";
 import { FaCamera } from "react-icons/fa";
-import { useNavigate } from "react-router-dom";
-import Editaccountsettings from "./Editaccountsettings";
 
 
-function AccountSettings() {
+
+function Editaccountsettings({  onInputChange }) {
   // Set the default active tab to "profile"
-  const navigate=useNavigate();
   const [activeTab, setActiveTab] = useState("profile");
 
   const tabs = [
     { value: "profile", label: "Profile" },
     { value: "passwordandsecurity", label: "Password & Security" },
   ];
-
-  const [inputValues,setInputValues]=useState({
-    firstname:"",
-    lastname:"",
-    phonenumber:"",
-    emailaddress:"",
-    designation:""
-  })
-
-  const inputchange=(field,value)=>{
-    setInputValues((prev)=>({...prev,[field]:value}))
-  }
   const inputs = [
     {
       label: "First Name",
       placeholder: "Enter Your First Name",
-      value:inputValues.firstname,
-      field:"firstname"
     },
     {
       label: "Last Name",
       placeholder: "Enter Your Last Name",
-      value:inputValues.lastname,
-      field:"lastname"
     },
     {
       label: "Phone Number",
       placeholder: "Type Your Phone Number",
-      value:inputValues.phonenumber,
-      field:"phonenumber"
     },
     {
       label: "Email Address",
       placeholder: "Enter Your Email Address",
-      value:inputValues.emailaddress,
-      field:"emailaddress"
     },
     {
       label: "Designation",
       placeholder: "Role Description",
-      value:inputValues.designation,
-      field:"designation"
     },
   ];
 
@@ -134,35 +110,42 @@ function AccountSettings() {
             <div className="h-[calc(85vh_-_130px)] overflow-y-auto overflow-auto pr-3 w-full">
               {activeTab === "profile" && (
                 <div className=" flex flex-col gap-10">
-
                   {/* content to be displayed */}
                   <div className="flex justify-between w-full">
-                  <div>
-                    <p className="text-[#4E5969]  text-[20px]  font-medium">
-                      Profile Settings
-                    </p>
-                    <p className="text-[#4E5969] text-[16px] font-">
-                      Personal & Profile Information Settings
-                    </p>
-                  </div>
-                  <div onClick={()=>{navigate('/editaccountsettings')}}>
-                  <button className="gap-[10px] bg-[#1D2129] rounded-[4px] text-[#FFFFFF] flex items-center px-4 py-2 ">
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width="20"
-    height="21"
-    viewBox="0 0 20 21"
-    fill="none"
-    className="mr-2"
-  >
-    <path
-      d="M11.7167 8L12.5 8.78333L4.93333 16.3333H4.16667V15.5667L11.7167 8ZM14.7167 3C14.5083 3 14.2917 3.08333 14.1333 3.24167L12.6083 4.76667L15.7333 7.89167L17.2583 6.36667C17.5833 6.04167 17.5833 5.5 17.2583 5.19167L15.3083 3.24167C15.1417 3.075 14.9333 3 14.7167 3ZM11.7167 5.65833L2.5 14.875V18H5.625L14.8417 8.78333L11.7167 5.65833Z"
-      fill="white"
-    />
-  </svg>
-  <span>Edit Profile</span>
-</button>
-                  </div>
+                    <div>
+                      <p className="text-[#4E5969]  text-[20px]  font-medium">
+                        Profile Settings
+                      </p>
+                      <p className="text-[#4E5969] text-[16px] font-">
+                        Personal & Profile Information Settings
+                      </p>
+                    </div>
+                    <div className="flex gap-[14px]">
+                    <div>
+                        <button className="text-[#1D2129] text-[16px] font-normal px-[16px] py-[8px] rounded-[4px] border-[1px] border-[#1D2129]">Discard</button>
+                    </div>
+                    <div>
+                      <button className="gap-[10px] bg-[#1D2129] rounded-[4px] text-[#FFFFFF] flex items-center px-4 py-2 ">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="20"
+                          height="21"
+                          viewBox="0 0 20 21"
+                          fill="none"
+                        >
+                          <path
+                            d="M14.1665 17.7916H5.83317C5.22538 17.7916 4.64249 17.5501 4.21272 17.1204C3.78295 16.6906 3.5415 16.1077 3.5415 15.4999V5.49992C3.5415 4.89213 3.78295 4.30924 4.21272 3.87947C4.64249 3.44969 5.22538 3.20825 5.83317 3.20825H12.0832C12.2489 3.2084 12.4077 3.27434 12.5248 3.39159L16.2748 7.16659C16.3921 7.28368 16.458 7.44255 16.4582 7.60825V15.4999C16.4582 16.1077 16.2167 16.6906 15.787 17.1204C15.3572 17.5501 14.7743 17.7916 14.1665 17.7916ZM5.83317 4.45825C5.5569 4.45825 5.29195 4.568 5.0966 4.76335C4.90125 4.9587 4.7915 5.22365 4.7915 5.49992V15.4999C4.7915 15.7762 4.90125 16.0411 5.0966 16.2365C5.29195 16.4318 5.5569 16.5416 5.83317 16.5416H14.1665C14.4428 16.5416 14.7077 16.4318 14.9031 16.2365C15.0984 16.0411 15.2082 15.7762 15.2082 15.4999V7.84159L11.8248 4.45825H5.83317Z"
+                            fill="white"
+                          />
+                          <path
+                            d="M13.9582 17.1666H12.7082V11.9583H7.29154V17.1666H6.04154V11.7499C6.04154 11.4737 6.15128 11.2087 6.34663 11.0133C6.54198 10.818 6.80694 10.7083 7.0832 10.7083H12.9165C13.1928 10.7083 13.4578 10.818 13.6531 11.0133C13.8485 11.2087 13.9582 11.4737 13.9582 11.7499V17.1666ZM10.3915 7.79159H7.1082C6.96703 7.7905 6.82746 7.76161 6.69745 7.70658C6.56744 7.65154 6.44954 7.57144 6.35049 7.47084C6.25144 7.37024 6.17318 7.25112 6.12017 7.12028C6.06716 6.98943 6.04044 6.84942 6.04154 6.70825V3.83325H7.29154V6.54159H10.2082V3.83325H11.4582V6.70825C11.4593 6.84942 11.4326 6.98943 11.3796 7.12028C11.3266 7.25112 11.2483 7.37024 11.1492 7.47084C11.0502 7.57144 10.9323 7.65154 10.8023 7.70658C10.6723 7.76161 10.5327 7.7905 10.3915 7.79159Z"
+                            fill="white"
+                          />
+                        </svg>
+                        <span>Save Changes</span>
+                      </button>
+                    </div>
+                    </div>
                   </div>
 
                   {/* imag and icon */}
@@ -186,33 +169,22 @@ function AccountSettings() {
                         Update Your Persnal Information
                       </p>
                     </div>
-                    {/* input */}
-                    <div className="grid grid-cols-2 gap-8">
-  {inputs.length > 0 ? (
-    inputs.map((input) => (
-      <div key={input.field} className="mb-4">
-        <p className="text-[#1D2129] text-[16px] font-medium">
-          {input.label}
-        </p>
-        <input
-          type="text"
-          value={input.value}
-          placeholder={input.placeholder}
-          disabled
-          className="text-[#86909C] px-[16px] py-[10px] border-[1px] rounded-[4px] border-[#CED4DA] w-full"
-        />
-      </div>
-    ))
-  ) : (
-    <Editaccountsettings
-      inputs={inputs}
-      onInputChange={inputchange}
-    />
-  )}
-</div>
-
+                   <div className="grid grid-cols-2 gap-8">
+                   {inputs.map((input) => (
+          <div key={input.field} className="mb-4">
+            <p className="text-[#1D2129] text-[16px] font-medium">{input.label}</p>
+            <input
+              type="text"
+              value={input.value}
+              placeholder={input.placeholder}
+              onChange={(e) => onInputChange(input.field, e.target.value)}
+              className="text-[#86909C] px-[16px] py-[10px] border-[1px] rounded-[4px] border-[#CED4DA] w-full"
+            />
+          </div>
+        ))}
+    </div>
+                    
                   </div>
-                 
                 </div>
               )}
             </div>
@@ -223,4 +195,4 @@ function AccountSettings() {
   );
 }
 
-export default AccountSettings;
+export default Editaccountsettings;

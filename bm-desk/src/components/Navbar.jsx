@@ -1,16 +1,35 @@
-import React, { useState } from "react";
+import React, { useState,useRef,useEffect } from "react";
 import image1 from "../assets/Group 1.jpg";
 import { FiSearch } from "react-icons/fi";
 import { PiBellThin } from "react-icons/pi";
 import Avatarimage from "../assets/Avatar.png";
 import { IoIosArrowDropdownCircle } from "react-icons/io";
 import { IoSettingsOutline } from "react-icons/io5";
+import { useNavigate } from "react-router-dom";
 
 function Navbar() {
   const [circleDropdown, setCircleDropdown] = useState(false);
-  const cicledrop = () => {
-    setCircleDropdown(!circleDropdown);
+  const dropdownRef = useRef(null);
+ 
+
+  const toggleDropdown = () => {
+    setCircleDropdown((prev) => !prev);
   };
+
+  const handleOutsideClick = (event) => {
+    if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+      setCircleDropdown(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("mousedown", handleOutsideClick);
+    return () => {
+      document.removeEventListener("mousedown", handleOutsideClick);
+    };
+  }, []);
+
+  const navigate = useNavigate();
   return (
     <div className="w-full">
       <div className="flex flex-row items-center justify-between p-3 border-b w-full">
@@ -52,21 +71,33 @@ function Navbar() {
           </div>
           {/* dropdown circle */}
           <div>
-            <button onClick={cicledrop}>
-              <IoIosArrowDropdownCircle className="text-[11px] md:text-[17px] lg:text-[21px] 2xl:text-[26px]" />
-            </button>
-            {circleDropdown && (
-              <div className="absolute text-nowrap right-3 bg-white border border-gray-300 shadow-md rounded mt-1">
-                <ul>
-                  <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">
-                    Login
-                  </li>
-                  <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">
-                    Account Settings
-                  </li>
-                </ul>
-              </div>
-            )}
+          <div className="relative text-nowrap" ref={dropdownRef}>
+      <button onClick={toggleDropdown}>
+        <IoIosArrowDropdownCircle className="text-[11px] md:text-[17px] lg:text-[21px] 2xl:text-[26px]" />
+      </button>
+      {circleDropdown && (
+        <div className="absolute right-3 bg-white border border-gray-300 shadow-md rounded mt-1">
+          <ul>
+            <li
+              className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
+              onClick={() => setCircleDropdown(false)}
+            >
+              Logout
+            </li>
+            <li
+              className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
+              onClick={() => {
+                setCircleDropdown(false);
+                navigate("/accountsettings");
+              }}
+            >
+              Account Settings
+            </li>
+          </ul>
+        </div>
+      )}
+    </div>
+            
           </div>
 
           <IoSettingsOutline className="text-[11px] md:text-[17px] lg:text-[21px] 2xl:text-[26px]" />
