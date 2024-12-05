@@ -202,7 +202,7 @@ function AssignedTickets() {
                 />
               </div>
               <div>
-                <Dialog>
+                <Dialog className="!border !rounded-md">
                   {/* This button will act as the trigger for opening the dialog */}
                   <DialogTrigger asChild>
                     <button
@@ -213,7 +213,7 @@ function AssignedTickets() {
                     </button>
                   </DialogTrigger>
 
-                  <DialogContent className="bg-white max-h-[90vh] overflow-y-auto">
+                  <DialogContent className="bg-white max-h-[90vh] overflow-y-auto border rounded-md">
                     <DialogHeader>
                       <div className="grid">
                         <DialogTitle className="text-[#165DFF] text-[32px]">
@@ -227,7 +227,7 @@ function AssignedTickets() {
                         <div className="flex flex-col">
                           <Label
                             htmlFor="emailAddress"
-                            className="mb-2 font-normal text-[14px]"
+                            className="mb-2 font-normal text-[12px]"
                           >
                             Email Address
                           </Label>
@@ -242,7 +242,7 @@ function AssignedTickets() {
                         <div className="flex flex-col">
                           <Label
                             htmlFor="instituteName"
-                            className="mb-2 font-normal text-[14px]"
+                            className="mb-2 font-normal text-[12px]"
                           >
                             Institute Name
                           </Label>
@@ -259,7 +259,7 @@ function AssignedTickets() {
                         <div className="flex flex-col">
                           <Label
                             htmlFor="department"
-                            className="mb-2 font-normal text-[14px]"
+                            className="mb-2 font-normal text-[12px]"
                           >
                             Department
                           </Label>
@@ -274,7 +274,7 @@ function AssignedTickets() {
                         <div className="flex flex-col">
                           <Label
                             htmlFor="severitylevel"
-                            className="mb-2 font-normal text-[14px]"
+                            className="mb-2 font-normal text-[12px]"
                           >
                             Severity Level
                           </Label>
@@ -289,7 +289,7 @@ function AssignedTickets() {
                         <div className="flex flex-col">
                           <Label
                             htmlFor="project"
-                            className="mb-2 font-normal text-[14px]"
+                            className="mb-2 font-normal text-[12px]"
                           >
                             Project
                           </Label>
@@ -304,7 +304,7 @@ function AssignedTickets() {
                         <div className="flex flex-col">
                           <Label
                             htmlFor="screennumber"
-                            className="mb-2 font-normal text-[14px]"
+                            className="mb-2 font-normal text-[12px]"
                           >
                             Screen Number
                           </Label>
@@ -319,7 +319,7 @@ function AssignedTickets() {
                         <div className="flex flex-col">
                           <Label
                             htmlFor="ticketsubject"
-                            className="mb-2 font-normal text-[14px]"
+                            className="mb-2 font-normal text-[12px]"
                           >
                             Ticket Subject
                           </Label>
@@ -334,7 +334,7 @@ function AssignedTickets() {
                         <div className="flex flex-col">
                           <Label
                             htmlFor="attachment"
-                            className="mb-2 font-normal text-[14px]"
+                            className="mb-2 font-normal text-[12px]"
                           >
                             Select Attachment
                           </Label>
@@ -357,13 +357,13 @@ function AssignedTickets() {
                         <div className="flex flex-col">
                           <Label
                             htmlFor="instituteName"
-                            className="mb-2 font-normal text-[14px]"
+                            className="mb-2 font-normal text-[12px]"
                           >
                             Ticket description
                           </Label>
                           <textarea
                             id="instituteName"
-                            className="w-full h-[100px] p-2 border border-[#E5E6EB]  rounded-md resize-none focus"
+                            className="w-full h-[100px] p-2 border border-[#E5E6EB] placeholder:text-[11px]  rounded-md resize-none focus"
                             placeholder="Enter Ticket Description"
                           />
                         </div>
