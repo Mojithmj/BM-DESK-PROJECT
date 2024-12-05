@@ -11,7 +11,7 @@ import Viewproject from './components/Viewprojects';
 import ActionedTickets from './components/ActionedTickets';
 import TicketApprovals from './components/TicketApprovals';
 import AccountSettings from './components/AccountSettings';
-import NewTicket from './components/NewTicket';
+
 
 
 function App() {
@@ -33,7 +33,7 @@ function App() {
         <Route path='/productivity' element={<Productivity/>}/>
         <Route path='/assignedtickets' element={<AssignedTickets/>}/>
         <Route path='/actionedtickets' element={<ActionedTickets/>}/>
-        <Route path='/newticket' element={<NewTicket/>}/>
+        
         
 
 
