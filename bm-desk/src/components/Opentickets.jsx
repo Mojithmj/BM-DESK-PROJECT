@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-
-import { Input } from "@/components/ui/input";
 import Pheader from "./Pheader";
 import { FiSearch } from "react-icons/fi";
 import ReusableTable from "./ReusableTable";
@@ -13,7 +11,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Label } from "@/components/ui/label";
-// import { Input } from "@/components/ui/input";
+import { Input } from "@/components/ui/input";
 
 function AssignedTickets() {
   const [activeTab, setActiveTab] = useState("alltickets");
@@ -181,7 +179,7 @@ function AssignedTickets() {
                   <button
                     key={tab.value}
                     onClick={() => setActiveTab(tab.value)}
-                    className={`font-inter text-[16px] font-normal p-[6px] rounded-[4px] px-4 transition-colors ${
+                    className={`font-inter text-[16px]  font-normal p-[6px] rounded-[4px] px-4 transition-colors ${
                       activeTab === tab.value
                         ? "bg-black text-white"
                         : "bg-gray-50 text-black"
@@ -202,7 +200,7 @@ function AssignedTickets() {
                 />
               </div>
               <div>
-                <Dialog>
+                <Dialog className="!border !rounded-md">
                   {/* This button will act as the trigger for opening the dialog */}
                   <DialogTrigger asChild>
                     <button
@@ -213,13 +211,13 @@ function AssignedTickets() {
                     </button>
                   </DialogTrigger>
 
-                  <DialogContent className="bg-white max-h-[90vh] overflow-y-auto">
+                  <DialogContent className="bg-white max-h-[90vh] overflow-y-auto border rounded-md">
                     <DialogHeader>
                       <div className="grid">
-                        <DialogTitle className="text-[#165DFF] text-[32px]">
+                        <DialogTitle className="text-[#165DFF] text-[26px]">
                           New Ticket
                         </DialogTitle>
-                        <p className="text-[16px] ">Submit a New Ticket</p>
+                        <p className="text-[14px]  ">Submit a New Ticket</p>
                       </div>
 
                       <div className="grid grid-cols-1 gap-4 py-4">
@@ -227,14 +225,14 @@ function AssignedTickets() {
                         <div className="flex flex-col">
                           <Label
                             htmlFor="emailAddress"
-                            className="mb-2 font-normal text-[14px]"
+                            className="mb-2 font-normal text-[12px]"
                           >
                             Email Address
                           </Label>
                           <Input
                             id="emailAddress"
                             placeholder="Enter Your Email Address"
-                            className="w-full text-[#86909C] border border-[#E5E6EB]"
+                            className="w-full text-[#86909C] placeholder:text-[12px] border border-[#E5E6EB]"
                           />
                         </div>
 
@@ -242,14 +240,14 @@ function AssignedTickets() {
                         <div className="flex flex-col">
                           <Label
                             htmlFor="instituteName"
-                            className="mb-2 font-normal text-[14px]"
+                            className="mb-2 font-normal text-[12px]"
                           >
                             Institute Name
                           </Label>
                           <Input
                             id="instituteName"
                             placeholder="Enter Your Institute Name"
-                            className="w-full text-black placeholder:text-[#86909C] border border-[#E5E6EB]"
+                            className="w-full text-black placeholder:text-[#86909C] placeholder:text-[12px] border border-[#E5E6EB]"
                           />
                         </div>
                       </div>
@@ -259,14 +257,14 @@ function AssignedTickets() {
                         <div className="flex flex-col">
                           <Label
                             htmlFor="department"
-                            className="mb-2 font-normal text-[14px]"
+                            className="mb-2 font-normal text-[12px]"
                           >
                             Department
                           </Label>
                           <Input
                             id="department"
                             placeholder="Select Project Name from list"
-                            className="w-full text-[#86909C] border border-[#E5E6EB]"
+                            className="w-full text-[#86909C] placeholder:text-[12px] border border-[#E5E6EB]"
                           />
                         </div>
 
@@ -274,14 +272,14 @@ function AssignedTickets() {
                         <div className="flex flex-col">
                           <Label
                             htmlFor="severitylevel"
-                            className="mb-2 font-normal text-[14px]"
+                            className="mb-2 font-normal text-[12px]"
                           >
                             Severity Level
                           </Label>
                           <Input
                             id="severitylevel"
                             placeholder="Select Severity Level from list"
-                            className="w-full text-[#86909C] border border-[#E5E6EB]"
+                            className="w-full text-[#86909C] placeholder:text-[12px] border border-[#E5E6EB]"
                           />
                         </div>
 
@@ -289,14 +287,14 @@ function AssignedTickets() {
                         <div className="flex flex-col">
                           <Label
                             htmlFor="project"
-                            className="mb-2 font-normal text-[14px]"
+                            className="mb-2 font-normal text-[12px]"
                           >
                             Project
                           </Label>
                           <Input
                             id="project"
                             placeholder="Select Project from list"
-                            className="w-full text-[#86909C] border border-[#E5E6EB]"
+                            className="w-full text-[#86909C] placeholder:text-[12px] border border-[#E5E6EB]"
                           />
                         </div>
 
@@ -304,14 +302,14 @@ function AssignedTickets() {
                         <div className="flex flex-col">
                           <Label
                             htmlFor="screennumber"
-                            className="mb-2 font-normal text-[14px]"
+                            className="mb-2 font-normal text-[12px]"
                           >
                             Screen Number
                           </Label>
                           <Input
                             id="screennumber"
                             placeholder="Enter Screen Number"
-                            className="w-full text-[#86909C] border border-[#E5E6EB]"
+                            className="w-full text-[#86909C] placeholder:text-[12px] border border-[#E5E6EB]"
                           />
                         </div>
                       </div>
@@ -319,14 +317,14 @@ function AssignedTickets() {
                         <div className="flex flex-col">
                           <Label
                             htmlFor="ticketsubject"
-                            className="mb-2 font-normal text-[14px]"
+                            className="mb-2 font-normal text-[12px]"
                           >
                             Ticket Subject
                           </Label>
                           <Input
                             id="ticketsubject"
                             placeholder="Enter Ticket Subject"
-                            className="w-full text-[#86909C] border border-[#E5E6EB]"
+                            className="w-full text-[#86909C] placeholder:text-[12px] border border-[#E5E6EB]"
                           />
                         </div>
 
@@ -334,36 +332,27 @@ function AssignedTickets() {
                         <div className="flex flex-col">
                           <Label
                             htmlFor="attachment"
-                            className="mb-2 font-normal text-[14px]"
+                            className="mb-2 font-normal text-[12px]"
                           >
                             Select Attachment
                           </Label>
                           <Input
                             id="attachment"
                             placeholder="Select Attachment"
-                            className="w-full text-[#86909C] border border-[#E5E6EB]"
+                            className="w-full text-[#86909C] placeholder:text-[12px] border border-[#E5E6EB]"
                           />
                         </div>
-                        {/* <div className="flex flex-col">
-                          <Label htmlFor="instituteName" className="mb-2">
-                            Ticket description
-                          </Label>
-                          <Input
-                            id="instituteName"
-                            // value="@peduarte"
-                            className="w-full h-[100px]"
-                          />
-                        </div> */}
+
                         <div className="flex flex-col">
                           <Label
                             htmlFor="instituteName"
-                            className="mb-2 font-normal text-[14px]"
+                            className="mb-2 font-normal text-[12px]"
                           >
                             Ticket description
                           </Label>
                           <textarea
                             id="instituteName"
-                            className="w-full h-[100px] p-2 border border-[#E5E6EB]  rounded-md resize-none focus"
+                            className="w-full h-[100px] p-2 border border-[#E5E6EB] placeholder:text-[13px]  rounded-md resize-none focus"
                             placeholder="Enter Ticket Description"
                           />
                         </div>
@@ -372,13 +361,13 @@ function AssignedTickets() {
                     <div className="grid grid-cols-2 gap-4">
                       <button
                         type="submit"
-                        className="bg-white text-[#165DFF] py-2 px-4 rounded border border-[#165DFF]"
+                        className="bg-white text-[#165DFF] py-1 px-3 rounded border border-[#165DFF] text-[14px]"
                       >
                         Clear
                       </button>
                       <button
                         type="button"
-                        className="bg-[#165DFF] text-white py-2 px-4 rounded"
+                        className="bg-[#165DFF] text-white py-1 px-3 rounded text-[14px]"
                       >
                         Submit
                       </button>

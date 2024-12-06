@@ -3,6 +3,15 @@ import Pheader from "./Pheader";
 import { FiSearch } from "react-icons/fi";
 import { Input } from "@/components/ui/input";
 import ReusableTable from "./ReusableTable";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import { Label } from "@/components/ui/label";
 
 function TicketApprovals() {
   const [activeTab, setActiveTab] = useState("alltickets");
@@ -140,15 +149,195 @@ function TicketApprovals() {
                   className="border-none shadow-none !outline-none !p-0 !h-full"
                 />
               </div>
-              <button
+              {/* <button
                 type="button"
                 className="text-white bg-blue-600 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-[5px] text-sm px-4 py-2"
               >
                 Create New Ticket
-              </button>
+              </button> */}
+              <div>
+                <Dialog className="!border !rounded-md">
+                  {/* This button will act as the trigger for opening the dialog */}
+                  <DialogTrigger asChild>
+                    <button
+                      type="button"
+                      className="text-white bg-blue-600 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-[5px] text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+                    >
+                      Create New Ticket
+                    </button>
+                  </DialogTrigger>
+
+                  <DialogContent className="bg-white max-h-[90vh] overflow-y-auto border rounded-md">
+                    <DialogHeader>
+                      <div className="grid">
+                        <DialogTitle className="text-[#165DFF] text-[26px]">
+                          New Ticket
+                        </DialogTitle>
+                        <p className="text-[14px]  ">Submit a New Ticket</p>
+                      </div>
+
+                      <div className="grid grid-cols-1 gap-4 py-4">
+                        {/* Email Address */}
+                        <div className="flex flex-col">
+                          <Label
+                            htmlFor="emailAddress"
+                            className="mb-2 font-normal text-[12px]"
+                          >
+                            Email Address
+                          </Label>
+                          <Input
+                            id="emailAddress"
+                            placeholder="Enter Your Email Address"
+                            className="w-full text-[#86909C] placeholder:text-[12px] border border-[#E5E6EB]"
+                          />
+                        </div>
+
+                        {/* Institute Name */}
+                        <div className="flex flex-col">
+                          <Label
+                            htmlFor="instituteName"
+                            className="mb-2 font-normal text-[12px]"
+                          >
+                            Institute Name
+                          </Label>
+                          <Input
+                            id="instituteName"
+                            placeholder="Enter Your Institute Name"
+                            className="w-full text-black placeholder:text-[#86909C] placeholder:text-[12px] border border-[#E5E6EB]"
+                          />
+                        </div>
+                      </div>
+
+                      <div className="grid grid-cols-2 gap-4">
+                        {/* Department */}
+                        <div className="flex flex-col">
+                          <Label
+                            htmlFor="department"
+                            className="mb-2 font-normal text-[12px]"
+                          >
+                            Department
+                          </Label>
+                          <Input
+                            id="department"
+                            placeholder="Select Project Name from list"
+                            className="w-full text-[#86909C] placeholder:text-[12px] border border-[#E5E6EB]"
+                          />
+                        </div>
+
+                        {/* Severity Level */}
+                        <div className="flex flex-col">
+                          <Label
+                            htmlFor="severitylevel"
+                            className="mb-2 font-normal text-[12px]"
+                          >
+                            Severity Level
+                          </Label>
+                          <Input
+                            id="severitylevel"
+                            placeholder="Select Severity Level from list"
+                            className="w-full text-[#86909C] placeholder:text-[12px] border border-[#E5E6EB]"
+                          />
+                        </div>
+
+                        {/* Project */}
+                        <div className="flex flex-col">
+                          <Label
+                            htmlFor="project"
+                            className="mb-2 font-normal text-[12px]"
+                          >
+                            Project
+                          </Label>
+                          <Input
+                            id="project"
+                            placeholder="Select Project from list"
+                            className="w-full text-[#86909C] placeholder:text-[12px] border border-[#E5E6EB]"
+                          />
+                        </div>
+
+                        {/* Screen Number */}
+                        <div className="flex flex-col">
+                          <Label
+                            htmlFor="screennumber"
+                            className="mb-2 font-normal text-[12px]"
+                          >
+                            Screen Number
+                          </Label>
+                          <Input
+                            id="screennumber"
+                            placeholder="Enter Screen Number"
+                            className="w-full text-[#86909C] placeholder:text-[12px] border border-[#E5E6EB]"
+                          />
+                        </div>
+                      </div>
+                      <div className="grid grid-cols-1 gap-4 py-4">
+                        <div className="flex flex-col">
+                          <Label
+                            htmlFor="ticketsubject"
+                            className="mb-2 font-normal text-[12px]"
+                          >
+                            Ticket Subject
+                          </Label>
+                          <Input
+                            id="ticketsubject"
+                            placeholder="Enter Ticket Subject"
+                            className="w-full text-[#86909C] placeholder:text-[12px] border border-[#E5E6EB]"
+                          />
+                        </div>
+
+                        {/* Select Attachment */}
+                        <div className="flex flex-col">
+                          <Label
+                            htmlFor="attachment"
+                            className="mb-2 font-normal text-[12px]"
+                          >
+                            Select Attachment
+                          </Label>
+                          <Input
+                            id="attachment"
+                            placeholder="Select Attachment"
+                            className="w-full text-[#86909C] placeholder:text-[12px] border border-[#E5E6EB]"
+                          />
+                        </div>
+
+                        <div className="flex flex-col">
+                          <Label
+                            htmlFor="instituteName"
+                            className="mb-2 font-normal text-[12px]"
+                          >
+                            Ticket description
+                          </Label>
+                          <textarea
+                            id="instituteName"
+                            className="w-full h-[100px] p-2 border border-[#E5E6EB] placeholder:text-[13px]  rounded-md resize-none focus"
+                            placeholder="Enter Ticket Description"
+                          />
+                        </div>
+                      </div>
+                    </DialogHeader>
+                    <div className="grid grid-cols-2 gap-4">
+                      <button
+                        type="submit"
+                        className="bg-white text-[#165DFF] py-1 px-3 rounded border border-[#165DFF] text-[14px]"
+                      >
+                        Clear
+                      </button>
+                      <button
+                        type="button"
+                        className="bg-[#165DFF] text-white py-1 px-3 rounded text-[14px]"
+                      >
+                        Submit
+                      </button>
+                    </div>
+                  </DialogContent>
+                </Dialog>
+              </div>
             </div>
           </div>
-          <ReusableTable headers={newHeaders} data={filteredData} defaultSortConfig={{ key: "ticketnumber", direction: "ascending" }}/>
+          <ReusableTable
+            headers={newHeaders}
+            data={filteredData}
+            defaultSortConfig={{ key: "ticketnumber", direction: "ascending" }}
+          />
           {/* Show "Load More" button only for "All Tickets" tab */}
           {activeTab === "alltickets" && visibleDataCount < data.length && (
             <div className="flex justify-start">

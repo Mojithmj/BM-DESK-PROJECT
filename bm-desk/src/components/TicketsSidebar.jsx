@@ -62,7 +62,7 @@ function TicketsSidebar({ ticket, children }) {
         </SheetHeader>
 
         <div className="">
-          <div className="flex items-center font-inter text-[16px]  font-semibold text-[#1D2129] gap-1 py-2">
+          <div className="flex items-center font-inter text-[16px]  font-semibold text-[#1D2129] justify-between gap-1 px-4 py-2">
             {tabs.map((tab) => (
               <button
                 key={tab.value}
@@ -83,7 +83,9 @@ function TicketsSidebar({ ticket, children }) {
           {activeTab === "basicinfo" && (
             <div className="flex flex-col gap-2 font-normal">
               <p className="text-[#1D2129]">
-                <strong className=" text-[#86909C] font-normal">Ticket Number:</strong>{" "}
+                <strong className=" text-[#86909C] font-normal">
+                  Ticket Number:
+                </strong>{" "}
                 {ticket.ticketnumber}
               </p>
               <p className="text-[#1D2129]">
@@ -136,6 +138,65 @@ function TicketsSidebar({ ticket, children }) {
 
           {/* You can add more content for other tabs like Attachments, History, etc. */}
           {activeTab === "attachments" && (
+            // <div>
+            //   {/* Upload Button */}
+            //   <div>
+            //     <input
+            //       type="file"
+            //       id="file-upload"
+            //       style={{ display: "none" }}
+            //       onChange={(e) => handleFileUpload(e)}
+            //       multiple
+            //     />
+            //   </div>
+
+            //   {/*Uploaded Files List */}
+
+            //   <div>
+            //     <div>
+            //       {uploadedFiles.length > 0 ? (
+            //         <div className="flex items-center  gap-4 ">
+            //           {uploadedFiles.map((file, index) => (
+            //             <div
+            //               key={index}
+            //               className="flex items-center justify-between gap-2 p-3 bg-white border rounded-[10px] shadow-sm text-sm text-[#1D2129] w-full max-w-xs"
+            //             >
+            //               <div className="">
+            //               <HiPaperClip className="text-[#165DFF]" />
+            //                 <div className=" font-medium truncate text-[13px]">
+            //                   {file.name}
+            //                 </div>
+            //                 <div className="text-xs text-[#86909C] ">
+            //                   {file.size < 1024 * 1024
+            //                     ? `${(file.size / 1024).toFixed(2)} KB`
+            //                     : `${(file.size / (1024 * 1024)).toFixed(
+            //                         2
+            //                       )} MB`}
+            //                 </div>
+            //               </div>
+            //               <button
+            //                 onClick={() => handleDownload(file)}
+            //                 className="text-[#4E5969]  hover:text-[#4E5969] transition text-xs"
+            //               >
+            //                 Download
+            //               </button>
+            //             </div>
+            //           ))}
+            //         </div>
+            //       ) : (
+            //         <p className="text-sm text-[#86909C]">
+            //           No attachments uploaded yet.
+            //         </p>
+            //       )}
+            //     </div>
+            //     <div
+            //       className="w-8 h-8 flex items-center justify-center border border-[#86909C] rounded cursor-pointer mb-4"
+            //       onClick={() => document.getElementById("file-upload").click()}
+            //     >
+            //       <FiPlus className="w-5 h-5 text-[#1D2129]" />
+            //     </div>
+            //   </div>
+            // </div>
             <div>
               {/* Upload Button */}
               <div>
@@ -148,36 +209,42 @@ function TicketsSidebar({ ticket, children }) {
                 />
               </div>
 
-              {/*Uploaded Files List */}
-
-              <div>
+              {/* Uploaded Files List */}
+              <div className="flex flex-col gap-5">
                 <div>
                   {uploadedFiles.length > 0 ? (
-                    <div className="flex items-center  gap-4 ">
+                    <div className="flex flex-wrap gap-4">
                       {uploadedFiles.map((file, index) => (
                         <div
                           key={index}
-                          className="flex items-center justify-between gap-2 p-3 bg-white border rounded-[10px] shadow-sm text-sm text-[#1D2129] w-full max-w-xs"
+                          className="flex items-center gap-2 p-3 bg-white border rounded-[10px] shadow-sm text-sm text-[#1D2129] w-full max-w-[30%]" // Each file takes up 30% width for 3 per row
                         >
-                          <div className="">
-                          <HiPaperClip className="text-[#165DFF]" />
-                            <div className=" font-medium truncate text-[13px]">
+                          <div className="flex shrink-0">
+                            <HiPaperClip className="text-[#165DFF]" />
+                          </div>
+                          <div className="flex flex-col">
+                            <div
+                              className="font-medium w-20 truncate text-[13px]"
+                              title={file.name} // Tooltip to show the full name on hover
+                            >
                               {file.name}
                             </div>
-                            <div className="text-xs text-[#86909C] ">
-                              {file.size < 1024 * 1024
-                                ? `${(file.size / 1024).toFixed(2)} KB`
-                                : `${(file.size / (1024 * 1024)).toFixed(
-                                    2
-                                  )} MB`}
+                            <div className="flex items-center">
+                              <div className="text-[10px] 2xl:text-xs text-[#86909C]">
+                                {file.size < 1024 * 1024
+                                  ? `${(file.size / 1024).toFixed(2)} KB`
+                                  : `${(file.size / (1024 * 1024)).toFixed(
+                                      2
+                                    )} MB`}
+                              </div>
+                              <button
+                                onClick={() => handleDownload(file)}
+                                className="text-[#4E5969] hover:text-[#4E5969] transition text-xs"
+                              >
+                                Download
+                              </button>
                             </div>
                           </div>
-                          <button
-                            onClick={() => handleDownload(file)}
-                            className="text-[#4E5969]  hover:text-[#4E5969] transition text-xs"
-                          >
-                            Download
-                          </button>
                         </div>
                       ))}
                     </div>
@@ -187,11 +254,13 @@ function TicketsSidebar({ ticket, children }) {
                     </p>
                   )}
                 </div>
+
+                {/* Add New File Button */}
                 <div
-                  className="w-8 h-8 flex items-center justify-center border border-[#86909C] rounded cursor-pointer mb-4"
+                  className="w-8 h-8 flex items-center justify-center border border-[#86909C] rounded cursor-pointer"
                   onClick={() => document.getElementById("file-upload").click()}
                 >
-                  <FiPlus className="w-5 h-5 text-[#1D2129]" />
+                  <FiPlus className="w-5 h-5  text-[#1D2129]" />
                 </div>
               </div>
             </div>
