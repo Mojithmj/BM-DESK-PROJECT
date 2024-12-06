@@ -99,8 +99,6 @@ function Navbar() {
     </div>
             
           </div>
-
-          <IoSettingsOutline className="text-[11px] md:text-[17px] lg:text-[21px] 2xl:text-[26px]" />
         </div>
       </div>
     </div>
