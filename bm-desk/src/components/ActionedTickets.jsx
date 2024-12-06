@@ -384,7 +384,7 @@ function ActionedTickets() {
             <div className="flex justify-start">
               <button
                 onClick={loadMoreData}
-                className="text-[#165DFF] -mt-8"
+                className="text-[#165DFF] -mt-8 "
                 disabled={loading}
               >
                 {loading ? "Loading..." : "Load more Tickets..."}
