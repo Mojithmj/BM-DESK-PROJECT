@@ -51,6 +51,67 @@ const handleOptionClick = (option) => {
     { time: "9:00 PM", uv: 100 },
   ];
 
+  // tickets
+  const tickets = [
+    {
+      image: Ticketimageone,
+      title: "Ticket 3452",
+      description: "Ticket - TICKT-7424 has been resolved",
+      time: "36 min",
+    },
+    {
+      image: Ticketimagetwo,
+      title: "Ticket 3452",
+      description: "Ticket - TICKT-7424 has been resolved",
+      time: "1 Hr",
+    },
+    {
+      image: Ticketimageone,
+      title: "Ticket 3452",
+      description: "Ticket - TICKT-7424 has been resolved",
+      time: "Sept 06",
+    },
+  ]; 
+
+  // recent tickets
+  const items = [
+    {
+      id: 1,
+      title: "Benchmark Learning (Educore)",
+      description: "Glitches in the report card of y...",
+      status: "Critical",
+      svgPath: "M259.998 121.307C257.962 122.032 254.802 123.872 252.977 125.396C246.976 130.405 127.996 246.877 124.437 251.226C118.517 258.459 117.316 268.369 121.402 276.255C123.63 280.554 136.966 295.148 143.675 300.628C146.622 303.035 150.004 305.004 151.189 305.004C152.375 305.004 155.766 303.341 158.726 301.308C173.911 290.876 192.985 299.902 192.985 317.521C192.985 323.226 191.585 326.992 187.412 332.52C185.215 335.429 184.604 337.532 184.845 341.365C185.015 344.083 208.585 367.644 213.516 370.026C218.565 372.463 226.647 372.671 231.862 370.497C236.144 368.713 234.712 370.067 309.957 296.677C342.989 264.459 368.255 239.036 369.629 236.632C372.834 231.025 372.922 221.255 369.819 215.454C368.643 213.253 362.301 205.937 355.729 199.195C346.222 189.443 343.222 186.938 341.05 186.938C339.55 186.938 335.328 188.739 331.668 190.94C326.012 194.343 324.175 194.942 319.398 194.942C312.417 194.942 306.156 191.96 301.877 186.595C299.019 183.013 298.81 182.189 298.81 174.556C298.81 166.682 298.957 166.156 302.571 161.138C305.256 157.41 306.333 154.882 306.333 152.304C306.333 149.007 305.177 147.536 293.042 135.391C282.554 124.895 278.904 121.86 275.739 121.001C270.451 119.565 264.567 119.68 259.998 121.307Z",
+    },
+    {
+      id: 2,
+      title: "Benchmark School Manager",
+      description: "Glitches in the reprt card of y...",
+      status: "Critical",
+      svgPath: "M259.998 121.307C257.962 122.032 254.802 123.872 252.977 125.396C246.976 130.405 127.996 246.877 124.437 251.226C118.517 258.459 117.316 268.369 121.402 276.255C123.63 280.554 136.966 295.148 143.675 300.628C146.622 303.035 150.004 305.004 151.189 305.004C152.375 305.004 155.766 303.341 158.726 301.308C173.911 290.876 192.985 299.902 192.985 317.521C192.985 323.226 191.585 326.992 187.412 332.52C185.215 335.429 184.604 337.532 184.845 341.365C185.015 344.083 208.585 367.644 213.516 370.026C218.565 372.463 226.647 372.671 231.862 370.497C236.144 368.713 234.712 370.067 309.957 296.677C342.989 264.459 368.255 239.036 369.629 236.632C372.834 231.025 372.922 221.255 369.819 215.454C368.643 213.253 362.301 205.937 355.729 199.195C346.222 189.443 343.222 186.938 341.05 186.938C339.55 186.938 335.328 188.739 331.668 190.94C326.012 194.343 324.175 194.942 319.398 194.942C312.417 194.942 306.156 191.96 301.877 186.595C299.019 183.013 298.81 182.189 298.81 174.556C298.81 166.682 298.957 166.156 302.571 161.138C305.256 157.41 306.333 154.882 306.333 152.304C306.333 149.007 305.177 147.536 293.042 135.391C282.554 124.895 278.904 121.86 275.739 121.001C270.451 119.565 264.567 119.68 259.998 121.307Z",
+    },
+    {
+      id: 3,
+      title: "BM Asset Management System",
+      description: "Glitches in the report card of y...",
+      status: "Critical",
+      svgPath: "M259.998 121.307C257.962 122.032 254.802 123.872 252.977 125.396C246.976 130.405 127.996 246.877 124.437 251.226C118.517 258.459 117.316 268.369 121.402 276.255C123.63 280.554 136.966 295.148 143.675 300.628C146.622 303.035 150.004 305.004 151.189 305.004C152.375 305.004 155.766 303.341 158.726 301.308C173.911 290.876 192.985 299.902 192.985 317.521C192.985 323.226 191.585 326.992 187.412 332.52C185.215 335.429 184.604 337.532 184.845 341.365C185.015 344.083 208.585 367.644 213.516 370.026C218.565 372.463 226.647 372.671 231.862 370.497C236.144 368.713 234.712 370.067 309.957 296.677C342.989 264.459 368.255 239.036 369.629 236.632C372.834 231.025 372.922 221.255 369.819 215.454C368.643 213.253 362.301 205.937 355.729 199.195C346.222 189.443 343.222 186.938 341.05 186.938C339.55 186.938 335.328 188.739 331.668 190.94C326.012 194.343 324.175 194.942 319.398 194.942C312.417 194.942 306.156 191.96 301.877 186.595C299.019 183.013 298.81 182.189 298.81 174.556C298.81 166.682 298.957 166.156 302.571 161.138C305.256 157.41 306.333 154.882 306.333 152.304C306.333 149.007 305.177 147.536 293.042 135.391C282.554 124.895 278.904 121.86 275.739 121.001C270.451 119.565 264.567 119.68 259.998 121.307Z",
+    },
+    {
+      id: 4,
+      title: "DocMe-For Schools",
+      description: "Glitches in the report card of y...",
+      status: "Critical",
+      svgPath: "M259.998 121.307C257.962 122.032 254.802 123.872 252.977 125.396C246.976 130.405 127.996 246.877 124.437 251.226C118.517 258.459 117.316 268.369 121.402 276.255C123.63 280.554 136.966 295.148 143.675 300.628C146.622 303.035 150.004 305.004 151.189 305.004C152.375 305.004 155.766 303.341 158.726 301.308C173.911 290.876 192.985 299.902 192.985 317.521C192.985 323.226 191.585 326.992 187.412 332.52C185.215 335.429 184.604 337.532 184.845 341.365C185.015 344.083 208.585 367.644 213.516 370.026C218.565 372.463 226.647 372.671 231.862 370.497C236.144 368.713 234.712 370.067 309.957 296.677C342.989 264.459 368.255 239.036 369.629 236.632C372.834 231.025 372.922 221.255 369.819 215.454C368.643 213.253 362.301 205.937 355.729 199.195C346.222 189.443 343.222 186.938 341.05 186.938C339.55 186.938 335.328 188.739 331.668 190.94C326.012 194.343 324.175 194.942 319.398 194.942C312.417 194.942 306.156 191.96 301.877 186.595C299.019 183.013 298.81 182.189 298.81 174.556C298.81 166.682 298.957 166.156 302.571 161.138C305.256 157.41 306.333 154.882 306.333 152.304C306.333 149.007 305.177 147.536 293.042 135.391C282.554 124.895 278.904 121.86 275.739 121.001C270.451 119.565 264.567 119.68 259.998 121.307Z",
+    },
+    {
+      id: 5,
+      title: "Benchmark Learning (Educore)",
+      description: "Glitches in the report card of y...",
+      status: "Critical",
+      svgPath: "M259.998 121.307C257.962 122.032 254.802 123.872 252.977 125.396C246.976 130.405 127.996 246.877 124.437 251.226C118.517 258.459 117.316 268.369 121.402 276.255C123.63 280.554 136.966 295.148 143.675 300.628C146.622 303.035 150.004 305.004 151.189 305.004C152.375 305.004 155.766 303.341 158.726 301.308C173.911 290.876 192.985 299.902 192.985 317.521C192.985 323.226 191.585 326.992 187.412 332.52C185.215 335.429 184.604 337.532 184.845 341.365C185.015 344.083 208.585 367.644 213.516 370.026C218.565 372.463 226.647 372.671 231.862 370.497C236.144 368.713 234.712 370.067 309.957 296.677C342.989 264.459 368.255 239.036 369.629 236.632C372.834 231.025 372.922 221.255 369.819 215.454C368.643 213.253 362.301 205.937 355.729 199.195C346.222 189.443 343.222 186.938 341.05 186.938C339.55 186.938 335.328 188.739 331.668 190.94C326.012 194.343 324.175 194.942 319.398 194.942C312.417 194.942 306.156 191.96 301.877 186.595C299.019 183.013 298.81 182.189 298.81 174.556C298.81 166.682 298.957 166.156 302.571 161.138C305.256 157.41 306.333 154.882 306.333 152.304C306.333 149.007 305.177 147.536 293.042 135.391C282.554 124.895 278.904 121.86 275.739 121.001C270.451 119.565 264.567 119.68 259.998 121.307Z",
+    },
+  ];
+
   return (
     <div>
       {/* Activity dashboard */}
@@ -344,66 +405,30 @@ const handleOptionClick = (option) => {
                 </div>
 
                 {/* Ticket List */}
-                <div className="w-full max-w-[400px] sm:max-w-[600px] md:max-w-[800px] lg:max-w-[900px] ">
-                  <div className="flex flex-col gap-[16px]">
-                    {/* Ticket Item 1 */}
-                    <div className="flex items-center gap-[16px]">
-                      <img
-                        src={Ticketimageone}
-                        className="rounded-[64px] w-[40px] h-[40px]"
-                      />
-                      <div className="flex flex-col flex-grow">
-                        <p className="font-inter text-[14px] normal font-semibold text-[#1D2129]">
-                          Ticket 3452
-                        </p>
-                        <p className="font-inter text-[12px] normal font-normal text-[#86909C]">
-                          Ticket - TICKT-7424 has been resolved
-                        </p>
-                      </div>
-                      <p className="font-inter text-[11px] whitespace-nowrap normal font-normal text-[#878A99]">
-                        36 min
-                      </p>
-                    </div>
-
-                    {/* Ticket Item 2 */}
-                    <div className="flex flex-row items-center gap-[16px]">
-                      <img
-                        src={Ticketimagetwo}
-                        className="rounded-[64px] w-[40px] h-[40px]"
-                      />
-                      <div className="flex flex-col flex-grow">
-                        <p className="font-inter text-[14px] normal font-semibold text-[#1D2129]">
-                          Ticket 3452
-                        </p>
-                        <p className="font-inter text-[12px] normal font-normal text-[#86909C]">
-                          Ticket - TICKT-7424 has been resolved
-                        </p>
-                      </div>
-                      <p className="font-inter text-[11px] normal whitespace-nowrap font-normal text-[#878A99]">
-                        1 Hr
-                      </p>
-                    </div>
-
-                    {/* Ticket Item 3 */}
-                    <div className="flex flex-row items-center gap-[16px]">
-                      <img
-                        src={Ticketimageone}
-                        className="rounded-[64px] w-[40px] h-[40px]"
-                      />
-                      <div className="flex flex-col flex-grow">
-                        <p className="font-inter text-[14px] normal font-semibold text-[#1D2129]">
-                          Ticket 3452
-                        </p>
-                        <p className="font-inter text-[12px] normal font-normal text-[#86909C]">
-                          Ticket - TICKT-7424 has been resolved
-                        </p>
-                      </div>
-                      <p className="font-inter text-[11px] normal whitespace-nowrap font-normal text-[#878A99]">
-                        Sept 06
-                      </p>
-                    </div>
-                  </div>
-                </div>
+                <div className="w-full max-w-[400px] sm:max-w-[600px] md:max-w-[800px] lg:max-w-[900px]">
+    <div className="flex flex-col gap-[16px]">
+      {tickets.map((ticket, index) => (
+        <div key={index} className="flex items-center gap-[16px]">
+          <img
+            src={ticket.image}
+            className="rounded-[64px] w-[40px] h-[40px]"
+            alt={`Ticket ${index + 1}`}
+          />
+          <div className="flex flex-col flex-grow">
+            <p className="font-inter text-[14px] normal font-semibold text-[#1D2129]">
+              {ticket.title}
+            </p>
+            <p className="font-inter 2xl:text-[12px] lg:text-[11px] normal font-normal text-[#86909C]">
+              {ticket.description}
+            </p>
+          </div>
+          <p className="font-inter text-[11px] whitespace-nowrap normal font-normal text-[#878A99]">
+            {ticket.time}
+          </p>
+        </div>
+      ))}
+    </div>
+  </div>
               </div>
             </div>
           </div>
@@ -530,292 +555,41 @@ const handleOptionClick = (option) => {
             </div>
             {/* card */}
             <div className="flex flex-col gap-[8px]">
-              {/* 1 */}
-              <div className="flex justify-between border-[1px] rounded-[8px] border-[#E5E6EB] bg-[#FFF] px-[8px] py-[6px]">
-                <div className="flex gap-[16px]">
-                  <div className="border-[0.5px] 2xl:w-[40px] lg:w-[40px] justify-center text-[#0E42D2] border-[#E5E6EB] rounded-[7px] ">
-                    <svg
-                      width="35"
-                      height="35"
-                      viewBox="0 0 493 493"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <g clip-path="url(#clip0_1082_5675)">
-                        <rect
-                          width="492.479"
-                          height="492.479"
-                          rx="98.4957"
-                          fill="white"
-                        ></rect>
-                        <path
-                          fill-rule="evenodd"
-                          clip-rule="evenodd"
-                          d="M259.998 121.307C257.962 122.032 254.802 123.872 252.977 125.396C246.976 130.405 127.996 246.877 124.437 251.226C118.517 258.459 117.316 268.369 121.402 276.255C123.63 280.554 136.966 295.148 143.675 300.628C146.622 303.035 150.004 305.004 151.189 305.004C152.375 305.004 155.766 303.341 158.726 301.308C173.911 290.876 192.985 299.902 192.985 317.521C192.985 323.226 191.585 326.992 187.412 332.52C185.215 335.429 184.604 337.532 184.845 341.365C185.015 344.083 208.585 367.644 213.516 370.026C218.565 372.463 226.647 372.671 231.862 370.497C236.144 368.713 234.712 370.067 309.957 296.677C342.989 264.459 368.255 239.036 369.629 236.632C372.834 231.025 372.922 221.255 369.819 215.454C368.643 213.253 362.301 205.937 355.729 199.195C346.222 189.443 343.222 186.938 341.05 186.938C339.55 186.938 335.328 188.739 331.668 190.94C326.012 194.343 324.175 194.942 319.398 194.942C312.417 194.942 306.156 191.96 301.877 186.595C299.019 183.013 298.81 182.189 298.81 174.556C298.81 166.682 298.957 166.156 302.571 161.138C305.256 157.41 306.333 154.882 306.333 152.304C306.333 149.007 305.177 147.536 293.042 135.391C282.554 124.895 278.904 121.86 275.739 121.001C270.451 119.565 264.567 119.68 259.998 121.307Z"
-                          fill="#165DFF"
-                        ></path>
-                      </g>
-                      <defs>
-                        <clipPath id="clip0_1082_5675">
-                          <rect
-                            width="492.479"
-                            height="492.479"
-                            fill="white"
-                          ></rect>
-                        </clipPath>
-                      </defs>
-                    </svg>
-                  </div>
+      {items.map((item) => (
+        <div key={item.id} className="flex justify-between border-[1px] rounded-[8px] border-[#E5E6EB] bg-[#FFF] px-[8px] py-[6px]">
+          <div className="flex gap-[16px]">
+            <div className="border-[0.5px] 2xl:w-[40px] lg:w-[40px] justify-center text-[#0E42D2] border-[#E5E6EB] rounded-[7px]">
+              <svg width="35" height="35" viewBox="0 0 493 493" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g clipPath="url(#clip0_1082_5675)">
+                  <rect width="492.479" height="492.479" rx="98.4957" fill="white"></rect>
+                  <path fillRule="evenodd" clipRule="evenodd" d={item.svgPath} fill="#165DFF"></path>
+                </g>
+                <defs>
+                  <clipPath id="clip0_1082_5675">
+                    <rect width="492.479" height="492.479" fill="white"></rect>
+                  </clipPath>
+                </defs>
+              </svg>
+            </div>
 
-                  <div className="flex 2xl:gap-[20px] lg:gap-[10px]">
-                    <div>
-                      <p className="text-[14px] font-inter font-semibold text-[#1D2129] ">
-                        Benchmark Learning (Educore)
-                      </p>
-                      <p className="font-inter text-[#86909C] text-[12px] font-normal">
-                        Glitches in the repoert card of y...
-                      </p>
-                    </div>
-                    <div className=" inline-flex   items-center  text-[#FFE4BA] mt-[-10px]">
-                      <p className="border-[1px] rounded-[4px] border-[#FFE4BA] 2xl:p-[9px] lg:p-[3px] bg[#FFF] text-[10px] font-normal text-[#FF7D00] leading-none">
-                        Critical
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div className="w-[24px] h-[24px] text-[#86909C]">
-                  <HiArrowRight />
-                </div>
+            <div className="flex 2xl:gap-[20px] lg:gap-[10px]">
+              <div>
+                <p className="text-[14px] font-inter font-semibold text-[#1D2129]">{item.title}</p>
+                <p className="font-inter text-[#86909C] text-[12px] font-normal">{item.description}</p>
               </div>
-              {/* 2 */}
-              <div className="flex justify-between border-[1px] rounded-[8px] border-[#E5E6EB] bg-[#FFF] px-[8px] py-[6px]">
-                <div className="flex gap-[16px]">
-                  <div className="border-[0.5px] 2xl:w-[40px] lg:w-[40px] justify-center text-[#0E42D2] border-[#E5E6EB] rounded-[7px] ">
-                    <svg
-                      width="35"
-                      height="35"
-                      viewBox="0 0 493 493"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <g clip-path="url(#clip0_1082_5675)">
-                        <rect
-                          width="492.479"
-                          height="492.479"
-                          rx="98.4957"
-                          fill="white"
-                        ></rect>
-                        <path
-                          fill-rule="evenodd"
-                          clip-rule="evenodd"
-                          d="M259.998 121.307C257.962 122.032 254.802 123.872 252.977 125.396C246.976 130.405 127.996 246.877 124.437 251.226C118.517 258.459 117.316 268.369 121.402 276.255C123.63 280.554 136.966 295.148 143.675 300.628C146.622 303.035 150.004 305.004 151.189 305.004C152.375 305.004 155.766 303.341 158.726 301.308C173.911 290.876 192.985 299.902 192.985 317.521C192.985 323.226 191.585 326.992 187.412 332.52C185.215 335.429 184.604 337.532 184.845 341.365C185.015 344.083 208.585 367.644 213.516 370.026C218.565 372.463 226.647 372.671 231.862 370.497C236.144 368.713 234.712 370.067 309.957 296.677C342.989 264.459 368.255 239.036 369.629 236.632C372.834 231.025 372.922 221.255 369.819 215.454C368.643 213.253 362.301 205.937 355.729 199.195C346.222 189.443 343.222 186.938 341.05 186.938C339.55 186.938 335.328 188.739 331.668 190.94C326.012 194.343 324.175 194.942 319.398 194.942C312.417 194.942 306.156 191.96 301.877 186.595C299.019 183.013 298.81 182.189 298.81 174.556C298.81 166.682 298.957 166.156 302.571 161.138C305.256 157.41 306.333 154.882 306.333 152.304C306.333 149.007 305.177 147.536 293.042 135.391C282.554 124.895 278.904 121.86 275.739 121.001C270.451 119.565 264.567 119.68 259.998 121.307Z"
-                          fill="#165DFF"
-                        ></path>
-                      </g>
-                      <defs>
-                        <clipPath id="clip0_1082_5675">
-                          <rect
-                            width="492.479"
-                            height="492.479"
-                            fill="white"
-                          ></rect>
-                        </clipPath>
-                      </defs>
-                    </svg>
-                  </div>
-
-                  <div className="flex 2xl:gap-[20px] lg:gap-[10px]">
-                    <div>
-                      <p className="text-[14px] font-inter font-semibold text-[#1D2129] ">
-                        Benchmark School Manager
-                      </p>
-                      <p className="font-inter text-[#86909C] text-[12px] font-normal">
-                        Glitches in the repoert card of y...
-                      </p>
-                    </div>
-                    <div className="inline-flex  items-center  text-[#FFE4BA] mt-[-10px]">
-                      <p className="border-[1px] rounded-[4px] border-[#FFE4BA] 2xl:p-[9px] lg:p-[3px] bg[#FFF] text-[10px] font-normal text-[#FF7D00] leading-none">
-                        Critical
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div className="w-[24px] h-[24px] text-[#86909C]">
-                  <HiArrowRight />
-                </div>
-              </div>
-              {/* 3 */}
-              <div className="flex justify-between border-[1px] rounded-[8px] border-[#E5E6EB] bg-[#FFF] px-[8px] py-[6px]">
-                <div className="flex gap-[16px]">
-                  <div className="border-[0.5px] 2xl:w-[40px] lg:w-[40px] justify-center text-[#0E42D2] border-[#E5E6EB] rounded-[7px] ">
-                    <svg
-                      width="35"
-                      height="35"
-                      viewBox="0 0 493 493"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <g clip-path="url(#clip0_1082_5675)">
-                        <rect
-                          width="492.479"
-                          height="492.479"
-                          rx="98.4957"
-                          fill="white"
-                        ></rect>
-                        <path
-                          fill-rule="evenodd"
-                          clip-rule="evenodd"
-                          d="M259.998 121.307C257.962 122.032 254.802 123.872 252.977 125.396C246.976 130.405 127.996 246.877 124.437 251.226C118.517 258.459 117.316 268.369 121.402 276.255C123.63 280.554 136.966 295.148 143.675 300.628C146.622 303.035 150.004 305.004 151.189 305.004C152.375 305.004 155.766 303.341 158.726 301.308C173.911 290.876 192.985 299.902 192.985 317.521C192.985 323.226 191.585 326.992 187.412 332.52C185.215 335.429 184.604 337.532 184.845 341.365C185.015 344.083 208.585 367.644 213.516 370.026C218.565 372.463 226.647 372.671 231.862 370.497C236.144 368.713 234.712 370.067 309.957 296.677C342.989 264.459 368.255 239.036 369.629 236.632C372.834 231.025 372.922 221.255 369.819 215.454C368.643 213.253 362.301 205.937 355.729 199.195C346.222 189.443 343.222 186.938 341.05 186.938C339.55 186.938 335.328 188.739 331.668 190.94C326.012 194.343 324.175 194.942 319.398 194.942C312.417 194.942 306.156 191.96 301.877 186.595C299.019 183.013 298.81 182.189 298.81 174.556C298.81 166.682 298.957 166.156 302.571 161.138C305.256 157.41 306.333 154.882 306.333 152.304C306.333 149.007 305.177 147.536 293.042 135.391C282.554 124.895 278.904 121.86 275.739 121.001C270.451 119.565 264.567 119.68 259.998 121.307Z"
-                          fill="#165DFF"
-                        ></path>
-                      </g>
-                      <defs>
-                        <clipPath id="clip0_1082_5675">
-                          <rect
-                            width="492.479"
-                            height="492.479"
-                            fill="white"
-                          ></rect>
-                        </clipPath>
-                      </defs>
-                    </svg>
-                  </div>
-
-                  <div className="flex 2xl:gap-[20px] lg:gap-[10px]">
-                    <div>
-                      <p className="text-[14px] font-inter font-semibold text-[#1D2129] ">
-                        BM Asset Management System
-                      </p>
-                      <p className="font-inter text-[#86909C] text-[12px] font-normal">
-                        Glitches in the repoert card of y...
-                      </p>
-                    </div>
-                    <div className="inline-flex  items-center  text-[#FFE4BA] mt-[-10px]">
-                      <p className="border-[1px] rounded-[4px]  border-[#FFE4BA] 2xl:p-[9px] lg:p-[3px] bg[#FFF] text-[10px] font-normal text-[#FF7D00] leading-none">
-                        Critical
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div className="w-[24px] h-[24px] text-[#86909C]">
-                  <HiArrowRight />
-                </div>
-              </div>
-              {/* 4 */}
-              <div className="flex justify-between border-[1px] rounded-[8px] border-[#E5E6EB] bg-[#FFF] px-[8px] py-[6px]">
-                <div className="flex gap-[16px]">
-                  <div className="border-[0.5px] 2xl:w-[40px] lg:w-[40px] justify-center text-[#0E42D2] border-[#E5E6EB] rounded-[7px] ">
-                    <svg
-                      width="35"
-                      height="35"
-                      viewBox="0 0 493 493"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <g clip-path="url(#clip0_1082_5675)">
-                        <rect
-                          width="492.479"
-                          height="492.479"
-                          rx="98.4957"
-                          fill="white"
-                        ></rect>
-                        <path
-                          fill-rule="evenodd"
-                          clip-rule="evenodd"
-                          d="M259.998 121.307C257.962 122.032 254.802 123.872 252.977 125.396C246.976 130.405 127.996 246.877 124.437 251.226C118.517 258.459 117.316 268.369 121.402 276.255C123.63 280.554 136.966 295.148 143.675 300.628C146.622 303.035 150.004 305.004 151.189 305.004C152.375 305.004 155.766 303.341 158.726 301.308C173.911 290.876 192.985 299.902 192.985 317.521C192.985 323.226 191.585 326.992 187.412 332.52C185.215 335.429 184.604 337.532 184.845 341.365C185.015 344.083 208.585 367.644 213.516 370.026C218.565 372.463 226.647 372.671 231.862 370.497C236.144 368.713 234.712 370.067 309.957 296.677C342.989 264.459 368.255 239.036 369.629 236.632C372.834 231.025 372.922 221.255 369.819 215.454C368.643 213.253 362.301 205.937 355.729 199.195C346.222 189.443 343.222 186.938 341.05 186.938C339.55 186.938 335.328 188.739 331.668 190.94C326.012 194.343 324.175 194.942 319.398 194.942C312.417 194.942 306.156 191.96 301.877 186.595C299.019 183.013 298.81 182.189 298.81 174.556C298.81 166.682 298.957 166.156 302.571 161.138C305.256 157.41 306.333 154.882 306.333 152.304C306.333 149.007 305.177 147.536 293.042 135.391C282.554 124.895 278.904 121.86 275.739 121.001C270.451 119.565 264.567 119.68 259.998 121.307Z"
-                          fill="#165DFF"
-                        ></path>
-                      </g>
-                      <defs>
-                        <clipPath id="clip0_1082_5675">
-                          <rect
-                            width="492.479"
-                            height="492.479"
-                            fill="white"
-                          ></rect>
-                        </clipPath>
-                      </defs>
-                    </svg>
-                  </div>
-
-                  <div className="flex 2xl:gap-[20px] lg:gap-[10px]">
-                    <div>
-                      <p className="text-[14px] font-inter font-semibold text-[#1D2129] ">
-                        DocMe - For Schools
-                      </p>
-                      <p className="font-inter text-[#86909C] text-[12px] font-normal">
-                        Glitches in the repoert card of y...
-                      </p>
-                    </div>
-                    <div className="inline-flex  items-center  text-[#FFE4BA] mt-[-10px]">
-                      <p className="border-[1px] rounded-[4px] border-[#FFE4BA] 2xl:p-[9px] lg:p-[3px] bg[#FFF] text-[10px] font-normal text-[#FF7D00] leading-none">
-                        Critical
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div className="w-[24px] h-[24px] text-[#86909C]">
-                  <HiArrowRight />
-                </div>
-              </div>
-              {/* 5 */}
-              <div className="flex justify-between border-[1px] rounded-[8px] border-[#E5E6EB] bg-[#FFF] px-[8px] py-[6px]">
-                <div className="flex gap-[16px]">
-                  <div className="border-[0.5px] 2xl:w-[40px] lg:w-[40px] justify-center text-[#0E42D2] border-[#E5E6EB] rounded-[7px] ">
-                    <svg
-                      width="35"
-                      height="35"
-                      viewBox="0 0 493 493"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <g clip-path="url(#clip0_1082_5675)">
-                        <rect
-                          width="492.479"
-                          height="492.479"
-                          rx="98.4957"
-                          fill="white"
-                        ></rect>
-                        <path
-                          fill-rule="evenodd"
-                          clip-rule="evenodd"
-                          d="M259.998 121.307C257.962 122.032 254.802 123.872 252.977 125.396C246.976 130.405 127.996 246.877 124.437 251.226C118.517 258.459 117.316 268.369 121.402 276.255C123.63 280.554 136.966 295.148 143.675 300.628C146.622 303.035 150.004 305.004 151.189 305.004C152.375 305.004 155.766 303.341 158.726 301.308C173.911 290.876 192.985 299.902 192.985 317.521C192.985 323.226 191.585 326.992 187.412 332.52C185.215 335.429 184.604 337.532 184.845 341.365C185.015 344.083 208.585 367.644 213.516 370.026C218.565 372.463 226.647 372.671 231.862 370.497C236.144 368.713 234.712 370.067 309.957 296.677C342.989 264.459 368.255 239.036 369.629 236.632C372.834 231.025 372.922 221.255 369.819 215.454C368.643 213.253 362.301 205.937 355.729 199.195C346.222 189.443 343.222 186.938 341.05 186.938C339.55 186.938 335.328 188.739 331.668 190.94C326.012 194.343 324.175 194.942 319.398 194.942C312.417 194.942 306.156 191.96 301.877 186.595C299.019 183.013 298.81 182.189 298.81 174.556C298.81 166.682 298.957 166.156 302.571 161.138C305.256 157.41 306.333 154.882 306.333 152.304C306.333 149.007 305.177 147.536 293.042 135.391C282.554 124.895 278.904 121.86 275.739 121.001C270.451 119.565 264.567 119.68 259.998 121.307Z"
-                          fill="#165DFF"
-                        ></path>
-                      </g>
-                      <defs>
-                        <clipPath id="clip0_1082_5675">
-                          <rect
-                            width="492.479"
-                            height="492.479"
-                            fill="white"
-                          ></rect>
-                        </clipPath>
-                      </defs>
-                    </svg>
-                  </div>
-
-                  <div className="flex 2xl:gap-[20px] lg:gap-[10px]">
-                    <div>
-                      <p className="text-[14px] font-inter font-semibold text-[#1D2129] ">
-                        Benchmark Learning (Educore)
-                      </p>
-                      <p className="font-inter text-[#86909C] text-[12px] font-normal">
-                        Glitches in the repoert card of y...
-                      </p>
-                    </div>
-                    <div className="inline-flex  items-center  text-[#FFE4BA] mt-[-10px]">
-                      <p className="border-[1px] rounded-[4px] border-[#FFE4BA] 2xl:p-[9px] lg:p-[3px] bg[#FFF] text-[10px] font-normal text-[#FF7D00] leading-none">
-                        Critical
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div className="w-[24px] h-[24px] text-[#86909C]">
-                  <HiArrowRight />
-                </div>
+              <div className="inline-flex items-center text-[#FFE4BA] mt-[-10px]">
+                <p className="border-[1px] rounded-[4px] border-[#FFE4BA] 2xl:p-[9px] lg:p-[3px] bg-[#FFF] text-[10px] font-normal text-[#FF7D00] leading-none">
+                  {item.status}
+                </p>
               </div>
             </div>
+          </div>
+          <div className="w-[24px] h-[24px] text-[#86909C]">
+            <HiArrowRight />
+          </div>
+        </div>
+      ))}
+    </div>
           </div>
         </div>
       </div>
