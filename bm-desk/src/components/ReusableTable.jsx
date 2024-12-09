@@ -46,6 +46,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
+import { RiArrowDropDownLine } from "react-icons/ri";
 
 const frameworks = [
   {
@@ -342,7 +343,8 @@ function ReusableTable({ data, headers, currentTab, defaultSortConfig }) {
                         ?.label
                     : "Assign Ticket"}{" "}
                   {/* Default value "Assign Ticket" */}
-                  <ChevronsUpDown className="opacity-50" />
+                  {/* <ChevronsUpDown className="opacity-50" /> */}
+                  <RiArrowDropDownLine className="opacity-50 size-1" />
                 </Button>
               </PopoverTrigger>
               <PopoverContent className="w-[510px] p-0 bg-white">
