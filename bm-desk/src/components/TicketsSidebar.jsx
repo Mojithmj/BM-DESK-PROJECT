@@ -131,27 +131,16 @@ function TicketsSidebar({ ticket, children }) {
           </SheetTitle>
         </SheetHeader>
 
-        {/* <div className="flex items-center font-inter text-[10px] lg:[12px] 2xl:text-[16px]  font-semibold text-[#1D2129] justify-between gap-1 px-4 py-2">
-            {tabs.map((tab) => (
-              <button
-                key={tab.value}
-                onClick={() => setActiveTab(tab.value)}
-                className={`font-inter text-12px md:text-[12px] lg:[14px] 2xl:text-[16px] font-normal p-[6px] rounded-[4px] border-b-2 transition-colors  ${
-                  activeTab === tab.value
-                    ? "text-[#0E42D2] bg-white border-[#0E42D2]"
-                    : "bg-white text-[#0E42D2] border-transparent hover:border-[#0E42D2]"
-                }`}
-              >
-                {tab.label}
-              </button>
-            ))}
-          </div> */}
+
+
         <div className="flex items-center font-inter text-[10px] lg:[12px] 2xl:text-[16px] font-semibold text-[#1D2129] justify-between gap-1 px-4 py-2 relative">
           {tabs.map((tab, index) => (
             <div key={tab.value} className="relative">
               <button
                 onClick={() => setActiveTab(tab.value)}
-                className="text-12px md:text-[12px] lg:[14px] 2xl:text-[16px] font-normal p-[6px] rounded-[4px] bg-white text-[#0E42D2] hover:border-[#0E42D2]"
+                className={`text-12px md:text-[12px] lg:[14px] 2xl:text-[16px] font-normal p-[6px] rounded-[4px] bg-white ${
+                  activeTab === tab.value ? "text-[#0E42D2]" : "text-[#1D2129]"
+                }`}
               >
                 {tab.label}
               </button>
@@ -237,65 +226,6 @@ function TicketsSidebar({ ticket, children }) {
 
           {/* You can add more content for other tabs like Attachments, History, etc. */}
           {activeTab === "attachments" && (
-            // <div>
-            //   {/* Upload Button */}
-            //   <div>
-            //     <input
-            //       type="file"
-            //       id="file-upload"
-            //       style={{ display: "none" }}
-            //       onChange={(e) => handleFileUpload(e)}
-            //       multiple
-            //     />
-            //   </div>
-
-            //   {/*Uploaded Files List */}
-
-            //   <div>
-            //     <div>
-            //       {uploadedFiles.length > 0 ? (
-            //         <div className="flex items-center  gap-4 ">
-            //           {uploadedFiles.map((file, index) => (
-            //             <div
-            //               key={index}
-            //               className="flex items-center justify-between gap-2 p-3 bg-white border rounded-[10px] shadow-sm text-sm text-[#1D2129] w-full max-w-xs"
-            //             >
-            //               <div className="">
-            //               <HiPaperClip className="text-[#165DFF]" />
-            //                 <div className=" font-medium truncate text-[13px]">
-            //                   {file.name}
-            //                 </div>
-            //                 <div className="text-xs text-[#86909C] ">
-            //                   {file.size < 1024 * 1024
-            //                     ? `${(file.size / 1024).toFixed(2)} KB`
-            //                     : `${(file.size / (1024 * 1024)).toFixed(
-            //                         2
-            //                       )} MB`}
-            //                 </div>
-            //               </div>
-            //               <button
-            //                 onClick={() => handleDownload(file)}
-            //                 className="text-[#4E5969]  hover:text-[#4E5969] transition text-xs"
-            //               >
-            //                 Download
-            //               </button>
-            //             </div>
-            //           ))}
-            //         </div>
-            //       ) : (
-            //         <p className="text-sm text-[#86909C]">
-            //           No attachments uploaded yet.
-            //         </p>
-            //       )}
-            //     </div>
-            //     <div
-            //       className="w-8 h-8 flex items-center justify-center border border-[#86909C] rounded cursor-pointer mb-4"
-            //       onClick={() => document.getElementById("file-upload").click()}
-            //     >
-            //       <FiPlus className="w-5 h-5 text-[#1D2129]" />
-            //     </div>
-            //   </div>
-            // </div>
             <div>
               {/* Upload Button */}
               <div>
@@ -316,7 +246,7 @@ function TicketsSidebar({ ticket, children }) {
                       {uploadedFiles.map((file, index) => (
                         <div
                           key={index}
-                          className="flex items-center gap-2 p-3 bg-white border rounded-[10px] shadow-sm text-sm text-[#1D2129] w-full max-w-[30%]" // Each file takes up 30% width for 3 per row
+                          className="flex items-center gap-2 p-3 bg-white border rounded-[10px] shadow-sm text-sm text-[#4E5969] w-full max-w-[30%]" // Each file takes up 30% width for 3 per row
                         >
                           <div className="flex shrink-0">
                             <HiPaperClip className="text-[#165DFF]" />
@@ -329,7 +259,7 @@ function TicketsSidebar({ ticket, children }) {
                               {file.name}
                             </div>
                             <div className="flex items-center">
-                              <div className="text-[10px] 2xl:text-xs text-[#86909C]">
+                              <div className="text-[10px] 2xl:text-xs text-[#4E5969]">
                                 {file.size < 1024 * 1024
                                   ? `${(file.size / 1024).toFixed(2)} KB`
                                   : `${(file.size / (1024 * 1024)).toFixed(
@@ -338,7 +268,7 @@ function TicketsSidebar({ ticket, children }) {
                               </div>
                               <button
                                 onClick={() => handleDownload(file)}
-                                className="text-[#4E5969] hover:text-[#4E5969] transition text-xs"
+                                className="text-[#4E5969] hover:text-[#4E5969] transition text-[10px] 2xl:text-xs ml-2"
                               >
                                 Download
                               </button>
@@ -364,20 +294,7 @@ function TicketsSidebar({ ticket, children }) {
               </div>
             </div>
           )}
-          {/* {activeTab === "tickethistory" && (
-            <div className="flex ">
-              <div>
-                <img className="w-[40px] h-[40px]" src={image} />
-              </div>
-              <div>
-              <div className="flex justify-between">
-                <p className="text-sm text-[#343A40] pl-3">Ticket 3452</p>
-                <p className="text-sm text-[#878A99] pl-3">Sep 06</p>
-              </div>
-              <p className="text-sm text-[#878A99] pl-3">Ticket - TICKT-7424 has been resolved by Reneeja X</p>
-              </div>
-            </div>
-          )} */}
+
 
           {activeTab === "tickethistory" && (
             <div className="flex flex-col gap-5">
@@ -469,20 +386,20 @@ function TicketsSidebar({ ticket, children }) {
             </div>
           )}
         </div>
-        
+
         <div>
-        <div className="absolute bottom-0 left-5 w-[94%] top-[520px] h-[1px] bg-[#E5E6EB]" />
-        <div className="absolute bottom-10 right-10">
-        
-          <div className="flex gap-2 justify-end text-[10px] md:text-[12px] lg:text-[12px] 2xl:text-[16px]">
-            <button className="text-[#165DFF] border border-[#165DFF] p-1.5 rounded-[5px]">
-              Cancel
-            </button>
-            <button className="text-[#FFFFFF] bg-[#165DFF] border border-[#165DFF] p-1.5 rounded-[5px]">
-              Send Reminder
-            </button>
+          <div className="absolute bottom-0 left-5 w-[94%] top-[520px] h-[1px] bg-[#E5E6EB]" />
+          <div className="absolute bottom-10 right-10">
+            <div className="flex gap-2 justify-end text-[10px] md:text-[12px] lg:text-[12px] 2xl:text-[16px]">
+              <button className="text-[#165DFF] border border-[#165DFF] p-1.5 rounded-[5px]">
+                Cancel
+              </button>
+              <button className="text-[#FFFFFF] bg-[#165DFF] border border-[#165DFF] p-1.5 rounded-[5px]">
+                Send Reminder
+              </button>
+            </div>
           </div>
-        </div></div>
+        </div>
       </SheetContent>
     </Sheet>
   );

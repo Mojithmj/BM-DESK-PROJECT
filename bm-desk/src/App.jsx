@@ -13,6 +13,7 @@ import TicketApprovals from './components/TicketApprovals';
 import AccountSettings from './components/AccountSettings';
 import Editaccountsettings from './components/Editaccountsettings';
 import Privacyaccountsettings from './components/Privacyaccountsettings';
+import ActionTickets from './components/Sheets/ActionTickets';
 
 
 
@@ -38,6 +39,7 @@ function App() {
         <Route path='/assignedtickets' element={<AssignedTickets/>}/>
         <Route path='/actionedtickets' element={<ActionedTickets/>}/>
         <Route path='/privacyaccountsettings' element={<Privacyaccountsettings/>}/>
+        <Route path='/actiontickets' element={<ActionTickets/>}/>
         
         
 

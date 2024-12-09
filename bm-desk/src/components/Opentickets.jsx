@@ -254,7 +254,7 @@ function AssignedTickets() {
 
                       <div className="grid grid-cols-2 gap-4">
                         {/* Department */}
-                        <div className="flex flex-col">
+                        <div className="flex flex-col ">
                           <Label
                             htmlFor="department"
                             className="mb-2 font-normal text-[12px]"
