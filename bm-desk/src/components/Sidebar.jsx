@@ -262,7 +262,7 @@ function Sidebar() {
     <div
     className={`flex flex-col h-screen border-r border-[#E5E6EB] ${
       isSidebarOpen ? "2xl:w-[250px] lg:w-[210px] md:w-[180px] w-[160px]" : "w-[60px]"
-    } px-4 py-8 gap-5 transition-all duration-300`}
+    } px-4  gap-5 transition-all duration-300`}
   >
     <div className="flex justify-end mb-4">
         <button
@@ -301,14 +301,14 @@ function Sidebar() {
         </div>
               
               {isSidebarOpen && (
-                <div className="text-[14px] font-medium group-hover:text-[#165DFF] flex-1">
+                <div className="text-[14px] font-medium font-Inter group-hover:text-[#165DFF] flex-1">
                   {item.label}
                 </div>
               )}
             
             {item.dropdown && isSidebarOpen && (
               <RiArrowDropDownLine
-                className={`text-2xl w-[19px] h-[19px] ${
+                className={`text-4xl  w-[19px] h-[19px] ${
                   openDropdown === item.label ? "rotate-180" : ""
                 }`}
               />
@@ -328,7 +328,7 @@ function Sidebar() {
                   onClick={() => navigate(subItem.path)}
                 >
                   <div className="text-[16px]">{subItem.icon}</div>
-                  <div className="flex-1 2xl:text-[14px] lg:text-xs md:text-[11px] text-[10px] font-medium group-hover:text-[#165DFF]">
+                  <div className="flex-1 2xl:text-[14px] lg:text-xs md:text-[11px] text-[10px] font-medium font-Inter group-hover:text-[#165DFF]">
                     {subItem.label}
                   </div>
                 </div>

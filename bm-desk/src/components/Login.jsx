@@ -53,14 +53,14 @@ function Login() {
                 className="z-50 top-0 w-[24px] h-[24px] md:w-[20px] lg:w-[22px] 2xl:w-[32px] md:h-[20x] lg:h-[22px] 2xl:h-[32px] object-contain"
               />
             </div>
-            <div className="top-4 text-[#FFF] text-[17px] md:text-[20px] lg:text-[24px] 2xl:text-[28px] font-bold font-poppins">
-              BM Desk{" "}
+            <div className="top-4 text-[#FFF] text-[17px] md:text-[20px] lg:text-[24px] 2xl:text-[28px] font-bold font-Poppins">
+              BM Desk
               <span className="inline-block w-1 h-1 rounded-full bg-blue-500"></span>
             </div>
           </div>
         </div>
         {/* Text positioned on bottom of the background */}
-        <div className="absolute border-l-[2px] pl-3 border-l-[#0095FF] bottom-10 left-10 text-[#FFF] font-poppins font-semibold text-[12px] md:text-xl lg:text-[24px] 2xl:text-[34px]">
+        <div className="absolute border-l-[2px] pl-3 border-l-[#0095FF] bottom-10 left-10 text-[#FFF] font-Poppins font-semibold text-[12px] md:text-xl lg:text-[24px] 2xl:text-[34px]">
           <p> Streamlining IT Support</p>
           <p>For Effortless Issue</p>
           <p>Management</p>
@@ -77,26 +77,26 @@ function Login() {
               alt="IMAGE1"
               className="w-[28px] h-[28px] md:w-[30px] lg:w-[38px] 2xl:w-[68px] 2xl:h-[68px] lg:h-[38px] md:h-[32px]"
             />
-            <h1 className="text-[#141414] leading-none font-poppins font-semibold text-[34px] md:text-[38px] lg:text-[42px] 2xl:text-[55px]">
+            <h1 className="text-[#141414] leading-none font-Poppins font-semibold text-[34px] md:text-[38px] lg:text-[42px] 2xl:text-[55px]">
               BM Desk
               <span className="inline-block w-2 h-2 rounded-full bg-blue-500 ml-0"></span>
             </h1>
           </div>
           {/* Welcome Message */}
           <div className="flex flex-col items-center gap-1">
-            <h2 className="font-semibold text-[20px] md:text-[24px]">
+            <h2 className="font-semibold text-[20px] md:text-[24px] font-Inter">
               Welcome Back!
             </h2>
-            <p className="text-[#878A99] text-[14px] md:text-[16px] font-normal">
+            <p className="text-[#878A99] text-[14px] md:text-[16px] font-normal font-Inter">
               Sign in to continue to BM Desk
             </p>
           </div>
           {/* Login Form */}
-          <form className="flex flex-col gap-4 w-full lg:w-[380px] 2xl:w-[457px]">
+          <form className="flex flex-col gap-4 w-full lg:w-[380px] 2xl:w-[457px] font-Inter">
             <div>
               <label
                 htmlFor="username"
-                className="block mb-1 text-[#212529] font-normal text-[14px] md:text-[16px]"
+                className="block mb-1 text-[#212529] font-normal text-[14px] md:text-[16px] font-Inter"
               >
                 Username
               </label>
@@ -104,7 +104,7 @@ function Login() {
                 <input
                   id="username"
                   type="text"
-                  className="border-0 pl-4 py-2 md:w-70 lg:w-80 rounded-lg border-[#CED4DA] text-[14px] md:text-[16px] outline-none"
+                  className="border-0 pl-4 py-2 md:w-70 lg:w-80 rounded-lg border-[#CED4DA] font-Inter text-[14px] md:text-[16px] outline-none"
                   placeholder="Enter username"
                 />
               </div>
@@ -112,7 +112,7 @@ function Login() {
             <div>
               <label
                 htmlFor="password"
-                className="block mb-1 text-[#212529] font-normal text-[14px] md:text-[16px]"
+                className="block mb-1 text-[#212529] font-normal text-[14px] font-Inter md:text-[16px]"
               >
                 Password
               </label>
@@ -123,7 +123,7 @@ function Login() {
                   value={password}
                   onChange={handlePassword}
                   onFocus={() => setPasswordTouched(true)} // Track if field was touched
-                  className="pl-4 py-2 md:w-70 lg:w-80 outline-none border-0 text-[14px] md:text-[16px]"
+                  className="pl-4 py-2 md:w-70 lg:w-80 outline-none border-0 font-Inter  text-[14px]  md:text-[16px]"
                   placeholder="Enter password"
                 />
                 {passwordVisible ? (
@@ -145,7 +145,7 @@ function Login() {
             </div>
             <div className="flex items-center gap-2">
               <input type="checkbox" className="w-4 h-4 rounded-sm" />
-              <label className="text-[#212529] font-medium text-[14px] md:text-[16px]">
+              <label className="text-[#212529] font-medium text-[14px] md:text-[16px] font-Inter">
                 Remember Me
               </label>
             </div>
@@ -153,7 +153,7 @@ function Login() {
             <div className="flex flex-col gap-2">
               <button
                 type="submit"
-                className="w-full py-2 rounded-[5px] bg-[#0095FF] text-white font-bold text-[14px] md:text-[16px] hover:bg-blue-700"
+                className="w-full py-2 rounded-[5px] font-Inter bg-[#0095FF] text-white font-bold text-[14px] md:text-[16px] hover:bg-blue-700"
               >
                 Sign In
               </button>
@@ -161,7 +161,7 @@ function Login() {
                 <img
                   src={image3}
                   alt="Google Icon"
-                  className="w-4 h-4 md:w-5 md:h-5"
+                  className="w-4 h-4 md:w-5 md:h-5 font-Inter"
                 />
                 Continue with Google
               </button>
