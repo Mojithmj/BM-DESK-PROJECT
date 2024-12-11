@@ -12,6 +12,7 @@ import {
 } from "@/components/ui/dialog";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
+import attachment from "../assets/attachment.svg";
 
 function AssignedTickets() {
   const [activeTab, setActiveTab] = useState("alltickets");
@@ -164,6 +165,15 @@ function AssignedTickets() {
       ? data.slice(0, visibleDataCount) // Show limited data for "All Tickets"
       : data.filter((ticket) => ticket.severity.toLowerCase() === activeTab);
 
+  // attachment file details
+  const [selectedFileName, setSelectedFileName] = useState("");
+
+  const handleFileChange = (event) => {
+    if (event.target.files.length > 0) {
+      setSelectedFileName(event.target.files[0].name);
+    }
+  };
+
   return (
     <div>
       <div className="fixed top-24 left-64 w-[calc(100%_-_280px)]">
@@ -201,7 +211,6 @@ function AssignedTickets() {
               </div>
               <div>
                 <Dialog className="!border !rounded-md">
-                  {/* This button will act as the trigger for opening the dialog */}
                   <DialogTrigger asChild>
                     <button
                       type="button"
@@ -211,7 +220,7 @@ function AssignedTickets() {
                     </button>
                   </DialogTrigger>
 
-                  <DialogContent className="bg-white max-h-[90vh] overflow-y-auto border rounded-md">
+                  <DialogContent className="bg-white max-h-[90vh] overflow-y-auto border rounded-[5px]">
                     <DialogHeader>
                       <div className="grid">
                         <DialogTitle className="text-[#165DFF] text-[26px]">
@@ -221,7 +230,6 @@ function AssignedTickets() {
                       </div>
 
                       <div className="grid grid-cols-1 gap-4 py-4">
-                        {/* Email Address */}
                         <div className="flex flex-col">
                           <Label
                             htmlFor="emailAddress"
@@ -232,11 +240,10 @@ function AssignedTickets() {
                           <Input
                             id="emailAddress"
                             placeholder="Enter Your Email Address"
-                            className="w-full text-[#86909C] placeholder:text-[12px] border border-[#E5E6EB]"
+                            className="w-full text-[#86909C] placeholder:text-[12px] border border-[#E5E6EB] rounded-[5px]"
                           />
                         </div>
 
-                        {/* Institute Name */}
                         <div className="flex flex-col">
                           <Label
                             htmlFor="instituteName"
@@ -247,13 +254,12 @@ function AssignedTickets() {
                           <Input
                             id="instituteName"
                             placeholder="Enter Your Institute Name"
-                            className="w-full text-black placeholder:text-[#86909C] placeholder:text-[12px] border border-[#E5E6EB]"
+                            className="w-full text-black placeholder:text-[#86909C] placeholder:text-[12px] border border-[#E5E6EB] rounded-[5px]"
                           />
                         </div>
                       </div>
 
                       <div className="grid grid-cols-2 gap-4">
-                        {/* Department */}
                         <div className="flex flex-col ">
                           <Label
                             htmlFor="department"
@@ -264,11 +270,10 @@ function AssignedTickets() {
                           <Input
                             id="department"
                             placeholder="Select Project Name from list"
-                            className="w-full text-[#86909C] placeholder:text-[12px] border border-[#E5E6EB]"
+                            className="w-full text-[#86909C] placeholder:text-[12px] border border-[#E5E6EB] rounded-[5px]"
                           />
                         </div>
 
-                        {/* Severity Level */}
                         <div className="flex flex-col">
                           <Label
                             htmlFor="severitylevel"
@@ -279,11 +284,10 @@ function AssignedTickets() {
                           <Input
                             id="severitylevel"
                             placeholder="Select Severity Level from list"
-                            className="w-full text-[#86909C] placeholder:text-[12px] border border-[#E5E6EB]"
+                            className="w-full text-[#86909C] placeholder:text-[12px] border border-[#E5E6EB] rounded-[5px]"
                           />
                         </div>
 
-                        {/* Project */}
                         <div className="flex flex-col">
                           <Label
                             htmlFor="project"
@@ -294,11 +298,10 @@ function AssignedTickets() {
                           <Input
                             id="project"
                             placeholder="Select Project from list"
-                            className="w-full text-[#86909C] placeholder:text-[12px] border border-[#E5E6EB]"
+                            className="w-full text-[#86909C] placeholder:text-[12px] border border-[#E5E6EB] rounded-[5px]"
                           />
                         </div>
 
-                        {/* Screen Number */}
                         <div className="flex flex-col">
                           <Label
                             htmlFor="screennumber"
@@ -309,7 +312,7 @@ function AssignedTickets() {
                           <Input
                             id="screennumber"
                             placeholder="Enter Screen Number"
-                            className="w-full text-[#86909C] placeholder:text-[12px] border border-[#E5E6EB]"
+                            className="w-full text-[#86909C] placeholder:text-[12px] border border-[#E5E6EB] rounded-[5px]"
                           />
                         </div>
                       </div>
@@ -324,11 +327,10 @@ function AssignedTickets() {
                           <Input
                             id="ticketsubject"
                             placeholder="Enter Ticket Subject"
-                            className="w-full text-[#86909C] placeholder:text-[12px] border border-[#E5E6EB]"
+                            className="w-full text-[#86909C] placeholder:text-[12px] border border-[#E5E6EB] rounded-[5px]"
                           />
                         </div>
 
-                        {/* Select Attachment */}
                         <div className="flex flex-col">
                           <Label
                             htmlFor="attachment"
@@ -336,11 +338,50 @@ function AssignedTickets() {
                           >
                             Select Attachment
                           </Label>
-                          <Input
-                            id="attachment"
-                            placeholder="Select Attachment"
-                            className="w-full text-[#86909C] placeholder:text-[12px] border border-[#E5E6EB]"
-                          />
+                          {/* <div className="relative flex items-center">
+                            <Input
+                              id="attachment"
+                              placeholder="Select Attachment"
+                              className="w-full text-[#86909C] placeholder:text-[12px] border border-[#E5E6EB] rounded-[5px] pr-8" // Add padding to the right for the icon space
+                            />
+                            <img
+                              src={attachment}
+                              alt="Attachment icon"
+                              className="absolute right-3 h-3 w-3" // Position the image inside the input
+                            />
+                          </div> */}
+                          <div className="relative flex items-center">
+                            {/* Hidden input for file selection */}
+                            <Input
+                              type="file"
+                              id="attachment"
+                              onChange={handleFileChange}
+                              className="hidden"
+                            />
+                            <Input
+                              placeholder="Select Attachment"
+                              className="w-full text-[#86909C] placeholder:text-[12px] border border-[#E5E6EB] rounded-[5px] pr-8"
+                              readOnly
+                              value={selectedFileName} // Display the selected file name in the input
+                            />
+                            {/* Label to trigger the file input click */}
+                            <Label
+                              htmlFor="attachment"
+                              className="absolute right-3 cursor-pointer"
+                            >
+                              <img
+                                src={attachment}
+                                alt="Attachment icon"
+                                className="h-3 w-3"
+                              />
+                            </Label>
+                          </div>
+                          {/* Display the selected file name below the input */}
+                          {selectedFileName && (
+                            <p className="text-[11px] text-[#302f2f] mt-2">
+                              Selected File: {selectedFileName}
+                            </p>
+                          )}
                         </div>
 
                         <div className="flex flex-col">
@@ -352,7 +393,7 @@ function AssignedTickets() {
                           </Label>
                           <textarea
                             id="instituteName"
-                            className="w-full h-[100px] p-2 border border-[#E5E6EB] placeholder:text-[13px]  rounded-md resize-none focus"
+                            className="w-full h-[100px] p-2 border border-[#E5E6EB] placeholder:text-[13px] rounded-[5px] resize-none focus"
                             placeholder="Enter Ticket Description"
                           />
                         </div>

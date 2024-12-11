@@ -101,6 +101,16 @@ function TicketsSidebar({ ticket, children }) {
         return { color: "#CB2634", backgroundColor: "#FFECE8" };
     }
   };
+  const attachstyle = (attach) => {
+    switch (attach) {
+      case "Yes":
+        return { color: "#FF7D00", backgroundColor: "#FFF7E8" };
+      case "No":
+        return { color: "#165DFF", backgroundColor: "#E8F3FF" };
+      default:
+        return { color: "#CB2634", backgroundColor: "#FFECE8" };
+    }
+  };
 
   const [uploadedFiles, setUploadedFiles] = useState([]);
 
@@ -205,7 +215,7 @@ function TicketsSidebar({ ticket, children }) {
                 <span
                   style={getSeverityStyle(ticket.severity)}
                   className="px-2 py-1 rounded-[5px]"
-                >
+                >   
                   {ticket.severity}
                 </span>
               </p>
@@ -213,7 +223,13 @@ function TicketsSidebar({ ticket, children }) {
                 <strong className="text-[#86909C] font-normal">
                   Attachment:
                 </strong>{" "}
-                {ticket.attachment || "--"}
+                <span
+                  style={attachstyle(ticket.attach)}
+                  className="px-2 py-1 rounded-[5px]"
+                >   
+                  {ticket.attachment || "--"}
+                </span>
+                {/* {ticket.attachment || "--"} */}
               </p>
               <p className="text-[#1D2129]">
                 <strong className="text-[#86909C] font-normal">

@@ -18,7 +18,6 @@ import { Button } from "./ui/button";
 import { IoMdArrowDown, IoMdArrowUp } from "react-icons/io";
 import TicketsSidebar from "./TicketsSidebar";
 
-
 // import { Button } from "@/components/ui/button"
 import {
   Command,
@@ -35,40 +34,32 @@ import {
 } from "@/components/ui/popover";
 import { RiArrowDropDownLine } from "react-icons/ri";
 
-const frameworks = [
-  {
-    value: "Assignticket",
-    label: "Assign Ticket",
-  },
-  {
-    value: "rejectticket",
-    label: "Reject Ticket",
-  },
-  {
-    value: "resolveticket",
-    label: "Resolve Ticket",
-  },
-  {
-    value: "managementapproval",
-    label: "Management Approval",
-  },
-];
+// const frameworks = [
+//   {
+//     value: "Assignticket",
+//     label: "Assign Ticket",
+//   },
+//   {
+//     value: "rejectticket",
+//     label: "Reject Ticket",
+//   },
+//   {
+//     value: "resolveticket",
+//     label: "Resolve Ticket",
+//   },
+//   {
+//     value: "managementapproval",
+//     label: "Management Approval",
+//   },
+// ];
 
-import SheetComponent from "../components/Sheets/ActionTickets";  
+import SheetComponent from "../components/Sheets/ActionTickets";
 
 function ReusableTable({ data, headers, currentTab, defaultSortConfig }) {
   const [visibleCount, setVisibleCount] = useState(6);
   const [sortConfig, setSortConfig] = useState(
     defaultSortConfig || { key: "projectname", direction: "ascending" }
   );
-
-  // const [isSheetOpen, setIsSheetOpen] = useState(false);
-  // const [ticketAction, setTicketAction] = useState("");
-
-  // const handleAssignTicket = () => {
-  //   setTicketAction("Assign Ticket"); // Set the action name
-  //   setIsSheetOpen(true);
-  // };
 
   const sortedData = React.useMemo(() => {
     const sortableData = [...data];
@@ -131,7 +122,6 @@ function ReusableTable({ data, headers, currentTab, defaultSortConfig }) {
     setSortConfig({ key: column, direction });
   };
 
-
   const [isSheetOpen, setIsSheetOpen] = useState(false);
 
   const handleSheetData = (data) => {
@@ -141,10 +131,10 @@ function ReusableTable({ data, headers, currentTab, defaultSortConfig }) {
 
   const [selectedAction, setSelectedAction] = useState(""); // New state for action
 
-const handleDropdownSelect = (action) => {
-  setSelectedAction(action); // Set the selected action
-  setIsSheetOpen(true); // Open the sheet
-};
+  const handleDropdownSelect = (action) => {
+    setSelectedAction(action); // Set the selected action
+    setIsSheetOpen(true); // Open the sheet
+  };
 
   return (
     <div className="max-h-[55vh] overflow-y-auto">
@@ -249,27 +239,39 @@ const handleDropdownSelect = (action) => {
                           </div>
                         </DropdownMenuTrigger>
                         <DropdownMenuContent className="bg-white rounded-[10px] ">
-                          {/* <DropdownMenuItem onClick={() => setIsSheetOpen(true)} className="cursor-pointer">
+
+                          <DropdownMenuItem
+                            onClick={() =>
+                              handleDropdownSelect("Assign Ticket")
+                            }
+                            className="cursor-pointer"
+                          >
                             Assign Ticket
                           </DropdownMenuItem>
-                          <DropdownMenuItem>Reject Ticket</DropdownMenuItem>
-                          <DropdownMenuItem>Resolve Ticket</DropdownMenuItem>
-                          <DropdownMenuItem>
+                          <DropdownMenuItem
+                            onClick={() =>
+                              handleDropdownSelect("Reject Ticket")
+                            }
+                            className="cursor-pointer"
+                          >
+                            Reject Ticket
+                          </DropdownMenuItem>
+                          <DropdownMenuItem
+                            onClick={() =>
+                              handleDropdownSelect("Resolve Ticket")
+                            }
+                            className="cursor-pointer"
+                          >
+                            Resolve Ticket
+                          </DropdownMenuItem>
+                          <DropdownMenuItem
+                            onClick={() =>
+                              handleDropdownSelect("Management Approval")
+                            }
+                            className="cursor-pointer"
+                          >
                             Management Approval
-                          </DropdownMenuItem> */}
-                          <DropdownMenuItem onClick={() => handleDropdownSelect("Assign Ticket")} className="cursor-pointer">
-  Assign Ticket
-</DropdownMenuItem>
-<DropdownMenuItem onClick={() => handleDropdownSelect("Reject Ticket")} className="cursor-pointer">
-  Reject Ticket
-</DropdownMenuItem>
-<DropdownMenuItem onClick={() => handleDropdownSelect("Resolve Ticket")} className="cursor-pointer">
-  Resolve Ticket
-</DropdownMenuItem>
-<DropdownMenuItem onClick={() => handleDropdownSelect("Management Approval")} className="cursor-pointer">
-  Management Approval
-</DropdownMenuItem>
-
+                          </DropdownMenuItem>
                         </DropdownMenuContent>
                       </DropdownMenu>
                     ) : header.value === "slno" ? (
@@ -291,8 +293,6 @@ const handleDropdownSelect = (action) => {
         onSubmit={handleSheetData}
         action={selectedAction} // Pass selected action
       />
-
-
 
       {currentTab === "All Tickets" && data.length > visibleCount && (
         <div className="text-center mt-4">
