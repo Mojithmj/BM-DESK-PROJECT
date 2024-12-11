@@ -17,21 +17,7 @@ import {
 import { Button } from "./ui/button";
 import { IoMdArrowDown, IoMdArrowUp } from "react-icons/io";
 import TicketsSidebar from "./TicketsSidebar";
-import {
-  Sheet,
-  SheetContent,
-  SheetHeader,
-  SheetTitle,
-  SheetDescription,
-  SheetFooter,
-  SheetClose,
-} from "@/components/ui/sheet";
-import { Label } from "@/components/ui/label";
-import { Input } from "@/components/ui/input";
-// import * as React from "react"
-import { Check, ChevronsUpDown } from "lucide-react";
 
-import { cn } from "@/lib/utils";
 // import { Button } from "@/components/ui/button"
 import {
   Command,
@@ -46,39 +32,34 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
+import { RiArrowDropDownLine } from "react-icons/ri";
 
-const frameworks = [
-  {
-    value: "Assignticket",
-    label: "Assign Ticket",
-  },
-  {
-    value: "rejectticket",
-    label: "Reject Ticket",
-  },
-  {
-    value: "resolveticket",
-    label: "Resolve Ticket",
-  },
-  {
-    value: "managementapproval",
-    label: "Management Approval",
-  },
-];
+// const frameworks = [
+//   {
+//     value: "Assignticket",
+//     label: "Assign Ticket",
+//   },
+//   {
+//     value: "rejectticket",
+//     label: "Reject Ticket",
+//   },
+//   {
+//     value: "resolveticket",
+//     label: "Resolve Ticket",
+//   },
+//   {
+//     value: "managementapproval",
+//     label: "Management Approval",
+//   },
+// ];
+
+import SheetComponent from "../components/Sheets/ActionTickets";
 
 function ReusableTable({ data, headers, currentTab, defaultSortConfig }) {
   const [visibleCount, setVisibleCount] = useState(6);
   const [sortConfig, setSortConfig] = useState(
     defaultSortConfig || { key: "projectname", direction: "ascending" }
   );
-
-  const [isSheetOpen, setIsSheetOpen] = useState(false);
-  const [ticketAction, setTicketAction] = useState("");
-
-  const handleAssignTicket = () => {
-    setTicketAction("Assign Ticket"); // Set the action name
-    setIsSheetOpen(true);
-  };
 
   const sortedData = React.useMemo(() => {
     const sortableData = [...data];
@@ -141,8 +122,19 @@ function ReusableTable({ data, headers, currentTab, defaultSortConfig }) {
     setSortConfig({ key: column, direction });
   };
 
-  const [open, setOpen] = React.useState(false);
-  const [value, setValue] = React.useState("");
+  const [isSheetOpen, setIsSheetOpen] = useState(false);
+
+  const handleSheetData = (data) => {
+    console.log("Data from Sheet:", data);
+    // Process the received data here
+  };
+
+  const [selectedAction, setSelectedAction] = useState(""); // New state for action
+
+  const handleDropdownSelect = (action) => {
+    setSelectedAction(action); // Set the selected action
+    setIsSheetOpen(true); // Open the sheet
+  };
 
   return (
     <div className="max-h-[55vh] overflow-y-auto">
@@ -247,15 +239,37 @@ function ReusableTable({ data, headers, currentTab, defaultSortConfig }) {
                           </div>
                         </DropdownMenuTrigger>
                         <DropdownMenuContent className="bg-white rounded-[10px] ">
+
                           <DropdownMenuItem
-                            onSelect={handleAssignTicket}
+                            onClick={() =>
+                              handleDropdownSelect("Assign Ticket")
+                            }
                             className="cursor-pointer"
                           >
                             Assign Ticket
                           </DropdownMenuItem>
-                          <DropdownMenuItem>Reject Ticket</DropdownMenuItem>
-                          <DropdownMenuItem>Resolve Ticket</DropdownMenuItem>
-                          <DropdownMenuItem>
+                          <DropdownMenuItem
+                            onClick={() =>
+                              handleDropdownSelect("Reject Ticket")
+                            }
+                            className="cursor-pointer"
+                          >
+                            Reject Ticket
+                          </DropdownMenuItem>
+                          <DropdownMenuItem
+                            onClick={() =>
+                              handleDropdownSelect("Resolve Ticket")
+                            }
+                            className="cursor-pointer"
+                          >
+                            Resolve Ticket
+                          </DropdownMenuItem>
+                          <DropdownMenuItem
+                            onClick={() =>
+                              handleDropdownSelect("Management Approval")
+                            }
+                            className="cursor-pointer"
+                          >
                             Management Approval
                           </DropdownMenuItem>
                         </DropdownMenuContent>
@@ -273,266 +287,12 @@ function ReusableTable({ data, headers, currentTab, defaultSortConfig }) {
         </TableBody>
       </Table>
 
-      <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
-        <SheetContent className="bg-white h-[100vh] overflow-y-auto">
-          <SheetHeader>
-            <SheetTitle>Ticket Action</SheetTitle>
-          </SheetHeader>
-
-          {/* <div className="grid grid-cols-1 gap-4 py-4">
-            <Popover open={open} onOpenChange={setOpen}>
-              <PopoverTrigger asChild>
-                <Button
-                  variant="outline"
-                  role="combobox"
-                  aria-expanded={open}
-                  className="w-full justify-between"
-                >
-                  {value
-                    ? frameworks.find((framework) => framework.value === value)
-                        ?.label
-                    : "Assign Ticket"}
-                  <ChevronsUpDown className="opacity-50" />
-                </Button>
-              </PopoverTrigger>
-              <PopoverContent className="w-[510px] p-0 bg-white">
-                <Command>
-                  <CommandList>
-                    <CommandGroup>
-                      {frameworks.map((framework) => (
-                        <CommandItem
-                          key={framework.value}
-                          value={framework.value}
-                          onSelect={(currentValue) => {
-                            setValue(
-                              currentValue === value ? "" : currentValue
-                            );
-                            setOpen(false);
-                          }}
-                        >
-                          {framework.label}
-                          <Check
-                            className={cn(
-                              "ml-auto",
-                              value === framework.value
-                                ? "opacity-100"
-                                : "opacity-0"
-                            )}
-                          />
-                        </CommandItem>
-                      ))}
-                    </CommandGroup>
-                  </CommandList>
-                </Command>
-              </PopoverContent>
-            </Popover>
-          </div> */}
-
-          <div className="grid grid-cols-1 gap-4 py-4">
-            <Popover open={open} onOpenChange={setOpen}>
-              <PopoverTrigger asChild>
-                <Button
-                  variant="outline"
-                  role="combobox"
-                  aria-expanded={open}
-                  className="w-full justify-between text-[#165DFF] bg-[#E8F3FF] text-[12px] md:text-[12px] lg:text-[12px] 2xl:text-[14px] border-[#E8F3FF] hover:text-[#165DFF] hover:bg-[#E8F3FF] font-normal"
-                >
-                  {value
-                    ? frameworks.find((framework) => framework.value === value)
-                        ?.label
-                    : "Assign Ticket"}{" "}
-                  {/* Default value "Assign Ticket" */}
-                  <ChevronsUpDown className="opacity-50" />
-                </Button>
-              </PopoverTrigger>
-              <PopoverContent className="w-[510px] p-0 bg-white">
-                <Command>
-                  <CommandList>
-                    <CommandGroup>
-                      {/* Exclude the "Assign Ticket" option from the dropdown */}
-                      {frameworks
-                        .filter(
-                          (framework) => framework.value !== "assignticket"
-                        ) // Remove "Assign Ticket" from options
-                        .map((framework) => (
-                          <CommandItem
-                            key={framework.value}
-                            value={framework.value}
-                            onSelect={(currentValue) => {
-                              setValue(
-                                currentValue === value ? "" : currentValue
-                              );
-                              setOpen(false);
-                            }}
-                          >
-                            {framework.label}
-                            <Check
-                              className={cn(
-                                "ml-auto",
-                                value === framework.value
-                                  ? "opacity-100"
-                                  : "opacity-0"
-                              )}
-                            />
-                          </CommandItem>
-                        ))}
-                    </CommandGroup>
-                  </CommandList>
-                </Command>
-              </PopoverContent>
-            </Popover>
-          </div>
-
-          <div className="flex flex-col relative">
-            <Label
-              htmlFor="instituteName"
-              className="mb-2 font-normal text-[12px]"
-            >
-              Department
-            </Label>
-            <div className="relative w-full">
-              <Input
-                id="instituteName"
-                placeholder="Select Department"
-                className="w-full text-black placeholder:text-[#86909C] placeholder:text-[12px] border border-[#E5E6EB] pr-6"
-              />
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="12"
-                height="8"
-                viewBox="0 0 12 8"
-                fill="none"
-                className="absolute top-1/2 right-2 -translate-y-1/2 pointer-events-none"
-              >
-                <path
-                  d="M6.02145 8L0.0429688 1.99965L2.03673 0L6.02145 4.00071L10.0062 0L11.9999 1.99965L6.02145 8Z"
-                  fill="#E5E6EB"
-                />
-              </svg>
-            </div>
-          </div>
-
-          {/* Institute Name */}
-          <div className="flex flex-col">
-            <Label
-              htmlFor="instituteName"
-              className="mb-2 font-normal text-[12px]"
-            >
-              Category
-            </Label>
-            <Input
-              id="instituteName"
-              placeholder="Select category"
-              className="w-full text-black placeholder:text-[#86909C] placeholder:text-[12px] border border-[#E5E6EB]"
-            />
-          </div>
-
-          {/* Institute Name */}
-          <div className="flex flex-col">
-            <Label
-              htmlFor="instituteName"
-              className="mb-2 font-normal text-[12px]"
-            >
-              Project
-            </Label>
-            <Input
-              id="instituteName"
-              placeholder="Select Project"
-              className="w-full text-black placeholder:text-[#86909C] placeholder:text-[12px] border border-[#E5E6EB]"
-            />
-          </div>
-
-          {/* Project Manager */}
-          <div className="flex flex-col">
-            <Label
-              htmlFor="instituteName"
-              className="mb-2 font-normal text-[12px]"
-            >
-              Project Manager
-            </Label>
-            <Input
-              id="instituteName"
-              placeholder="Select Project Manager"
-              className="w-full text-black placeholder:text-[#86909C] placeholder:text-[12px] border border-[#E5E6EB]"
-            />
-          </div>
-
-          {/* Issue Type */}
-          <div className="flex flex-col">
-            <Label
-              htmlFor="instituteName"
-              className="mb-2 font-normal text-[12px]"
-            >
-              Issue Type
-            </Label>
-            <Input
-              id="instituteName"
-              placeholder="Select Issue Type"
-              className="w-full text-black placeholder:text-[#86909C] placeholder:text-[12px] border border-[#E5E6EB]"
-            />
-          </div>
-
-          {/* Required Date */}
-          <div className="flex flex-col">
-            <Label
-              htmlFor="instituteName"
-              className="mb-2 font-normal text-[12px]"
-            >
-              Required Date
-            </Label>
-            <Input
-              id="instituteName"
-              placeholder="Enter Required Date"
-              className="w-full text-black placeholder:text-[#86909C] placeholder:text-[12px] border border-[#E5E6EB]"
-            />
-          </div>
-
-          {/* Select Attachment */}
-          <div className="flex flex-col">
-            <Label
-              htmlFor="instituteName"
-              className="mb-2 font-normal text-[12px]"
-            >
-              Select Attachment
-            </Label>
-            <Input
-              id="instituteName"
-              placeholder="Select Attachment"
-              className="w-full text-black placeholder:text-[#86909C] placeholder:text-[12px] border border-[#E5E6EB]"
-            />
-          </div>
-          <div className="flex flex-col">
-            <Label
-              htmlFor="instituteName"
-              className="mb-2 font-normal text-[12px]"
-            >
-              Ticket description
-            </Label>
-            <textarea
-              id="instituteName"
-              className="w-full h-[100px] p-2 border border-[#E5E6EB] placeholder:text-[13px]  rounded-md resize-none focus"
-              placeholder="Enter Ticket Description"
-            />
-          </div>
-
-          <SheetFooter>
-            <div className="grid grid-cols-2 gap-4">
-              <button
-                type="submit"
-                className="bg-white text-[#165DFF] py-1 px-3 rounded border border-[#165DFF] text-[14px]"
-              >
-                Clear
-              </button>
-              <button
-                type="button"
-                className="bg-[#165DFF] text-white py-1 px-3 rounded text-[14px]"
-              >
-                Submit
-              </button>
-            </div>
-          </SheetFooter>
-        </SheetContent>
-      </Sheet>
+      <SheetComponent
+        isOpen={isSheetOpen}
+        onClose={() => setIsSheetOpen(false)}
+        onSubmit={handleSheetData}
+        action={selectedAction} // Pass selected action
+      />
 
       {currentTab === "All Tickets" && data.length > visibleCount && (
         <div className="text-center mt-4">
