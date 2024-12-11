@@ -27,19 +27,26 @@ function Login() {
   // Handle form submission
   const passwordhandle = (e) => {
     e.preventDefault(); // Prevent page reload
-
+  
     // Check if the entered credentials match any valid user
-    const isValidUser = validUsers.some(
+    const isValidUser = validUsers.find(
       (user) => user.username === myusername && user.password === mypassword
     );
-
+  
     if (isValidUser) {
-      setError("");
-      navigate("/opentickets");
+      setError(""); // Clear any existing error messages
+  
+      // Redirect based on the username
+      if (isValidUser.username === "mojith") {
+        navigate("/opentickets");
+      } else if (isValidUser.username === "ramduth") {
+        navigate("/assignedtickets"); // Redirect to '/assignedtickets' for Ramduth
+      }
     } else {
       setError("Invalid username or password. Please try again");
     }
   };
+  
 
   return (
     <div className="relative flex h-screen">
