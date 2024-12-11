@@ -3,43 +3,46 @@ import image1 from "../assets/Group 1.jpg";
 import group1 from "../assets/login.png";
 import image3 from "../assets/image 32.png";
 import { PiEyeLight, PiEyeSlash } from "react-icons/pi";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
   const [passwordVisible, setPasswordVisible] = useState(false);
-  const [password, setPassword] = useState("");
-  const [passwordTouched, setPasswordTouched] = useState(false);
-  const [passwordError, setPasswordError] = useState("");
+  const [mypassword, setMypassword] = useState("");
+  const [myusername, setMyusername] = useState("");
+  const [error, setError] = useState("");
 
+  const navigate = useNavigate();
+
+  // Toggle password visibility
   const togglePasswordVisibility = () => {
     setPasswordVisible(!passwordVisible);
   };
 
-  const validatePassword = (password) => {
-    let error = "";
-    if (password.length < 8) {
-      error = "Password must be at least 8 characters long.";
-    } else if (!/[A-Z]/.test(password)) {
-      error = "Password must contain at least one uppercase letter.";
-    } else if (!/[a-z]/.test(password)) {
-      error = "Password must contain at least one lowercase letter.";
-    } else if (!/[0-9]/.test(password)) {
-      error = "Password must contain at least one number.";
-    } else if (!/[!@#$%^&*(),.?":{}|<>]/.test(password)) {
-      error = "Password must contain at least one special character.";
+  // List of valid username-password combinations
+  const validUsers = [
+    { username: "mojith", password: "1234" },
+    { username: "ramduth", password: "1234" },
+  ];
+
+  // Handle form submission
+  const passwordhandle = (e) => {
+    e.preventDefault(); // Prevent page reload
+
+    // Check if the entered credentials match any valid user
+    const isValidUser = validUsers.some(
+      (user) => user.username === myusername && user.password === mypassword
+    );
+
+    if (isValidUser) {
+      setError("");
+      navigate("/opentickets");
+    } else {
+      setError("Invalid username or password. Please try again");
     }
-    return error;
-  };
-
-  const handlePassword = (e) => {
-    const newpassword = e.target.value;
-    setPassword(newpassword);
-
-    const error = validatePassword(newpassword);
-    setPasswordError(error);
   };
 
   return (
-    <div className="relative flex h-screen ">
+    <div className="relative flex h-screen">
       <div className="relative hidden md:block">
         <div className="overflow-hidden w-[50vw] h-screen">
           <img src={group1} alt="Group" className="w-full h-full object-cover" />
@@ -50,7 +53,7 @@ function Login() {
               <img
                 src={image1}
                 alt="IMAGE1"
-                className="z-50 top-0 w-[24px] h-[24px] md:w-[20px] lg:w-[22px] 2xl:w-[32px] md:h-[20x] lg:h-[22px] 2xl:h-[32px] object-contain"
+                className="z-50 top-0 w-[24px] h-[24px] md:w-[20px] lg:w-[22px] 2xl:w-[32px] md:h-[20px] lg:h-[22px] 2xl:h-[32px] object-contain"
               />
             </div>
             <div className="top-4 text-[#FFF] text-[17px] md:text-[20px] lg:text-[24px] 2xl:text-[28px] font-bold font-Poppins">
@@ -59,7 +62,6 @@ function Login() {
             </div>
           </div>
         </div>
-        {/* Text positioned on bottom of the background */}
         <div className="absolute border-l-[2px] pl-3 border-l-[#0095FF] bottom-10 left-10 text-[#FFF] font-Poppins font-semibold text-[12px] md:text-xl lg:text-[24px] 2xl:text-[34px]">
           <p> Streamlining IT Support</p>
           <p>For Effortless Issue</p>
@@ -92,7 +94,10 @@ function Login() {
             </p>
           </div>
           {/* Login Form */}
-          <form className="flex flex-col gap-4 w-full lg:w-[380px] 2xl:w-[457px] font-Inter">
+          <form
+            className="flex flex-col gap-4 w-full lg:w-[380px] 2xl:w-[457px] font-Inter"
+            onSubmit={passwordhandle} // Attach submit handler
+          >
             <div>
               <label
                 htmlFor="username"
@@ -106,6 +111,7 @@ function Login() {
                   type="text"
                   className="border-0 pl-4 py-2 md:w-70 lg:w-80 rounded-lg border-[#CED4DA] font-Inter text-[14px] md:text-[16px] outline-none"
                   placeholder="Enter username"
+                  onChange={(e) => setMyusername(e.target.value)}
                 />
               </div>
             </div>
@@ -120,9 +126,8 @@ function Login() {
                 <input
                   id="password"
                   type={passwordVisible ? "text" : "password"}
-                  value={password}
-                  onChange={handlePassword}
-                  onFocus={() => setPasswordTouched(true)} // Track if field was touched
+                  value={mypassword}
+                  onChange={(e) => setMypassword(e.target.value)}
                   className="pl-4 py-2 md:w-70 lg:w-80 outline-none border-0 font-Inter  text-[14px]  md:text-[16px]"
                   placeholder="Enter password"
                 />
@@ -138,10 +143,6 @@ function Login() {
                   />
                 )}
               </div>
-              {/* Error Message */}
-              {passwordTouched && passwordError && (
-                <p className="text-red-500 text-sm mt-1">{passwordError}</p>
-              )}
             </div>
             <div className="flex items-center gap-2">
               <input type="checkbox" className="w-4 h-4 rounded-sm" />
@@ -157,6 +158,7 @@ function Login() {
               >
                 Sign In
               </button>
+              {error && <p className="text-red-500 text-sm">{error}</p>}
               <button className="w-full py-2 rounded-[5px] border border-[#0095FF] text-[#0095FF] flex items-center justify-center gap-2 hover:bg-blue-100">
                 <img
                   src={image3}
