@@ -125,7 +125,7 @@ const handleOptionClick = (option) => {
         className="flex flex-row justify-center items-center gap-5 2xl:w-[153px] 2xl:h-[50px] lg:w-[140px] lg:h-[30px] md:w-[110px] md:h-[20px] py-[10px] px-[21px] rounded-md bg-[#E8F3FF] cursor-pointer"
         onClick={triggerDropdown}
       >
-        <div className="font-inter font-normal 2xl:text-lg lg:text-[12px] md:text-[8px] text-[#1D2129]">
+        <div className="font-Inter font-normal 2xl:text-lg lg:text-[12px] md:text-[8px] text-[#1D2129]">
           {alltimeOption}
         </div>
         <div className="2xl:w-[20px] 2xl:h-[18px] md:h-[16px] text-[24px] text-[#C8CAD8] mt-[-4px]">
@@ -546,7 +546,7 @@ const handleOptionClick = (option) => {
           {/* 6 card bottom */}
           <div className="col-span-2 flex flex-col gap-[27px] px-[20px] py-[32px]  border-[1px] border-[#E9EBEC] rounded-2xl">
             <div className="flex justify-between">
-              <div className="text-[20px] font-semibold normal font-inter text-[#4E5969]">
+              <div className="text-[20px] font-semibold  font-inter text-[#4E5969]">
                 Recent Tickets
               </div>
               <div className="h-[28px] w-[28px] text-[22px] text-[#181D27]">
