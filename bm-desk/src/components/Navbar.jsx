@@ -112,7 +112,7 @@ function Navbar() {
             alt="BM Desk Logo"
             className="z-50 w-[24px] h-[24px] md:w-[20px] md:h-[20px] lg:w-[22px] lg:h-[22px] 2xl:w-[33px] 2xl:h-[33px] object-contain"
           />
-          <div className=" text-[#141414] text-[17px] md:text-[19px] lg:text-[21px] 2xl:text-[27px] font-bold font-poppins">
+          <div className=" text-[#141414] text-[17px] md:text-[19px] lg:text-[21px] 2xl:text-[27px] font-bold font-Poppins">
             BM Desk
             <span className="inline-block w-1 h-1 rounded-full bg-blue-500"></span>
           </div>
@@ -141,7 +141,7 @@ function Navbar() {
             <div className="absolute px-[16px] 2xl:py-[32px] lg:py-[28px] top-10 right-64 bg-white border border-gray-300 shadow-md rounded mt-1">
               <div className="flex flex-col gap-4">
                 <div className="flex flex-col gap-5">
-                  <div className="flex text-[#165DFF] font-inter font-normal 2xl:text-[16px] lg:text-[16px] md:text-[12px] sm:text-[10px]  px-[12px] py-[8px] border-b-2 border-[#165DFF]  justify-center">
+                  <div className="flex text-[#165DFF] font-Inter font-normal 2xl:text-[16px] lg:text-[16px] md:text-[12px] sm:text-[10px]  px-[12px] py-[8px] border-b-2 border-[#165DFF]  justify-center">
                     Notifications
                   </div>
                   <div className="flex gap-2">
@@ -173,14 +173,14 @@ function Navbar() {
                             alt={`Ticket ${index + 1}`}
                           />
                           <div className="flex flex-col flex-grow">
-                            <p className="font-inter text-[14px] normal font-semibold text-[#1D2129]">
+                            <p className="font-Inter text-[14px] normal font-semibold text-[#1D2129]">
                               {ticket.title}
                             </p>
-                            <p className="font-inter text-[12px] normal font-normal text-[#86909C]">
+                            <p className="font-Inter text-[12px] normal font-normal text-[#86909C]">
                               {ticket.description}
                             </p>
                           </div>
-                          <p className="font-inter text-[11px] whitespace-nowrap normal font-normal text-[#878A99]">
+                          <p className="font-Inter text-[11px] whitespace-nowrap normal font-normal text-[#878A99]">
                             {ticket.time}
                           </p>
                         </div>
