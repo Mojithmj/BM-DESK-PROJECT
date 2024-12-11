@@ -23,7 +23,8 @@ function App() {
     <div>
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Layout />}>
+ 
+        <Route path="/" element={<Layout />}> 
         <Route index element={<Dashboard/>}/>
         <Route path='/opentickets' element={<Opentickets/>}/>
         <Route path='/closedtickets' element={<Closedtickets/>}/>
