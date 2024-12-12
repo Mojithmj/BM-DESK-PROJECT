@@ -14,6 +14,9 @@ import AccountSettings from './components/AccountSettings';
 import Editaccountsettings from './components/Editaccountsettings';
 import Privacyaccountsettings from './components/Privacyaccountsettings';
 import ActionTickets from './components/Sheets/ActionTickets';
+import AdminTeamMonitoring from './components/projectmanager/AdminTeamMonitoring';
+import EscalatedReport from './components/projectmanager/EscalatedReport';
+import TeamManagementSheet from './components/projectmanager/TeamManagementSheet';
 
 
 
@@ -33,6 +36,8 @@ function App() {
         <Route path='/ticketapprovals' element={<TicketApprovals/>}/>
         <Route path='/accountsettings' element={<AccountSettings/>}/>
         <Route path='/editaccountsettings' element={<Editaccountsettings/>}/>
+        <Route path='/adminteammonitoring' element={<AdminTeamMonitoring/>}/>
+        <Route path='/escalatedreports' element={<EscalatedReport/>}/>
        
         </Route>
         <Route path='/login' element={<Login/>}/>
@@ -41,6 +46,7 @@ function App() {
         <Route path='/actionedtickets' element={<ActionedTickets/>}/>
         <Route path='/privacyaccountsettings' element={<Privacyaccountsettings/>}/>
         <Route path='/actiontickets' element={<ActionTickets/>}/>
+        <Route path='/tsheet' element={<TeamManagementSheet/>}/>
         
         
 
