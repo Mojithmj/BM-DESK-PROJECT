@@ -57,7 +57,7 @@ function ActionTickets({ isOpen, onClose, onSubmit, action }) {
   const actionsList = [
     { value: "assignticket", label: "Assign Ticket" },
     { value: "rejectticket", label: "Reject Ticket" },
-    { value: "resolveticket", label: "Resolve Ticket" },
+    { value: "resolveticket", label: "Verify & Close" },
     { value: "managementapproval", label: "Management Approval" },
   ];
 
@@ -331,10 +331,10 @@ function ActionTickets({ isOpen, onClose, onSubmit, action }) {
             </div>
           </>
         );
-      case "Resolve Ticket":
+      case "Verify & Close":
         return (
           <>
-            <div className="flex flex-col gap-1">
+            {/* <div className="flex flex-col gap-1">
               <h1 className="text-[#1D2129] text-[12px] font-medium">
                 Resolved
               </h1>
@@ -358,6 +358,14 @@ function ActionTickets({ isOpen, onClose, onSubmit, action }) {
                 type="date"
                 className="w-full  placeholder:text-[#86909C] placeholder:text-[12px] text-[#878A99] border border-[#E5E6EB] rounded-5px"
               />
+            </div> */}
+            {/* <Label>Comments</Label> */}
+            <div className="flex flex-col gap-1">
+              <h1 className="text-[#1D2129] text-[12px] font-medium">
+                Comments
+              </h1>
+
+              <Textarea className="border-[#E5E6EB] rounded-[5px] h-[100px]" />
             </div>
           </>
         );
@@ -439,7 +447,7 @@ function ActionTickets({ isOpen, onClose, onSubmit, action }) {
             {/* Render dynamic form fields based on selected action */}
             {renderFieldsForAction()}
           </div>
-          <SheetFooter className="absolute bottom-0 left-3 w-[94%] top-[560px]" >
+          <SheetFooter className="absolute bottom-0 left-3 w-[94%] top-[560px]">
             <div className="flex flex-row gap-3">
               <Button
                 type="button"

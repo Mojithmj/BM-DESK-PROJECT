@@ -241,14 +241,14 @@ function Sidebar() {
   const navigate = useNavigate();
   const [isSidebarOpen, setSidebarOpen] = useState(true);
 
- const handleItemClick = (item) => {
-  if (item.dropdown) {
-    handleDropdown(item.label);
-  } else {
-    setActivePath(item.path);
-    navigate(item.path);
-  }
-};
+  const handleItemClick = (item) => {
+    if (item.dropdown) {
+      handleDropdown(item.label);
+    } else {
+      setActivePath(item.path);
+      navigate(item.path);
+    }
+  };
   const [openDropdown, setOpenDropdown] = useState(null);
 
   const handleDropdown = (label) => {
@@ -258,13 +258,17 @@ function Sidebar() {
     setSidebarOpen((prev) => !prev);
   };
 
+  //
+
   return (
     <div
-    className={`flex flex-col h-screen border-r border-[#E5E6EB] ${
-      isSidebarOpen ? "2xl:w-[250px] lg:w-[210px] md:w-[180px] w-[160px]" : "w-[60px]"
-    } px-4  gap-5 transition-all duration-300`}
-  >
-    <div className="flex justify-end mb-4">
+      className={`flex flex-col h-screen border-r border-[#E5E6EB] ${
+        isSidebarOpen
+          ? "2xl:w-[250px] lg:w-[210px] md:w-[180px] w-[160px]"
+          : "w-[60px]"
+      } px-4  gap-5 transition-all duration-300`}
+    >
+      <div className="flex justify-end mb-4">
         <button
           onClick={toggleSidebar}
           className="text-[#4E5969] text-xl hover:text-[#165DFF] transition-colors lg:hidden 2xl:hidden"
@@ -272,16 +276,16 @@ function Sidebar() {
           <TbMenuDeep />
         </button>
       </div>
-     {menuItems.map((item, index) => (
-         <div
-         key={index}
-         className={`${
-           activePath === item.path
-             ? " bg-[#E8F3FF] text-[#165DFF] rounded-[4px] border-[1px] border-[#BEDAFF] cursor-pointer"
-             : " text-[#4E5969] "
-         }`}
-         onClick={() => handleItemClick(item)}
-       >
+      {menuItems.map((item, index) => (
+        <div
+          key={index}
+          className={`${
+            activePath === item.path
+              ? " bg-[#E8F3FF] text-[#165DFF] rounded-[4px] border-[1px] border-[#BEDAFF] cursor-pointer"
+              : " text-[#4E5969] "
+          }`}
+          onClick={() => handleItemClick(item)}
+        >
           <div
             className="group flex flex-row gap-2 items-center  py-3 border border-white  hover:bg-[#E8F3FF] hover:text-[#165DFF] rounded-[4px] hover:border-[1px] hover:border-[#BEDAFF] cursor-pointer"
             onClick={
@@ -290,22 +294,22 @@ function Sidebar() {
                 : () => navigate(item.path)
             }
           >
-          <div
-          className={`${
-            isSidebarOpen
-              ? "px-4" // Background and border when open
-              : "" // No background or border when closed
-          } text-[20px] group-hover:text-[#165DFF] rounded-[4px] transition-all`}
-        >
-          {item.icon}
-        </div>
-              
-              {isSidebarOpen && (
-                <div className="text-[14px] font-medium font-Inter group-hover:text-[#165DFF] flex-1">
-                  {item.label}
-                </div>
-              )}
-            
+            <div
+              className={`${
+                isSidebarOpen
+                  ? "px-4" // Background and border when open
+                  : "" // No background or border when closed
+              } text-[20px] group-hover:text-[#165DFF] rounded-[4px] transition-all`}
+            >
+              {item.icon}
+            </div>
+
+            {isSidebarOpen && (
+              <div className="text-[14px] font-medium font-Inter group-hover:text-[#165DFF] flex-1">
+                {item.label}
+              </div>
+            )}
+
             {item.dropdown && isSidebarOpen && (
               <RiArrowDropDownLine
                 className={`text-4xl  w-[19px] h-[19px] ${
@@ -317,21 +321,23 @@ function Sidebar() {
           {item.dropdown && openDropdown === item.label && isSidebarOpen && (
             <div>
               {item.dropdown.map((subItem, subIndex) => (
-                <div className={`${
-                  activePath === item.path
-                    ? " bg-[#E8F3FF] text-[#165DFF] rounded-[4px] border-[1px] border-[#BEDAFF] cursor-pointer"
-                    : " text-[#4E5969] "
-                }`}>
                 <div
-                  key={subIndex}
-                  className="group px-10 border border-white py-2 gap-2 flex flex-row items-center text-sm text-[#4E5969] text-nowrap  hover:bg-[#E8F3FF] hover:text-[#165DFF] rounded-[4px] hover:border-[1px] hover:border-[#BEDAFF] cursor-pointer"
-                  onClick={() => navigate(subItem.path)}
+                  className={`${
+                    activePath === item.path
+                      ? " bg-[#E8F3FF] text-[#165DFF] rounded-[4px] border-[1px] border-[#BEDAFF] cursor-pointer"
+                      : " text-[#4E5969] "
+                  }`}
                 >
-                  <div className="text-[16px]">{subItem.icon}</div>
-                  <div className="flex-1 2xl:text-[14px] lg:text-xs md:text-[11px] text-[10px] font-medium font-Inter group-hover:text-[#165DFF]">
-                    {subItem.label}
+                  <div
+                    key={subIndex}
+                    className="group px-10 border border-white py-2 gap-2 flex flex-row items-center text-sm text-[#4E5969] text-nowrap  hover:bg-[#E8F3FF] hover:text-[#165DFF] rounded-[4px] hover:border-[1px] hover:border-[#BEDAFF] cursor-pointer"
+                    onClick={() => navigate(subItem.path)}
+                  >
+                    <div className="text-[16px]">{subItem.icon}</div>
+                    <div className="flex-1 2xl:text-[14px] lg:text-xs md:text-[11px] text-[10px] font-medium font-Inter group-hover:text-[#165DFF]">
+                      {subItem.label}
+                    </div>
                   </div>
-                </div>
                 </div>
               ))}
             </div>
@@ -343,7 +349,3 @@ function Sidebar() {
 }
 
 export default Sidebar;
-
-
-
-

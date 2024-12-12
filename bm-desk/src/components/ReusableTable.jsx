@@ -17,42 +17,6 @@ import {
 import { Button } from "./ui/button";
 import { IoMdArrowDown, IoMdArrowUp } from "react-icons/io";
 import TicketsSidebar from "./TicketsSidebar";
-
-// import { Button } from "@/components/ui/button"
-import {
-  Command,
-  CommandEmpty,
-  CommandGroup,
-  CommandInput,
-  CommandItem,
-  CommandList,
-} from "@/components/ui/command";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
-import { RiArrowDropDownLine } from "react-icons/ri";
-
-// const frameworks = [
-//   {
-//     value: "Assignticket",
-//     label: "Assign Ticket",
-//   },
-//   {
-//     value: "rejectticket",
-//     label: "Reject Ticket",
-//   },
-//   {
-//     value: "resolveticket",
-//     label: "Resolve Ticket",
-//   },
-//   {
-//     value: "managementapproval",
-//     label: "Management Approval",
-//   },
-// ];
-
 import SheetComponent from "../components/Sheets/ActionTickets";
 
 function ReusableTable({ data, headers, currentTab, defaultSortConfig }) {
@@ -194,7 +158,7 @@ function ReusableTable({ data, headers, currentTab, defaultSortConfig }) {
                       </TicketsSidebar>
                     ) : header.value === "severity" ? (
                       <Badge
-                        className="lg:text-[10px] 2xl:text-[12px] font-medium rounded px-2 py-1"
+                        className=" text-[12px] lg:text-[12px] 2xl:text-[12px] font-medium rounded px-2 py-1"
                         style={{
                           color:
                             row[header.value] === "Major"
@@ -217,7 +181,7 @@ function ReusableTable({ data, headers, currentTab, defaultSortConfig }) {
                         <DropdownMenuTrigger asChild>
                           <div className="flex shrink-0 items-center bg-[#F8F9FB] rounded-[4px] border-[1.5px] border-[#0E42D2] px-2 py-2 text-[#0E42D2] gap-2 w-[70%]">
                             <Button
-                              className="rounded-[4px] border-none shadow-none !outline-none !p-0 !h-full font-normal text-[10px] md:text-[12px] 2xl:[14px] "
+                              className="rounded-[3px] border-none shadow-none !outline-none !p-0 !h-full font-normal text-[10px] md:text-[12px] 2xl:[12px] "
                               variant="outline"
                             >
                               Action
@@ -258,11 +222,11 @@ function ReusableTable({ data, headers, currentTab, defaultSortConfig }) {
                           </DropdownMenuItem>
                           <DropdownMenuItem
                             onClick={() =>
-                              handleDropdownSelect("Resolve Ticket")
+                              handleDropdownSelect("Verify & Close")
                             }
                             className="cursor-pointer"
                           >
-                            Resolve Ticket
+                            Verify & Close
                           </DropdownMenuItem>
                           <DropdownMenuItem
                             onClick={() =>

@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/input";
 // import { IoMdArrowDown } from "react-icons/io";
 import ReusableTable from "./ReusableTable";
 import NewTicket from "./NewTicket";
+import TabsSearchButton from "./TabsSearchButton";
 
 function ActionedTickets() {
   const [activeTab, setActiveTab] = useState("alltickets");
@@ -24,7 +25,6 @@ function ActionedTickets() {
       id: 1,
       ticketnumber: "TCKT5642",
       projectname: "Benchmark School Dairy",
-
       subject: "Benchmark Assets Inc...	",
       requireddate: "17-08-2024",
       expecteddate: "17-08-2024",
@@ -86,49 +86,42 @@ function ActionedTickets() {
       id: 2,
       value: "ticketnumber",
       label: "Ticket Number",
-      // icon: <IoMdArrowDown />,
       sortable: true,
     },
     {
       id: 3,
       value: "projectname",
       label: "Project Name",
-      // icon: <IoMdArrowDown />,
       sortable: true,
     },
     {
       id: 4,
       value: "subject",
       label: "Subject",
-      // icon: <IoMdArrowDown />,
       sortable: true,
     },
     {
       id: 5,
       value: "requireddate",
       label: "Required Date",
-      // icon: <IoMdArrowDown />,
       sortable: true,
     },
     {
       id: 6,
       value: "expecteddate",
       label: "Expected Date",
-      // icon: <IoMdArrowDown />,
       sortable: true,
     },
     {
       id: 7,
       value: "status",
       label: "Status",
-      // icon: <IoMdArrowDown />,
       sortable: true,
     },
     {
       id: 8,
       value: "severity",
       label: "Severity",
-      // icon: <IoMdArrowDown />,
       sortable: true,
     },
   ];
@@ -137,6 +130,16 @@ function ActionedTickets() {
     activeTab === "alltickets"
       ? data.slice(0, visibleDataCount) // Show limited data for "All Tickets"
       : data.filter((ticket) => ticket.severity.toLowerCase() === activeTab);
+
+      // tabsearcbutton.jsx file detils needed
+  const handleSearch = (event) => {
+    console.log("Search value:", event.target.value);
+  };
+
+  const handleCreateTicket = () => {
+    console.log("Create New Ticket clicked");
+  };
+
 
   return (
     <div>
@@ -154,46 +157,14 @@ function ActionedTickets() {
             <Pheader title="My Actioned Tickets" />
           </div>
           {/* Tabs */}
-          <div className="flex justify-between items-center">
-            <div>
-              <div className="flex items-center gap-2">
-                {tabs.map((tab) => (
-                  <button
-                    key={tab.value}
-                    onClick={() => setActiveTab(tab.value)}
-                    className={`font-inter text-[16px] font-normal p-[6px] rounded-[4px] px-4 transition-colors ${
-                      activeTab === tab.value
-                        ? "bg-black text-white"
-                        : "bg-gray-50 text-black"
-                    }`}
-                  >
-                    {tab.label}
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            <div className="flex items-center gap-5">
-              <div className="flex items-center gap-2 px-4 py-2 bg-[#F8F9FB] rounded-[3px] border-[1.5px] border-[#F2F3F5]">
-                <FiSearch className="text-black" />
-                <Input
-                  placeholder="Search Ticket"
-                  className="border-none shadow-none !outline-none !p-0 !h-full"
-                />
-              </div>
-              <div className="overflow-hidden rounded-lg">
-              <NewTicket
-                triggerButton={
-                  <button
-                    type="button"
-                    className="text-white bg-blue-600 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-[5px] text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
-                  >
-                    Create New Ticket
-                  </button>
-                }
-              />
-              </div>
-            </div>
+          <div>
+            <TabsSearchButton
+              tabs={tabs}
+              activeTab={activeTab}
+              setActiveTab={setActiveTab}
+              onSearch={handleSearch}
+              onCreateTicket={handleCreateTicket}
+            />
           </div>
           {/* Table */}
           <ReusableTable
