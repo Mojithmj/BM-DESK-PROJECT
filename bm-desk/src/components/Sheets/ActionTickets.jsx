@@ -195,80 +195,80 @@ function ActionTickets({ isOpen, onClose, onSubmit, action }) {
       case "Assign Ticket":
         return (
           <>
-            <div className="flex flex-col gap-2">
-              <div className="flex flex-col gap-1">
-                <h1 className="text-[#1D2129] text-[12px] font-medium">
-                  Department
-                </h1>
-                <Combobox
-                  items={department}
-                  placeholder="Select Department"
-                  searchPlaceholder="Search department..."
-                  
-                />
-              </div>
-              <div className="flex flex-col gap-1">
-                <h1 className="text-[#1D2129] text-[12px] font-medium">
-                  Category
-                </h1>
-                <Combobox
-                  items={category}
-                  placeholder="Select Category"
-                  searchPlaceholder="Search Category..."
-                />
-              </div>
-              <div className="flex flex-col gap-1">
-                <h1 className="text-[#1D2129] text-[12px] font-medium">
-                  Project
-                </h1>
-                <Combobox
-                  items={project}
-                  placeholder="Select Project"
-                  searchPlaceholder="Search Project..."
-                />
-              </div>
-              <div className="flex flex-col gap-1">
-                <h1 className="text-[#1D2129] text-[12px] font-medium">
-                  Project Manager
-                </h1>
-                <Combobox
-                  items={projectmanager}
-                  placeholder="Select Project Manager"
-                  searchPlaceholder="Search Project Manager..."
-                />
-              </div>
-              <div className="flex flex-col gap-1">
-                <h1 className="text-[#1D2129] text-[12px] font-medium">
-                  Issue Type
-                </h1>
-                <Combobox
-                  items={issuetype}
-                  placeholder="Select Issue Type"
-                  searchPlaceholder="Search Issue Type..."
-                />
-              </div>
-              <div className="flex flex-col gap-1">
-                <h1 className="text-[#1D2129] text-[12px] font-medium">
-                  Issue Type
-                </h1>
-                <Combobox
-                  items={issuetype}
-                  placeholder="Select Issue Type"
-                  searchPlaceholder="Search Issue Type..."
-                />
-              </div>
-              <div className="flex flex-col gap-1">
-                <h1 className="text-[#1D2129] text-[12px] font-medium">
-                  Required date
-                </h1>
-                <Input
-                  type=""
-                  placeholder="Enter Required Date"
-                  className="border-[#E5E6EB] rounded-[5px] w-full placeholder:text-[12px] text-[#878A99]"
-                />
-              </div>
-              <div className="flex flex-col gap-1">
-                {/* <div className="relative flex flex-row items-center">
+            <div className="max-h-[68vh] overflow-y-auto">
+              <div className="flex flex-col gap-2">
+                <div className="flex flex-col gap-1">
+                  <h1 className="text-[#1D2129] text-[12px] font-medium">
+                    Department
+                  </h1>
+                  <Combobox
+                    items={department}
+                    placeholder="Select Department"
+                    searchPlaceholder="Search department..."
+                  />
+                </div>
+                <div className="flex flex-col gap-1">
+                  <h1 className="text-[#1D2129] text-[12px] font-medium">
+                    Category
+                  </h1>
+                  <Combobox
+                    items={category}
+                    placeholder="Select Category"
+                    searchPlaceholder="Search Category..."
+                  />
+                </div>
+                <div className="flex flex-col gap-1">
+                  <h1 className="text-[#1D2129] text-[12px] font-medium">
+                    Project
+                  </h1>
+                  <Combobox
+                    items={project}
+                    placeholder="Select Project"
+                    searchPlaceholder="Search Project..."
+                  />
+                </div>
+                <div className="flex flex-col gap-1">
+                  <h1 className="text-[#1D2129] text-[12px] font-medium">
+                    Project Manager
+                  </h1>
+                  <Combobox
+                    items={projectmanager}
+                    placeholder="Select Project Manager"
+                    searchPlaceholder="Search Project Manager..."
+                  />
+                </div>
+                <div className="flex flex-col gap-1">
+                  <h1 className="text-[#1D2129] text-[12px] font-medium">
+                    Issue Type
+                  </h1>
+                  <Combobox
+                    items={issuetype}
+                    placeholder="Select Issue Type"
+                    searchPlaceholder="Search Issue Type..."
+                  />
+                </div>
+                <div className="flex flex-col gap-1">
+                  <h1 className="text-[#1D2129] text-[12px] font-medium">
+                    Issue Type
+                  </h1>
+                  <Combobox
+                    items={issuetype}
+                    placeholder="Select Issue Type"
+                    searchPlaceholder="Search Issue Type..."
+                  />
+                </div>
+                <div className="flex flex-col gap-1">
+                  <h1 className="text-[#1D2129] text-[12px] font-medium">
+                    Required date
+                  </h1>
+                  <Input
+                    type=""
+                    placeholder="Enter Required Date"
+                    className="border-[#E5E6EB] rounded-[5px] w-full placeholder:text-[12px] text-[#878A99]"
+                  />
+                </div>
+                <div className="flex flex-col gap-1">
+                  {/* <div className="relative flex flex-row items-center">
                   <Input
                     type="text"
                     placeholder="Select Attachment"
@@ -276,45 +276,46 @@ function ActionTickets({ isOpen, onClose, onSubmit, action }) {
                   />
                   <ImAttachment className="absolute right-2 text-gray-500" />
                 </div> */}
-                <div className="flex flex-col gap-2">
-                  <h1 className="text-[#1D2129] text-[12px] font-medium">
-                    Select Attachment
-                  </h1>
+                  <div className="flex flex-col gap-2">
+                    <h1 className="text-[#1D2129] text-[12px] font-medium">
+                      Select Attachment
+                    </h1>
 
-                  <div className="relative flex flex-row items-center">
-                    <Input
-                      type="text"
-                      placeholder="Select Attachment"
-                      className="pr-10 pl-3 border border-[#E5E6EB] rounded-[5px] w-full placeholder:text-[12px] text-[#878A99]"
-                      value={selectedFile ? selectedFile.name : ""}
-                      readOnly
-                    />
-                    <ImAttachment
-                      className="absolute right-2 text-gray-500 cursor-pointer w-3.5 h-3 mr-1"
-                      onClick={handleAttachmentClick}
-                    />
-                    {/* Hidden file input */}
-                    <input
-                      id="file-input"
-                      type="file"
-                      className="hidden"
-                      onChange={handleFileChange}
-                    />
-                  </div>
-
-                  {/* Display the file below the input */}
-                  {selectedFile && (
-                    <div className="text-[12px] text-[#1D2129] mt-0">
-                      <strong>Attached:</strong> {selectedFile.name}
+                    <div className="relative flex flex-row items-center">
+                      <Input
+                        type="text"
+                        placeholder="Select Attachment"
+                        className="pr-10 pl-3 border border-[#E5E6EB] rounded-[5px] w-full placeholder:text-[12px] text-[#878A99]"
+                        value={selectedFile ? selectedFile.name : ""}
+                        readOnly
+                      />
+                      <ImAttachment
+                        className="absolute right-2 text-gray-500 cursor-pointer w-3.5 h-3 mr-1"
+                        onClick={handleAttachmentClick}
+                      />
+                      {/* Hidden file input */}
+                      <input
+                        id="file-input"
+                        type="file"
+                        className="hidden"
+                        onChange={handleFileChange}
+                      />
                     </div>
-                  )}
+
+                    {/* Display the file below the input */}
+                    {selectedFile && (
+                      <div className="text-[12px] text-[#1D2129] mt-0">
+                        <strong>Attached:</strong> {selectedFile.name}
+                      </div>
+                    )}
+                  </div>
                 </div>
-              </div>
-              <div className="flex flex-col gap-1">
-                <h1 className="text-[#1D2129] text-[12px] font-medium">
-                  Description
-                </h1>
-                <Textarea className="border-[#E5E6EB] rounded-[5px] h-[100px]" />
+                <div className="flex flex-col gap-1">
+                  <h1 className="text-[#1D2129] text-[12px] font-medium">
+                    Description
+                  </h1>
+                  <Textarea className="border-[#E5E6EB] rounded-[5px] h-[100px]" />
+                </div>
               </div>
             </div>
           </>
@@ -438,30 +439,17 @@ function ActionTickets({ isOpen, onClose, onSubmit, action }) {
             {/* Render dynamic form fields based on selected action */}
             {renderFieldsForAction()}
           </div>
-          <SheetFooter>
-            <div className="grid grid-cols-2 gap-4">
-              <button
+          <SheetFooter className="absolute bottom-0 left-3 w-[94%] top-[560px]" >
+            <div className="flex flex-row gap-3">
+              <Button
                 type="button"
-                className="bg-white text-[#165DFF] py-1 px-3 rounded border border-[#165DFF] text-[14px]"
-                // onClick={() =>
-                //   setFormData({
-                //     action: "Assign Ticket",
-                //     department: "",
-                //     category: "",
-                //     project: "",
-                //     projectManager: "",
-                //     issueType: "",
-                //     requiredDate: "",
-                //     attachment: "",
-                //     description: "",
-                //   })
-                // }
+                className="bg-white text-[#165DFF] rounded border border-[#165DFF] text-[14px]"
               >
                 Clear
-              </button>
+              </Button>
               <Button
                 onClick={handleSubmit}
-                className="bg-[#165DFF] text-white py-2 px-3 rounded text-[14px] hover:bg-[#165DFF] hover:text-white"
+                className="bg-[#165DFF] text-white rounded text-[14px] hover:bg-[#165DFF] hover:text-white"
               >
                 Submit
               </Button>

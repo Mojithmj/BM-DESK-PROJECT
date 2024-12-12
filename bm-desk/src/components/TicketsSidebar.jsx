@@ -11,6 +11,7 @@ import { FiPlus } from "react-icons/fi";
 import { HiPaperClip } from "react-icons/hi";
 import image from "../assets/AvatarImage12.png";
 import image1 from "../assets/AvatarImage13.png";
+import { Button } from "./ui/button";
 
 function TicketsSidebar({ ticket, children }) {
   const [activeTab, setActiveTab] = useState("basicinfo");
@@ -136,12 +137,10 @@ function TicketsSidebar({ ticket, children }) {
       </SheetTrigger>
       <SheetContent className="bg-white">
         <SheetHeader>
-          <SheetTitle className="text-[#165DFF] text-[16px] lg:text-[28px] 2xl:text-[32px] font-medium">
+          <SheetTitle className="text-[#165DFF] text-[20px] font-medium">
             Ticket Details
           </SheetTitle>
         </SheetHeader>
-
-
 
         <div className="flex items-center font-inter text-[10px] lg:[12px] 2xl:text-[16px] font-semibold text-[#1D2129] justify-between gap-1 px-4 py-2 relative">
           {tabs.map((tab, index) => (
@@ -215,7 +214,7 @@ function TicketsSidebar({ ticket, children }) {
                 <span
                   style={getSeverityStyle(ticket.severity)}
                   className="px-2 py-1 rounded-[5px]"
-                >   
+                >
                   {ticket.severity}
                 </span>
               </p>
@@ -226,7 +225,7 @@ function TicketsSidebar({ ticket, children }) {
                 <span
                   style={attachstyle(ticket.attach)}
                   className="px-2 py-1 rounded-[5px]"
-                >   
+                >
                   {ticket.attachment || "--"}
                 </span>
                 {/* {ticket.attachment || "--"} */}
@@ -311,7 +310,6 @@ function TicketsSidebar({ ticket, children }) {
             </div>
           )}
 
-
           {activeTab === "tickethistory" && (
             <div className="flex flex-col gap-5">
               {ticketHistory.map((history, index) => (
@@ -360,7 +358,13 @@ function TicketsSidebar({ ticket, children }) {
                         {history.date}
                       </p>
                     </div>
-                    <p className="text-[10px] md:text-[12px] lg:text-[12px] 2xl:text-[16px] text-[#878A99] w-[300px]">
+                    {/* <p className="text-[10px] md:text-[12px] lg:text-[12px] 2xl:text-[16px] text-[#878A99] w-[300px]">
+                      {history.message}
+                    </p> */}
+                    <p
+                      className="text-[10px] md:text-[12px] lg:text-[12px] 2xl:text-[16px] text-[#878A99] w-[300px] overflow-hidden text-ellipsis whitespace-nowrap  "  // hover:overflow-visible hover:whitespace-normal for white space
+                      title={history.message} // Tooltip for full message
+                    >
                       {history.message}
                     </p>
                   </div>
@@ -393,9 +397,9 @@ function TicketsSidebar({ ticket, children }) {
                       </p>
                     </div>
 
-                    <button className="text-[#165DFF] border border-[#165DFF] p-1.5 rounded-[5px] text-[10px] md:text-[12px] lg:text-[12px] 2xl:text-[16px]">
+                    <Button className="text-[#165DFF] border border-[#165DFF]  rounded-[5px] text-[10px] md:text-[12px] lg:text-[12px] 2xl:text-[16px]">
                       View Ticket
-                    </button>
+                    </Button>
                   </div>
                 </div>
               ))}
@@ -405,14 +409,14 @@ function TicketsSidebar({ ticket, children }) {
 
         <div>
           <div className="absolute bottom-0 left-5 w-[94%] top-[520px] h-[1px] bg-[#E5E6EB]" />
-          <div className="absolute bottom-10 right-10">
+          <div className="absolute bottom-10 right-9">
             <div className="flex gap-2 justify-end text-[10px] md:text-[12px] lg:text-[12px] 2xl:text-[16px]">
-              <button className="text-[#165DFF] border border-[#165DFF] p-1.5 rounded-[5px]">
+              <Button className="text-[#165DFF] border border-[#165DFF] rounded-[3px]">
                 Cancel
-              </button>
-              <button className="text-[#FFFFFF] bg-[#165DFF] border border-[#165DFF] p-1.5 rounded-[5px]">
+              </Button>
+              <Button className="text-[#FFFFFF] bg-[#165DFF] border border-[#165DFF] rounded-[3px] hover:bg-[#165DFF] hover:text-[#FFFFFF]">
                 Send Reminder
-              </button>
+              </Button>
             </div>
           </div>
         </div>
