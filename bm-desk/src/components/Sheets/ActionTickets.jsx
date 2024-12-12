@@ -84,28 +84,28 @@ function ActionTickets({ isOpen, onClose, onSubmit, action }) {
   };
 
   // Dynamically typed fields configuration
-  const fields = [
-    { id: "department", label: "Department", placeholder: "Enter department" },
-    { id: "category", label: "Category", placeholder: "Enter category" },
-    { id: "project", label: "Project", placeholder: "Enter project" },
-    {
-      id: "projectManager",
-      label: "Project Manager",
-      placeholder: "Enter project manager",
-    },
-    { id: "issueType", label: "Issue Type", placeholder: "Enter issue type" },
-    {
-      id: "requireddate",
-      label: "Required Date",
-      placeholder: "Enter Required Date",
-    },
-    {
-      id: "attachement",
-      label: " Select Attachment",
-      placeholder: "Select Attachment",
-    },
-    { id: "description", label: "Description", placeholder: "" },
-  ];
+  // const fields = [
+  //   { id: "department", label: "Department", placeholder: "Enter department" },
+  //   { id: "category", label: "Category", placeholder: "Enter category" },
+  //   { id: "project", label: "Project", placeholder: "Enter project" },
+  //   {
+  //     id: "projectManager",
+  //     label: "Project Manager",
+  //     placeholder: "Enter project manager",
+  //   },
+  //   { id: "issueType", label: "Issue Type", placeholder: "Enter issue type" },
+  //   {
+  //     id: "requireddate",
+  //     label: "Required Date",
+  //     placeholder: "Enter Required Date",
+  //   },
+  //   {
+  //     id: "attachement",
+  //     label: " Select Attachment",
+  //     placeholder: "Select Attachment",
+  //   },
+  //   { id: "description", label: "Description", placeholder: "" },
+  // ];
 
   // combobox
   // const [open, setOpen] = React.useState(false);
