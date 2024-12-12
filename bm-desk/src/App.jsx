@@ -17,6 +17,7 @@ import ActionTickets from './components/Sheets/ActionTickets';
 import AdminTeamMonitoring from './components/projectmanager/AdminTeamMonitoring';
 import EscalatedReport from './components/projectmanager/EscalatedReport';
 import TeamManagementSheet from './components/projectmanager/TeamManagementSheet';
+import Taskmanagement from './components/projectmanager/Taskmanagement';
 
 
 
@@ -38,6 +39,7 @@ function App() {
         <Route path='/editaccountsettings' element={<Editaccountsettings/>}/>
         <Route path='/adminteammonitoring' element={<AdminTeamMonitoring/>}/>
         <Route path='/escalatedreports' element={<EscalatedReport/>}/>
+        <Route path='/taskmanagement' element={<Taskmanagement/>}/>
        
         </Route>
         <Route path='/login' element={<Login/>}/>
