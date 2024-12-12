@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Label } from "../ui/label";
 import { Card } from "../ui/card";
 import icon from "../../assets/projectmanagercard.svg";
@@ -8,8 +8,17 @@ import blue from "../../assets/Blue.svg";
 import green from "../../assets/Green.svg";
 import red from "../../assets/Red.svg";
 import { PiGreaterThan } from "react-icons/pi";
+import { RiArrowDropDownLine } from "react-icons/ri";
 
 function AdminTeamMonitoring() {
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [alltimeOption, setAlltimeOption] = useState("All Time");
+
+  const handleOptionClick = (option) => {
+    setAlltimeOption(option); // Update the selected option
+    setDropdownOpen(false); // Close the dropdown
+  };
+
   const cardData = [
     { text: "Created tickets", value: "7500" },
     { text: "Opened Tickets", value: "6578" },
@@ -54,12 +63,46 @@ function AdminTeamMonitoring() {
   ];
   return (
     <div className="fixed top-24 left-64 pl-0 2xl:pl-5 w-[calc(100%_-_280px)]">
-      <div>
-        <Label className="text-[28px] 2xl:text-[32px] text-[#4E5969] font-inter font-semibold">
-          Dashboard
-        </Label>
-        
+      <div className="relative">
+      <div className="flex flex-row items-center justify-between">
+        <div>
+          <label className="text-[28px] 2xl:text-[32px] text-[#4E5969] font-inter font-semibold">
+            Dashboard
+          </label>
+        </div>
+
+        <div
+          className="flex flex-row justify-center items-center gap-5 2xl:w-[153px] 2xl:h-[50px] lg:w-[140px] lg:h-[30px] md:w-[110px] md:h-[20px] py-[10px] px-[21px] rounded-md bg-[#E8F3FF] cursor-pointer"
+          onClick={() => setDropdownOpen(!dropdownOpen)} // Toggle dropdown visibility
+        >
+          <div className="font-inter font-normal 2xl:text-lg lg:text-[12px] md:text-[8px] text-[#1D2129]">
+            {alltimeOption}
+          </div>
+          <div className="2xl:w-[20px] 2xl:h-[18px] md:h-[16px] text-[24px] text-[#C8CAD8] mt-[-4px]">
+            <RiArrowDropDownLine />
+          </div>
+        </div>
       </div>
+
+      {dropdownOpen && (
+        <div className="absolute text-nowrap top-[40px] w-36 right-0 bg-white border border-gray-300 rounded-xl shadow-lg z-10">
+          <ul className="py-2">
+            {["Option 1", "Option 2", "Option 3"].map((option, index) => (
+              <li
+                key={index}
+                className="px-4 py-2 font-inter font-normal 2xl:text-lg lg:text-[14px] md:text-[8px] text-[#1D2129] hover:bg-[#E8F3FF] cursor-pointer"
+                onClick={() => handleOptionClick(option)}
+              >
+                {option}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+    </div>
+
+
+    
       <div className="grid grid-cols-5 gap-4">
         {cardData.map((data, index) => (
           <Card key={index} className="p-6 2xl:p-8 mt-4">
@@ -93,7 +136,9 @@ function AdminTeamMonitoring() {
                   <div className="flex flex-row items-center justify-between w-full">
                     <div className="flex flex-row items-center">
                       <div className="flex flex-row gap-4 items-center ml-3">
-                        <div className="p-[3px] rounded-full border-[2px] border-[#C9CDD4] "><img src={member.image} alt="profile image" /></div>
+                        <div className="p-[3px] rounded-full border-[2px] border-[#C9CDD4] ">
+                          <img src={member.image} alt="profile image" />
+                        </div>
                         <div className="flex flex-col gap-[4px]">
                           <h1 className="text-[12px] 2xl:text-[14px] font-semibold text-[#1D2129]">
                             {member.name}
