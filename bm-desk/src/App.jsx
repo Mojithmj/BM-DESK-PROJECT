@@ -14,6 +14,7 @@ import AccountSettings from './components/AccountSettings';
 import Editaccountsettings from './components/Editaccountsettings';
 import Privacyaccountsettings from './components/Privacyaccountsettings';
 import ActionTickets from './components/Sheets/ActionTickets';
+import Taskmanagement from './components/projectmanager/Taskmanagement';
 
 
 
@@ -33,6 +34,7 @@ function App() {
         <Route path='/ticketapprovals' element={<TicketApprovals/>}/>
         <Route path='/accountsettings' element={<AccountSettings/>}/>
         <Route path='/editaccountsettings' element={<Editaccountsettings/>}/>
+        <Route path='/taskmanagement' element={<Taskmanagement/>}/>
        
         </Route>
         <Route path='/login' element={<Login/>}/>

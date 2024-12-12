@@ -10,6 +10,7 @@ function Login() {
   const [mypassword, setMypassword] = useState("");
   const [myusername, setMyusername] = useState("");
   const [error, setError] = useState("");
+  
 
   const navigate = useNavigate();
 
@@ -35,10 +36,13 @@ function Login() {
   
     if (isValidUser) {
       setError(""); // Clear any existing error messages
+
+      localStorage.setItem("myusername",myusername);
+      localStorage.setItem("mypassword",mypassword)
   
       // Redirect based on the username
       if (isValidUser.username === "mojith") {
-        navigate("/opentickets");
+        navigate("/");
       } else if (isValidUser.username === "ramduth") {
         navigate("/assignedtickets"); // Redirect to '/assignedtickets' for Ramduth
       }
