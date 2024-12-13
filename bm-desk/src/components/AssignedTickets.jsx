@@ -8,12 +8,16 @@ import ReusableTable from "./ReusableTable";
 import NewTicket from "./NewTicket";
 import { Button } from "./ui/button";
 import TabsSearchButton from "./TabsSearchButton";
+//data count
 function AssignedTickets() {
   const [activeTab, setActiveTab] = useState("alltickets");
   const [loading, setLoading] = useState(false); // To track loading state
   const [visibleDataCount, setVisibleDataCount] = useState(6); // Number of tickets visible initially
 
+
+
   // State to manage table data
+  
   const [data, setData] = useState([
     {
       id: 1,
