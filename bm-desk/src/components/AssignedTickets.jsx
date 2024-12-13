@@ -20,7 +20,7 @@ function AssignedTickets() {
       projectname: "Project 1",
       subject: "Benchmark Assets Inc...	",
       expecteddate: "20-09-2024",
-      expecteddeliverydate: "20-10-2024",
+      expecteddeliverydate: "---",
       severity: "Critical",
     },
     {
@@ -29,7 +29,7 @@ function AssignedTickets() {
       projectname: "Project 3",
       subject: "TC Numbering Issue",
       expecteddate: "20-10-2022",
-      expecteddeliverydate: "25-01-2024",
+      expecteddeliverydate: "---",
       severity: "Minor",
     },
     {

@@ -23,6 +23,9 @@ function Dashboard() {
   const [todaydrop, setTodaydrop] = useState(false);
   const [selectedOption, setSelectedOption] = useState("Today");
 
+
+
+
 // all time dropdown
   const triggerDropdown = () => {
     setDropdownOpen((prevState) => !prevState);
@@ -92,6 +95,12 @@ const handleOptionClick = (option) => {
       title: "Ticket 3452",
       description: "Ticket - TICKT-7424 has been resolved",
       time: "Sept 06",
+    },
+    {
+      image: Ticketimagetwo,
+      title: "Ticket 3452",
+      description: "Ticket - TICKT-7424 has been resolved",
+      time: "1 Hr",
     },
   ]; 
 
@@ -362,13 +371,15 @@ const handleOptionClick = (option) => {
             className="rounded-[64px] w-[40px] h-[40px]"
             alt={`Ticket ${index + 1}`}
           />
-          <div className="flex flex-col flex-grow">
+          <div className="flex flex-col ">
             <p className="font-inter text-[14px] normal font-semibold text-[#1D2129]">
               {ticket.title}
             </p>
-            <p className="font-inter 2xl:text-[12px] lg:text-[11px] normal font-normal text-[#86909C]">
+            <p className="font-inter 2xl:text-[12px] lg:text-[11px] text-ellipsis overflow-hidden w-[120px] whitespace-nowrap font-normal text-[#86909C]">
               {ticket.description}
             </p>
+
+
           </div>
           <p className="font-inter text-[11px] whitespace-nowrap normal font-normal text-[#878A99]">
             {ticket.time}
