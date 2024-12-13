@@ -3,7 +3,7 @@ import { RiHomeLine, RiArrowDropDownLine } from "react-icons/ri";
 import { BsGraphUpArrow } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
 import { TbMenuDeep } from "react-icons/tb";
-
+ 
 const menuItems = [
   {
     label: "Dashboards",
@@ -66,7 +66,7 @@ const menuItems = [
         ),
         path: "/opentickets",
       },
-
+ 
       {
         label: "Assigned Tickets",
         icon: (
@@ -96,7 +96,7 @@ const menuItems = [
         ),
         path: "/assignedtickets",
       },
-
+ 
       {
         label: "Closed Tickets",
         icon: (
@@ -117,7 +117,7 @@ const menuItems = [
         ),
         path: "/closedtickets",
       },
-
+ 
       {
         label: "Ticket Approvals",
         icon: (
@@ -154,7 +154,7 @@ const menuItems = [
         ),
         path: "/ticketapprovals",
       },
-
+ 
       {
         label: "My Tickets",
         icon: (
@@ -235,12 +235,12 @@ const menuItems = [
     path: "/viewproject",
   },
 ];
-
+ 
 function Sidebar() {
   const [activePath, setActivePath] = useState(window.location.pathname); // Set default based on current URL
   const navigate = useNavigate();
   const [isSidebarOpen, setSidebarOpen] = useState(true);
-
+ 
   const handleItemClick = (item) => {
     if (item.dropdown) {
       handleDropdown(item.label);
@@ -250,16 +250,16 @@ function Sidebar() {
     }
   };
   const [openDropdown, setOpenDropdown] = useState(null);
-
+ 
   const handleDropdown = (label) => {
     setOpenDropdown(openDropdown === label ? null : label);
   };
   const toggleSidebar = () => {
     setSidebarOpen((prev) => !prev);
   };
-
+ 
   //
-
+ 
   return (
     <div
       className={`flex flex-col h-screen border-r border-[#E5E6EB] ${
@@ -287,7 +287,7 @@ function Sidebar() {
           onClick={() => handleItemClick(item)}
         >
           <div
-            className="group flex flex-row gap-2 items-center  py-3 border border-white  hover:bg-[#E8F3FF] hover:text-[#165DFF] rounded-[4px] hover:border-[1px] hover:border-[#BEDAFF] cursor-pointer"
+            className="group flex flex-row gap-2 items-center  p-3 border border-white  hover:bg-[#E8F3FF] hover:text-[#165DFF] rounded-[4px] hover:border-[1px] hover:border-[#BEDAFF] cursor-pointer"
             onClick={
               item.dropdown
                 ? () => handleDropdown(item.label)
@@ -297,19 +297,19 @@ function Sidebar() {
             <div
               className={`${
                 isSidebarOpen
-                  ? "px-4" // Background and border when open
+                  ? "" // Background and border when open
                   : "" // No background or border when closed
               } text-[20px] group-hover:text-[#165DFF] rounded-[4px] transition-all`}
             >
               {item.icon}
             </div>
-
+ 
             {isSidebarOpen && (
               <div className="text-[14px] font-medium font-Inter group-hover:text-[#165DFF] flex-1">
                 {item.label}
               </div>
             )}
-
+ 
             {item.dropdown && isSidebarOpen && (
               <RiArrowDropDownLine
                 className={`text-4xl  w-[19px] h-[19px] ${
@@ -347,5 +347,6 @@ function Sidebar() {
     </div>
   );
 }
-
+ 
 export default Sidebar;
+ 
