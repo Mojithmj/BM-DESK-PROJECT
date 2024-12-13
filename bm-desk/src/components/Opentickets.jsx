@@ -4,6 +4,7 @@ import { FiSearch } from "react-icons/fi";
 import ReusableTable from "./ReusableTable";
 import { Input } from "@/components/ui/input";
 import NewTicket from "./NewTicket";
+import TabsSearchButton from "./TabsSearchButton";
 
 function AssignedTickets() {
   const [activeTab, setActiveTab] = useState("alltickets");
@@ -156,6 +157,15 @@ function AssignedTickets() {
       ? data.slice(0, visibleDataCount) // Show limited data for "All Tickets"
       : data.filter((ticket) => ticket.severity.toLowerCase() === activeTab);
 
+  // tabsearcbutton.jsx file detils needed
+  const handleSearch = (event) => {
+    console.log("Search value:", event.target.value);
+  };
+
+  const handleCreateTicket = () => {
+    console.log("Create New Ticket clicked");
+  };
+
   return (
     <div>
       <div className="fixed top-24 left-64 w-[calc(100%_-_280px)]">
@@ -164,44 +174,14 @@ function AssignedTickets() {
             <Pheader title="Open Tickets" />
           </div>
           {/* Tabs */}
-          <div className="flex justify-between items-center">
-            <div>
-              <div className="flex items-center gap-2">
-                {tabs.map((tab) => (
-                  <button
-                    key={tab.value}
-                    onClick={() => setActiveTab(tab.value)}
-                    className={`font-inter text-[16px]  font-normal p-[6px] rounded-[4px] px-4 transition-colors ${
-                      activeTab === tab.value
-                        ? "bg-black text-white"
-                        : "bg-gray-50 text-black"
-                    }`}
-                  >
-                    {tab.label}
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            <div className="flex items-center gap-5">
-              <div className="flex items-center gap-2 px-4 py-2 bg-[#F8F9FB] rounded-[3px] border-[1.5px] border-[#F2F3F5]">
-                <FiSearch className="text-black" />
-                <Input
-                  placeholder="Search Ticket"
-                  className="border-none shadow-none !outline-none !p-0 !h-full"
-                />
-              </div>
-              <NewTicket
-                triggerButton={
-                  <button
-                    type="button"
-                    className="text-white bg-blue-600 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-[5px] text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
-                  >
-                    Create New Ticket
-                  </button>
-                }
-              />
-            </div>
+          <div>
+            <TabsSearchButton
+              tabs={tabs}
+              activeTab={activeTab}
+              setActiveTab={setActiveTab}
+              onSearch={handleSearch}
+              onCreateTicket={handleCreateTicket}
+            />
           </div>
           {/* Table */}
           <ReusableTable

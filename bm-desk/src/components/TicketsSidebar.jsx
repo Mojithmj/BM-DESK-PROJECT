@@ -358,15 +358,15 @@ function TicketsSidebar({ ticket, children }) {
                         {history.date}
                       </p>
                     </div>
-                    {/* <p className="text-[10px] md:text-[12px] lg:text-[12px] 2xl:text-[16px] text-[#878A99] w-[300px]">
+                    <p className="text-[10px] md:text-[12px] lg:text-[12px] 2xl:text-[16px] text-[#878A99] w-[300px]">
                       {history.message}
-                    </p> */}
-                    <p
+                    </p>
+                    {/* <p
                       className="text-[10px] md:text-[12px] lg:text-[12px] 2xl:text-[16px] text-[#878A99] w-[300px] overflow-hidden text-ellipsis whitespace-nowrap  "  // hover:overflow-visible hover:whitespace-normal for white space
                       title={history.message} // Tooltip for full message
                     >
                       {history.message}
-                    </p>
+                    </p> */}
                   </div>
                 </div>
               ))}
