@@ -5,6 +5,7 @@ import Avatariamge from "../assets/Avatar Image.png";
 import { HiArrowRight } from "react-icons/hi";
 import Ticketimageone from "../assets/Avatarimageone.png";
 import Ticketimagetwo from "../assets/Avatarimagetwo.png";
+import { useNavigate } from "react-router-dom";
 import {
   AreaChart,
   Area,
@@ -14,6 +15,7 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import { LuChevronRight } from "react-icons/lu";
+import { Button } from "./ui/button";
 
 function Dashboard() {
   // all time dropdown
@@ -24,6 +26,8 @@ function Dashboard() {
   const [selectedOption, setSelectedOption] = useState("Today");
 
   const managername = localStorage.getItem("myusername") === "mojith";
+  const navigate=useNavigate()
+ 
 
   // all time dropdown
   const triggerDropdown = () => {
@@ -192,7 +196,7 @@ function Dashboard() {
 
         <div className="relative">
           {/* Dropdown Trigger */}
-          <div
+          <Button
             className="flex flex-row justify-center items-center gap-5 2xl:w-[153px] 2xl:h-[50px] lg:w-[140px] lg:h-[30px] md:w-[110px] md:h-[20px] py-[10px] px-[21px] rounded-md bg-[#E8F3FF] cursor-pointer"
             onClick={triggerDropdown}
           >
@@ -202,7 +206,7 @@ function Dashboard() {
             <div className="2xl:w-[20px] 2xl:h-[18px] md:h-[16px] text-[24px] text-[#C8CAD8] mt-[-4px]">
               <RiArrowDropDownLine />
             </div>
-          </div>
+          </Button>
 
           {/* Dropdown Menu */}
           {DropdownOpen && (
@@ -212,19 +216,19 @@ function Dashboard() {
                   className="px-4 py-2 font-inter font-normal 2xl:text-lg lg:text-[14px] md:text-[8px] text-[#1D2129] hover:bg-[#E8F3FF] cursor-pointer"
                   onClick={() => alltimeOptionClick("Option 1")}
                 >
-                  Option 1
+                  Today
                 </li>
                 <li
                   className="px-4 py-2 font-inter font-normal 2xl:text-lg lg:text-[14px] md:text-[8px] text-[#1D2129] hover:bg-[#E8F3FF] cursor-pointer"
                   onClick={() => alltimeOptionClick("Option 2")}
                 >
-                  Option 2
+                  This month
                 </li>
                 <li
                   className="px-4 py-2 font-inter font-normal 2xl:text-lg lg:text-[14px] md:text-[8px] text-[#1D2129] hover:bg-[#E8F3FF] cursor-pointer"
                   onClick={() => alltimeOptionClick("Option 3")}
                 >
-                  Option 3
+                  This year
                 </li>
               </ul>
             </div>
@@ -238,12 +242,12 @@ function Dashboard() {
           {profiles.map((profile, index) => (
             <div
               key={index}
-              className="border-[1px] 2xl:p-[36px] lg:p-[10px] md:p-[5px] rounded-2xl text-[#E5E6EB] bg-[#FFF] justify-center items-center"
+              className="border-[1px] 2xl:p-[36px] lg:p-[20px] sm:p-[18px] md:p-[15px]  rounded-2xl text-[#E5E6EB] bg-[#FFF] justify-center items-center"
             >
               <div className="flex flex-col gap-[36px]">
                 {/* Profile name */}
                 <div className="flex flex-row items-center justify-between">
-                  <div className="text-[#4E5969] font-inter normal font-semibold 2xl:text-xl lg:text-[18px] md:text-[16px]">
+                  <div className="text-[#4E5969] font-inter normal font-semibold 2xl:text-xl lg:text-[18px]s sm:text-[] md:text-[16px]">
                     Profile
                   </div>
                   <div className="2xl:w-[19px] 2xl:h-[19px] lg:w-[15px] lg:h-[15px] md:w-[10px] md:h-[10px] text-[#4E5969]">
@@ -253,7 +257,7 @@ function Dashboard() {
 
                 {/* Profile pic */}
                 <div className="flex flex-col items-center">
-                  <div className="relative w-[50px] h-[50px] sm:w-[60px] sm:h-[60px] md:w-[70px] md:h-[70px] lg:w-[80px] lg:h-[80px] xl:w-[100px] xl:h-[100px] 2xl:w-[100px] 2xl:h-[100px]">
+                  <div className="relative w-[50px] h-[50px] sm:w-[70px] sm:h-[70px] md:w-[80px] md:h-[80px] lg:w-[90px] lg:h-[90px] xl:w-[100px] xl:h-[100px] 2xl:w-[100px] 2xl:h-[100px]">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 101 101"
@@ -276,7 +280,7 @@ function Dashboard() {
                       />
                     </div>
                   </div>
-                  <div className="font-inter font-semibold 2xl:text-[20px] lg:text-[15px] md:text-[10px] normal text-[#1D2129]">
+                  <div className="font-inter font-semibold 2xl:text-[20px] lg:text-[18px] md:text-[10px] normal text-[#1D2129]">
                     {profile.name}
                   </div>
                   <div className="text-[#86909C] font-inter 2xl:text-[16px] lg:text-[11px] md:text-[6px] normal font-normal">
@@ -326,7 +330,7 @@ function Dashboard() {
           {modifiedCardsData.map((card, index) => (
             <div
               key={index}
-              className="flex flex-col justify-between border-[1px]  2xl:p-[36px] lg:p-[10px] md:p-[5px]  rounded-2xl text-[#E5E6EB]  bg-[#FFF] "
+              className="flex flex-col justify-between border-[1px]  2xl:p-[36px] lg:p-[20px] sm:p-[18px] md:p-[15px]  rounded-2xl text-[#E5E6EB]  bg-[#FFF] "
             >
               <div className="flex flex-row items-center justify-between">
                 <div className="text-[#4E5969] font-inter font-semibold normal 2xl:text-[18px] lg:text-[16px] md:text-[12px]">
@@ -343,8 +347,8 @@ function Dashboard() {
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    width="40"
-                    height="40"
+                    width="35"
+                    height="35"
                     viewBox="0 0 41 41"
                     fill="none"
                   >
@@ -358,14 +362,14 @@ function Dashboard() {
                 </div>
 
                 <div
-                  className="2xl:text-[68px] lg:text-[46px] normal font-semibold font-inter"
+                  className="2xl:text-[68px] lg:text-[50px] sm:text-[45px] md:[39px] normal font-semibold font-inter"
                   style={{ color: card.textColor }}
                 >
                   {card.count}
                 </div>
               </div>
-              <div className="flex items-center justify-end">
-                <div className="font-inter text-[14px] normal font-semibold text-[#1D2129]">
+              <div onClick={()=>{navigate('/assignedtickets')}} className="flex items-center justify-end cursor-pointer">
+                <div className="font-inter text-[14px]   normal font-semibold text-[#1D2129]">
                   {card.buttonText}
                 </div>
                 <div className="w-[18px] h-[18px] text-[18px] text-[#181D27]">
@@ -381,13 +385,14 @@ function Dashboard() {
             replacementCard.map((card, index) => (
               <div
                 key={index}
-                className="flex flex-col justify-between border-[1px]  2xl:p-[36px] lg:p-[10px] md:p-[5px]  rounded-2xl text-[#E5E6EB]  bg-[#FFF] "
+                className="flex flex-col justify-between border-[1px]  2xl:p-[36px] lg:p-[20px] sm:p-[18px] md:p-[15px]  rounded-2xl text-[#E5E6EB]  bg-[#FFF] "
               >
                 <div className="flex flex-row items-center justify-between">
                   <div className="text-[#4E5969] font-inter font-semibold normal 2xl:text-[18px] lg:text-[16px] md:text-[12px]">
                     <p>{card.title}</p>
                   </div>
                   <div className="2xl:w-[19px] 2xl:h-[19px] lg:w-[15px] lg:h-[15px] md:w-[10px] md:h-[10px] text-[#4E5969]">
+                   
                     <LuRotateCcw />
                   </div>
                 </div>
@@ -435,11 +440,11 @@ function Dashboard() {
                 <div className="flex flex-col gap-[27px]">
                   {/* Header */}
                   <div className="flex flex-row items-center justify-between">
-                    <div className="text-[#4E5969] font-inter font-semibold normal text-[20px]">
+                    <div className="text-[#4E5969] font-inter font-semibold normal lg:h-[15px] md:w-[10px] md:h-[10px] text-nowrap">
                       My Tickets
                     </div>
-                    <div className="w-[28px] h-[28px] text-[28px] text-[#4E5969]">
-                      <HiArrowRight />
+                    <div className="w-[28px] h-[28px] text-[28px] text-[#4E5969] cursor-pointer">
+                      <HiArrowRight onClick={()=>{navigate("/actionedtickets")}} />
                     </div>
                   </div>
 
@@ -457,10 +462,10 @@ function Dashboard() {
                             alt={`Ticket ${index + 1}`}
                           />
                           <div className="flex flex-col ">
-                            <p className="font-inter text-[14px] normal font-semibold text-[#1D2129]">
+                            <p className="font-inter 2xl:text-[14px] lg:text-[12px]  md:text-[11px] sm:text-[10px] normal font-semibold text-[#1D2129]">
                               {ticket.title}
                             </p>
-                            <p className="font-inter 2xl:text-[12px] lg:text-[11px] text-ellipsis overflow-hidden w-[120px] whitespace-nowrap font-normal text-[#86909C]">
+                            <p className="font-inter 2xl:text-[12px] lg:text-[11px]  md:text-[10px] sm:text-[8px] text-ellipsis overflow-hidden w-[120px] whitespace-nowrap font-normal text-[#86909C]">
                               {ticket.description}
                             </p>
                           </div>
@@ -594,8 +599,8 @@ function Dashboard() {
                 Recent Tickets
               </div>
               {!managername && (
-                <div className="h-[28px] w-[28px] text-[22px] text-[#181D27]">
-                  <HiArrowRight />
+                <div className="h-[28px] w-[28px] text-[22px] text-[#181D27] cursor-pointer">
+                  <HiArrowRight onClick={()=>{navigate('/opentickets')}} />
                 </div>
               )}
             </div>

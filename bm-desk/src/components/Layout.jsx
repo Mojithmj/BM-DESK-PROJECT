@@ -17,7 +17,7 @@ function Layout() {
       <div className="fixed w-full top-16 md:w-[250px] md:block hidden">
         <Sidebar />
       </div>
-      <div className="fixed left-60 top-20 w-[calc(100%_-_220px)] p-2">
+      <div className="fixed 2xl:left-60 lg:left-60 md:left-60 sm:left-60 2xl:top-20 lg:top-20 md:top-20 sm:top-20  w-[calc(100%_-_220px)] p-2">
           <div className="max-h-[85vh] overflow-y-auto pr-4"> 
           <Outlet />
           </div>
