@@ -124,6 +124,7 @@ function Dashboard() {
       description: "Ticket - TICKT-7424 has been resolved",
       time: "1 Hr",
     },
+
   ];
 
   // graph
@@ -247,15 +248,15 @@ function Dashboard() {
 </div>
 
 
-      <div className="flex flex-col gap-3 w-full">
+      <div className="flex flex-col gap-3 mt-5 w-full">
         <div className="grid grid-cols-1  md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-[20px]">
           {/* 1 Card */}
 
-          <Card className="border-[1px] 2xl:p-[36px] lg:p-[20px] md:p-[15px] sm:p-[10px] rounded-2xl text-[#E5E6EB] bg-[#FFF] justify-center items-center">
-      <CardContent>
+          <div className="border-[1px] 2xl:p-[36px] lg:p-[20px] md:p-[15px] sm:p-[15px] rounded-2xl text-[#E5E6EB] bg-[#FFF] justify-center items-center">
+      
         {profiles.map((profile, index) => (
           <div key={index} className="">
-            <div className="flex flex-col gap-[20px] sm:gap-[15px] md:gap-[18px] lg:gap-[36px]">
+            <div className="flex flex-col  sm:gap-[15px] md:gap-[18px] 2xl:gap-[36px] lg:gap-[30px]">
               {/* Profile name */}
               <div className="flex flex-row items-center justify-between">
                 <div className="text-[#4E5969] font-inter font-semibold 2xl:text-xl lg:text-[18px] md:text-[16px] sm:text-[14px]">
@@ -304,7 +305,7 @@ function Dashboard() {
                 {profile.stats.map((stat, idx) => (
                   <div
                     key={idx}
-                    className="border-[0.44px] border-[#E5E6EB] rounded-[9px] flex flex-row items-center gap-[5px] md:gap-[7px] lg:gap-[9px] px-2 py-[6px]"
+                    className="border-[0.44px] border-[#E5E6EB] rounded-[9px] flex flex-row items-center gap-[5px] md:gap-[7px] lg:gap-[9px] px-2 "
                   >
                     <div>
                       <svg
@@ -331,8 +332,8 @@ function Dashboard() {
             </div>
           </div>
         ))}
-      </CardContent>
-    </Card>
+      
+    </div>
    
 
           {/* 2nd and 3rd card */}
@@ -373,7 +374,7 @@ function Dashboard() {
                 </div>
 
                 <div
-                  className="2xl:text-[68px] lg:text-[50px] md:text-[45px] sm:text-[45px] normal font-semibold font-inter"
+                  className="2xl:text-[68px] lg:text-[50px] md:text-[45px] sm:text-[45px] font-semibold font-Inter"
                   style={{ color: card.textColor }}
                 >
                   {card.count}
