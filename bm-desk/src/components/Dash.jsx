@@ -248,86 +248,82 @@ function Dashboard() {
 
 
       <div className="flex flex-col gap-3 w-full">
-        <div className="grid grid-cols-1  md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-[20px]">
+  <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-[20px]">
           {/* 1 Card */}
 
           <Card className="border-[1px] 2xl:p-[36px] lg:p-[20px] md:p-[15px] sm:p-[10px] rounded-2xl text-[#E5E6EB] bg-[#FFF] justify-center items-center">
       <CardContent>
         {profiles.map((profile, index) => (
-          <div key={index} className="">
-            <div className="flex flex-col gap-[20px] sm:gap-[15px] md:gap-[18px] lg:gap-[36px]">
-              {/* Profile name */}
-              <div className="flex flex-row items-center justify-between">
-                <div className="text-[#4E5969] font-inter font-semibold 2xl:text-xl lg:text-[18px] md:text-[16px] sm:text-[14px]">
-                  Profile
-                </div>
-                <div className="2xl:w-[19px] 2xl:h-[19px] lg:w-[15px] lg:h-[15px] md:w-[10px] md:h-[10px] sm:w-[8px] sm:h-[8px] text-[#4E5969]">
-                  <LuRotateCcw />
+          <div key={index} className="flex flex-col gap-[20px] sm:gap-[15px] md:gap-[18px] lg:gap-[36px]">
+            {/* Profile Name */}
+            <div className="flex flex-row items-center justify-between">
+              <div className="text-[#4E5969] font-inter font-semibold 2xl:text-xl lg:text-[18px] md:text-[16px] sm:text-[14px]">
+                Profile
+              </div>
+              <div className="2xl:w-[19px] 2xl:h-[19px] lg:w-[15px] lg:h-[15px] md:w-[10px] md:h-[10px] sm:w-[8px] sm:h-[8px] text-[#4E5969]">
+                <LuRotateCcw />
+              </div>
+            </div>
+            {/* Profile Picture */}
+            <div className="flex flex-col items-center">
+              <div className="relative w-[50px] h-[50px] sm:w-[60px] sm:h-[60px] md:w-[80px] md:h-[80px] lg:w-[90px] lg:h-[90px] xl:w-[100px] xl:h-[100px] 2xl:w-[100px] 2xl:h-[100px]">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 101 101"
+                  fill="none"
+                  className="absolute inset-0 w-full h-full"
+                >
+                  <circle
+                    cx="50.6488"
+                    cy="50.4159"
+                    r="49.0119"
+                    stroke="#C9CDD4"
+                    strokeWidth="2.22782"
+                  />
+                </svg>
+                <div className="absolute inset-0 flex items-center justify-center p-3">
+                  <img
+                    src={profile.avatar}
+                    alt="Avatar"
+                    className="rounded-full w-full h-full object-cover"
+                  />
                 </div>
               </div>
-
-              {/* Profile pic */}
-              <div className="flex flex-col items-center">
-                <div className="relative w-[50px] h-[50px] sm:w-[60px] sm:h-[60px] md:w-[80px] md:h-[80px] lg:w-[90px] lg:h-[90px] xl:w-[100px] xl:h-[100px] 2xl:w-[100px] 2xl:h-[100px]">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 101 101"
-                    fill="none"
-                    className="absolute inset-0 w-full h-full"
-                  >
-                    <circle
-                      cx="50.6488"
-                      cy="50.4159"
-                      r="49.0119"
-                      stroke="#C9CDD4"
-                      strokeWidth="2.22782"
-                    />
-                  </svg>
-                  <div className="absolute inset-0 flex items-center justify-center p-3">
-                    <img
-                      src={profile.avatar}
-                      alt="Avatar"
-                      className="rounded-full w-full h-full object-cover"
-                    />
+              <div className="font-inter font-semibold 2xl:text-[20px] lg:text-[18px] md:text-[16px] sm:text-[14px] text-[#1D2129]">
+                {profile.name}
+              </div>
+              <div className="text-[#86909C] font-inter 2xl:text-[16px] lg:text-[14px] md:text-[12px] sm:text-[10px] font-normal">
+                {profile.role}
+              </div>
+            </div>
+            {/* Bottom Card Stats */}
+            <div className="flex flex-row 2xl:gap-[16px] lg:gap-[13px] md:gap-[10px] sm:gap-[8px] justify-center items-center">
+              {profile.stats.map((stat, idx) => (
+                <div
+                  key={idx}
+                  className="border-[0.44px] border-[#E5E6EB] rounded-[9px] flex flex-row items-center gap-[5px] md:gap-[7px] lg:gap-[9px] px-2 py-[6px]"
+                >
+                  <div>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="11"
+                      height="11"
+                      viewBox="0 0 11 12"
+                      fill="none"
+                    >
+                      <circle cx="5.5" cy="5.59" r="5.42" fill={stat.color} />
+                    </svg>
+                  </div>
+                  <div>
+                    <p className="text-[#4E5969] text-[10px] sm:text-[8px] font-normal">
+                      {stat.label}
+                    </p>
+                    <p className="text-[#1D2129] text-[14px] sm:text-[12px] font-bold">
+                      {stat.value}
+                    </p>
                   </div>
                 </div>
-                <div className="font-inter font-semibold 2xl:text-[20px] lg:text-[18px] md:text-[16px] sm:text-[14px] text-[#1D2129]">
-                  {profile.name}
-                </div>
-                <div className="text-[#86909C] font-inter 2xl:text-[16px] lg:text-[14px] md:text-[12px] sm:text-[10px] font-normal">
-                  {profile.role}
-                </div>
-              </div>
-
-              {/* Bottom card stats */}
-              <div className="flex flex-row 2xl:gap-[16px] lg:gap-[13px] md:gap-[10px] sm:gap-[8px] justify-center items-center">
-                {profile.stats.map((stat, idx) => (
-                  <div
-                    key={idx}
-                    className="border-[0.44px] border-[#E5E6EB] rounded-[9px] flex flex-row items-center gap-[5px] md:gap-[7px] lg:gap-[9px] px-2 py-[6px]"
-                  >
-                    <div>
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="11"
-                        height="11"
-                        viewBox="0 0 11 12"
-                        fill="none"
-                      >
-                        <circle cx="5.5" cy="5.59" r="5.42" fill={stat.color} />
-                      </svg>
-                    </div>
-                    <div>
-                      <p className="text-[#4E5969] text-[10px] sm:text-[8px] font-normal">
-                        {stat.label}
-                      </p>
-                      <p className="text-[#1D2129] text-[14px] sm:text-[12px] font-bold">
-                        {stat.value}
-                      </p>
-                    </div>
-                  </div>
-                ))}
-              </div>
+              ))}
             </div>
           </div>
         ))}
@@ -482,7 +478,7 @@ function Dashboard() {
                               {ticket.description}
                             </p>
                           </div>
-                          <p className="font-inter text-[11px] 2xl:whitespace-nowrap lg:whitespace-nowrap md:whitespace-normal sm:whitespace-normal font-normal text-[#878A99]">
+                          <p className="font-inter text-[11px] whitespace-nowrap normal font-normal text-[#878A99]">
                             {ticket.time}
                           </p>
                         </div>

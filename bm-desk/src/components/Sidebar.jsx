@@ -264,7 +264,7 @@ function Sidebar() {
     <div
       className={`flex flex-col h-screen border-r border-[#E5E6EB] ${
         isSidebarOpen
-          ? "2xl:w-[250px] lg:w-[210px] md:w-[180px] w-[160px]"
+          ? "2xl:w-[250px] lg:w-[210px] md:w-[200px] w-[160px]"
           : "w-[60px]"
       } px-4  gap-5 transition-all duration-300`}
     >
