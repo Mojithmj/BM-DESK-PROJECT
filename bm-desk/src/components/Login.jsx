@@ -44,7 +44,7 @@ function Login() {
       if (isValidUser.username === "mojith") {
         navigate("/");
       } else if (isValidUser.username === "ramduth") {
-        navigate("/assignedtickets"); // Redirect to '/assignedtickets' for Ramduth
+        navigate("/"); // Redirect to '/assignedtickets' for Ramduth
       }
     } else {
       setError("Invalid username or password. Please try again");

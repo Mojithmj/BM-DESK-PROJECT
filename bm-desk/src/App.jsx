@@ -41,7 +41,7 @@ function App() {
         <Route path='/editaccountsettings' element={<Editaccountsettings/>}/>
         <Route path='/adminteammonitoring' element={<AdminTeamMonitoring/>}/>
         <Route path='/escalatedreports' element={<EscalatedReport/>}/>
-        <Route path='/taskmanagement' element={<Taskmanagement/>}/>
+        <Route path='/teammanagement' element={<Taskmanagement/>}/>
        
         </Route>
         <Route path='/login' element={<Login/>}/>
