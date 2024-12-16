@@ -7,66 +7,30 @@ function Layout() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   return (
     <div className="relative">
-      {/* Navbar remains fixed at the top */}
-      <div className="fixed top-0 left-0 right-0 z-50">
-        <Navbar />
-      </div>
-
-      {/* Main layout */}
-
-      <div className="fixed w-full top-16 md:w-[250px] md:block hidden">
+    {/* Navbar remains fixed at the top */}
+    <div className="fixed top-0 left-0 right-0 z-50">
+      <Navbar />
+    </div>
+  
+    {/* Main layout */}
+    <div className="flex">
+      {/* Sidebar */}
+      <div className="fixed top-16 hidden md:block w-full md:w-[250px]">
         <Sidebar />
       </div>
-      <div className="fixed 2xl:left-60 lg:left-60 md:left-60 sm:left-60 2xl:top-20 lg:top-20 md:top-20 sm:top-20  w-[calc(100%_-_220px)] p-2">
-          <div className="max-h-[85vh] overflow-y-auto pr-4"> 
+  
+      {/* Content */}
+      <div
+        className="fixed top-20 md:left-56 lg:md:left-60 left-0 md:w-[calc(100%_-_240px)] w-full p-2"
+      >
+        <div className="max-h-[85vh] overflow-y-auto pr-4">
           <Outlet />
-          </div>
         </div>
-
-        {/* 2 */}
-
-{/* <div className="flex mt-16 h-[calc(100vh-4rem)]">
-        
-        <Sidebar
-          isSidebarOpen={isSidebarOpen}
-          toggleSidebar={() => setIsSidebarOpen(!isSidebarOpen)}
-        />
+      </div>
+    </div>
+ 
 
         
-        <div
-          className={`flex-grow transition-all duration-300 ${
-            isSidebarOpen ? "ml-[50px]" : "ml-[50px]"
-          }`}
-        >
-          <div className="p-4 max-h-[85vh] overflow-y-auto">
-            <Outlet />
-          </div>
-        </div>
-      </div> */}
-
-      {/* 3 */}
-      {/* <div className="fixed w-full top-20  flex  h-[calc(100vh-4rem)] ">
-        
-        <Sidebar
-          isSidebarOpen={isSidebarOpen}
-          toggleSidebar={() => setIsSidebarOpen(!isSidebarOpen)}
-        />
-
-      
-        <div
-          className={`flex-grow transition-all duration-300 ${
-            isSidebarOpen ? "ml-[50px]" : "ml-[50px]"
-          }`}
-          style={{
-            top: "4rem",
-            width: "calc(100% - 220px)"
-          }}
-        >
-          <div className="max-h-[85vh] overflow-y-auto pr-4">
-            <Outlet />
-          </div>
-        </div>
-      </div> */}
 
 
     </div>
