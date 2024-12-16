@@ -19,7 +19,7 @@ const TabsSearchButton = ({
             <Button
               key={tab.value}
               onClick={() => setActiveTab(tab.value)}
-              className={`font-inter text-[12px] sm:text-[10px] md:text-[12px] xl:text-[14px] 2xl:text-[16px] font-normal p-[6px] rounded-[4px] px-4 transition-colors ${
+              className={`font-inter text-[12px] sm:text-[10px] md:text-[12px] xl:text-[14px] 2xl:text-[16px] font-normal p-[6px] rounded-[4px] px-4 transition-colors border-0 shadow-none ${
                 activeTab === tab.value
                   ? "bg-black text-white hover:bg-black"
                   : "bg-gray-50 text-black"

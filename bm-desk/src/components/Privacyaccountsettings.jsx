@@ -7,7 +7,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-
+import { Button } from "./ui/button";
 
 function Privacyaccountsettings() {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
@@ -16,7 +16,7 @@ function Privacyaccountsettings() {
   const [confirmnewpassword, setConfirmnewpassword] = useState("");
   const [error, setError] = useState("");
   const [passwordError, setPasswordError] = useState("");
-  const [currentpassword,setCurrentpassword]=useState("")
+  const [currentpassword, setCurrentpassword] = useState("");
 
   const validatePasswordStrength = (password) => {
     let error = "";
@@ -77,202 +77,210 @@ function Privacyaccountsettings() {
   };
 
   const openDialog = () => setIsDialogOpen(true);
- 
 
   return (
     <div className="flex flex-col gap-11">
       {/* Password Section */}
       <div className="flex justify-between">
         <div>
-          <p className="text-[#1D2129] text-[20px] font-medium">Password</p>
-          <p className="text-[#1D2129] text-[16px] font-normal">
+          <p className="text-[#1D2129] text-[14px] sm:text-[10px] md:text-[14px] lg:text-[16px] 2xl:text-[20px] font-medium">
+            Password
+          </p>
+          <p className="text-[#1D2129]   text-[12px] sm:text-[10px] md:text-[12px] xl:text-[14px] 2xl:text-[16px] font-normal">
             Change Your Password
           </p>
         </div>
         <div>
-        <Dialog className="!border !rounded-md">
-        <DialogTrigger asChild>
-          <button
-            onClick={openDialog}
-            className="gap-[10px] bg-[#1D2129] rounded-[4px] text-[#FFFFFF] items-center px-4 py-2"
-          >
-            <span>Change Password</span>
-          </button>
-          </DialogTrigger>
-          <DialogContent className="bg-white max-h-[90vh] overflow-y-auto border rounded-[32px]">
-          <div className="flex flex-col gap-8">
-        <div>
-          <p className="text-[#165DFF] font-inter font-semibold 2xl:text-[32px] lg:text-[26px] md:text-[20px] sm:text-[14px]">
-            Change Password
-          </p>
-          <p className="text-[16px] font-inter font-medium text-[#4E5969]">
-            Create a new password
-          </p>
-        </div>
-        <div>
-          <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
-            {/* Current Password */}
-            <div>
-              <label
-                className="text-[16px] font-inter font-medium text-[#1D2129]"
-                htmlFor="current-password"
+          <Dialog className="!border !rounded-md">
+            <DialogTrigger asChild>
+              <Button
+                onClick={openDialog}
+                className="gap-[10px] bg-[#1D2129] rounded-[4px] text-[#FFFFFF] items-center px-4 py-2 hover:bg-[#1D2129] hover:text-[#FFFFFF]"
               >
-                Current Password
-              </label>
-              <input
-                id="current-password"
-                type="password"
-                value={currentpassword}
-                onChange={(e)=>{
-setCurrentpassword(e.target.value)
-                }}
-                className="w-full border border-[#E5E6EB] rounded-[4px] px-[16px] py-[10px] placeholder:text-[#86909C] text-[14px] font-normal font-inter"
-                placeholder="Type current password"
-                required
-              />
-            </div>
+                <span>Change Password</span>
+              </Button>
+            </DialogTrigger>
+            <DialogContent className="bg-white max-h-[90vh] overflow-y-auto border rounded-[32px]">
+              <div className="flex flex-col gap-8">
+                <div>
+                  <p className="text-[#165DFF] font-inter font-semibold 2xl:text-[32px] lg:text-[28px] md:text-[24px] sm:text-[18px]">
+                    Change Password
+                  </p>
+                  <p className="text-[12px] sm:text-[10px] md:text-[12px] xl:text-[14px] 2xl:text-[16px] font-inter font-medium text-[#4E5969]">
+                    Create a new password
+                  </p>
+                </div>
+                <div>
+                  <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
+                    {/* Current Password */}
+                    <div>
+                      <label
+                        className="text-[12px] sm:text-[10px] md:text-[12px] xl:text-[14px] 2xl:text-[16px] font-inter font-medium text-[#1D2129]"
+                        htmlFor="current-password"
+                      >
+                        Current Password
+                      </label>
+                      <input
+                        id="current-password"
+                        type="password"
+                        value={currentpassword}
+                        onChange={(e) => {
+                          setCurrentpassword(e.target.value);
+                        }}
+                        className="w-full border border-[#E5E6EB] rounded-[4px] px-[16px] py-[10px] placeholder:text-[#86909C] text-[14px] font-normal font-inter"
+                        placeholder="Type current password"
+                        required
+                      />
+                    </div>
 
-            {/* New Password */}
-            <div>
-              <label
-                className="text-[16px] font-inter font-medium text-[#1D2129]"
-                htmlFor="new-password"
-              >
-                New Password
-              </label>
-              <input
-                id="new-password"
-                type="password"
-                value={newpassword}
-                onChange={passwordchange}
-                className={`w-full border border-[#E5E6EB] rounded-[4px] px-[16px] py-[10px] placeholder:text-[#86909C] text-[14px] font-normal font-inter ${
-                  passwordError ? "border-red-500" : ""
-                }`}
-                placeholder="Type your new password"
-                required
-              />
-              {passwordError && (
-                <p className="text-red-500 text-sm mt-1">{passwordError}</p>
-              )}
-            </div>
+                    {/* New Password */}
+                    <div>
+                      <label
+                        className="text-[12px] sm:text-[10px] md:text-[12px] xl:text-[14px] 2xl:text-[16px] font-inter font-medium text-[#1D2129]"
+                        htmlFor="new-password"
+                      >
+                        New Password
+                      </label>
+                      <input
+                        id="new-password"
+                        type="password"
+                        value={newpassword}
+                        onChange={passwordchange}
+                        className={`w-full border border-[#E5E6EB] rounded-[4px] px-[16px] py-[10px] placeholder:text-[#86909C] text-[14px] font-normal font-inter ${
+                          passwordError ? "border-red-500" : ""
+                        }`}
+                        placeholder="Type your new password"
+                        required
+                      />
+                      {passwordError && (
+                        <p className="text-red-500 text-sm mt-1">
+                          {passwordError}
+                        </p>
+                      )}
+                    </div>
 
-            {/* Confirm Password */}
-            <div>
-              <label
-                className="text-[16px] font-inter font-medium text-[#1D2129]"
-                htmlFor="confirm-password"
-              >
-                Confirm Password
-              </label>
-              <input
-                id="confirm-password"
-                type="password"
-                value={confirmnewpassword}
-                onChange={confirmpasswordchange}
-                className={`w-full border border-[#E5E6EB] rounded-[4px] px-[16px] py-[10px] placeholder:text-[#86909C] text-[14px] font-normal font-inter ${
-                  error ? "border-red-500" : ""
-                }`}
-                placeholder="Confirm new password"
-                required
-              />
-              {error && <p className="text-red-500 text-sm mt-1">{error}</p>}
-            </div>
+                    {/* Confirm Password */}
+                    <div>
+                      <label
+                        className="text-[12px] sm:text-[10px] md:text-[12px] xl:text-[14px] 2xl:text-[16px] font-inter font-medium text-[#1D2129]"
+                        htmlFor="confirm-password"
+                      >
+                        Confirm Password
+                      </label>
+                      <input
+                        id="confirm-password"
+                        type="password"
+                        value={confirmnewpassword}
+                        onChange={confirmpasswordchange}
+                        className={`w-full border border-[#E5E6EB] rounded-[4px] px-[16px] py-[10px] placeholder:text-[#86909C] text-[14px] font-normal font-inter ${
+                          error ? "border-red-500" : ""
+                        }`}
+                        placeholder="Confirm new password"
+                        required
+                      />
+                      {error && (
+                        <p className="text-red-500 text-sm mt-1">{error}</p>
+                      )}
+                    </div>
 
-            {/* Submit Button */}
-            <div className="flex gap-[12px] ">
-  <button
-    type="button"
-    onClick={clearFields}
-    className="bg-white text-[#165DFF] py-2 px-4 rounded-[4px] border border-[#165DFF] w-full"
-  >
-    Clear
-  </button>
-              <button
-                type="submit"
-                disabled={!!error || !!passwordError}
-                className={`bg-[#165DFF] text-[#FFF] py-2 px-4 rounded-[4px] w-full ${
-                  error || passwordError ? "opacity-50 cursor-not-allowed" : ""
-                }`}
-              >
-                Submit
-              </button>
-            </div>
-          </form>
+                    {/* Submit Button */}
+                    <div className="flex gap-[12px] ">
+                      <button
+                        type="button"
+                        onClick={clearFields}
+                        className="bg-white text-[#165DFF] py-2 px-4 rounded-[4px] border border-[#165DFF] w-full"
+                      >
+                        Clear
+                      </button>
+                      <button
+                        type="submit"
+                        disabled={!!error || !!passwordError}
+                        className={`bg-[#165DFF] text-[#FFF] py-2 px-4 rounded-[4px] w-full ${
+                          error || passwordError
+                            ? "opacity-50 cursor-not-allowed"
+                            : ""
+                        }`}
+                      >
+                        Submit
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </DialogContent>
+          </Dialog>
         </div>
       </div>
-                  </DialogContent>
-                </Dialog>
-        </div>
-      </div>
-
-     
 
       {/* Additional Sections */}
       <div className="flex justify-between">
         <div>
-          <p className="text-[#1D2129] text-[20px] font-medium">
+          <p className="text-[#1D2129] text-[14px] sm:text-[10px] md:text-[14px] lg:text-[16px] 2xl:text-[20px] font-medium">
             All Ticket Notification
           </p>
-          <p className="text-[#1D2129] text-[16px] font-normal">
+          <p className="text-[#1D2129] text-[12px] sm:text-[10px] md:text-[12px] xl:text-[14px] 2xl:text-[16px] font-normal">
             Turn On All Ticket Notifications
           </p>
         </div>
         <div>
           <label className="inline-flex items-center cursor-pointer">
             <input type="checkbox" value="" class="sr-only peer" />
-            <div className="relative w-11 h-6 bg-[#C9CDD4] peer-focus:outline-none
+            <div
+              className="relative w-11 h-6 bg-[#C9CDD4] peer-focus:outline-none
                rounded-full peer 
              peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full
               after:content-[''] after:absolute after:top-[2px] 
               after:start-[2px] after:bg-white after:rounded-full 
-              after:h-5 after:w-5 after:transition-all peer-checked:bg-[#009A29]"></div>
-
+              after:h-5 after:w-5 after:transition-all peer-checked:bg-[#009A29]"
+            ></div>
           </label>
         </div>
       </div>
 
       <div className="flex justify-between">
         <div>
-          <p className="text-[#1D2129] text-[20px] font-medium">
+          <p className="text-[#1D2129] text-[14px] sm:text-[10px] md:text-[14px] lg:text-[16px] 2xl:text-[20px] font-medium">
             My Ticket Notification
           </p>
-          <p className="text-[#1D2129] text-[16px] font-normal">
+          <p className="text-[#1D2129] text-[12px] sm:text-[10px] md:text-[12px] xl:text-[14px] 2xl:text-[16px] font-normal">
             Enable All Notifications For My Tickets
           </p>
         </div>
         <div>
           <label className="inline-flex items-center cursor-pointer">
             <input type="checkbox" value="" class="sr-only peer" />
-            <div className="relative w-11 h-6 bg-[#C9CDD4] peer-focus:outline-none 
+            <div
+              className="relative w-11 h-6 bg-[#C9CDD4] peer-focus:outline-none 
                rounded-full peer 
              peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full
               after:content-[''] after:absolute after:top-[2px] 
               after:start-[2px] after:bg-white after:rounded-full 
-              after:h-5 after:w-5 after:transition-all peer-checked:bg-[#009A29]"></div>
-
+              after:h-5 after:w-5 after:transition-all peer-checked:bg-[#009A29]"
+            ></div>
           </label>
         </div>
       </div>
 
       <div className="flex justify-between">
         <div>
-          <p className="text-[#1D2129] text-[20px] font-medium">
+          <p className="text-[#1D2129] text-[14px] sm:text-[10px] md:text-[14px] lg:text-[16px] 2xl:text-[20px] font-medium">
             Activity Notification
           </p>
-          <p className="text-[#1D2129] text-[16px] font-normal">
+          <p className="text-[#1D2129] text-[12px] sm:text-[10px] md:text-[12px] xl:text-[14px] 2xl:text-[16px] font-normal">
             Enable All Activity Notification
           </p>
         </div>
         <div>
           <label className="inline-flex items-center cursor-pointer">
             <input type="checkbox" value="" class="sr-only peer" />
-            <div className="relative w-11 h-6 bg-[#C9CDD4] peer-focus:outline-none 
+            <div
+              className="relative w-11 h-6 bg-[#C9CDD4] peer-focus:outline-none 
                rounded-full peer 
              peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full
               after:content-[''] after:absolute after:top-[2px] 
               after:start-[2px] after:bg-white after:rounded-full 
-              after:h-5 after:w-5 after:transition-all peer-checked:bg-[#009A29]"></div>
-
+              after:h-5 after:w-5 after:transition-all peer-checked:bg-[#009A29]"
+            ></div>
           </label>
         </div>
       </div>

@@ -4,6 +4,8 @@ import { FaCamera } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import Editaccountsettings from "./Editaccountsettings";
 import Privacyaccountsettings from "./Privacyaccountsettings";
+import { Input } from "./ui/input";
+import { Button } from "./ui/button";
 
 function AccountSettings() {
   // Set the default active tab to "profile"
@@ -64,10 +66,10 @@ function AccountSettings() {
       <div className="fixed top-30 left-64 w-[calc(100%_-_300px)]">
         <div className="flex flex-col flex-start gap-9">
           <div>
-            <h1 className="font-inter text-[32px] font-bold text-[#09090B]">
+            <h1 className="font-inter text-[20px] md:text-[24px] lg:text-[24px] 2xl:text-[32px]  font-bold text-[#09090B]">
               Account Settings
             </h1>
-            <h2 className="font-inter text-[16px] font-normal text-[#656565]">
+            <h2 className="font-inter text-[12px] sm:text-[10px] md:text-[12px] xl:text-[14px] 2xl:text-[16px] font-normal text-[#656565]">
               Settings and security for your application
             </h2>
           </div>
@@ -76,13 +78,13 @@ function AccountSettings() {
             <div>
               <div className="grid text-nowrap">
                 {tabs.map((tab) => (
-                  <button
+                  <Button
                     key={tab.value}
                     onClick={() => setActiveTab(tab.value)}
-                    className={`font-inter text-[16px] flex gap-[8px] font-normal px-[40px] rounded-[4px] py-[8px] transition-colors ${
+                    className={`font-inter sm:px-[10px] sm:py-[4px] lg:px-[12px] 2xl:px-[40px] text-[12px] sm:text-[10px] md:text-[12px] xl:text-[14px] 2xl:text-[16px] flex gap-[8px] font-normal rounded-[4px] transition-colors border-0 shadow-none ${
                       activeTab === tab.value
-                        ? "bg-[#165DFF] text-[#FFFFFF]"
-                        : "bg-gray-50 text-[#1D2129]"
+                        ? "bg-[#165DFF] text-[#FFFFFF] hover:bg-[#165DFF] hover:text-[#FFFFFF]"
+                        : "bg-[#FFFFFF] text-[#1D2129] hover:bg-[#FFFFFF] hover:text-[#1D2129]"
                     }`}
                   >
                     {/* Conditionally render the SVG if tab.value matches */}
@@ -125,7 +127,7 @@ function AccountSettings() {
                       </svg>
                     )}
                     {tab.label}
-                  </button>
+                  </Button>
                 ))}
               </div>
             </div>
@@ -136,10 +138,10 @@ function AccountSettings() {
                   {/* content to be displayed */}
                   <div className="flex justify-between w-full">
                     <div>
-                      <p className="text-[#4E5969]  text-[20px]  font-medium">
+                      <p className="text-[#4E5969]  text-[10px] 2xl:text-[20px] lg:text-[16px] md:text-[14px] sm:text-[12px]  font-medium">
                         Profile Settings
                       </p>
-                      <p className="text-[#4E5969] text-[16px] font-">
+                      <p className="text-[#4E5969] text-[12px] sm:text-[10px] md:text-[12px] xl:text-[14px] 2xl:text-[16px] font-">
                         Personal & Profile Information Settings
                       </p>
                     </div>
@@ -148,7 +150,7 @@ function AccountSettings() {
                         navigate("/editaccountsettings");
                       }}
                     >
-                      <button className="gap-[10px] bg-[#1D2129] rounded-[4px] text-[#FFFFFF] flex items-center px-4 py-2 ">
+                      <Button className="gap-[10px] bg-[#1D2129] rounded-[4px] text-[#FFFFFF] flex items-center hover:bg-[#1D2129] hover:text-[#FFFFFF]">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           width="20"
@@ -162,8 +164,8 @@ function AccountSettings() {
                             fill="white"
                           />
                         </svg>
-                        <span>Edit Profile</span>
-                      </button>
+                        <span className="text-[12px] sm:text-[10px] md:text-[12px] xl:text-[14px] 2xl:text-[16px] hover:bg-[#1D2129] hover:text-[#FFFFFF] hover-none">Edit Profile</span>
+                      </Button>
                     </div>
                   </div>
 
@@ -172,7 +174,7 @@ function AccountSettings() {
                     <img
                       src={Avatariamge}
                       alt="Avatar"
-                      className="w-[120px] h-[120px]"
+                      className="w-[120px] h-[120px] md:w-[80px] md:h-[80px]"
                     />
                     <div className="absolute bottom-0 left-20 text-[#656565] bg-white p-[9px] rounded-full text-sm">
                       <FaCamera />
@@ -181,10 +183,10 @@ function AccountSettings() {
                   {/* Personal Information */}
                   <div className="flex flex-col gap-6">
                     <div>
-                      <p className="text-[#4E5969] text-[20px] font-medium">
+                      <p className="text-[#4E5969] text-[10px] 2xl:text-[20px] lg:text-[16px] md:text-[14px] sm:text-[12px] font-medium">
                         Personal Information
                       </p>
-                      <p className="text-[16px] text-[#4E5969] font-normal">
+                      <p className="text-[12px] sm:text-[10px] md:text-[12px] xl:text-[14px] 2xl:text-[16px] text-[#4E5969] font-normal">
                         Update Your Persnal Information
                       </p>
                     </div>
@@ -193,15 +195,15 @@ function AccountSettings() {
                       {inputs.length > 0 ? (
                         inputs.map((input) => (
                           <div key={input.field} className="mb-4">
-                            <p className="text-[#1D2129] text-[16px] font-medium">
+                            <p className="text-[#1D2129] text-[12px] sm:text-[10px] md:text-[12px] xl:text-[14px] 2xl:text-[16px] font-medium">
                               {input.label}
                             </p>
-                            <input
+                            <Input
                               type="text"
                               value={input.value}
                               placeholder={input.placeholder}
                               disabled
-                              className="text-[#86909C] px-[16px] py-[10px] border-[1px] rounded-[4px] border-[#CED4DA] w-full"
+                              className="text-[#86909C] px-[10px] py-[8px] 2xl:px-[16px] 2xl:py-[10px] border-[1px] rounded-[4px] border-[#CED4DA] w-[350px] placeholder:text-[12px]"
                             />
                           </div>
                         ))
