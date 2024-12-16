@@ -23,6 +23,7 @@ import Taskmanagement from './components/projectmanager/Taskmanagement';
 
 
 
+
 function App() {
 
 
@@ -33,25 +34,30 @@ function App() {
  
         <Route path="/" element={<Layout />}> 
         <Route index element={<Dashboard/>}/>
+        <Route path='/productivity' element={<Productivity/>}/>
         <Route path='/opentickets' element={<Opentickets/>}/>
         <Route path='/closedtickets' element={<Closedtickets/>}/>
         <Route path='/viewproject' element={<Viewproject/>}/>
         <Route path='/ticketapprovals' element={<TicketApprovals/>}/>
+        <Route path='/assignedtickets' element={<AssignedTickets/>}/>
         <Route path='/accountsettings' element={<AccountSettings/>}/>
         <Route path='/editaccountsettings' element={<Editaccountsettings/>}/>
         <Route path='/adminteammonitoring' element={<AdminTeamMonitoring/>}/>
         <Route path='/escalatedreports' element={<EscalatedReport/>}/>
         <Route path='/teammanagement' element={<Taskmanagement/>}/>
+        <Route path='/actionedtickets' element={<ActionedTickets/>}/>
        
         </Route>
        
         <Route path='/login' element={<Login/>}/>
         <Route path='/productivity' element={<Productivity/>}/>
-        <Route path='/assignedtickets' element={<AssignedTickets/>}/>
-        <Route path='/actionedtickets' element={<ActionedTickets/>}/>
+        
+        
         <Route path='/privacyaccountsettings' element={<Privacyaccountsettings/>}/>
         <Route path='/actiontickets' element={<ActionTickets/>}/>
         <Route path='/tsheet' element={<TeamManagementSheet/>}/>
+        
+        
 
         
         

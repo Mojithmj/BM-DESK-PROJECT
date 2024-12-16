@@ -152,16 +152,6 @@ function Productivity() {
 
   return (
     <div>
-      {/* Navbar */}
-      <div className="fixed top-0 left-0 right-0 z-50">
-        <Navbar />
-      </div>
-
-      {/* Sidebar */}
-      <div className="fixed w-full top-16 md:w-[250px] md:block hidden">
-        <Sidebar />
-      </div>
-
       <div className="fixed top-24 left-64 w-[calc(100%_-_280px)]">
         <div className="flex flex-col gap-8">
           <div className="">
@@ -289,6 +279,3 @@ function Productivity() {
 }
 
 export default Productivity;
-
-
-

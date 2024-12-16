@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import {
   Sheet,
   SheetContent,
-  SheetDescription,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
@@ -137,17 +136,17 @@ function TicketsSidebar({ ticket, children }) {
       </SheetTrigger>
       <SheetContent className="bg-white">
         <SheetHeader>
-          <SheetTitle className="text-[#165DFF] text-[20px] font-medium">
+          <SheetTitle className="text-[#165DFF] text-[20px] sm:text-[18px] md:text-[24px] lg:text-[28px] 2xl:text-[32px] font-medium">
             Ticket Details
           </SheetTitle>
         </SheetHeader>
 
-        <div className="flex items-center font-inter text-[10px] lg:[12px] 2xl:text-[16px] font-semibold text-[#1D2129] justify-between gap-1 px-4 py-2 relative">
+        <div className="flex items-center font-inter text-[12px] sm:text-[10px] md:text-[12px] xl:text-[14px] 2xl:text-[16px]font-semibold text-[#1D2129] justify-between gap-1 px-4 py-2 relative">
           {tabs.map((tab, index) => (
             <div key={tab.value} className="relative">
               <button
                 onClick={() => setActiveTab(tab.value)}
-                className={`text-12px md:text-[12px] lg:[14px] 2xl:text-[16px] font-normal p-[6px] rounded-[4px] bg-white ${
+                className={`text-[12px] sm:text-[10px] md:text-[12px] xl:text-[14px] 2xl:text-[16px] font-normal p-[6px] rounded-[4px] bg-white ${
                   activeTab === tab.value ? "text-[#0E42D2]" : "text-[#1D2129]"
                 }`}
               >
@@ -178,7 +177,7 @@ function TicketsSidebar({ ticket, children }) {
         <div className="p-4 text-[12px] md:text-[12px] lg:text-[12px] 2xl:text-[16px]">
           {/* Basic Info Tab */}
           {activeTab === "basicinfo" && (
-            <div className="flex flex-col gap-2 font-normal text-[10px] md:text-[12px] lg:text-[12px] 2xl:text-[16px]">
+            <div className="flex flex-col gap-2 font-normal text-[12px] sm:text-[10px] md:text-[12px] xl:text-[14px] 2xl:text-[16px]">
               <p className="text-[#1D2129]">
                 <strong className=" text-[#86909C] font-normal">
                   Ticket Number:
@@ -268,13 +267,13 @@ function TicketsSidebar({ ticket, children }) {
                           </div>
                           <div className="flex flex-col">
                             <div
-                              className="font-medium w-20 truncate text-[13px]"
+                              className="font-medium w-20 truncate text-[12px] sm:text-[10px] md:text-[12px] xl:text-[14px] 2xl:text-[16px]"
                               title={file.name} // Tooltip to show the full name on hover
                             >
                               {file.name}
                             </div>
                             <div className="flex items-center">
-                              <div className="text-[10px] 2xl:text-xs text-[#4E5969]">
+                              <div className=" sm:text-[10px] md:text-[12px] lg:text-[10px] 2xl:text-[12px] text-[#4E5969] ">
                                 {file.size < 1024 * 1024
                                   ? `${(file.size / 1024).toFixed(2)} KB`
                                   : `${(file.size / (1024 * 1024)).toFixed(
@@ -283,7 +282,7 @@ function TicketsSidebar({ ticket, children }) {
                               </div>
                               <button
                                 onClick={() => handleDownload(file)}
-                                className="text-[#4E5969] hover:text-[#4E5969] transition text-[10px] 2xl:text-xs ml-2"
+                                className="text-[#4E5969] hover:text-[#4E5969] transition sm:text-[10px] md:text-[12px] lg:text-[10px] 2xl:text-[12px] ml-2"
                               >
                                 Download
                               </button>
