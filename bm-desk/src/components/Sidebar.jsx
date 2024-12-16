@@ -4,17 +4,35 @@ import { BsGraphUpArrow } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
 import { TbMenuDeep } from "react-icons/tb";
  
-const menuItems = [
+
+ 
+function Sidebar() {
+  const [activePath, setActivePath] = useState(window.location.pathname); // Set default based on current URL
+  const navigate = useNavigate();
+  const [isSidebarOpen, setSidebarOpen] = useState(true);
+  const [openDropdown, setOpenDropdown] = useState(null);
+  const managername=localStorage.getItem("myusername")==="mojith";
+  
+  const menuItems = [
   {
     label: "Dashboards",
     icon: <RiHomeLine />,
     path: "/",
   },
-  {
-    label: "My Productivity",
-    icon: <BsGraphUpArrow />,
-    path: "/productivity",
-  },
+  ...(managername? [
+        {
+          label: "Task Management",
+          icon: <BsGraphUpArrow />, // Replace with the desired icon
+          path: "/teammanagement",
+        },
+      ]
+    : [
+        {
+          label: "My Productivity",
+          icon: <BsGraphUpArrow />,
+          path: "/productivity",
+        },
+      ]),
   {
     label: "Tickets",
     icon: (
@@ -156,7 +174,7 @@ const menuItems = [
       },
  
       {
-        label: "My Tickets",
+        label: "My Actioned Tickets",
         icon: (
           <svg
             className="shrink-0"
@@ -235,11 +253,7 @@ const menuItems = [
     path: "/viewproject",
   },
 ];
- 
-function Sidebar() {
-  const [activePath, setActivePath] = useState(window.location.pathname); // Set default based on current URL
-  const navigate = useNavigate();
-  const [isSidebarOpen, setSidebarOpen] = useState(true);
+
  
   const handleItemClick = (item) => {
     if (item.dropdown) {
@@ -249,7 +263,7 @@ function Sidebar() {
       navigate(item.path);
     }
   };
-  const [openDropdown, setOpenDropdown] = useState(null);
+ 
  
   const handleDropdown = (label) => {
     setOpenDropdown(openDropdown === label ? null : label);
