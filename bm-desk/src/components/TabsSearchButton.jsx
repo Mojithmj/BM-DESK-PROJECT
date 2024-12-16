@@ -44,7 +44,7 @@ const TabsSearchButton = ({
           triggerButton={
             <Button
               type="button"
-              className="text-white bg-blue-600 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-[5px] text-[12px] sm:text-[10px] md:text-[12px] xl:text-[14px] 2xl:text-[16px] px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+              className="text-white bg-[#165DFF] hover:bg-[#165DFF] font-medium rounded-[5px] text-[12px] sm:text-[10px] md:text-[12px] xl:text-[14px] 2xl:text-[16px] px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
               onClick={onCreateTicket}
             >
               Create New Ticket

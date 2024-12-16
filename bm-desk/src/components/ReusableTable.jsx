@@ -179,7 +179,7 @@ function ReusableTable({ data, headers, currentTab, defaultSortConfig }) {
                     ) : header.value === "ticketaction" ? (
                       <DropdownMenu>
                         <DropdownMenuTrigger asChild>
-                          <div className="flex shrink-0 items-center bg-[#F8F9FB] rounded-[4px] border-[1.5px] border-[#0E42D2] px-2 py-2 text-[#0E42D2] gap-2 w-[70%]">
+                          {/* <div className="flex shrink-0 items-center bg-[#F8F9FB] rounded-[4px] border-[1.5px] border-[#0E42D2] px-2 py-2 text-[#0E42D2] gap-2 w-[70%]">
                             <Button
                               className="rounded-[3px] border-none shadow-none !outline-none !p-0 !h-full font-normal text-[10px] md:text-[12px] 2xl:[12px] "
                               variant="outline"
@@ -200,10 +200,33 @@ function ReusableTable({ data, headers, currentTab, defaultSortConfig }) {
                                 strokeLinejoin="round"
                               />
                             </svg>
+                          </div> */}
+
+                          <div className="flex items-center bg-[#F8F9FB] rounded-[4px] border-[1.5px] border-[#0E42D2] px-[12px] py-[4px] text-[#0E42D2] gap-[8px] w-fit">
+                            <Button
+                              className="flex-shrink-0 rounded-[3px] border-none shadow-none !outline-none !p-0 !h-auto font-normal text-[10px] md:text-[12px] lg:text-[12px]"
+                              variant="outline"
+                            >
+                              Action
+                            </Button>
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="20"
+                              height="20"
+                              viewBox="0 0 20 20"
+                              fill="none"
+                              className="flex-shrink-0"
+                            >
+                              <path
+                                d="M5 7.5L10 12.5L15 7.5"
+                                stroke="#0E42D2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                              />
+                            </svg>
                           </div>
                         </DropdownMenuTrigger>
                         <DropdownMenuContent className="bg-white rounded-[10px] ">
-
                           <DropdownMenuItem
                             onClick={() =>
                               handleDropdownSelect("Assign Ticket")
