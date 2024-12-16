@@ -13,7 +13,7 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card"
+} from "@/components/ui/card";
 import {
   AreaChart,
   Area,
@@ -34,8 +34,7 @@ function Dashboard() {
   const [selectedOption, setSelectedOption] = useState("Today");
 
   const managername = localStorage.getItem("myusername") === "mojith";
-  const navigate=useNavigate()
- 
+  const navigate = useNavigate();
 
   // all time dropdown
   const triggerDropdown = () => {
@@ -124,7 +123,6 @@ function Dashboard() {
       description: "Ticket - TICKT-7424 has been resolved",
       time: "1 Hr",
     },
-
   ];
 
   // graph
@@ -199,146 +197,146 @@ function Dashboard() {
     <div>
       {/* Activity dashboard */}
       <div className="flex flex-row justify-between items-center p-2 w-full">
-  {/* Title Section */}
-  <div className="font-semibold 2xl:text-[32px] lg:text-[22px] md:text-[18px] sm:text-[16px] text-[14px] font-inter text-[#4E5969]">
-    {managername ? "Employee Activity Dashboard" : "Activity Dashboard"}
-  </div>
+        {/* Title Section */}
+        <div className="font-semibold 2xl:text-[32px] lg:text-[22px] md:text-[18px] sm:text-[16px] text-[14px] font-inter text-[#4E5969]">
+          {managername ? "Employee Activity Dashboard" : "Activity Dashboard"}
+        </div>
 
-  {/* Dropdown Section */}
-  <div className="relative">
-    {/* Dropdown Trigger */}
-    <Button
-      className="flex flex-row justify-center items-center gap-5 2xl:w-[153px] 2xl:h-[50px] lg:w-[140px] lg:h-[30px] md:w-[110px] md:h-[28px] sm:w-[100px] sm:h-[28px] w-[90px] h-[26px] py-[10px] px-[15px] sm:px-[18px] rounded-md bg-[#E8F3FF] cursor-pointer"
-      onClick={triggerDropdown}
-    >
-      <div className="font-inter font-normal 2xl:text-lg lg:text-[12px] md:text-[10px] sm:text-[9px] text-[8px] text-[#1D2129]">
-        {alltimeOption}
-      </div>
-      <div className="2xl:w-[20px] 2xl:h-[18px] lg:w-[16px] lg:h-[16px] md:h-[14px] sm:w-[12px] sm:h-[12px] text-[#C8CAD8]">
-        <RiArrowDropDownLine />
-      </div>
-    </Button>
+        {/* Dropdown Section */}
+        <div className="relative">
+          {/* Dropdown Trigger */}
+          <Button
+            className="flex flex-row justify-center items-center gap-5 2xl:w-[153px] 2xl:h-[50px] lg:w-[140px] lg:h-[30px] md:w-[110px] md:h-[28px] sm:w-[100px] sm:h-[28px] w-[90px] h-[26px] py-[10px] px-[15px] sm:px-[18px] rounded-md bg-[#E8F3FF] cursor-pointer"
+            onClick={triggerDropdown}
+          >
+            <div className="font-inter font-normal 2xl:text-lg lg:text-[12px] md:text-[10px] sm:text-[9px] text-[8px] text-[#1D2129]">
+              {alltimeOption}
+            </div>
+            <div className="2xl:w-[20px] 2xl:h-[18px] lg:w-[16px] lg:h-[16px] md:h-[14px] sm:w-[12px] sm:h-[12px] text-[#C8CAD8]">
+              <RiArrowDropDownLine />
+            </div>
+          </Button>
 
-    {/* Dropdown Menu */}
-    {DropdownOpen && (
-      <div className="absolute text-nowrap top-[40px] left-0 w-full bg-white border border-gray-300 rounded-xl shadow-lg z-10">
-        <ul className="py-2">
-          <li
-            className="px-4 py-2 font-inter font-normal 2xl:text-lg lg:text-[14px] md:text-[10px] sm:text-[9px] text-[8px] text-[#1D2129] hover:bg-[#E8F3FF] cursor-pointer"
-            onClick={() => alltimeOptionClick("Option 1")}
-          >
-            Today
-          </li>
-          <li
-            className="px-4 py-2 font-inter font-normal 2xl:text-lg lg:text-[14px] md:text-[10px] sm:text-[9px] text-[8px] text-[#1D2129] hover:bg-[#E8F3FF] cursor-pointer"
-            onClick={() => alltimeOptionClick("Option 2")}
-          >
-            This month
-          </li>
-          <li
-            className="px-4 py-2 font-inter font-normal 2xl:text-lg lg:text-[14px] md:text-[10px] sm:text-[9px] text-[8px] text-[#1D2129] hover:bg-[#E8F3FF] cursor-pointer"
-            onClick={() => alltimeOptionClick("Option 3")}
-          >
-            This year
-          </li>
-        </ul>
+          {/* Dropdown Menu */}
+          {DropdownOpen && (
+            <div className="absolute text-nowrap top-[40px] left-0 w-full bg-white border border-gray-300 rounded-xl shadow-lg z-10">
+              <ul className="py-2">
+                <li
+                  className="px-4 py-2 font-inter font-normal 2xl:text-lg lg:text-[14px] md:text-[10px] sm:text-[9px] text-[8px] text-[#1D2129] hover:bg-[#E8F3FF] cursor-pointer"
+                  onClick={() => alltimeOptionClick("Today")}
+                >
+                  Today
+                </li>
+                <li
+                  className="px-4 py-2 font-inter font-normal 2xl:text-lg lg:text-[14px] md:text-[10px] sm:text-[9px] text-[8px] text-[#1D2129] hover:bg-[#E8F3FF] cursor-pointer"
+                  onClick={() => alltimeOptionClick("This Month")}
+                >
+                  This month
+                </li>
+                <li
+                  className="px-4 py-2 font-inter font-normal 2xl:text-lg lg:text-[14px] md:text-[10px] sm:text-[9px] text-[8px] text-[#1D2129] hover:bg-[#E8F3FF] cursor-pointer"
+                  onClick={() => alltimeOptionClick("This year")}
+                >
+                  This year
+                </li>
+              </ul>
+            </div>
+          )}
+        </div>
       </div>
-    )}
-  </div>
-</div>
-
 
       <div className="flex flex-col gap-3 mt-5 w-full">
-        <div className="grid grid-cols-1  md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-[20px]">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-[20px]">
           {/* 1 Card */}
 
           <div className="border-[1px] 2xl:p-[36px] lg:p-[20px] md:p-[15px] sm:p-[15px] rounded-2xl text-[#E5E6EB] bg-[#FFF] justify-center items-center">
-      
-        {profiles.map((profile, index) => (
-          <div key={index} className="">
-            <div className="flex flex-col  sm:gap-[15px] md:gap-[18px] 2xl:gap-[36px] lg:gap-[30px]">
-              {/* Profile name */}
-              <div className="flex flex-row items-center justify-between">
-                <div className="text-[#4E5969] font-inter font-semibold 2xl:text-xl lg:text-[18px] md:text-[16px] sm:text-[14px]">
-                  Profile
-                </div>
-                <div className="2xl:w-[19px] 2xl:h-[19px] lg:w-[15px] lg:h-[15px] md:w-[10px] md:h-[10px] sm:w-[8px] sm:h-[8px] text-[#4E5969]">
-                  <LuRotateCcw />
-                </div>
-              </div>
-
-              {/* Profile pic */}
-              <div className="flex flex-col items-center">
-                <div className="relative w-[50px] h-[50px] sm:w-[60px] sm:h-[60px] md:w-[80px] md:h-[80px] lg:w-[90px] lg:h-[90px] xl:w-[100px] xl:h-[100px] 2xl:w-[100px] 2xl:h-[100px]">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 101 101"
-                    fill="none"
-                    className="absolute inset-0 w-full h-full"
-                  >
-                    <circle
-                      cx="50.6488"
-                      cy="50.4159"
-                      r="49.0119"
-                      stroke="#C9CDD4"
-                      strokeWidth="2.22782"
-                    />
-                  </svg>
-                  <div className="absolute inset-0 flex items-center justify-center p-3">
-                    <img
-                      src={profile.avatar}
-                      alt="Avatar"
-                      className="rounded-full w-full h-full object-cover"
-                    />
+            {profiles.map((profile, index) => (
+              <div key={index} className="">
+                <div className="flex flex-col  sm:gap-[15px] md:gap-[18px] 2xl:gap-[36px] lg:gap-[30px]">
+                  {/* Profile name */}
+                  <div className="flex flex-row items-center justify-between">
+                    <div className="text-[#4E5969] font-inter font-semibold 2xl:text-xl lg:text-[18px] md:text-[16px] sm:text-[14px]">
+                      Profile
+                    </div>
+                    <div className="2xl:w-[19px] 2xl:h-[19px] lg:w-[15px] lg:h-[15px] md:w-[10px] md:h-[10px] sm:w-[8px] sm:h-[8px] text-[#4E5969]">
+                      <LuRotateCcw />
+                    </div>
                   </div>
-                </div>
-                <div className="font-inter font-semibold 2xl:text-[20px] lg:text-[18px] md:text-[16px] sm:text-[14px] text-[#1D2129]">
-                  {profile.name}
-                </div>
-                <div className="text-[#86909C] font-inter 2xl:text-[16px] lg:text-[14px] md:text-[12px] sm:text-[10px] font-normal">
-                  {profile.role}
-                </div>
-              </div>
 
-              {/* Bottom card stats */}
-              <div className="flex flex-row 2xl:gap-[16px] lg:gap-[13px] md:gap-[10px] sm:gap-[8px] justify-center items-center">
-                {profile.stats.map((stat, idx) => (
-                  <div
-                    key={idx}
-                    className="border-[0.44px] border-[#E5E6EB] rounded-[9px] flex flex-row items-center gap-[5px] md:gap-[7px] lg:gap-[9px] px-2 "
-                  >
-                    <div>
+                  {/* Profile pic */}
+                  <div className="flex flex-col items-center">
+                    <div className="relative w-[50px] h-[50px] sm:w-[60px] sm:h-[60px] md:w-[80px] md:h-[80px] lg:w-[90px] lg:h-[90px] xl:w-[100px] xl:h-[100px] 2xl:w-[100px] 2xl:h-[100px]">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
-                        width="11"
-                        height="11"
-                        viewBox="0 0 11 12"
+                        viewBox="0 0 101 101"
                         fill="none"
+                        className="absolute inset-0 w-full h-full"
                       >
-                        <circle cx="5.5" cy="5.59" r="5.42" fill={stat.color} />
+                        <circle
+                          cx="50.6488"
+                          cy="50.4159"
+                          r="49.0119"
+                          stroke="#C9CDD4"
+                          strokeWidth="2.22782"
+                        />
                       </svg>
+                      <div className="absolute inset-0 flex items-center justify-center p-3">
+                        <img
+                          src={profile.avatar}
+                          alt="Avatar"
+                          className="rounded-full w-full h-full object-cover"
+                        />
+                      </div>
                     </div>
-                    <div>
-                      <p className="text-[#4E5969] text-[10px] sm:text-[8px] font-normal">
-                        {stat.label}
-                      </p>
-                      <p className="text-[#1D2129] text-[14px] sm:text-[12px] font-bold">
-                        {stat.value}
-                      </p>
+                    <div className="font-inter font-semibold 2xl:text-[20px] lg:text-[18px] md:text-[16px] sm:text-[14px] text-[#1D2129]">
+                      {profile.name}
+                    </div>
+                    <div className="text-[#86909C] font-inter 2xl:text-[16px] lg:text-[14px] md:text-[12px] sm:text-[10px] font-normal">
+                      {profile.role}
                     </div>
                   </div>
-                ))}
+
+                  {/* Bottom card stats */}
+                  <div className="flex flex-row 2xl:gap-[16px] lg:gap-[13px] md:gap-[10px] sm:gap-[8px] justify-center items-center">
+                    {profile.stats.map((stat, idx) => (
+                      <div
+                        key={idx}
+                        className="border-[0.44px] border-[#E5E6EB] rounded-[9px] flex flex-row items-center gap-[5px] md:gap-[7px] lg:gap-[9px] px-2 "
+                      >
+                        <div>
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="11"
+                            height="11"
+                            viewBox="0 0 11 12"
+                            fill="none"
+                          >
+                            <circle
+                              cx="5.5"
+                              cy="5.59"
+                              r="5.42"
+                              fill={stat.color}
+                            />
+                          </svg>
+                        </div>
+                        <div>
+                          <p className="text-[#4E5969] text-[10px] sm:text-[8px] font-normal">
+                            {stat.label}
+                          </p>
+                          <p className="text-[#1D2129] text-[14px] sm:text-[12px] font-bold">
+                            {stat.value}
+                          </p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
               </div>
-            </div>
+            ))}
           </div>
-        ))}
-      
-    </div>
-   
 
           {/* 2nd and 3rd card */}
-          
-          
+
           {modifiedCardsData.map((card, index) => (
             <div
               key={index}
@@ -380,7 +378,12 @@ function Dashboard() {
                   {card.count}
                 </div>
               </div>
-              <div onClick={()=>{navigate('/assignedtickets')}} className="flex items-center justify-end cursor-pointer">
+              <div
+                onClick={() => {
+                  navigate("/assignedtickets");
+                }}
+                className="flex items-center justify-end cursor-pointer"
+              >
                 <div className="font-inter text-[14px]   normal font-semibold text-[#1D2129]">
                   {card.buttonText}
                 </div>
@@ -392,11 +395,9 @@ function Dashboard() {
           ))}
 
           {/* 4th Card */}
-         
+
           {managername ? (
-            
             replacementCard.map((card, index) => (
-              
               <div
                 key={index}
                 className="flex flex-col justify-between border-[1px]  2xl:p-[36px] lg:p-[20px] sm:p-[18px] md:p-[15px]  rounded-2xl text-[#E5E6EB]  bg-[#FFF] "
@@ -406,7 +407,6 @@ function Dashboard() {
                     <p>{card.title}</p>
                   </div>
                   <div className="2xl:w-[19px] 2xl:h-[19px] lg:w-[15px] lg:h-[15px] md:w-[10px] md:h-[10px] text-[#4E5969]">
-                   
                     <LuRotateCcw />
                   </div>
                 </div>
@@ -432,7 +432,7 @@ function Dashboard() {
                   </div>
 
                   <div
-                    className="2xl:text-[68px] lg:text-[46px] normal font-semibold font-inter"
+                    className="2xl:text-[68px] lg:text-[50px] md:text-[45px] sm:text-[45px] font-semibold font-Inter"
                     style={{ color: card.textColor }}
                   >
                     {card.count}
@@ -458,7 +458,11 @@ function Dashboard() {
                       My Tickets
                     </div>
                     <div className="w-[28px] h-[28px] text-[28px] text-[#4E5969] cursor-pointer">
-                      <HiArrowRight onClick={()=>{navigate("/actionedtickets")}} />
+                      <HiArrowRight
+                        onClick={() => {
+                          navigate("/actionedtickets");
+                        }}
+                      />
                     </div>
                   </div>
 
@@ -494,7 +498,6 @@ function Dashboard() {
               </div>
             </div>
           )}
-         
 
           {/* 5 card bottom */}
           <div className="col-span-2   border-[1px] border-[#E9EBEC] rounded-2xl">
@@ -615,7 +618,11 @@ function Dashboard() {
               </div>
               {!managername && (
                 <div className="h-[28px] w-[28px] text-[22px] text-[#181D27] cursor-pointer">
-                  <HiArrowRight onClick={()=>{navigate('/opentickets')}} />
+                  <HiArrowRight
+                    onClick={() => {
+                      navigate("/opentickets");
+                    }}
+                  />
                 </div>
               )}
             </div>
