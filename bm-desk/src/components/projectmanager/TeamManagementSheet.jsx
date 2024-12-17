@@ -80,7 +80,7 @@ function TeamManagementSheet({ isOpen, onClose }) {
                 <div className="absolute bottom-0 left-5 w-[94%] top-[520px]">
                   <div className="absolute bottom-8 right-6">
                     <div className="flex flex-row gap-2">
-                      <Button className="bg-[#FFFFFF] text-[#165DFF] text-[12px] border border-[#165DFF] rounded-[3px]">
+                      <Button className="bg-[#FFFFFF] text-[#165DFF] text-[12px] border border-[#165DFF]rounded-[3px]">
                         Discard
                       </Button>
                       <Button className="bg-[#165DFF] text-[#FFFFFF] text-[12px] rounded-[3px] hover:bg-[#165DFF] hover:text-[#FFFFFF]">
