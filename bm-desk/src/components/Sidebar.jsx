@@ -1,46 +1,41 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { SidebarContext } from "./Layout";
 import { RiHomeLine, RiArrowDropDownLine } from "react-icons/ri";
 import { BsGraphUpArrow } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
 import { TbMenuDeep } from "react-icons/tb";
 import ticket from "../assets/ticket.svg";
-import otickets from "../assets/otickets.svg";
-import ctickets from "../assets/ctickets.svg";
-import atickets from "../assets/atickets.svg";
-import assigntickets from "../assets/assigntickets.svg";
-import actiontickets from "../assets/actiontickets.svg";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
 function Sidebar() {
+  const { isSidebarOpen, setIsSidebarOpen } = useContext(SidebarContext);
   const [activePath, setActivePath] = useState(window.location.pathname);
   const navigate = useNavigate();
-  const [isSidebarOpen, setSidebarOpen] = useState(true);
   const [openDropdown, setOpenDropdown] = useState(null);
   const managername = localStorage.getItem("myusername") === "mojith";
 
   const handleItemClick = (item) => {
     if (item.dropdown) {
-      // Only toggle dropdown if clicking on the same item that's already open
       if (openDropdown === item.label) {
         setOpenDropdown(null);
-      }
-      // If clicking on a different dropdown item, open it
-      else if (!item.path) {
+      } else if (!item.path) {
         setOpenDropdown(item.label);
       }
     }
 
-    // If the item has a path, navigate to it
     if (item.path) {
       setActivePath(item.path);
       navigate(item.path);
+      if (window.innerWidth < 640) {
+        setIsSidebarOpen(false);
+      }
     }
   };
 
   const toggleSidebar = () => {
-    setSidebarOpen((prev) => !prev);
+    setIsSidebarOpen(!isSidebarOpen);
   };
 
-  // Rest of your menuItems array stays the same
   const menuItems = [
     {
       label: "Dashboards",
@@ -215,28 +210,14 @@ function Sidebar() {
     },
   ];
 
-  return (
-    <div
-      className={`flex flex-col h-screen border-r border-[#E5E6EB] ${
-        isSidebarOpen
-          ? "2xl:w-[250px] lg:w-[225px] md:w-[200px] w-[160px]"
-          : "w-[60px]"
-      } px-4 gap-5 transition-all duration-300`}
-    >
-      <div className="flex justify-end mb-4">
-        <button
-          onClick={toggleSidebar}
-          className="text-[#4E5969] text-xl hover:text-[#165DFF] transition-colors lg:hidden 2xl:hidden"
-        >
-          <TbMenuDeep />
-        </button>
-      </div>
+  const MenuItems = () => (
+    <div className="flex-1 overflow-y-auto px-4">
       {menuItems.map((item, index) => (
         <div
           key={index}
-          className={`${
+          className={`mb-2 ${
             activePath === item.path
-              ? "bg-[#E8F3FF] text-[#165DFF] rounded-[4px] border-[1px] border-[#BEDAFF] cursor-pointer"
+              ? "bg-[#E8F3FF] text-[#165DFF] rounded-[4px] border-[1px] border-[#BEDAFF]"
               : "text-[#4E5969]"
           }`}
         >
@@ -244,19 +225,17 @@ function Sidebar() {
             className="group flex flex-row gap-2 items-center p-3 border border-white hover:bg-[#E8F3FF] hover:text-[#165DFF] rounded-[4px] hover:border-[1px] hover:border-[#BEDAFF] cursor-pointer"
             onClick={() => handleItemClick(item)}
           >
-            <div
-              className={`${
-                isSidebarOpen ? "" : ""
-              } text-[20px] group-hover:text-[#165DFF] rounded-[4px] transition-all`}
-            >
+            <div className="text-[20px] group-hover:text-[#165DFF]">
               {item.icon}
             </div>
 
-            {isSidebarOpen && (
-              <div className="text-[14px] font-medium font-Inter group-hover:text-[#165DFF] flex-1">
-                {item.label}
-              </div>
-            )}
+            <div
+              className={`text-[14px] font-medium font-Inter group-hover:text-[#165DFF] flex-1 whitespace-nowrap ${
+                !isSidebarOpen ? "lg:hidden" : ""
+              }`}
+            >
+              {item.label}
+            </div>
 
             {item.dropdown && isSidebarOpen && (
               <RiArrowDropDownLine
@@ -266,8 +245,10 @@ function Sidebar() {
               />
             )}
           </div>
+
+          {/* Dropdown Items */}
           {item.dropdown && openDropdown === item.label && isSidebarOpen && (
-            <div>
+            <div className="pl-4">
               {item.dropdown.map((subItem, subIndex) => (
                 <div
                   key={subIndex}
@@ -278,14 +259,17 @@ function Sidebar() {
                   }`}
                 >
                   <div
-                    className="group px-10 border border-white py-2 gap-2 flex flex-row items-center text-sm text-nowrap hover:bg-[#E8F3FF] hover:text-[#165DFF] rounded-[4px] hover:border-[1px] hover:border-[#BEDAFF] cursor-pointer"
+                    className="group px-6 border border-white py-2 gap-2 flex flex-row items-center text-sm hover:bg-[#E8F3FF] hover:text-[#165DFF] rounded-[4px] hover:border-[1px] hover:border-[#BEDAFF] cursor-pointer"
                     onClick={() => {
                       setActivePath(subItem.path);
                       navigate(subItem.path);
+                      if (window.innerWidth < 640) {
+                        setIsSidebarOpen(false);
+                      }
                     }}
                   >
                     <div className="text-[16px]">{subItem.icon}</div>
-                    <div className="flex-1 2xl:text-[14px] lg:text-xs md:text-[11px] text-[10px] font-medium font-Inter group-hover:text-[#165DFF]">
+                    <div className="flex-1 2xl:text-[14px] lg:text-xs text-[11px] font-medium font-Inter group-hover:text-[#165DFF] whitespace-nowrap">
                       {subItem.label}
                     </div>
                   </div>
@@ -296,6 +280,62 @@ function Sidebar() {
         </div>
       ))}
     </div>
+  );
+
+  return (
+    <>
+      {/* Mobile Sheet (< 640px) */}
+      <div className="lg:hidden">
+        <Sheet>
+          <SheetTrigger asChild>
+            <button className="fixed top-2 left-4 z-50 p-2 rounded-lg bg-white shadow-lg text-[#4E5969] hover:text-[#165DFF] transition-colors">
+              <TbMenuDeep size={16} />
+            </button>
+          </SheetTrigger>
+          <SheetContent side="left" className="w-[280px] p-4 bg-white">
+            <div className="h-full flex flex-col">
+              <div className="h-16 flex items-center">
+                <span className="text-lg font-semibold text-[#4E5969]">
+                  
+                </span>
+              </div>
+              <MenuItems />
+            </div>
+          </SheetContent>
+        </Sheet>
+      </div>
+
+      {/* Desktop/Tablet Sidebar (≥ 640px) */}
+      <aside
+        className={`
+          hidden sm:block fixed lg:static top-0 left-0 h-full
+          ${isSidebarOpen ? "w-[240px] lg:w-[225px] xl:w-[250px]" : "w-[70px]"}
+          bg-white border-r border-[#E5E6EB]
+          transform ${
+            isSidebarOpen
+              ? "translate-x-0"
+              : "-translate-x-full lg:translate-x-0"
+          }
+          transition-all duration-300 ease-in-out
+          z-40
+        `}
+      >
+        <div className="relative h-full flex flex-col bg-white">
+          <div className="h-16 flex items-center justify-between px-4">
+            {isSidebarOpen && (
+              <span className="text-lg font-semibold text-[#4E5969]"></span>
+            )}
+            <button
+              onClick={toggleSidebar}
+              className="text-[#4E5969] text-xl hover:text-[#165DFF] transition-colors hidden lg:hidden"
+            >
+              <TbMenuDeep />
+            </button>
+          </div>
+          <MenuItems />
+        </div>
+      </aside>
+    </>
   );
 }
 

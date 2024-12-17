@@ -158,7 +158,8 @@ function EscalatedReport() {
       ? data.slice(0, visibleDataCount) // Show limited data for "All Tickets"
       : data.filter((ticket) => ticket.severity.toLowerCase() === activeTab);
   return (
-    <div className="fixed top-24 left-64 pl-0 2xl:pl-5 w-[calc(100%_-_280px)]">
+    <div className="transition-all ml-4 mt-4 duration-300 ease-in-out">
+      {" "}
       <div className="flex flex-col gap-8">
         <div>
           <Pheader title={"Escalated Report"} />
@@ -192,15 +193,15 @@ function EscalatedReport() {
               />
             </div>
             <NewTicket
-                triggerButton={
-                  <button
-                    type="button"
-                    className="text-white bg-blue-600 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-[5px] text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
-                  >
-                    Create New Ticket
-                  </button>
-                }
-              />
+              triggerButton={
+                <button
+                  type="button"
+                  className="text-white bg-blue-600 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-[5px] text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+                >
+                  Create New Ticket
+                </button>
+              }
+            />
           </div>
         </div>
         {/* Table */}

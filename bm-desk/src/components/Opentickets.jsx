@@ -168,7 +168,8 @@ function AssignedTickets() {
 
   return (
     <div>
-      <div className="fixed top-24 left-64 w-[calc(100%_-_280px)]">
+      <div className="transition-all ml-4 mt-4 duration-300 ease-in-out">
+  
         <div className="flex flex-col gap-8">
           <div>
             <Pheader title="Open Tickets" />

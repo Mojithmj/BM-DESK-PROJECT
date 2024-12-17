@@ -69,7 +69,8 @@ function Taskmanagement() {
 
   return (
     <div>
-      <div className="fixed top-24 left-64 w-[calc(100%_-_280px)]">
+      <div className="transition-all ml-4 mt-4 duration-300 ease-in-out">
+        {" "}
         <div className="flex flex-col gap-8">
           <div className="flex flex-col gap-2">
             <div className="font-semibold 2xl:text-[32px] lg:text-[28px] md:text-[18px] text-[16px] normal font-Inter text-[#4E5969]">

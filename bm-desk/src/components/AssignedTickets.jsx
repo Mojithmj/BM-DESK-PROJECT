@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import Navbar from "./Navbar";
-import Sidebar from "./Sidebar";
+import React, { useState, useContext } from "react";
+import { SidebarContext } from "./Layout";
+
 import { Input } from "@/components/ui/input";
 import Pheader from "./Pheader";
 import { FiSearch } from "react-icons/fi";
@@ -10,14 +10,13 @@ import { Button } from "./ui/button";
 import TabsSearchButton from "./TabsSearchButton";
 //data count
 function AssignedTickets() {
+  const { isSidebarOpen } = useContext(SidebarContext);
   const [activeTab, setActiveTab] = useState("alltickets");
-  const [loading, setLoading] = useState(false); // To track loading state
-  const [visibleDataCount, setVisibleDataCount] = useState(6); // Number of tickets visible initially
-
-
+  const [loading, setLoading] = useState(false);
+  const [visibleDataCount, setVisibleDataCount] = useState(6);
 
   // State to manage table data
-  
+
   const [data, setData] = useState([
     {
       id: 1,
@@ -141,45 +140,44 @@ function AssignedTickets() {
   };
 
   return (
-    <div>
-      <div className="fixed top-24 left-64 pl-0 2xl:pl-5 w-[calc(100%_-_280px)]">
-        <div className="flex flex-col gap-8">
-          <div>
-            <Pheader title="Assigned Tickets" />
-          </div>
-          {/* Tabs */}
-          <div>
-            <TabsSearchButton
-              tabs={tabs}
-              activeTab={activeTab}
-              setActiveTab={setActiveTab}
-              onSearch={handleSearch}
-              onCreateTicket={handleCreateTicket}
-            />
-          </div>
-
-          {/* Table */}
-          <ReusableTable
-            headers={newHeaders}
-            data={filteredData}
-            defaultSortConfig={{
-              key: "expecteddeliverydate",
-              direction: "ascending",
-            }}
-          />
-          {/* Show "Load More" button only for "All Tickets" tab */}
-          {activeTab === "alltickets" && visibleDataCount < data.length && (
-            <div className="flex justify-start">
-              <button
-                onClick={loadMoreData}
-                className="text-[#165DFF] -mt-8"
-                disabled={loading}
-              >
-                {loading ? "Loading..." : "Load more Tickets..."}
-              </button>
-            </div>
-          )}
+    <div className="transition-all ml-4 mt-4 duration-300 ease-in-out">
+      <div className="flex flex-col gap-8">
+        <div>
+          <Pheader title="Assigned Tickets" />
         </div>
+        {/* Tabs */}
+        <div>
+          <TabsSearchButton
+            tabs={tabs}
+            activeTab={activeTab}
+            setActiveTab={setActiveTab}
+            onSearch={handleSearch}
+            onCreateTicket={handleCreateTicket}
+          />
+        </div>
+
+        {/* Table */}
+        <ReusableTable
+          headers={newHeaders}
+          data={filteredData}
+          defaultSortConfig={{
+            key: "expecteddeliverydate",
+            direction: "ascending",
+          }}
+        />
+
+        {/* Load More Button */}
+        {activeTab === "alltickets" && visibleDataCount < data.length && (
+          <div className="flex justify-start">
+            <button
+              onClick={loadMoreData}
+              className="text-[#165DFF] mt-4"
+              disabled={loading}
+            >
+              {loading ? "Loading..." : "Load more Tickets..."}
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );
