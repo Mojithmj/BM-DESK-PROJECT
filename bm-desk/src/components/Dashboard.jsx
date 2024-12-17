@@ -198,6 +198,7 @@ function Dashboard() {
   return (
     <div>
       {/* Activity dashboard */}
+      
       <div className="flex flex-row justify-between items-center p-2 w-full">
         {/* Title Section */}
         <div className="font-semibold text-[18px]  md:text-[24px] lg:text-[28px] 2xl:text-[32px] font-inter text-[#4E5969]">

@@ -321,7 +321,7 @@ function Sidebar() {
         `}
       >
         <div className="relative h-full flex flex-col bg-white">
-          <div className="h-16 flex items-center justify-between px-4">
+          <div className="h-10 flex items-center justify-between px-4">
             {isSidebarOpen && (
               <span className="text-lg font-semibold text-[#4E5969]"></span>
             )}

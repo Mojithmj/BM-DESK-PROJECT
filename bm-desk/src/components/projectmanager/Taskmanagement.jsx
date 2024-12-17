@@ -112,11 +112,13 @@ function Taskmanagement() {
                 </div>
                 {/* button */}
                 <button
-        onClick={() => handleButtonClick("createUser")}
-        className={`border border-[#165DFF] rounded-[4px] items-center 2xl:px-4 lg:px-3 2xl:py-2 lg:py-1 ${
-          selectedButton === "createUser" ? "bg-[#165DFF] text-[#FFFFFF]" : "hover:bg-[#165DFF] hover:text-[#FFFFFF] text-[#165DFF]"
-        }`}
-      >
+                  onClick={() => handleButtonClick("createUser")}
+                  className={`border border-[#165DFF] rounded-[4px] items-center 2xl:px-4 lg:px-3 2xl:py-2 lg:py-1 ${
+                    selectedButton === "createUser"
+                      ? "bg-[#165DFF] text-[#FFFFFF]"
+                      : "hover:bg-[#FFFFFF] hover:text-[#165DFF] text-[#165DFF]"
+                  }`}
+                >
                   <span className="font-Inter 2xl:text-[14px] lg:text-[12px] font-normal  ">
                     Create New User
                   </span>
@@ -124,14 +126,16 @@ function Taskmanagement() {
                 <div>
                   {/* Button in the parent to trigger the sheet */}
                   <button
-          onClick={() => {
-            handleButtonClick("assignTicket");
-            openSheet(); // Open the sheet when this button is clicked
-          }}
-          className={`border border-[#165DFF] rounded-[4px] items-center px-4 py-2 ${
-            selectedButton === "assignTicket" ? "bg-[#165DFF] text-[#FFFFFF]" : "hover:bg-[#165DFF] hover:text-[#FFFFFF] text-[#165DFF]"
-          }`}
-        >
+                    onClick={() => {
+                      handleButtonClick("assignTicket");
+                      openSheet(); // Open the sheet when this button is clicked
+                    }}
+                    className={`border border-[#165DFF] rounded-[4px] items-center px-4 py-2 ${
+                      selectedButton === "assignTicket"
+                        ? "bg-[#165DFF] text-[#FFFFFF]"
+                        : "hover:bg-[#165DFF] hover:text-[#FFFFFF] text-[#165DFF]"
+                    }`}
+                  >
                     <span className="font-Inter 2xl:text-[14px] lg:text-[12px] font-normal  ">
                       Assign Ticket
                     </span>

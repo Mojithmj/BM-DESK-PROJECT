@@ -103,7 +103,7 @@ function Navbar() {
 
   const navigate = useNavigate();
   return (
-    <div className="w-full">
+    <div className="w-full bg-white">
       <div className="flex flex-row items-center justify-between p-3 border-b w-full">
         {/* Left Section: Logo */}
         <div className="flex items-center gap-2">
