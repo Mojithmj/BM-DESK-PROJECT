@@ -18,6 +18,8 @@ import AdminTeamMonitoring from './components/projectmanager/AdminTeamMonitoring
 import EscalatedReport from './components/projectmanager/EscalatedReport';
 import TeamManagementSheet from './components/projectmanager/TeamManagementSheet';
 import Taskmanagement from './components/projectmanager/Taskmanagement';
+import Newdash from './components/Newdash';
+
 
 
 
@@ -48,9 +50,11 @@ function App() {
         <Route path='/actionedtickets' element={<ActionedTickets/>}/>
        
         </Route>
-       
+        <Route path='/newdash' element={<Newdash/>}/>
+        
         <Route path='/login' element={<Login/>}/>
         <Route path='/productivity' element={<Productivity/>}/>
+        
         
         
         <Route path='/privacyaccountsettings' element={<Privacyaccountsettings/>}/>

@@ -9,17 +9,16 @@ import green from "../../assets/Green.svg";
 import red from "../../assets/Red.svg";
 import { PiGreaterThan } from "react-icons/pi";
 import { RiArrowDropDownLine } from "react-icons/ri";
-import { Button } from "react-day-picker";
-
+ 
 function AdminTeamMonitoring() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [alltimeOption, setAlltimeOption] = useState("All Time");
-
+ 
   const handleOptionClick = (option) => {
     setAlltimeOption(option); // Update the selected option
     setDropdownOpen(false); // Close the dropdown
   };
-
+ 
   const cardData = [
     { text: "Created tickets", value: "7500" },
     { text: "Opened Tickets", value: "6578" },
@@ -59,7 +58,7 @@ function AdminTeamMonitoring() {
       ],
       image: image2,
     },
-
+ 
     // Add more team members as needed
   ];
   return (
@@ -71,7 +70,7 @@ function AdminTeamMonitoring() {
             Dashboard
           </label>
         </div>
-
+ 
         <div
           className="flex flex-row justify-center items-center gap-5 2xl:w-[153px] 2xl:h-[50px] lg:w-[140px] lg:h-[30px] md:w-[110px] md:h-[20px] py-[10px] px-[21px] rounded-md bg-[#E8F3FF] cursor-pointer"
           onClick={() => setDropdownOpen(!dropdownOpen)} // Toggle dropdown visibility
@@ -84,8 +83,7 @@ function AdminTeamMonitoring() {
           </div>
         </div>
       </div>
-      
-
+ 
       {dropdownOpen && (
         <div className="absolute text-nowrap top-[40px] w-36 right-0 bg-white border border-gray-300 rounded-xl shadow-lg z-10">
           <ul className="py-2">
@@ -102,8 +100,8 @@ function AdminTeamMonitoring() {
         </div>
       )}
     </div>
-
-
+ 
+ 
     
       <div className="grid grid-cols-5 gap-4">
         {cardData.map((data, index) => (
@@ -182,5 +180,5 @@ function AdminTeamMonitoring() {
     </div>
   );
 }
-
+ 
 export default AdminTeamMonitoring;
