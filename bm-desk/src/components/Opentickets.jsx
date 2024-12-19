@@ -173,7 +173,7 @@ function AssignedTickets() {
   
         <div className="flex flex-col gap-8">
           <div>
-            <Pheader title="Open Tickets" />
+          <Pheader title="Open Tickets" showCalendar={true} />
           </div>
           {/* Tabs */}
           <div>

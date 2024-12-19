@@ -81,7 +81,7 @@ const Layout = () => {
             ? 'lg:ml-[240px] xl:ml-[250px] mt-4'
             : 'lg:ml-[70px] mt-6'
         }`}>
-          <div className="ml-3 mr-3">
+          <div className="ml-3 mr-6">
             <Outlet />
           </div>
         </div>
