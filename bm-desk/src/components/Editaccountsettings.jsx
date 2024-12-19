@@ -68,7 +68,8 @@ function Editaccountsettings({ onInputChange }) {
 
   return (
     <div>
-      <div className="fixed top-30 left-64 w-[calc(100%_-_300px)]">
+      {/* <div className="fixed top-30 left-64 w-[calc(100%_-_300px)]"> */}
+      <div className="transition-all ml-4 mt-4 duration-300 ease-in-out">
         <div className="flex flex-col flex-start gap-9">
           <div>
             <h1 className="font-inter text-[20px] md:text-[24px] lg:text-[24px] 2xl:text-[32px]  font-bold text-[#09090B]">
@@ -179,7 +180,7 @@ function Editaccountsettings({ onInputChange }) {
                     <p className="text-[#4E5969] text-[10px] 2xl:text-[20px] lg:text-[16px] md:text-[14px] sm:text-[12px] font-medium">
                       Personal Information
                     </p>
-                    <div className="grid grid-cols-2 gap-8">
+                    <div className="grid sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-2 2xl:grid-cols-2 gap-8">
                       {inputs.map((input) => (
                         <div key={input.label} className="mb-4">
                           <p className="text-[#1D2129] text-[12px] sm:text-[10px] md:text-[12px] xl:text-[14px] 2xl:text-[16px] font-medium">
@@ -191,7 +192,7 @@ function Editaccountsettings({ onInputChange }) {
                             onChange={(e) =>
                               onInputChange(input.label, e.target.value)
                             }
-                            className="text-[#86909C] px-[16px] py-[10px] border-[1px] rounded-[4px] border-[#CED4DA] w-[350px] placeholder:text-[12px]"
+                            className="text-[#86909C] px-[16px] py-[10px] border-[1px] rounded-[4px] border-[#CED4DA] max-w-[350px] w-full placeholder:text-[12px]"
                           />
                         </div>
                       ))}

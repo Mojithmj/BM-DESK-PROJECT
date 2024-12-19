@@ -143,7 +143,6 @@ function ActionedTickets() {
   return (
     <div>
       <div className="transition-all ml-4 mt-4 duration-300 ease-in-out">
-        {" "}
         <div className="flex flex-col gap-8">
           <div>
             <Pheader title="My Actioned Tickets" />
@@ -156,6 +155,7 @@ function ActionedTickets() {
               setActiveTab={setActiveTab}
               onSearch={handleSearch}
               onCreateTicket={handleCreateTicket}
+              createButtonText="Create New Ticket"
             />
           </div>
           {/* Table */}

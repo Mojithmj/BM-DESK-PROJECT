@@ -8,6 +8,8 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Button } from "./ui/button";
+import { Input } from "./ui/input";
+import { Label } from "./ui/label";
 
 function Privacyaccountsettings() {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
@@ -100,7 +102,7 @@ function Privacyaccountsettings() {
                 <span>Change Password</span>
               </Button>
             </DialogTrigger>
-            <DialogContent className="bg-white max-h-[90vh] overflow-y-auto border rounded-[32px]">
+            <DialogContent className="bg-white max-h-[90vh] overflow-y-auto border !rounded-[5px]">
               <div className="flex flex-col gap-8">
                 <div>
                   <p className="text-[#165DFF] font-inter font-semibold 2xl:text-[32px] lg:text-[28px] md:text-[24px] sm:text-[18px]">
@@ -113,14 +115,14 @@ function Privacyaccountsettings() {
                 <div>
                   <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
                     {/* Current Password */}
-                    <div>
-                      <label
+                    <div className="flex flex-col gap-1">
+                      <Label
                         className="text-[12px] sm:text-[10px] md:text-[12px] xl:text-[14px] 2xl:text-[16px] font-inter font-medium text-[#1D2129]"
                         htmlFor="current-password"
                       >
                         Current Password
-                      </label>
-                      <input
+                      </Label>
+                      <Input
                         id="current-password"
                         type="password"
                         value={currentpassword}
@@ -134,14 +136,14 @@ function Privacyaccountsettings() {
                     </div>
 
                     {/* New Password */}
-                    <div>
-                      <label
+                    <div className="flex flex-col gap-1">
+                      <Label
                         className="text-[12px] sm:text-[10px] md:text-[12px] xl:text-[14px] 2xl:text-[16px] font-inter font-medium text-[#1D2129]"
                         htmlFor="new-password"
                       >
                         New Password
-                      </label>
-                      <input
+                      </Label>
+                      <Input
                         id="new-password"
                         type="password"
                         value={newpassword}
@@ -160,14 +162,14 @@ function Privacyaccountsettings() {
                     </div>
 
                     {/* Confirm Password */}
-                    <div>
-                      <label
+                    <div className="flex flex-col gap-1">
+                      <Label
                         className="text-[12px] sm:text-[10px] md:text-[12px] xl:text-[14px] 2xl:text-[16px] font-inter font-medium text-[#1D2129]"
                         htmlFor="confirm-password"
                       >
                         Confirm Password
-                      </label>
-                      <input
+                      </Label>
+                      <Input
                         id="confirm-password"
                         type="password"
                         value={confirmnewpassword}
@@ -185,24 +187,24 @@ function Privacyaccountsettings() {
 
                     {/* Submit Button */}
                     <div className="flex gap-[12px] ">
-                      <button
+                      <Button
                         type="button"
                         onClick={clearFields}
                         className="bg-white text-[#165DFF] py-2 px-4 rounded-[4px] border border-[#165DFF] w-full"
                       >
                         Clear
-                      </button>
-                      <button
+                      </Button>
+                      <Button
                         type="submit"
                         disabled={!!error || !!passwordError}
-                        className={`bg-[#165DFF] text-[#FFF] py-2 px-4 rounded-[4px] w-full ${
+                        className={`bg-[#165DFF] text-[#FFF] py-2 px-4 rounded-[4px] w-full hover:bg-[#165DFF] hover:text-[#FFF] ${
                           error || passwordError
                             ? "opacity-50 cursor-not-allowed"
                             : ""
                         }`}
                       >
                         Submit
-                      </button>
+                      </Button>
                     </div>
                   </form>
                 </div>

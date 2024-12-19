@@ -1,5 +1,5 @@
-import React, { useState, useContext } from "react";
-import { SidebarContext } from "./Layout";
+import React, { useState, useContext, useEffect } from "react";
+// import { SidebarContext } from "./Layout";
 import { RiHomeLine, RiArrowDropDownLine } from "react-icons/ri";
 import { BsGraphUpArrow } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
@@ -7,33 +7,59 @@ import { TbMenuDeep } from "react-icons/tb";
 import ticket from "../assets/ticket.svg";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
-function Sidebar() {
-  const { isSidebarOpen, setIsSidebarOpen } = useContext(SidebarContext);
+function Sidebar({ isSidebarOpen, setIsSidebarOpen }) {
+  // const { isSidebarOpen, setIsSidebarOpen } = useContext(SidebarContext);
   const [activePath, setActivePath] = useState(window.location.pathname);
   const navigate = useNavigate();
   const [openDropdown, setOpenDropdown] = useState(null);
   const managername = localStorage.getItem("myusername") === "mojith";
+  const [mobileOpenDropdown, setMobileOpenDropdown] = useState(null);
+  const [open, setOpen] = useState(false);
 
-  const handleItemClick = (item) => {
+  // Add resize event listener to close sheet when screen width is >= 1024px
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 1024 && open) {
+        setOpen(false);
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    // Cleanup
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, [open]); // Only re-run if open state changes
+
+  const handleItemClick = (item, isMobile = false) => {
     if (item.dropdown) {
-      if (openDropdown === item.label) {
-        setOpenDropdown(null);
-      } else if (!item.path) {
-        setOpenDropdown(item.label);
+      if (isMobile) {
+        setMobileOpenDropdown(
+          mobileOpenDropdown === item.label ? null : item.label
+        );
+      } else {
+        setOpenDropdown(openDropdown === item.label ? null : item.label);
       }
     }
 
     if (item.path) {
       setActivePath(item.path);
       navigate(item.path);
-      if (window.innerWidth < 640) {
+      if (isMobile) {
+        setOpen(false); // Close the sheet
+      }
+      if (window.innerWidth < 1024) {
         setIsSidebarOpen(false);
       }
     }
   };
 
-  const toggleSidebar = () => {
-    setIsSidebarOpen(!isSidebarOpen);
+  const handleMobileSubItemClick = (path) => {
+    setActivePath(path);
+    navigate(path);
+    setOpen(false); // Close the sheet
+    setIsSidebarOpen(false);
   };
 
   const menuItems = [
@@ -210,6 +236,66 @@ function Sidebar() {
     },
   ];
 
+  const MobileMenuItems = () => (
+    <div className="flex-1 overflow-y-auto px-4">
+      {menuItems.map((item, index) => (
+        <div
+          key={index}
+          className={`mb-2 ${
+            activePath === item.path
+              ? "bg-[#E8F3FF] text-[#165DFF] rounded-[4px] border-[1px] border-[#BEDAFF]"
+              : "text-[#4E5969]"
+          }`}
+        >
+          <div
+            className="group flex flex-row gap-2 items-center p-3 border border-white hover:bg-[#E8F3FF] hover:text-[#165DFF] rounded-[4px] hover:border-[1px] hover:border-[#BEDAFF] cursor-pointer"
+            onClick={() => handleItemClick(item, true)}
+          >
+            <div className="text-[20px] group-hover:text-[#165DFF]">
+              {item.icon}
+            </div>
+            <div className="text-[14px] font-medium font-Inter group-hover:text-[#165DFF] flex-1 whitespace-nowrap">
+              {item.label}
+            </div>
+            {item.dropdown && (
+              <RiArrowDropDownLine
+                className={`text-4xl w-[19px] h-[19px] ${
+                  mobileOpenDropdown === item.label ? "rotate-180" : ""
+                }`}
+              />
+            )}
+          </div>
+
+          {/* Mobile Dropdown Items */}
+          {item.dropdown && mobileOpenDropdown === item.label && (
+            <div className="pl-4">
+              {item.dropdown.map((subItem, subIndex) => (
+                <div
+                  key={subIndex}
+                  className={`${
+                    activePath === subItem.path
+                      ? "bg-[#E8F3FF] text-[#165DFF] rounded-[4px] border-[1px] border-[#BEDAFF]"
+                      : "text-[#4E5969]"
+                  }`}
+                >
+                  <div
+                    className="group px-6 border border-white py-2 gap-2 flex flex-row items-center text-sm hover:bg-[#E8F3FF] hover:text-[#165DFF] rounded-[4px] hover:border-[1px] hover:border-[#BEDAFF] cursor-pointer"
+                    onClick={() => handleMobileSubItemClick(subItem.path)}
+                  >
+                    <div className="text-[16px]">{subItem.icon}</div>
+                    <div className="flex-1 text-[14px] font-medium font-Inter group-hover:text-[#165DFF] whitespace-nowrap">
+                      {subItem.label}
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      ))}
+    </div>
+  );
+
   const MenuItems = () => (
     <div className="flex-1 overflow-y-auto px-4">
       {menuItems.map((item, index) => (
@@ -228,16 +314,10 @@ function Sidebar() {
             <div className="text-[20px] group-hover:text-[#165DFF]">
               {item.icon}
             </div>
-
-            <div
-              className={`text-[14px] font-medium font-Inter group-hover:text-[#165DFF] flex-1 whitespace-nowrap ${
-                !isSidebarOpen ? "lg:hidden" : ""
-              }`}
-            >
+            <div className="text-[14px] font-medium font-Inter group-hover:text-[#165DFF] flex-1 whitespace-nowrap">
               {item.label}
             </div>
-
-            {item.dropdown && isSidebarOpen && (
+            {item.dropdown && (
               <RiArrowDropDownLine
                 className={`text-4xl w-[19px] h-[19px] ${
                   openDropdown === item.label ? "rotate-180" : ""
@@ -246,8 +326,7 @@ function Sidebar() {
             )}
           </div>
 
-          {/* Dropdown Items */}
-          {item.dropdown && openDropdown === item.label && isSidebarOpen && (
+          {item.dropdown && openDropdown === item.label && (
             <div className="pl-4">
               {item.dropdown.map((subItem, subIndex) => (
                 <div
@@ -263,7 +342,7 @@ function Sidebar() {
                     onClick={() => {
                       setActivePath(subItem.path);
                       navigate(subItem.path);
-                      if (window.innerWidth < 640) {
+                      if (window.innerWidth < 1024) {
                         setIsSidebarOpen(false);
                       }
                     }}
@@ -284,9 +363,9 @@ function Sidebar() {
 
   return (
     <>
-      {/* Mobile Sheet (< 640px) */}
+      {/* Mobile Sheet (< 1024px) */}
       <div className="lg:hidden">
-        <Sheet>
+        <Sheet open={open} onOpenChange={setOpen}>
           <SheetTrigger asChild>
             <button className="fixed top-2 left-4 z-50 p-2 rounded-lg bg-white shadow-lg text-[#4E5969] hover:text-[#165DFF] transition-colors">
               <TbMenuDeep size={16} />
@@ -295,42 +374,35 @@ function Sidebar() {
           <SheetContent side="left" className="w-[280px] p-4 bg-white">
             <div className="h-full flex flex-col">
               <div className="h-16 flex items-center">
-                <span className="text-lg font-semibold text-[#4E5969]">
-                  
-                </span>
+                <span className="text-lg font-semibold text-[#4E5969]"></span>
               </div>
-              <MenuItems />
+              <MobileMenuItems />
             </div>
           </SheetContent>
         </Sheet>
       </div>
 
-      {/* Desktop/Tablet Sidebar (≥ 640px) */}
+      {/* Desktop Sidebar (≥ 1024px) */}
       <aside
-        className={`
-          hidden sm:block fixed lg:static top-0 left-0 h-full
-          ${isSidebarOpen ? "w-[240px] lg:w-[225px] xl:w-[250px]" : "w-[70px]"}
-          bg-white border-r border-[#E5E6EB]
-          transform ${
-            isSidebarOpen
-              ? "translate-x-0"
-              : "-translate-x-full lg:translate-x-0"
-          }
-          transition-all duration-300 ease-in-out
-          z-40
-        `}
+        className="
+        hidden lg:block
+        fixed lg:static top-0 left-0 h-full
+        w-[250px]
+        bg-white border-r border-[#E5E6EB]
+        z-40
+      "
       >
+        {/* <div className="relative h-full flex flex-col bg-white">
+          <div className="h-10 flex items-center px-4">
+            <span className="text-lg font-semibold text-[#4E5969]"></span>
+          </div>
+          <MenuItems />
+        </div>
+      </aside> */}
+        <div className="absolute top-0 right-0 w-[1px] bg-[#E5E6EB] h-screen"></div>
         <div className="relative h-full flex flex-col bg-white">
-          <div className="h-10 flex items-center justify-between px-4">
-            {isSidebarOpen && (
-              <span className="text-lg font-semibold text-[#4E5969]"></span>
-            )}
-            <button
-              onClick={toggleSidebar}
-              className="text-[#4E5969] text-xl hover:text-[#165DFF] transition-colors hidden lg:hidden"
-            >
-              <TbMenuDeep />
-            </button>
+          <div className="h-10 flex items-center px-4">
+            <span className="text-lg font-semibold text-[#4E5969]"></span>
           </div>
           <MenuItems />
         </div>

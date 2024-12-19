@@ -160,7 +160,7 @@ function Productivity() {
           </div>
 
           {/* Tabs */}
-          <div className="flex justify-between items-center">
+          {/* <div className="flex justify-between items-center">
             <div className="">
               <div className="flex items-center gap-2">
                 {tabs.map((tab) => (
@@ -193,6 +193,48 @@ function Productivity() {
               >
                 Export
               </button>
+            </div>
+          </div> */}
+          <div className="flex flex-col md:flex-col lg:flex-row gap-4 w-full">
+            {/* Tabs Section */}
+            <div className="w-full lg:w-auto">
+              <div className="flex flex-wrap items-center gap-2">
+                {tabs.map((tab) => (
+                  <button
+                    key={tab.value}
+                    onClick={() => setActiveTab(tab.value)}
+                    className={`font-inter text-[16px] font-normal p-[6px] rounded-[4px] px-4 transition-colors ${
+                      activeTab === tab.value
+                        ? "bg-black text-white"
+                        : "bg-gray-50 text-black"
+                    }`}
+                  >
+                    {tab.label}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Search and Export Button Section */}
+            <div className="flex flex-row justify-between sm:flex-row items-stretch sm:items-center gap-4 w-full lg:w-auto lg:ml-auto">
+              <div className="flex-grow sm:flex-grow-0">
+                <div className="flex items-center gap-2 px-4 py-2 bg-[#F8F9FB] rounded-[3px] border-[1.5px] border-[#F2F3F5] w-full">
+                  <FiSearch className="text-black shrink-0" />
+                  <Input
+                    placeholder="Search"
+                    className="border-none shadow-none !outline-none !p-0 !h-full w-full"
+                  />
+                </div>
+              </div>
+
+              <div className="shrink-0">
+                <button
+                  type="button"
+                  className="text-white bg-blue-600 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-[5px] text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 w-full sm:w-auto"
+                >
+                  Export
+                </button>
+              </div>
             </div>
           </div>
 

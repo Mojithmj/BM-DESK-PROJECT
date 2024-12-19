@@ -112,7 +112,7 @@ function Navbar() {
             alt="BM Desk Logo"
             className="z-50 w-[24px] h-[24px] md:w-[20px] md:h-[20px] lg:w-[22px] lg:h-[22px] 2xl:w-[33px] 2xl:h-[33px] object-contain"
           />
-          <div className=" text-[#141414] text-[17px] md:text-[19px] lg:text-[21px] 2xl:text-[27px] font-bold font-Poppins">
+          <div className="whitespace-nowrap text-[#141414] text-[17px] md:text-[19px] lg:text-[21px] 2xl:text-[27px] font-bold font-Poppins">
             BM Desk
             <span className="inline-block w-1 h-1 rounded-full bg-blue-500"></span>
           </div>

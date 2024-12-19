@@ -103,13 +103,16 @@ function Closedtickets() {
       ? data.slice(0, visibleDataCount) // Show limited data for "All Tickets"
       : data.filter((ticket) => ticket.severity.toLowerCase() === activeTab);
 
-  const handleSearch = (event) => {
-    console.log("Search value:", event.target.value);
-  };
 
-  const handleCreateTicket = () => {
-    console.log("Create New Ticket clicked");
-  };
+
+    // tabsearcbutton.jsx file detils needed
+    const handleSearch = (event) => {
+      console.log("Search value:", event.target.value);
+    };
+  
+    const handleCreateTicket = () => {
+      console.log("Create New Ticket clicked");
+    };
 
   return (
     <div>
@@ -127,6 +130,7 @@ function Closedtickets() {
               setActiveTab={setActiveTab}
               onSearch={handleSearch}
               onCreateTicket={handleCreateTicket}
+              createButtonText="Create New Ticket"
             />
           </div>
           {/* Table */}

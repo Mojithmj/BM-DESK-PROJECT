@@ -3,7 +3,6 @@ import './App.css'
 import Layout from './components/Layout'
 import Dashboard from './components/Dashboard'
 import Login from './components/Login'
-import Productivity from './components/Productivity';
 import AssignedTickets from './components/AssignedTickets';
 import Opentickets from './components/Opentickets';
 import Closedtickets from './components/Closedtickets';
@@ -19,15 +18,9 @@ import EscalatedReport from './components/projectmanager/EscalatedReport';
 import TeamManagementSheet from './components/projectmanager/TeamManagementSheet';
 import Taskmanagement from './components/projectmanager/Taskmanagement';
 import Newdash from './components/Newdash';
-
-
-
-
-
-
+import Productivity from './components/Productivity';
 
 function App() {
-
 
   return (
     <div>

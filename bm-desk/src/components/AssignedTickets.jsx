@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { SidebarContext } from "./Layout";
+// import { SidebarContext } from "./Layout";
 
 import { Input } from "@/components/ui/input";
 import Pheader from "./Pheader";
@@ -10,7 +10,7 @@ import { Button } from "./ui/button";
 import TabsSearchButton from "./TabsSearchButton";
 //data count
 function AssignedTickets() {
-  const { isSidebarOpen } = useContext(SidebarContext);
+  // const { isSidebarOpen } = useContext(SidebarContext);
   const [activeTab, setActiveTab] = useState("alltickets");
   const [loading, setLoading] = useState(false);
   const [visibleDataCount, setVisibleDataCount] = useState(6);
@@ -153,6 +153,7 @@ function AssignedTickets() {
             setActiveTab={setActiveTab}
             onSearch={handleSearch}
             onCreateTicket={handleCreateTicket}
+            createButtonText="Create New Ticket"
           />
         </div>
 
