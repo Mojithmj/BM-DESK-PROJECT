@@ -105,7 +105,7 @@ function Privacyaccountsettings() {
             <DialogContent className="bg-white max-h-[90vh] overflow-y-auto border !rounded-[5px]">
               <div className="flex flex-col gap-8">
                 <div>
-                  <p className="text-[#165DFF] font-inter font-semibold 2xl:text-[32px] lg:text-[28px] md:text-[24px] sm:text-[18px]">
+                  <p className="text-[#165DFF] font-inter font-semibold text-[20px] md:text-[24px] lg:text-[28px] 2xl:text-[32px]  sm:text-[18px]">
                     Change Password
                   </p>
                   <p className="text-[12px] sm:text-[10px] md:text-[12px] xl:text-[14px] 2xl:text-[16px] font-inter font-medium text-[#4E5969]">

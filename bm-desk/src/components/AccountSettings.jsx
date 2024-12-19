@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Avatariamge from "../assets/Avatar Image.png";
+import Avatarimage from "../assets/Avatar Image.png";
 import { FaCamera } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import Editaccountsettings from "./Editaccountsettings";
@@ -11,6 +11,18 @@ function AccountSettings() {
   // Set the default active tab to "profile"
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState("profile");
+  const [profilePic, setProfilePic] = useState(Avatarimage); // Default profile image
+
+  const handleImageChange = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        setProfilePic(e.target.result); // Update profile picture with the new image
+      };
+      reader.readAsDataURL(file); // Read file as a data URL
+    }
+  };
 
   const tabs = [
     { value: "profile", label: "Profile" },
@@ -67,7 +79,7 @@ function AccountSettings() {
       <div className="transition-all ml-4 mt-4 duration-300 ease-in-out">
         <div className="flex flex-col flex-start gap-9">
           <div>
-            <h1 className="font-inter text-[20px] md:text-[24px] lg:text-[24px] 2xl:text-[32px]  font-bold text-[#09090B]">
+            <h1 className="font-inter text-[20px] md:text-[24px] lg:text-[28px] 2xl:text-[32px]   font-bold text-[#09090B]">
               Account Settings
             </h1>
             <h2 className="font-inter text-[12px] sm:text-[10px] md:text-[12px] xl:text-[14px] 2xl:text-[16px] font-normal text-[#656565]">
@@ -174,13 +186,22 @@ function AccountSettings() {
 
                   {/* imag and icon */}
                   <div className="relative">
-                    <img
-                      src={Avatariamge}
-                      alt="Avatar"
-                      className="w-[120px] h-[120px] md:w-[80px] md:h-[80px]"
-                    />
-                    <div className="absolute bottom-0 left-20 text-[#656565] bg-white p-[9px] rounded-full text-sm">
-                      <FaCamera />
+                  <img
+        src={profilePic}
+        alt="Avatar"
+        className="w-[120px] h-[120px] md:w-[80px] md:h-[80px] rounded-full object-cover"
+      />
+                    <div className="absolute bottom-0 left-[80px] md:left-[55px] lg:left-[55px] 2xl:left-[80px] text-[#656565] bg-white p-[7px] rounded-full border border-[#CED4DA] text-sm">
+                    <label htmlFor="file-upload" className="cursor-pointer">
+          <FaCamera />
+        </label>
+        <input
+          id="file-upload"
+          type="file"
+          accept="image/*"
+          onChange={handleImageChange}
+          className="hidden"
+        />
                     </div>
                   </div>
                   {/* Personal Information */}
