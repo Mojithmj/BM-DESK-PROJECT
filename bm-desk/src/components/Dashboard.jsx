@@ -194,12 +194,12 @@ function Dashboard() {
     : cardsData;
 
   return (
-    <div>
+    <div className="transition-all ml-4 mt-4 duration-300 ease-in-out">
       {/* Activity dashboard */}
 
       <div className="flex flex-row justify-between items-center p-2 w-full">
         {/* Title Section */}
-        <div className="font-semibold text-[18px]  md:text-[24px] lg:text-[26px] xl:text-[30px] 2xl:text-[32px] font-inter text-[#4E5969]">
+        <div className="font-semibold text-[20px] md:text-[24px] lg:text-[28px] xl:text-[30px] 2xl:text-[32px]  font-inter text-[#4E5969]">
           {managername ? "Employee Activity Dashboard" : "Activity Dashboard"}
         </div>
 
