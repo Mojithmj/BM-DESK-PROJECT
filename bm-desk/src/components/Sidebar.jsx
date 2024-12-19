@@ -196,7 +196,7 @@ function Sidebar({ isSidebarOpen, setIsSidebarOpen }) {
                     />
                   </svg>
                 ),
-                path: "/mytickets",
+                path: "/actionedtickets",
                 key: "my_tickets",
               },
             ]
@@ -339,7 +339,7 @@ function Sidebar({ isSidebarOpen, setIsSidebarOpen }) {
                     />
                   </svg>
                 ),
-                path: "/viewprojects",
+                path: "/viewproject",
                 key: "view_projects",
               },
               {
