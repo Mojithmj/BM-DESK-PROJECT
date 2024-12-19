@@ -135,6 +135,7 @@ function TicketApprovals() {
               setActiveTab={setActiveTab}
               onSearch={handleSearch}
               onCreateTicket={handleCreateTicket}
+              createButtonText="Create New Ticket"
             />
           </div>
           <ReusableTable

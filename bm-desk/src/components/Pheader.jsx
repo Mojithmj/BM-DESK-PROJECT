@@ -146,7 +146,7 @@ function Pheader({ title, className }) {
               </svg>
             </button>
           </PopoverTrigger>
-          <PopoverContent className="w-auto p-0 bg-white  " align="start">
+          <PopoverContent className="w-auto p-0 bg-white   " align="start">
             <Calendar
               initialFocus
               mode="range"

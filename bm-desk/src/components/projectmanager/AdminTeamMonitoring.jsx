@@ -153,10 +153,10 @@ function AdminTeamMonitoring() {
                     <img src={member.image} alt="profile image" />
                   </div>
                   <div className="flex flex-col gap-[4px]">
-                    <h1 className="text-[12px] sm:text-[8px] md:text-[10px] lg:text-[12px] 2xl:text-[14px] font-semibold text-[#1D2129]">
+                    <h1 className="text-[12px] sm:text-[7px] md:text-[10px] lg:text-[12px] 2xl:text-[14px] font-semibold text-[#1D2129]">
                       {member.name}
                     </h1>
-                    <h1 className="font-normal text-[#86909C] text-[10px] sm:text-[8px] md:text-[10px] lg:text-[10px] 2xl:text-[12px]">
+                    <h1 className="font-normal text-[#86909C] text-[10px] sm:text-[6px] md:text-[10px] lg:text-[10  fpx] 2xl:text-[12px]">
                       {member.role}
                     </h1>
                   </div>

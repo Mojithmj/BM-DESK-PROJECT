@@ -63,7 +63,8 @@ function AccountSettings() {
 
   return (
     <div>
-      <div className="fixed top-30 left-64 w-[calc(100%_-_300px)]">
+      {/* <div className="fixed top-30 left-64 w-[calc(100%_-_300px)]"> */}
+      <div className="transition-all ml-4 mt-4 duration-300 ease-in-out">
         <div className="flex flex-col flex-start gap-9">
           <div>
             <h1 className="font-inter text-[20px] md:text-[24px] lg:text-[24px] 2xl:text-[32px]  font-bold text-[#09090B]">
@@ -81,7 +82,7 @@ function AccountSettings() {
                   <Button
                     key={tab.value}
                     onClick={() => setActiveTab(tab.value)}
-                    className={`font-inter sm:px-[10px] sm:py-[4px] lg:px-[12px] 2xl:px-[40px] text-[12px] sm:text-[10px] md:text-[12px] xl:text-[14px] 2xl:text-[16px] flex gap-[8px] font-normal rounded-[4px] transition-colors border-0 shadow-none ${
+                    className={`font-inter sm:px-[10px] sm:py-[4px] lg:px-[12px] 2xl:px-[40px] text-[10px] sm:text-[10px] md:text-[12px] xl:text-[14px] 2xl:text-[16px] flex gap-[8px] font-normal rounded-[4px] transition-colors border-0 shadow-none ${
                       activeTab === tab.value
                         ? "bg-[#165DFF] text-[#FFFFFF] hover:bg-[#165DFF] hover:text-[#FFFFFF]"
                         : "bg-[#FFFFFF] text-[#1D2129] hover:bg-[#FFFFFF] hover:text-[#1D2129]"
@@ -138,10 +139,10 @@ function AccountSettings() {
                   {/* content to be displayed */}
                   <div className="flex justify-between w-full">
                     <div>
-                      <p className="text-[#4E5969]  text-[10px] 2xl:text-[20px] lg:text-[16px] md:text-[14px] sm:text-[12px]  font-medium">
+                      <p className="text-[#4E5969]  text-[10px] 2xl:text-[20px] lg:text-[18px] md:text-[16px] sm:text-[12px]  font-medium">
                         Profile Settings
                       </p>
-                      <p className="text-[#4E5969] text-[12px] sm:text-[10px] md:text-[12px] xl:text-[14px] 2xl:text-[16px] font-">
+                      <p className="whitespace-nowrap text-[#4E5969] text-[10px] sm:text-[8px] md:text-[10px] xl:text-[14px] 2xl:text-[16px] font-">
                         Personal & Profile Information Settings
                       </p>
                     </div>
@@ -150,7 +151,7 @@ function AccountSettings() {
                         navigate("/editaccountsettings");
                       }}
                     >
-                      <Button className="gap-[10px] bg-[#1D2129] rounded-[4px] text-[#FFFFFF] flex items-center hover:bg-[#1D2129] hover:text-[#FFFFFF]">
+                      <Button className="gap-[8px] bg-[#1D2129] rounded-[4px] text-[#FFFFFF] flex items-center hover:bg-[#1D2129] hover:text-[#FFFFFF]">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           width="20"
@@ -164,7 +165,9 @@ function AccountSettings() {
                             fill="white"
                           />
                         </svg>
-                        <span className="text-[12px] sm:text-[10px] md:text-[12px] xl:text-[14px] 2xl:text-[16px] hover:bg-[#1D2129] hover:text-[#FFFFFF] hover-none">Edit Profile</span>
+                        <span className="text-[10px] sm:text-[10px] md:text-[12px] xl:text-[14px] 2xl:text-[16px] hover:bg-[#1D2129] hover:text-[#FFFFFF] hover-none">
+                          Edit Profile
+                        </span>
                       </Button>
                     </div>
                   </div>
@@ -183,15 +186,15 @@ function AccountSettings() {
                   {/* Personal Information */}
                   <div className="flex flex-col gap-6">
                     <div>
-                      <p className="text-[#4E5969] text-[10px] 2xl:text-[20px] lg:text-[16px] md:text-[14px] sm:text-[12px] font-medium">
+                      <p className="text-[#4E5969] text-[12px] 2xl:text-[20px] lg:text-[18px] md:text-[16px] sm:text-[12px] font-medium">
                         Personal Information
                       </p>
-                      <p className="text-[12px] sm:text-[10px] md:text-[12px] xl:text-[14px] 2xl:text-[16px] text-[#4E5969] font-normal">
+                      <p className="text-[10px] sm:text-[8px] md:text-[10px] xl:text-[14px] 2xl:text-[16px] text-[#4E5969] font-normal">
                         Update Your Persnal Information
                       </p>
                     </div>
                     {/* input */}
-                    <div className="grid grid-cols-2 gap-8">
+                    <div className="grid sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-2 2xl:grid-cols-2 gap-8">
                       {inputs.length > 0 ? (
                         inputs.map((input) => (
                           <div key={input.field} className="mb-4">
@@ -203,7 +206,7 @@ function AccountSettings() {
                               value={input.value}
                               placeholder={input.placeholder}
                               disabled
-                              className="text-[#86909C] px-[10px] py-[8px] 2xl:px-[16px] 2xl:py-[10px] border-[1px] rounded-[4px] border-[#CED4DA] w-[350px] placeholder:text-[12px]"
+                              className="text-[#86909C] px-[10px] py-[8px] 2xl:px-[16px] 2xl:py-[10px] border-[1px] rounded-[4px] border-[#CED4DA] max-w-[350px] w-full lg:w-[500px]  placeholder:text-[12px]"
                             />
                           </div>
                         ))

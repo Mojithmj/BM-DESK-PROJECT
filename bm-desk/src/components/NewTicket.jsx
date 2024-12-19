@@ -36,7 +36,7 @@ export const NewTicket = ({ triggerButton }) => {
       {/* Use the triggerButton prop to render the button that opens the dialog */}
       <DialogTrigger asChild>{triggerButton}</DialogTrigger>
 
-      <DialogContent className="bg-white max-h-[90vh] overflow-y-auto border rounded-[5px]">
+      <DialogContent className="bg-white max-h-[90vh] overflow-y-auto border !rounded-[5px]">
         <DialogHeader>
           <div className="grid">
             <DialogTitle className="text-[#165DFF] text-[20px] sm:text-[18px] md:text-[24px] lg:text-[28px] 2xl:text-[32px]">
