@@ -5,9 +5,10 @@ import Pheader from "./Pheader";
 import { FiSearch } from "react-icons/fi";
 import { Input } from "@/components/ui/input";
 // import { IoMdArrowDown } from "react-icons/io";
-import ReusableTable from "./ReusableTable";
+
 import NewTicket from "./NewTicket";
 import TabsSearchButton from "./TabsSearchButton";
+import ReusableTable from "./ReusableTable";
 
 function ActionedTickets() {
   const [activeTab, setActiveTab] = useState("alltickets");

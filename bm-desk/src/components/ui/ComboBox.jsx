@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Check, ChevronsUpDown } from "lucide-react";
-
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import {
@@ -18,7 +17,6 @@ import {
 } from "@/components/ui/popover";
 import { RiArrowDropDownLine } from "react-icons/ri";
 
-// Reusable Combobox Component
 export function Combobox({
   items,
   placeholder = "Select an option...",
@@ -36,6 +34,15 @@ export function Combobox({
     setOpen(false);
   };
 
+  // Determine button styles based on selection state
+  const buttonStyles = cn(
+    "w-full justify-between rounded-[5px] font-normal text-[12px]",
+    value 
+      ? "bg-[#E8F3FF] text-[#165DFF] border-[#E8F3FF] hover:bg-[#E8F3FF] hover:text-[#165DFF]" 
+      : "border-[#E5E6EB] text-[#878A99]",
+    className
+  );
+
   return (
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
@@ -43,17 +50,23 @@ export function Combobox({
           variant="outline"
           role="combobox"
           aria-expanded={open}
-          className={cn("w-full justify-between border-[#E5E6EB] rounded-[5px] font-normal text-[12px] text-[#878A99]", className)}
+          className={buttonStyles}
         >
           {value
             ? items.find((item) => item.value === value)?.label
             : placeholder}
-          <RiArrowDropDownLine className="opacity-50" />
+          <RiArrowDropDownLine className={cn(
+            "ml-2 h-4 w-4",
+            value ? "text-[#165DFF]" : "opacity-50"
+          )} />
         </Button>
       </PopoverTrigger>
       <PopoverContent className="w-[510px] p-0 bg-white">
         <Command>
-          <CommandInput placeholder={searchPlaceholder} className="h-9" />
+          <CommandInput 
+            placeholder={searchPlaceholder} 
+            className="h-9" 
+          />
           <CommandList>
             <CommandGroup>
               {items.map((item) => (
@@ -77,4 +90,4 @@ export function Combobox({
       </PopoverContent>
     </Popover>
   );
-}
+} 

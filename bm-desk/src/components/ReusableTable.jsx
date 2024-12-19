@@ -101,7 +101,8 @@ function ReusableTable({ data, headers, currentTab, defaultSortConfig }) {
   };
 
   return (
-    <div className="max-h-[55vh] overflow-y-auto">
+    // <div className="max-h-[55vh] overflow-y-auto">
+    <div className="md:max-h-[55vh] md:overflow-y-auto">
       <Table className="border-[1px] !rounded overflow-hidden">
         <TableHeader>
           <TableRow className="bg-[#F2F3F5] hover:bg-[#F2F3F5]">

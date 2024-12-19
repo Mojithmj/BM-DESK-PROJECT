@@ -30,6 +30,7 @@ import {
 
 import { Combobox } from "../ui/ComboBox";
 import { Textarea } from "@/components/ui/textarea";
+import { Calendar } from "@/components/ui/calendar"
 
 function ActionTickets({ isOpen, onClose, onSubmit, action }) {
   const [formData, setFormData] = useState({
@@ -82,34 +83,6 @@ function ActionTickets({ isOpen, onClose, onSubmit, action }) {
     onSubmit(formData); // Pass form data back to the parent
     onClose(); // Close the sheet
   };
-
-  // Dynamically typed fields configuration
-  // const fields = [
-  //   { id: "department", label: "Department", placeholder: "Enter department" },
-  //   { id: "category", label: "Category", placeholder: "Enter category" },
-  //   { id: "project", label: "Project", placeholder: "Enter project" },
-  //   {
-  //     id: "projectManager",
-  //     label: "Project Manager",
-  //     placeholder: "Enter project manager",
-  //   },
-  //   { id: "issueType", label: "Issue Type", placeholder: "Enter issue type" },
-  //   {
-  //     id: "requireddate",
-  //     label: "Required Date",
-  //     placeholder: "Enter Required Date",
-  //   },
-  //   {
-  //     id: "attachement",
-  //     label: " Select Attachment",
-  //     placeholder: "Select Attachment",
-  //   },
-  //   { id: "description", label: "Description", placeholder: "" },
-  // ];
-
-  // combobox
-  // const [open, setOpen] = React.useState(false);
-  // const [value, setValue] = React.useState("");
 
   const items = [
     {
@@ -190,12 +163,14 @@ function ActionTickets({ isOpen, onClose, onSubmit, action }) {
     document.getElementById("file-input").click();
   };
 
+  const [date, setDate] = React.useState(new Date())
+
   const renderFieldsForAction = () => {
     switch (formData.action) {
       case "Assign Ticket":
         return (
           <>
-            <div className="max-h-[68vh] overflow-y-auto">
+            <div className="md:max-h-[68vh] md:overflow-y-auto">
               <div className="flex flex-col gap-2">
                 <div className="flex flex-col gap-1">
                   <h1 className="text-[#1D2129] text-[12px] font-medium">
@@ -261,21 +236,16 @@ function ActionTickets({ isOpen, onClose, onSubmit, action }) {
                   <h1 className="text-[#1D2129] text-[12px] font-medium">
                     Required date
                   </h1>
-                  <Input
-                    type=""
-                    placeholder="Enter Required Date"
-                    className="border-[#E5E6EB] rounded-[5px] w-full placeholder:text-[12px] text-[#878A99]"
-                  />
+                  <div className="relative flex items-center w-full">
+                    <Input
+                      type="text"
+                      placeholder="Enter Required Date"
+                      className="border-[#E5E6EB] rounded-[5px] w-full placeholder:text-xs text-[#878A99] pr-8"
+                    />
+                    <RiArrowDropDownLine className="absolute right-2 text-[#878A99] text-[14px] pointer-events-none mr-2" />
+                  </div>
                 </div>
                 <div className="flex flex-col gap-1">
-                  {/* <div className="relative flex flex-row items-center">
-                  <Input
-                    type="text"
-                    placeholder="Select Attachment"
-                    className="pr-10 pl-3 border border-[#E5E6EB] rounded-[5px] w-full placeholder:text-[12px]"
-                  />
-                  <ImAttachment className="absolute right-2 text-gray-500" />
-                </div> */}
                   <div className="flex flex-col gap-2">
                     <h1 className="text-[#1D2129] text-[12px] font-medium">
                       Select Attachment
@@ -285,9 +255,12 @@ function ActionTickets({ isOpen, onClose, onSubmit, action }) {
                       <Input
                         type="text"
                         placeholder="Select Attachment"
-                        className="pr-10 pl-3 border border-[#E5E6EB] rounded-[5px] w-full placeholder:text-[12px] text-[#878A99]"
+                        className="pr-10 pl-3 border border-[#E5E6EB] rounded-[5px] w-full placeholder:text-[12px] text-[#878A99] cursor-pointer"
                         value={selectedFile ? selectedFile.name : ""}
                         readOnly
+                        onClick={() =>
+                          document.getElementById("file-input").click()
+                        } // Trigger file input click
                       />
                       <ImAttachment
                         className="absolute right-2 text-gray-500 cursor-pointer w-3.5 h-3 mr-1"
@@ -407,7 +380,7 @@ function ActionTickets({ isOpen, onClose, onSubmit, action }) {
   return (
     <div>
       <Sheet open={isOpen} onOpenChange={onClose}>
-        <SheetContent className="bg-white h-[100vh] overflow-y-auto">
+        <SheetContent className="bg-white md:h-[100vh] md:overflow-y-auto">
           <SheetHeader>
             <SheetTitle>Ticket Action</SheetTitle>
           </SheetHeader>
