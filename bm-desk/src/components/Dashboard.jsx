@@ -201,7 +201,7 @@ function Dashboard() {
       
       <div className="flex flex-row justify-between items-center p-2 w-full">
         {/* Title Section */}
-        <div className="font-semibold text-[18px]  md:text-[24px] lg:text-[28px] 2xl:text-[32px] font-inter text-[#4E5969]">
+        <div className="font-semibold text-[18px]  md:text-[24px] lg:text-[26px] xl:text-[30px] 2xl:text-[32px] font-inter text-[#4E5969]">
           {managername ? "Employee Activity Dashboard" : "Activity Dashboard"}
         </div>
 
@@ -251,7 +251,7 @@ function Dashboard() {
       <div className="w-full">
   <div className="flex flex-col gap-4">
 
-  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-4">
           {/* 1 Card */}
 
           <div className="border-[1px] min-h-[300px] h-full p-4 md:p-6 lg:p-7 2xl:p-9 rounded-2xl text-[#E5E6EB] bg-[#FFF] justify-center items-center">
@@ -302,7 +302,7 @@ function Dashboard() {
                   </div>
 
                   {/* Bottom card stats */}
-                  <div className="flex flex-row 2xl:flex-nowrap xl:flex-nowrap lg:flex-wrap md:flex-wrap sm:flex-wrap 2xl:gap-[16px] lg:gap-[13px] md:gap-[10px] gap-[8px] justify-center items-center">
+                  <div className="flex flex-row 2xl:flex-nowrap xl:flex-nowrap lg:flex-nowrap md:flex-wrap sm:flex-wrap 2xl:gap-[16px] lg:gap-[13px] md:gap-[10px] gap-[8px] justify-center items-center">
                     {profile.stats.map((stat, idx) => (
                       <div
                         key={idx}
@@ -509,7 +509,7 @@ function Dashboard() {
           </div>
 
           {/* 5 card bottom */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1  xl:grid-cols-2 gap-4">
           <div className="  border-[1px] border-[#E9EBEC] rounded-2xl">
             {/* Ticket productivity */}
             <div className="flex justify-between px-[16px] py-[19px]">
