@@ -30,7 +30,7 @@ import {
 
 import { Combobox } from "../ui/ComboBox";
 import { Textarea } from "@/components/ui/textarea";
-import { Calendar } from "@/components/ui/calendar"
+import DatePickerInput from "../reusecomponents/DatePickerInput";
 
 function ActionTickets({ isOpen, onClose, onSubmit, action }) {
   const [formData, setFormData] = useState({
@@ -162,8 +162,12 @@ function ActionTickets({ isOpen, onClose, onSubmit, action }) {
     // Trigger the file input when the attachment icon is clicked
     document.getElementById("file-input").click();
   };
+  const handleDateChange = (selectedDate) => {
+    console.log('Selected date:', selectedDate)
+    // Do something with the selected date
+  }
 
-  const [date, setDate] = React.useState(new Date())
+
 
   const renderFieldsForAction = () => {
     switch (formData.action) {
@@ -236,13 +240,16 @@ function ActionTickets({ isOpen, onClose, onSubmit, action }) {
                   <h1 className="text-[#1D2129] text-[12px] font-medium">
                     Required date
                   </h1>
-                  <div className="relative flex items-center w-full">
+                  {/* <div className="relative flex items-center w-full">
                     <Input
                       type="text"
                       placeholder="Enter Required Date"
                       className="border-[#E5E6EB] rounded-[5px] w-full placeholder:text-xs text-[#878A99] pr-8"
                     />
                     <RiArrowDropDownLine className="absolute right-2 text-[#878A99] text-[14px] pointer-events-none mr-2" />
+                  </div> */}
+                  <div className="w-full ">
+                    <DatePickerInput onChange={handleDateChange} />
                   </div>
                 </div>
                 <div className="flex flex-col gap-1">
@@ -392,7 +399,7 @@ function ActionTickets({ isOpen, onClose, onSubmit, action }) {
                   variant="outline"
                   role="combobox"
                   aria-expanded={popoverOpen}
-                  className="w-full justify-between text-[#165DFF] bg-[#E8F3FF] text-[12px] md:text-[12px] lg:text-[12px] 2xl:text-[14px] border-[#E8F3FF] hover:text-[#165DFF] hover:bg-[#E8F3FF] font-normal"
+                  className="w-full justify-between text-[#165DFF] bg-[#E8F3FF] text-[12px] md:text-[12px] lg:text-[12px] 2xl:text-[14px] border-[#E8F3FF] hover:text-[#165DFF] hover:bg-[#E8F3FF] font-normal !rounded-[5px]"
                 >
                   {dropdownValue}
                   <RiArrowDropDownLine className="opacity-50 size-1" />
@@ -420,7 +427,7 @@ function ActionTickets({ isOpen, onClose, onSubmit, action }) {
             {/* Render dynamic form fields based on selected action */}
             {renderFieldsForAction()}
           </div>
-          <SheetFooter className="absolute bottom-0 left-3 w-[94%] top-[560px]">
+          <SheetFooter className="">
             <div className="flex flex-row gap-3">
               <Button
                 type="button"
