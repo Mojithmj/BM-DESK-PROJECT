@@ -123,7 +123,7 @@ function TicketApprovals() {
     <div>
       <div className="transition-all ml-4 mt-4 duration-300 ease-in-out">
         {" "}
-        <div className="flex flex-col gap-8">
+        <div className="flex flex-col gap-6">
           <div>
             <Pheader title="Ticket Approvals" />
           </div>
@@ -146,14 +146,14 @@ function TicketApprovals() {
           {/* Show "Load More" button only for "All Tickets" tab */}
           {activeTab === "alltickets" && visibleDataCount < data.length && (
             <div className="flex justify-start">
-              <button
-                onClick={loadMoreData}
-                className="text-[#165DFF] -mt-8"
-                disabled={loading}
-              >
-                {loading ? "Loading..." : "Load more Tickets..."}
-              </button>
-            </div>
+            <button
+              onClick={loadMoreData}
+              className="text-[#165DFF] -mt-2"
+              disabled={loading}
+            >
+              {loading ? "Loading..." : "Load more Tickets..."}
+            </button>
+          </div>
           )}
         </div>
       </div>

@@ -171,7 +171,7 @@ function AssignedTickets() {
     <div>
       <div className="transition-all ml-4 mt-4 duration-300 ease-in-out">
   
-        <div className="flex flex-col gap-8">
+        <div className="flex flex-col gap-6">
           <div>
           <Pheader title="Open Tickets" showCalendar={true} />
           </div>
@@ -197,7 +197,7 @@ function AssignedTickets() {
             <div className="flex justify-start">
               <button
                 onClick={loadMoreData}
-                className="text-[#165DFF] -mt-8"
+                className="text-[#165DFF] -mt-2"
                 disabled={loading}
               >
                 {loading ? "Loading..." : "Load more Tickets..."}
