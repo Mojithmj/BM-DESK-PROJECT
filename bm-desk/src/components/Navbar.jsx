@@ -119,13 +119,15 @@ function Navbar() {
         </div>
 
         {/* Middle Section: Search Features */}
-        <div className="flex items-center gap-2 bg-[#E8F3FF] p-2 rounded-md w-[150px] md:w-[200px] lg:w-[300px] 2xl:w-[463px] text-[#0E42D2]">
+        <div className="hidden sm:block">
+        <div className="flex items-center  gap-2 bg-[#E8F3FF] p-2 rounded-md w-[150px] md:w-[200px] lg:w-[300px] 2xl:w-[463px] text-[#0E42D2]">
           <FiSearch className="w-[10px] h-[10px] md:w-[15px] md:h-[15px] lg:w-[22px] lg:h-[22px] 2xl:w-[24px] 2xl:h-[24px]" />
           <input
             type="text"
             placeholder="Search Features"
             className="bg-transparent placeholder-[#0E42D2] border-none outline-none text-[10px] md:text-[11px] lg:text-[12px] 2xl:text-sm w-full"
           />
+        </div>
         </div>
 
         {/* Right Section: Icons and Profile */}
@@ -134,7 +136,7 @@ function Navbar() {
           <div ref={notifydropdownRef}>
             <PiBellThin
               onClick={notifytoggleDropdown}
-              className="text-[19px] md:text-[23px] lg:text-[27px] 2xl:text-[31px]"
+              className="text-[19px] md:text-[23px] lg:text-[27px] 2xl:text-[31px] hidden sm:block"
             />
           </div>
           {notifycircleDropdown && (
@@ -192,21 +194,22 @@ function Navbar() {
             </div>
           )}
 
+{/* image */}
           <div>
-            <img className="w-[40px] h-[40px]" src={Avatarimage} />
+            <img  className="w-[40px] h-[40px]" src={Avatarimage} />
           </div>
           {/* <CgProfile className="text-[19px] md:text-[23px] lg:text-[27px] 2xl:text-[31px]" /> */}
-          <div className="text-[14px] font-medium">
+          <div className="text-[14px] font-medium hidden sm:block">
             Eva Mandes
             <p className="text-[12px] md:text-[13px] text-[#71717A]">
               Eva@example.com
             </p>
           </div>
           {/* dropdown circle */}
-          <div>
+          <div className="hidden sm:block">
             <div className="relative text-nowrap" ref={dropdownRef}>
               <button onClick={toggleDropdown}>
-                <IoIosArrowDropdownCircle className="text-[11px] md:text-[17px] lg:text-[21px] 2xl:text-[26px]" />
+                <IoIosArrowDropdownCircle className="md:text-[18px] lg:text-[21px] 2xl:text-[26px]" />
               </button>
               {circleDropdown && (
                 <div className="absolute right-3 bg-white border border-gray-300 shadow-md rounded mt-1">

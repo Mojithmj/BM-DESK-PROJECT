@@ -76,7 +76,7 @@ function Taskmanagement() {
 
   return (
 <div>
-      <div className="transition-all ml-4 mt-4 duration-300 ease-in-out">
+      <div className="transition-all ml-4 mt-4 duration-300 ease-in-out ">
         <div className="flex flex-col gap-8">
           <div>
             <Pheader title="Task Management" showCalendar={false} />
@@ -104,56 +104,54 @@ function Taskmanagement() {
             </div>
             
             {/* Search and Buttons Section */}
-            <div className="flex flex-row gap-2 items-center w-full md:w-auto">
-              {/* Search */}
-              <div className="flex items-center gap-2 pl-3 py-2 bg-[#F8F9FB] rounded-[3px] border-[1.5px] border-[#F2F3F5] flex-1 md:w-[300px]">
-                <FiSearch className="text-[#111815]" />
-                <Input
-                  placeholder="Search User"
-                  className="border-none shadow-none !outline-none !p-0 !h-full text-[#111815] text-[14px] font-normal flex-1"
-                />
-              </div>
-              
-              {/* Buttons */}
-              <div className="flex flex-row gap-2 shrink-0">
-                <Button
-                  onClick={() => handleButtonClick("createUser")}
-                  className={`border border-[#165DFF] rounded-[4px] items-center px-2 py-1 md:px-3 md:py-2 ${
-                    selectedButton === "createUser"
-                      ? "bg-[#165DFF] text-[#FFFFFF]"
-                      : "hover:bg-[#FFFFFF] hover:text-[#165DFF] text-[#165DFF]"
-                  }`}
-                >
-                  <span className="font-Inter text-[12px] md:text-[14px] font-normal whitespace-nowrap">
-                    Create New User
-                  </span>
-                </Button>
-                
+            <div className="flex flex-col gap-2 items-center w-full md:w-auto">
+  {/* Search */}
+  <div className="flex items-center gap-2 pl-3 py-2 bg-[#F8F9FB] rounded-[3px] border-[1.5px] border-[#F2F3F5] flex-1 md:w-[300px]">
+    <FiSearch className="text-[#111815]" />
+    <Input
+      placeholder="Search User"
+      className="border-none shadow-none !outline-none !p-0 !h-full text-[#111815] text-[14px] font-normal flex-1"
+    />
+  </div>
 
-                {/* Button in the parent to trigger the sheet */}
-                <Button
-                  onClick={() => {
-                    handleButtonClick("assignTicket");
-                    openSheet(); // Open the sheet when this button is clicked
-                  }}
-                  className={`border border-[#165DFF] rounded-[4px] items-center px-4 py-2 ${
-                    selectedButton === "assignTicket"
-                      ? "bg-[#165DFF] text-[#FFFFFF]"
-                      : "hover:bg-[#165DFF] hover:text-[#FFFFFF] text-[#165DFF]"
-                  }`}
-                >
-                  <span className="font-Inter 2xl:text-[14px] lg:text-[12px] font-normal">
-                    Assign Ticket
-                  </span>
-                </Button>
+  {/* Buttons */}
+  <div className="flex flex-row gap-2 w-full justify-end">
+    <Button
+      onClick={() => handleButtonClick("createUser")}
+      className={`border border-[#165DFF] hover:bg-[#165DFF] rounded-[4px] items-center px-1 py-1 sm:px-2 sm:py-1 md:px-3 md:py-2 ${
+        selectedButton === "createUser"
+        ? "bg-[#165DFF] text-[#FFFFFF]"
+        : "hover:bg-[#165DFF] hover:text-[#FFFFFF] text-[#165DFF]"
+      }`}
+    >
+      <span className="font-Inter text-[10px] sm:text-[12px] md:text-[14px] 2xl:text-[16px] font-normal whitespace-nowrap">
+        Create New User
+      </span>
+    </Button>
 
-                {/* TeamManagementSheet triggered by state */}
-                <TeamManagementSheet
-                  isOpen={isSheetOpen}
-                  onClose={closeSheet}
-                />
-              </div>
-            </div>
+    {/* Button in the parent to trigger the sheet */}
+    <Button
+      onClick={() => {
+        handleButtonClick("assignTicket");
+        openSheet(); // Open the sheet when this button is clicked
+      }}
+      className={`border border-[#165DFF] hover:bg-[#165DFF] rounded-[4px] items-center px-2 py-1 sm:px-3 sm:py-1 md:px-4 md:py-2 ${
+        selectedButton === "assignTicket"
+          ? "bg-[#165DFF] text-[#FFFFFF]"
+          : "hover:bg-[#165DFF] hover:text-[#FFFFFF] text-[#165DFF]"
+      }`}
+    >
+      <span className="font-Inter text-[10px] sm:text-[12px] md:text-[14px] 2xl:text-[16px] font-normal">
+        Assign Ticket
+      </span>
+    </Button>
+
+    {/* TeamManagementSheet triggered by state */}
+    <TeamManagementSheet isOpen={isSheetOpen} onClose={closeSheet} />
+  </div>
+</div>
+
+            
           </div>
         </div>
 
