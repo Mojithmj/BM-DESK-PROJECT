@@ -136,12 +136,12 @@ function TicketsSidebar({ ticket, children }) {
       </SheetTrigger>
       <SheetContent className="bg-white">
         <SheetHeader>
-          <SheetTitle className="text-[#165DFF] text-[20px] sm:text-[18px] md:text-[24px] lg:text-[28px] 2xl:text-[32px] font-medium">
+          <SheetTitle className="text-[#165DFF] sm:text-[18px] md:text-[24px] lg:text-[28px] 2xl:text-[32px] font-medium">
             Ticket Details
           </SheetTitle>
         </SheetHeader>
 
-        <div className="flex items-center font-inter text-[12px] sm:text-[10px] md:text-[12px] xl:text-[14px] 2xl:text-[16px]font-semibold text-[#1D2129] justify-between gap-1 px-4 py-2 relative">
+        <div className="flex items-center font-inter sm:text-[10px] md:text-[12px] xl:text-[14px] 2xl:text-[16px] font-semibold text-[#1D2129] justify-between gap-1 px-4 py-2 relative">
           {tabs.map((tab, index) => (
             <div key={tab.value} className="relative">
               <button

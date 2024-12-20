@@ -456,14 +456,15 @@ function Dashboard() {
                   <div className="flex flex-col gap-[27px]">
                     {/* Header */}
                     <div className="flex flex-row items-center justify-between">
-                      <div className="text-[#4E5969] font-inter font-semibold normal lg:h-[15px] md:w-[10px] md:h-[10px] text-nowrap">
+                      <div className="text-[#4E5969] font-inter font-semibold normal lg:h-[15px] md:w-[10px] md:h-[10px] text-nowrap mt-4">
                         My Tickets
                       </div>
-                      <div className="w-[28px] h-[28px] text-[28px] text-[#4E5969] cursor-pointer">
+                      <div className="w-[28px] h-[28px] text-[20px] text-[#4E5969] cursor-pointer">
                         <HiArrowRight
                           onClick={() => {
                             navigate("/actionedtickets");
                           }}
+                          className="mt-4"
                         />
                       </div>
                     </div>
