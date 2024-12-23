@@ -186,7 +186,7 @@ function AdminTeamMonitoring() {
                 <div className="flex flex-row items-center">
                   <div className="flex flex-row gap-4 items-center px-[8px]">
                     <div className="p-[3px] rounded-full border-[2px] border-[#C9CDD4] ">
-                      <img src={member.image} alt="profile image" />
+                      <img src={member.image} alt="profile image" className="flex flex-shrink-0"/>
                     </div>
                     <div className="flex flex-col gap-[0px]">
                       <h1 className="whitespace-nowrap text-[12px] sm:text-[7px] md:text-[10px] lg:text-[12px] 2xl:text-[14px] font-semibold text-[#1D2129]">

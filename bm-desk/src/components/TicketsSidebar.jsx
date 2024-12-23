@@ -16,11 +16,36 @@ function TicketsSidebar({ ticket, children }) {
   const [activeTab, setActiveTab] = useState("basicinfo");
 
   const tabs = [
-    { value: "basicinfo", label: "Basic Info", underlineWidth: "15%", underlineLeft: "3%" }, 
-    { value: "attachments", label: "Attachments", underlineWidth: "18%", underlineLeft: "20.5%" }, 
-    { value: "tickethistory", label: "Ticket History", underlineWidth: "18%", underlineLeft: "42.5%" }, 
-    { value: "comments", label: "Comments", underlineWidth: "15%", underlineLeft: "65%" }, 
-    { value: "relations", label: "Relations", underlineWidth: "15%", underlineLeft: "83%" }, 
+    {
+      value: "basicinfo",
+      label: "Basic Info",
+      underlineWidth: "15%",
+      underlineLeft: "3%",
+    },
+    {
+      value: "attachments",
+      label: "Attachments",
+      underlineWidth: "18%",
+      underlineLeft: "20.5%",
+    },
+    {
+      value: "tickethistory",
+      label: "Ticket History",
+      underlineWidth: "18%",
+      underlineLeft: "42.5%",
+    },
+    {
+      value: "comments",
+      label: "Comments",
+      underlineWidth: "15%",
+      underlineLeft: "65%",
+    },
+    {
+      value: "relations",
+      label: "Relations",
+      underlineWidth: "15%",
+      underlineLeft: "83%",
+    },
   ];
 
   const ticketHistory = [
@@ -135,37 +160,50 @@ function TicketsSidebar({ ticket, children }) {
         {children}
       </SheetTrigger>
       <SheetContent className="bg-white">
-        <SheetHeader>
-          <SheetTitle className="text-[#165DFF] sm:text-[18px] md:text-[24px] lg:text-[28px] 2xl:text-[32px] font-medium font-inter">
-            Ticket Details
-          </SheetTitle>
-        </SheetHeader>
+        <div className="flex flex-col gap-[16px] 2xl:gap-[32px]">
+          <div>
+            <SheetHeader>
+              <SheetTitle className="text-[#165DFF] sm:text-[18px] md:text-[24px] lg:text-[28px] 2xl:text-[32px] font-medium font-inter mt-2">
+                Ticket Details
+              </SheetTitle>
+            </SheetHeader>
+          </div>
+          <div>
+            <div className="flex items-center font-inter text-[12px] sm:text-[10px] md:text-[12px] xl:text-[14px] 2xl:text-[16px]font-semibold text-[#1D2129] justify-between gap-1 px-4 py-2 relative">
+              {tabs.map((tab, index) => (
+                <div key={tab.value} className="relative">
+                  <button
+                    onClick={() => setActiveTab(tab.value)}
+                    className={`text-[12px] sm:text-[10px] md:text-[12px] xl:text-[14px] 2xl:text-[16px] font-normal p-[6px] rounded-[4px] bg-white ${
+                      activeTab === tab.value
+                        ? "text-[#0E42D2]"
+                        : "text-[#1D2129]"
+                    }`}
+                  >
+                    {tab.label}
+                  </button>
+                </div>
+              ))}
 
-        <div className="flex items-center font-inter text-[12px] sm:text-[10px] md:text-[12px] xl:text-[14px] 2xl:text-[16px]font-semibold text-[#1D2129] justify-between gap-1 px-4 py-2 relative">
-        {tabs.map((tab, index) => (
-    <div key={tab.value} className="relative">
-      <button
-        onClick={() => setActiveTab(tab.value)}
-        className={`text-[12px] sm:text-[10px] md:text-[12px] xl:text-[14px] 2xl:text-[16px] font-normal p-[6px] rounded-[4px] bg-white ${
-          activeTab === tab.value ? "text-[#0E42D2]" : "text-[#1D2129]"
-        }`}
-      >
-        {tab.label}
-      </button>
-    </div>
-  ))}
+              {/* Full Underline */}
+              <div className="absolute bottom-0 left-0 w-[100%] h-[1px] bg-[#E5E6EB]" />
 
-          {/* Full Underline */}
-          <div className="absolute bottom-0 left-0 w-[100%] h-[1px] bg-[#E5E6EB]" />
-
-          {/* Active Tab Underline */}
-          <div
-  className="absolute bottom-0 h-[2px] transition-all duration-300 ease-in-out bg-[#0E42D2]"
-  style={{
-    left: `${tabs.find((tab) => tab.value === activeTab)?.underlineLeft || "0%"}`,
-    width: `${tabs.find((tab) => tab.value === activeTab)?.underlineWidth || "80%"}`,
-  }}
-/>
+              {/* Active Tab Underline */}
+              <div
+                className="absolute bottom-0 h-[2px] transition-all duration-300 ease-in-out bg-[#0E42D2]"
+                style={{
+                  left: `${
+                    tabs.find((tab) => tab.value === activeTab)
+                      ?.underlineLeft || "0%"
+                  }`,
+                  width: `${
+                    tabs.find((tab) => tab.value === activeTab)
+                      ?.underlineWidth || "80%"
+                  }`,
+                }}
+              />
+            </div>
+          </div>
         </div>
 
         <div className="p-4 text-[12px] md:text-[12px] lg:text-[12px] 2xl:text-[16px]">
