@@ -27,7 +27,7 @@ const Layout = () => {
         <div className={`flex-1 transition-all duration-300 ease-in-out w-[calc(100%_-_220px)] ${
           isSidebarOpen 
             ? 'lg:ml-[240px] xl:ml-[250px] mt-6' 
-            : 'lg:ml-[70px] w-[calc(100%_-_220px)] mt-6'
+            : 'lg:ml-[80px] w-[calc(100%_-_220px)] mt-6'
         }`}>
           <div className="ml-3 mr-6">
             <Outlet />

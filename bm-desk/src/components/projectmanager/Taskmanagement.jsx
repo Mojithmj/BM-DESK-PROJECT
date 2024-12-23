@@ -75,16 +75,16 @@ function Taskmanagement() {
   };
 
   return (
-    <div>
-      <div className="transition-all ml-4 mt-4 duration-300 ease-in-out">
-        <div className="flex flex-col gap-6">
-          <div>
-            <Pheader title="Task Management" showCalendar={false} />
-          </div>
+    <div className="transition-all ml-4 mt-4 duration-300 ease-in-out">
+      <div className="flex flex-col gap-6">
+        <div>
+          <Pheader title="Task Management" showCalendar={false} />
+        </div>
 
-          {/* Container that changes from column to row at md breakpoint */}
-          <div className="w-[calc(100%_-_60px)]">
-            <div className="flex flex-row justify-between w-[100%]  items-center">
+        {/* Container that changes from column to row at md breakpoint */}
+        <div className="w-[calc(100%_-_50px)]">
+          <div className="flex flex-row justify-between w-[100%]  items-center">
+            <div className="flex flex-row justify-between align-center gap-[40px]">
               {/* Tabs Section */}
               <div className="w-full md:w-auto">
                 <div className="flex flex-nowrap overflow-x-auto items-center gap-2">
@@ -145,20 +145,21 @@ function Taskmanagement() {
                       Assign Ticket
                     </span>
                   </Button>
-
-                  {/* TeamManagementSheet triggered by state */}
-                  <TeamManagementSheet
-                    isOpen={isSheetOpen}
-                    onClose={closeSheet}
-                  />
                 </div>
+
+                {/* TeamManagementSheet triggered by state */}
+                <TeamManagementSheet
+                  isOpen={isSheetOpen}
+                  onClose={closeSheet}
+                />
               </div>
             </div>
           </div>
         </div>
-
+      </div>
+      <div>
         {/* Card */}
-        <div className="flex flex-col gap-6 mt-4">
+        <div className="flex flex-col gap-6 mt-4 w-[100%]">
           <div className="font-semibold 2xl:text-[28px] lg:text-[20px] md:text-[14px] text-[12px] normal font-inter text-[#4E5969]">
             Support Team
           </div>
