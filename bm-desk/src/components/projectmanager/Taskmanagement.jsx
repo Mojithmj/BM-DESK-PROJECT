@@ -75,89 +75,91 @@ function Taskmanagement() {
   };
 
   return (
-<div>
-      <div className="transition-all ml-4 mt-4 duration-300 ease-in-out ">
-        <div className="flex flex-col gap-8">
+    <div>
+      <div className="transition-all ml-4 mt-4 duration-300 ease-in-out">
+        <div className="flex flex-col gap-6">
           <div>
             <Pheader title="Task Management" showCalendar={false} />
           </div>
-          
+
           {/* Container that changes from column to row at md breakpoint */}
-          <div className="flex flex-col md:flex-row  justify-between items-center gap-4 md:gap-32">
-            {/* Tabs Section */}
-            <div className="w-full md:w-auto">
-              <div className="flex flex-nowrap overflow-x-auto items-center gap-2">
-                {tabs.map((tab) => (
+          <div className="w-[calc(100%_-_60px)]">
+            <div className="flex flex-row justify-between w-[100%]  items-center">
+              {/* Tabs Section */}
+              <div className="w-full md:w-auto">
+                <div className="flex flex-nowrap overflow-x-auto items-center gap-2">
+                  {tabs.map((tab) => (
+                    <Button
+                      key={tab.value}
+                      onClick={() => setActiveTab(tab.value)}
+                      className={`whitespace-nowrap font-inter text-[12px] sm:text-[10px] md:text-[12px] xl:text-[14px] 2xl:text-[16px] font-normal p-[6px] rounded-[4px] px-4 transition-colors border-0 shadow-none ${
+                        activeTab === tab.value
+                          ? "bg-black text-white hover:bg-black"
+                          : "bg-gray-50 text-black"
+                      }`}
+                    >
+                      {tab.label}
+                    </Button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Search and Buttons Section */}
+              <div className="flex flex-col md:flex-row gap-2 items-center w-full ">
+                {/* Search */}
+                <div className="flex items-center gap-2 pl-3 py-2 bg-[#F8F9FB] rounded-[3px] border-[1.5px] border-[#F2F3F5] w-full md:w-[300px]">
+                  <FiSearch className="text-[#111815]" />
+                  <Input
+                    placeholder="Search User"
+                    className="border-none shadow-none !outline-none !p-0 !h-full text-[#111815] text-[14px] font-normal flex-1"
+                  />
+                </div>
+
+                {/* Buttons */}
+                <div className="flex flex-col md:flex-row gap-2 w-full ">
                   <Button
-                    key={tab.value}
-                    onClick={() => setActiveTab(tab.value)}
-                    className={`whitespace-nowrap font-inter text-[12px] sm:text-[10px] md:text-[12px] xl:text-[14px] 2xl:text-[16px] font-normal p-[6px] rounded-[4px] px-4 transition-colors border-0 shadow-none ${
-                      activeTab === tab.value
-                        ? "bg-black text-white hover:bg-black"
-                        : "bg-gray-50 text-black"
+                    onClick={() => handleButtonClick("createUser")}
+                    className={`border border-[#165DFF] hover:bg-[#165DFF] rounded-[4px] items-center px-1 py-1 sm:px-2 sm:py-1 md:px-3 md:py-2 ${
+                      selectedButton === "createUser"
+                        ? "bg-[#165DFF] text-[#FFFFFF]"
+                        : "hover:bg-[#165DFF] hover:text-[#FFFFFF] text-[#165DFF]"
                     }`}
                   >
-                    {tab.label}
+                    <span className="font-Inter text-[10px] sm:text-[12px] md:text-[14px] 2xl:text-[16px] font-normal whitespace-nowrap">
+                      Create New User
+                    </span>
                   </Button>
-                ))}
+
+                  <Button
+                    onClick={() => {
+                      handleButtonClick("assignTicket");
+                      openSheet(); // Open the sheet when this button is clicked
+                    }}
+                    className={`border border-[#165DFF] hover:bg-[#165DFF] rounded-[4px] items-center px-2 py-1 sm:px-3 sm:py-1 md:px-4 md:py-2 ${
+                      selectedButton === "assignTicket"
+                        ? "bg-[#165DFF] text-[#FFFFFF]"
+                        : "hover:bg-[#165DFF] hover:text-[#FFFFFF] text-[#165DFF]"
+                    }`}
+                  >
+                    <span className="font-Inter text-[10px] sm:text-[12px] md:text-[14px] 2xl:text-[16px] font-normal">
+                      Assign Ticket
+                    </span>
+                  </Button>
+
+                  {/* TeamManagementSheet triggered by state */}
+                  <TeamManagementSheet
+                    isOpen={isSheetOpen}
+                    onClose={closeSheet}
+                  />
+                </div>
               </div>
             </div>
-            
-            {/* Search and Buttons Section */}
-            <div className="flex flex-col md:flex-row gap-2 items-center w-full">
-  {/* Search */}
-  <div className="flex items-center gap-2 pl-3 py-2 bg-[#F8F9FB] rounded-[3px] border-[1.5px] border-[#F2F3F5] w-full md:w-[300px]">
-    <FiSearch className="text-[#111815]" />
-    <Input
-      placeholder="Search User"
-      className="border-none shadow-none !outline-none !p-0 !h-full text-[#111815] text-[14px] font-normal flex-1"
-    />
-  </div>
-
-  {/* Buttons */}
-  <div className="flex flex-col md:flex-row gap-2 w-full mt-3 md:mt-0">
-    <Button
-      onClick={() => handleButtonClick("createUser")}
-      className={`border border-[#165DFF] hover:bg-[#165DFF] rounded-[4px] items-center px-1 py-1 sm:px-2 sm:py-1 md:px-3 md:py-2 ${
-        selectedButton === "createUser"
-        ? "bg-[#165DFF] text-[#FFFFFF]"
-        : "hover:bg-[#165DFF] hover:text-[#FFFFFF] text-[#165DFF]"
-      }`}
-    >
-      <span className="font-Inter text-[10px] sm:text-[12px] md:text-[14px] 2xl:text-[16px] font-normal whitespace-nowrap">
-        Create New User
-      </span>
-    </Button>
-
-    <Button
-      onClick={() => {
-        handleButtonClick("assignTicket");
-        openSheet(); // Open the sheet when this button is clicked
-      }}
-      className={`border border-[#165DFF] hover:bg-[#165DFF] rounded-[4px] items-center px-2 py-1 sm:px-3 sm:py-1 md:px-4 md:py-2 ${
-        selectedButton === "assignTicket"
-          ? "bg-[#165DFF] text-[#FFFFFF]"
-          : "hover:bg-[#165DFF] hover:text-[#FFFFFF] text-[#165DFF]"
-      }`}
-    >
-      <span className="font-Inter text-[10px] sm:text-[12px] md:text-[14px] 2xl:text-[16px] font-normal">
-        Assign Ticket
-      </span>
-    </Button>
-
-    {/* TeamManagementSheet triggered by state */}
-    <TeamManagementSheet isOpen={isSheetOpen} onClose={closeSheet} />
-  </div>
-</div>
-
-
-            
           </div>
         </div>
 
         {/* Card */}
-        <div className="flex flex-col gap-4 mt-4">
-          <div className="font-semibold 2xl:text-[28px] lg:text-[20px] md:text-[14px] text-[12px] normal font-Inter text-[#4E5969]">
+        <div className="flex flex-col gap-6 mt-4">
+          <div className="font-semibold 2xl:text-[28px] lg:text-[20px] md:text-[14px] text-[12px] normal font-inter text-[#4E5969]">
             Support Team
           </div>
           <div className="flex flex-col gap-3 w-full">

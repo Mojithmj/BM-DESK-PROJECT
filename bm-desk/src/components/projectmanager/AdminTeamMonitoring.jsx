@@ -208,7 +208,7 @@ function AdminTeamMonitoring() {
                             <img
                               src={metric.icon}
                               alt={metric.color}
-                              className="w-full h-full object-cover"
+                              className="w-full h-full object-cover flex-shrink-0"
                             />
                           </div>
                           <div className="flex flex-col items-right">
