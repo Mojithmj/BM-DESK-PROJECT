@@ -16,11 +16,11 @@ function TicketsSidebar({ ticket, children }) {
   const [activeTab, setActiveTab] = useState("basicinfo");
 
   const tabs = [
-    { value: "basicinfo", label: "Basic Info" },
-    { value: "attachments", label: "Attachments" },
-    { value: "tickethistory", label: "Ticket History" },
-    { value: "comments", label: "Comments" },
-    { value: "relations", label: "Relations" },
+    { value: "basicinfo", label: "Basic Info", underlineWidth: "15%", underlineLeft: "3%" }, 
+    { value: "attachments", label: "Attachments", underlineWidth: "18%", underlineLeft: "20.5%" }, 
+    { value: "tickethistory", label: "Ticket History", underlineWidth: "18%", underlineLeft: "42.5%" }, 
+    { value: "comments", label: "Comments", underlineWidth: "15%", underlineLeft: "65%" }, 
+    { value: "relations", label: "Relations", underlineWidth: "15%", underlineLeft: "83%" }, 
   ];
 
   const ticketHistory = [
@@ -142,36 +142,30 @@ function TicketsSidebar({ ticket, children }) {
         </SheetHeader>
 
         <div className="flex items-center font-inter text-[12px] sm:text-[10px] md:text-[12px] xl:text-[14px] 2xl:text-[16px]font-semibold text-[#1D2129] justify-between gap-1 px-4 py-2 relative">
-          {tabs.map((tab, index) => (
-            <div key={tab.value} className="relative">
-              <button
-                onClick={() => setActiveTab(tab.value)}
-                className={`text-[12px] sm:text-[10px] md:text-[12px] xl:text-[14px] 2xl:text-[16px] font-normal p-[6px] rounded-[4px] bg-white ${
-                  activeTab === tab.value ? "text-[#0E42D2]" : "text-[#1D2129]"
-                }`}
-              >
-                {tab.label}
-              </button>
-            </div>
-          ))}
+        {tabs.map((tab, index) => (
+    <div key={tab.value} className="relative">
+      <button
+        onClick={() => setActiveTab(tab.value)}
+        className={`text-[12px] sm:text-[10px] md:text-[12px] xl:text-[14px] 2xl:text-[16px] font-normal p-[6px] rounded-[4px] bg-white ${
+          activeTab === tab.value ? "text-[#0E42D2]" : "text-[#1D2129]"
+        }`}
+      >
+        {tab.label}
+      </button>
+    </div>
+  ))}
 
           {/* Full Underline */}
           <div className="absolute bottom-0 left-0 w-[100%] h-[1px] bg-[#E5E6EB]" />
 
           {/* Active Tab Underline */}
           <div
-            className={`absolute bottom-0 h-[2px] transition-all duration-300 ease-in-out ${
-              activeTab ? "bg-[#0E42D2]" : ""
-            }`}
-            style={{
-              left: `${
-                (tabs.findIndex((tab) => tab.value === activeTab) /
-                  (tabs.length - 1)) *
-                86
-              }%`,
-              width: `${80 / tabs.length}%`,
-            }}
-          />
+  className="absolute bottom-0 h-[2px] transition-all duration-300 ease-in-out bg-[#0E42D2]"
+  style={{
+    left: `${tabs.find((tab) => tab.value === activeTab)?.underlineLeft || "0%"}`,
+    width: `${tabs.find((tab) => tab.value === activeTab)?.underlineWidth || "80%"}`,
+  }}
+/>
         </div>
 
         <div className="p-4 text-[12px] md:text-[12px] lg:text-[12px] 2xl:text-[16px]">

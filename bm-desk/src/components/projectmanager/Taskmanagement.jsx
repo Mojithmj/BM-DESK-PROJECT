@@ -83,7 +83,7 @@ function Taskmanagement() {
           </div>
           
           {/* Container that changes from column to row at md breakpoint */}
-          <div className="flex flex-col md:flex-row w-full justify-between items-center gap-4 md:gap-6">
+          <div className="flex flex-col md:flex-row  justify-between items-center gap-4 md:gap-32">
             {/* Tabs Section */}
             <div className="w-full md:w-auto">
               <div className="flex flex-nowrap overflow-x-auto items-center gap-2">
@@ -104,9 +104,9 @@ function Taskmanagement() {
             </div>
             
             {/* Search and Buttons Section */}
-            <div className="flex flex-col gap-2 items-center w-full md:w-auto">
+            <div className="flex flex-col md:flex-row gap-2 items-center w-full">
   {/* Search */}
-  <div className="flex items-center gap-2 pl-3 py-2 bg-[#F8F9FB] rounded-[3px] border-[1.5px] border-[#F2F3F5] flex-1 md:w-[300px]">
+  <div className="flex items-center gap-2 pl-3 py-2 bg-[#F8F9FB] rounded-[3px] border-[1.5px] border-[#F2F3F5] w-full md:w-[300px]">
     <FiSearch className="text-[#111815]" />
     <Input
       placeholder="Search User"
@@ -115,7 +115,7 @@ function Taskmanagement() {
   </div>
 
   {/* Buttons */}
-  <div className="flex flex-row gap-2 w-full justify-end">
+  <div className="flex flex-col md:flex-row gap-2 w-full mt-3 md:mt-0">
     <Button
       onClick={() => handleButtonClick("createUser")}
       className={`border border-[#165DFF] hover:bg-[#165DFF] rounded-[4px] items-center px-1 py-1 sm:px-2 sm:py-1 md:px-3 md:py-2 ${
@@ -129,7 +129,6 @@ function Taskmanagement() {
       </span>
     </Button>
 
-    {/* Button in the parent to trigger the sheet */}
     <Button
       onClick={() => {
         handleButtonClick("assignTicket");
@@ -150,6 +149,7 @@ function Taskmanagement() {
     <TeamManagementSheet isOpen={isSheetOpen} onClose={closeSheet} />
   </div>
 </div>
+
 
             
           </div>
