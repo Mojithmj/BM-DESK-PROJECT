@@ -90,7 +90,7 @@ function AccountSettings() {
           <div className="flex flex-col md:flex-row gap-8">
             {/* Tabs - Horizontal on small screens, vertical on md and up */}
             <div className="w-full md:w-auto">
-              <div className="flex md:flex-col gap-4 overflow-x-auto md:overflow-x-visible">
+              <div className="flex md:flex-col gap-1 overflow-x-auto md:overflow-x-visible">
                 {tabs.map((tab) => (
                   <Button
                     key={tab.value}
@@ -183,22 +183,22 @@ function AccountSettings() {
 
                   {/* Avatar section */}
                   <div className="relative">
-                  <img
-        src={profilePic}
-        alt="Avatar"
-        className="w-[120px] h-[120px] md:w-[80px] md:h-[80px] rounded-full object-cover"
-      />
+                    <img
+                      src={profilePic}
+                      alt="Avatar"
+                      className="w-[120px] h-[120px] md:w-[80px] md:h-[80px] rounded-full object-cover"
+                    />
                     <div className="absolute bottom-0 left-[80px] md:left-[55px] lg:left-[55px] 2xl:left-[80px] text-[#656565] bg-white p-[7px] rounded-full border border-[#CED4DA] text-sm">
-                    <label htmlFor="file-upload" className="cursor-pointer">
-          <FaCamera />
-        </label>
-        <input
-          id="file-upload"
-          type="file"
-          accept="image/*"
-          onChange={handleImageChange}
-          className="hidden"
-        />
+                      <label htmlFor="file-upload" className="cursor-pointer">
+                        <FaCamera />
+                      </label>
+                      <input
+                        id="file-upload"
+                        type="file"
+                        accept="image/*"
+                        onChange={handleImageChange}
+                        className="hidden"
+                      />
                     </div>
                   </div>
 

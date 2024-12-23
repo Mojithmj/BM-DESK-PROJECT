@@ -34,10 +34,25 @@ function Navbar() {
     }
   };
 
+  // useEffect(() => {
+  //   document.addEventListener("mousedown", handleOutsideClick);
+  //   return () => {
+  //     document.removeEventListener("mousedown", handleOutsideClick);
+  //   };
+  // }, []);
+
+  // Close dropdown when clicking outside
   useEffect(() => {
-    document.addEventListener("mousedown", handleOutsideClick);
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setCircleDropdown(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+
     return () => {
-      document.removeEventListener("mousedown", handleOutsideClick);
+      document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
 
@@ -120,14 +135,14 @@ function Navbar() {
 
         {/* Middle Section: Search Features */}
         <div className="hidden sm:block">
-        <div className="flex items-center  gap-2 bg-[#E8F3FF] p-2 rounded-md w-[150px] md:w-[200px] lg:w-[300px] 2xl:w-[463px] text-[#0E42D2]">
-          <FiSearch className="w-[10px] h-[10px] md:w-[15px] md:h-[15px] lg:w-[22px] lg:h-[22px] 2xl:w-[24px] 2xl:h-[24px]" />
-          <input
-            type="text"
-            placeholder="Search Features"
-            className="bg-transparent placeholder-[#0E42D2] border-none outline-none text-[10px] md:text-[11px] lg:text-[12px] 2xl:text-sm w-full"
-          />
-        </div>
+          <div className="flex items-center  gap-2 bg-[#E8F3FF] p-2 rounded-md w-[150px] md:w-[200px] lg:w-[300px] 2xl:w-[463px] text-[#0E42D2]">
+            <FiSearch className="w-[10px] h-[10px] md:w-[15px] md:h-[15px] lg:w-[22px] lg:h-[22px] 2xl:w-[24px] 2xl:h-[24px]" />
+            <input
+              type="text"
+              placeholder="Search Features"
+              className="bg-transparent placeholder-[#0E42D2] border-none outline-none text-[10px] md:text-[11px] lg:text-[12px] 2xl:text-sm w-full"
+            />
+          </div>
         </div>
 
         {/* Right Section: Icons and Profile */}
@@ -136,7 +151,7 @@ function Navbar() {
           <div ref={notifydropdownRef}>
             <PiBellThin
               onClick={notifytoggleDropdown}
-              className="text-[19px] md:text-[23px] lg:text-[27px] 2xl:text-[31px] hidden sm:block"
+              className="text-[19px] md:text-[23px] lg:text-[27px] 2xl:text-[31px] hidden sm:block cursor-pointer"
             />
           </div>
           {notifycircleDropdown && (
@@ -194,45 +209,53 @@ function Navbar() {
             </div>
           )}
 
-{/* image */}
-          <div>
-            <img  className="w-[40px] h-[40px]" src={Avatarimage} />
-          </div>
-          {/* <CgProfile className="text-[19px] md:text-[23px] lg:text-[27px] 2xl:text-[31px]" /> */}
-          <div className="text-[14px] font-medium hidden sm:block">
-            Eva Mandes
-            <p className="text-[12px] md:text-[13px] text-[#71717A]">
-              Eva@example.com
-            </p>
-          </div>
-          {/* dropdown circle */}
-          <div className="hidden sm:block">
-            <div className="relative text-nowrap" ref={dropdownRef}>
-              <button onClick={toggleDropdown}>
-                <IoIosArrowDropdownCircle className="md:text-[18px] lg:text-[21px] 2xl:text-[26px]" />
-              </button>
-              {circleDropdown && (
-                <div className="absolute right-3 bg-white border border-gray-300 shadow-md rounded mt-1">
-                  <ul>
-                    <li
-                      className="px-4 py-2 hover:bg-gray-100 cursor-pointer "
-                      onClick={() => setCircleDropdown(false)}
-                    >
-                      Logout
-                    </li>
-                    <li
-                      className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
-                      onClick={() => {
-                        setCircleDropdown(false);
-                        navigate("/accountsettings");
-                      }}
-                    >
-                      Account Settings
-                    </li>
-                  </ul>
-                </div>
-              )}
+          {/* image */}
+          <div
+            className="hidden sm:flex items-center gap-2 cursor-pointer"
+            ref={dropdownRef}
+            onClick={toggleDropdown}
+          >
+            {/* Avatar Image */}
+            <div>
+              <img className="w-[40px] h-[40px]" src={Avatarimage} />
             </div>
+            {/* User Name and Email */}
+            <div className="text-[14px] font-medium">
+              Eva Mandes
+              <p className="text-[12px] md:text-[13px] text-[#71717A]">
+                Eva@example.com
+              </p>
+            </div>
+            {/* Dropdown Icon */}
+            <IoIosArrowDropdownCircle className="md:text-[18px] lg:text-[21px] 2xl:text-[26px]" />
+
+            {/* Dropdown Menu */}
+            {circleDropdown && (
+              <div className="absolute right-4 bg-white border border-gray-300 shadow-md rounded mt-[130px]">
+                <ul>
+                  <li
+                    className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
+                    onClick={(e) => {
+                      e.stopPropagation(); // Prevent dropdown from closing immediately
+                      setCircleDropdown(false);
+                      navigate("/login"); // Navigate to the /login page
+                    }}
+                  >
+                    Logout
+                  </li>
+                  <li
+                    className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
+                    onClick={(e) => {
+                      e.stopPropagation(); // Prevent dropdown from closing immediately
+                      setCircleDropdown(false);
+                      navigate("/accountsettings");
+                    }}
+                  >
+                    Account Settings
+                  </li>
+                </ul>
+              </div>
+            )}
           </div>
         </div>
       </div>

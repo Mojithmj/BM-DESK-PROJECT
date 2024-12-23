@@ -42,7 +42,7 @@ function Login() {
   
       // Redirect based on the username
       if (isValidUser.username === "mojith") {
-        navigate("/");
+        navigate("/adminteammonitoring");
       } else if (isValidUser.username === "ramduth") {
         navigate("/"); // Redirect to '/assignedtickets' for Ramduth
       }

@@ -284,7 +284,7 @@ function ReusableTable({ data, headers, currentTab, defaultSortConfig }) {
       />
 
       {currentTab === "All Tickets" && data.length > visibleCount && (
-        <div className="text-center mt-4">
+        <div className="text-center mt-6">
           <Button
             onClick={handleLoadMore}
             className="bg-blue-500 text-white rounded px-4 py-2"

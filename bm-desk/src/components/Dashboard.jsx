@@ -196,6 +196,7 @@ function Dashboard() {
   return (
     <div className="transition-all ml-4 mt-4 duration-300 ease-in-out">
       {/* Activity dashboard */}
+      <div className="flex flex-col gap-5">
 
       <div className="flex flex-row justify-between items-center p-2 w-full">
         {/* Title Section */}
@@ -247,10 +248,9 @@ function Dashboard() {
       </div>
 
       <div className="w-full">
-  <div className="flex flex-col gap-4">
-
-  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-4">
-          {/* 1 Card */}
+        <div className="flex flex-col gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-4">
+            {/* 1 Card */}
 
             <div className="border-[1px] min-h-[300px] h-full p-4 md:p-6 lg:p-7 2xl:p-9 rounded-2xl text-[#E5E6EB] bg-[#FFF] justify-center items-center">
               {profiles.map((profile, index) => (
@@ -299,44 +299,44 @@ function Dashboard() {
                       </div>
                     </div>
 
-                  {/* Bottom card stats */}
-                  <div className="flex flex-row 2xl:flex-nowrap xl:flex-nowrap lg:flex-nowrap md:flex-wrap sm:flex-wrap 2xl:gap-[16px] lg:gap-[13px] md:gap-[10px] gap-[8px] justify-center items-center">
-                    {profile.stats.map((stat, idx) => (
-                      <div
-                        key={idx}
-                        className="border-[0.44px] border-[#E5E6EB] rounded-[9px] flex flex-row items-center gap-[5px] md:gap-[7px] lg:gap-[9px] px-2 "
-                      >
-                        <div>
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="11"
-                            height="11"
-                            viewBox="0 0 11 12"
-                            fill="none"
-                          >
-                            <circle
-                              cx="5.5"
-                              cy="5.59"
-                              r="5.42"
-                              fill={stat.color}
-                            />
-                          </svg>
+                    {/* Bottom card stats */}
+                    <div className="flex flex-row 2xl:flex-nowrap xl:flex-nowrap lg:flex-nowrap md:flex-wrap sm:flex-wrap 2xl:gap-[16px] lg:gap-[13px] md:gap-[10px] gap-[8px] justify-center items-center">
+                      {profile.stats.map((stat, idx) => (
+                        <div
+                          key={idx}
+                          className="border-[0.44px] border-[#E5E6EB] rounded-[9px] flex flex-row items-center gap-[5px] md:gap-[7px] lg:gap-[9px] px-2 "
+                        >
+                          <div>
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="11"
+                              height="11"
+                              viewBox="0 0 11 12"
+                              fill="none"
+                            >
+                              <circle
+                                cx="5.5"
+                                cy="5.59"
+                                r="5.42"
+                                fill={stat.color}
+                              />
+                            </svg>
+                          </div>
+                          <div>
+                            <p className="text-[#4E5969] text-[10px] sm:text-[8px] font-normal">
+                              {stat.label}
+                            </p>
+                            <p className="text-[#1D2129] text-[14px] sm:text-[12px] font-bold">
+                              {stat.value}
+                            </p>
+                          </div>
                         </div>
-                        <div>
-                          <p className="text-[#4E5969] text-[10px] sm:text-[8px] font-normal">
-                            {stat.label}
-                          </p>
-                          <p className="text-[#1D2129] text-[14px] sm:text-[12px] font-bold">
-                            {stat.value}
-                          </p>
-                        </div>
-                      </div>
-                    ))}
+                      ))}
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
 
             {/* 2nd and 3rd card */}
 
@@ -453,46 +453,51 @@ function Dashboard() {
               ))
             ) : (
               <div>
-                <div className="flex  min-h-[300px] h-full flex-col justify-between  border-[1px]  px-[16px] 2xl:py-[32px] lg:py-[10px]  rounded-2xl text-[#E5E6EB] bg-[#FFF]">
+                <div className="flex min-h-[300px] h-full flex-col justify-between border-[1px] px-[16px] 2xl:py-[32px] lg:py-[10px] rounded-2xl text-[#E5E6EB] bg-[#FFF]">
                   <div className="flex flex-col gap-[27px]">
                     {/* Header */}
                     <div className="flex flex-row items-center justify-between">
-                      <div className="text-[#4E5969] font-inter font-semibold normal lg:h-[15px] md:w-[10px] md:h-[10px] text-nowrap">
+                      <div className="text-[#4E5969] font-inter font-semibold normal lg:h-[15px] md:w-[10px] md:h-[10px] text-nowrap mt-4 ml-2">
                         My Tickets
                       </div>
-                      <div className="w-[28px] h-[28px] text-[28px] text-[#4E5969] cursor-pointer">
+                      <div className="w-[28px] h-[28px] text-[20px] text-[#4E5969] cursor-pointer">
                         <HiArrowRight
                           onClick={() => {
                             navigate("/actionedtickets");
                           }}
+                          className="mt-4"
                         />
                       </div>
                     </div>
 
                     {/* Ticket List */}
-                    <div className="w-full max-w-[400px] sm:max-w-[600px] md:max-w-[800px] lg:max-w-[900px]">
-                      <div className="flex flex-col gap-[16px]">
+                    <div className="w-full max-w-[400px] sm:max-w-[600px] md:max-w-[800px] lg:max-w-[900px] mt-[10px]">
+                      <div className="flex flex-col gap-[14px]">
                         {tickets.map((ticket, index) => (
                           <div
                             key={index}
-                            className="flex items-center gap-[16px]"
+                            className="flex items-center gap-[16px] w-full"
                           >
                             <img
                               src={ticket.image}
-                              className="rounded-[64px] w-[40px] h-[40px]"
+                              className="rounded-[64px] w-[40px] h-[40px] flex-shrink-0"
                               alt={`Ticket ${index + 1}`}
                             />
-                            <div className="flex flex-col ">
-                              <p className="font-inter 2xl:text-[14px] lg:text-[12px]  md:text-[11px] sm:text-[10px] normal font-semibold text-[#1D2129]">
-                                {ticket.title}
-                              </p>
-                              <p className="font-inter 2xl:text-[12px] lg:text-[11px]  md:text-[10px] sm:text-[8px] text-ellipsis overflow-hidden w-[120px] whitespace-nowrap font-normal text-[#86909C]">
-                                {ticket.description}
-                              </p>
+                            <div className="flex flex-row justify-between w-full">
+                              <div className="flex flex-col">
+                                <p className="font-inter 2xl:text-[14px] lg:text-[12px] md:text-[11px] sm:text-[10px] font-semibold text-[#1D2129]">
+                                  {ticket.title}
+                                </p>
+                                <p className="font-inter 2xl:text-[12px] lg:text-[11px] md:text-[10px] sm:text-[8px] text-ellipsis overflow-hidden w-[120px] whitespace-nowrap font-normal text-[#86909C]">
+                                  {ticket.description}
+                                </p>
+                              </div>
+                              <div className="flex-shrink-0">
+                                <p className="font-inter text-[11px] 2xl:whitespace-nowrap lg:whitespace-nowrap md:whitespace-normal sm:whitespace-normal font-normal text-[#878A99]">
+                                  {ticket.time}
+                                </p>
+                              </div>
                             </div>
-                            <p className="font-inter text-[11px] 2xl:whitespace-nowrap lg:whitespace-nowrap md:whitespace-normal sm:whitespace-normal font-normal text-[#878A99]">
-                              {ticket.time}
-                            </p>
                           </div>
                         ))}
                       </div>
@@ -505,22 +510,22 @@ function Dashboard() {
 
           {/* 5 card bottom */}
           <div className="grid grid-cols-1  xl:grid-cols-2 gap-4">
-          <div className="  border-[1px] border-[#E9EBEC] rounded-2xl">
-            {/* Ticket productivity */}
-            <div className="flex justify-between px-[16px] py-[19px]">
-              <div className="text-[#4E5969] font-inter font-semibold normal 2xl:text-[18px] lg:text-[16px] md:text-[12px]">
-                Tickets Productivity Chart
-              </div>
-              <div className="relative">
-                {/* Trigger Button */}
-                <div className="flex cursor-pointer" onClick={todayDropdown}>
-                  <div className="text-[13px] font-normal font-poppins text-[#1D2129]">
-                    {selectedOption}
-                  </div>
-                  <div className="h-[24px] w-[24px] text-[22px] text-[#1D2129]">
-                    <RiArrowDropDownLine />
-                  </div>
+            <div className="  border-[1px] border-[#E9EBEC] rounded-2xl">
+              {/* Ticket productivity */}
+              <div className="flex justify-between px-[16px] py-[19px]">
+                <div className="text-[#4E5969] font-inter font-semibold normal 2xl:text-[18px] lg:text-[16px] md:text-[12px]">
+                  Tickets Productivity Chart
                 </div>
+                <div className="relative">
+                  {/* Trigger Button */}
+                  <div className="flex cursor-pointer" onClick={todayDropdown}>
+                    <div className="text-[13px] font-normal font-poppins text-[#1D2129]">
+                      {selectedOption}
+                    </div>
+                    <div className="h-[24px] w-[24px] text-[22px] text-[#1D2129]">
+                      <RiArrowDropDownLine />
+                    </div>
+                  </div>
 
                   {/* Dropdown Menu */}
                   {todaydrop && (
@@ -638,59 +643,75 @@ function Dashboard() {
                     key={item.id}
                     className="flex justify-between border-[1px] rounded-[8px] border-[#E5E6EB] bg-[#FFF] px-[8px] py-[6px]"
                   >
-                    <div className="flex gap-[16px] items-center">
-                      <div className="border-[0.5px] 2xl:w-[40px] lg:w-[40px]  justify-center text-[#0E42D2] border-[#E5E6EB] rounded-[7px]">
-                        <svg
-                          width="35"
-                          height="35"
-                          viewBox="0 0 493 493"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <g clipPath="url(#clip0_1082_5675)">
-                            <rect
-                              width="492.479"
-                              height="492.479"
-                              rx="98.4957"
-                              fill="white"
-                            ></rect>
-                            <path
-                              fillRule="evenodd"
-                              clipRule="evenodd"
-                              d={item.svgPath}
-                              fill="#165DFF"
-                            ></path>
-                          </g>
-                          <defs>
-                            <clipPath id="clip0_1082_5675">
+                    <div className="flex flex-row items-center justify-between w-full">
+                      <div className="flex gap-[16px] items-center">
+                        <div className="border-[0.5px] 2xl:w-[40px] lg:w-[40px]  justify-center text-[#0E42D2] border-[#E5E6EB] rounded-[7px]">
+                          <svg
+                            width="35"
+                            height="35"
+                            viewBox="0 0 493 493"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <g clipPath="url(#clip0_1082_5675)">
                               <rect
                                 width="492.479"
                                 height="492.479"
+                                rx="98.4957"
                                 fill="white"
                               ></rect>
-                            </clipPath>
-                          </defs>
+                              <path
+                                fillRule="evenodd"
+                                clipRule="evenodd"
+                                d={item.svgPath}
+                                fill="#165DFF"
+                              ></path>
+                            </g>
+                            <defs>
+                              <clipPath id="clip0_1082_5675">
+                                <rect
+                                  width="492.479"
+                                  height="492.479"
+                                  fill="white"
+                                ></rect>
+                              </clipPath>
+                            </defs>
+                          </svg>
+                        </div>
+
+                        <div className="flex 2xl:gap-[20px] lg:gap-[10px]">
+                          <div>
+                            <p className="text-[12px] sm:text-[7px] md:text-[10px] lg:text-[12px] 2xl:text-[14px] font-inter font-semibold text-[#1D2129]">
+                              {item.title}
+                            </p>
+                            <p className="font-inter text-[#86909C] text-[10px] sm:text-[6px] md:text-[10px]  2xl:text-[12px] font-normal">
+                              {item.description}
+                            </p>
+                          </div>
+                          <div className="inline-flex items-center text-[#FFE4BA] mt-[-10px]">
+                            <p className="border-[1px] rounded-[4px] border-[#FFE4BA] 2xl:p-[9px] lg:p-[3px] bg-[#FFF] text-[10px]  font-normal text-[#FF7D00] leading-none">
+                              {item.status}
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="24"
+                          height="25"
+                          viewBox="0 0 24 25"
+                          fill="none"
+                        >
+                          <path
+                            d="M9 18.4004L15 12.4004L9 6.40039"
+                            stroke="#86909C"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          />
                         </svg>
                       </div>
-
-                      <div className="flex 2xl:gap-[20px] lg:gap-[10px]">
-                        <div>
-                          <p className="text-[14px] font-inter font-semibold text-[#1D2129]">
-                            {item.title}
-                          </p>
-                          <p className="font-inter text-[#86909C] text-[12px] font-normal">
-                            {item.description}
-                          </p>
-                        </div>
-                        <div className="inline-flex items-center text-[#FFE4BA] mt-[-10px]">
-                          <p className="border-[1px] rounded-[4px] border-[#FFE4BA] 2xl:p-[9px] lg:p-[3px] bg-[#FFF] text-[10px] font-normal text-[#FF7D00] leading-none">
-                            {item.status}
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="w-[24px] h-[24px] text-[#86909C]">
-                      <HiArrowRight />
                     </div>
                   </div>
                 ))}
@@ -698,6 +719,7 @@ function Dashboard() {
             </div>
           </div>
         </div>
+      </div>
       </div>
     </div>
   );

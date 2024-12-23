@@ -154,7 +154,7 @@ function Productivity() {
     <div>
       <div className="transition-all ml-4 mt-4 duration-300 ease-in-out">
         {" "}
-        <div className="flex flex-col gap-8">
+        <div className="flex flex-col gap-6">
           <div className="">
             <Pheader title="My Productivity" />
           </div>
