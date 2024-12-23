@@ -196,6 +196,7 @@ function Dashboard() {
   return (
     <div className="transition-all ml-4 mt-4 duration-300 ease-in-out">
       {/* Activity dashboard */}
+      <div className="flex flex-col gap-5">
 
       <div className="flex flex-row justify-between items-center p-2 w-full">
         {/* Title Section */}
@@ -718,6 +719,7 @@ function Dashboard() {
             </div>
           </div>
         </div>
+      </div>
       </div>
     </div>
   );
