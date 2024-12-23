@@ -136,7 +136,7 @@ function TicketsSidebar({ ticket, children }) {
       </SheetTrigger>
       <SheetContent className="bg-white">
         <SheetHeader>
-          <SheetTitle className="text-[#165DFF] sm:text-[18px] md:text-[24px] lg:text-[28px] 2xl:text-[32px] font-medium">
+          <SheetTitle className="text-[#165DFF] sm:text-[18px] md:text-[24px] lg:text-[28px] 2xl:text-[32px] font-medium font-inter">
             Ticket Details
           </SheetTitle>
         </SheetHeader>
@@ -377,7 +377,7 @@ function TicketsSidebar({ ticket, children }) {
               {tickets.map((ticket) => (
                 <div className="flex flex-col gap-2">
                   <div className="flex items-center justify-between">
-                    <p className="text-[#09090B] text-[10px] md:text-[12px] lg:text-[13px] 2xl:text-[16px] font-semibold">
+                    <p className="text-[#09090B] text-[12px] sm:text-[10px] md:text-[12px] xl:text-[14px] 2xl:text-[16px] font-semibold">
                       {ticket.name}
                     </p>
                     <FiPlus className="text-[#1D2129] text-bold" />
@@ -388,10 +388,10 @@ function TicketsSidebar({ ticket, children }) {
                     className="flex items-center justify-between"
                   >
                     <div className="flex flex-col">
-                      <p className="text-[10px] md:text-[12px] lg:text-[12px] 2xl:text-[16px] text-[#343A40] pl-1">
+                      <p className=" sm:text-[9px] md:text-[10px] xl:text-[11px] 2xl:text-[13px] text-[#343A40] pl-1">
                         Ticket {ticket.id}
                       </p>
-                      <p className="text-[10px] md:text-[12px] lg:text-[12px] 2xl:text-[16px] text-[#878A99] pl-1">
+                      <p className=" sm:text-[8px] md:text-[9px] xl:text-[10px] 2xl:text-[12px] text-[#878A99] pl-1">
                         {ticket.description}
                       </p>
                     </div>

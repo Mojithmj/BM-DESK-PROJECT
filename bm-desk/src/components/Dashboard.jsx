@@ -452,11 +452,11 @@ function Dashboard() {
               ))
             ) : (
               <div>
-                <div className="flex  min-h-[300px] h-full flex-col justify-between  border-[1px]  px-[16px] 2xl:py-[32px] lg:py-[10px]  rounded-2xl text-[#E5E6EB] bg-[#FFF]">
+                <div className="flex min-h-[300px] h-full flex-col justify-between border-[1px] px-[16px] 2xl:py-[32px] lg:py-[10px] rounded-2xl text-[#E5E6EB] bg-[#FFF]">
                   <div className="flex flex-col gap-[27px]">
                     {/* Header */}
                     <div className="flex flex-row items-center justify-between">
-                      <div className="text-[#4E5969] font-inter font-semibold normal lg:h-[15px] md:w-[10px] md:h-[10px] text-nowrap mt-4">
+                      <div className="text-[#4E5969] font-inter font-semibold normal lg:h-[15px] md:w-[10px] md:h-[10px] text-nowrap mt-4 ml-2">
                         My Tickets
                       </div>
                       <div className="w-[28px] h-[28px] text-[20px] text-[#4E5969] cursor-pointer">
@@ -470,29 +470,33 @@ function Dashboard() {
                     </div>
 
                     {/* Ticket List */}
-                    <div className="w-full max-w-[400px] sm:max-w-[600px] md:max-w-[800px] lg:max-w-[900px]">
-                      <div className="flex flex-col gap-[16px]">
+                    <div className="w-full max-w-[400px] sm:max-w-[600px] md:max-w-[800px] lg:max-w-[900px] mt-[10px]">
+                      <div className="flex flex-col gap-[14px]">
                         {tickets.map((ticket, index) => (
                           <div
                             key={index}
-                            className="flex items-center gap-[16px]"
+                            className="flex items-center gap-[16px] w-full"
                           >
                             <img
                               src={ticket.image}
-                              className="rounded-[64px] w-[40px] h-[40px]"
+                              className="rounded-[64px] w-[40px] h-[40px] flex-shrink-0"
                               alt={`Ticket ${index + 1}`}
                             />
-                            <div className="flex flex-col ">
-                              <p className="font-inter 2xl:text-[14px] lg:text-[12px]  md:text-[11px] sm:text-[10px] normal font-semibold text-[#1D2129]">
-                                {ticket.title}
-                              </p>
-                              <p className="font-inter 2xl:text-[12px] lg:text-[11px]  md:text-[10px] sm:text-[8px] text-ellipsis overflow-hidden w-[120px] whitespace-nowrap font-normal text-[#86909C]">
-                                {ticket.description}
-                              </p>
+                            <div className="flex flex-row justify-between w-full">
+                              <div className="flex flex-col">
+                                <p className="font-inter 2xl:text-[14px] lg:text-[12px] md:text-[11px] sm:text-[10px] font-semibold text-[#1D2129]">
+                                  {ticket.title}
+                                </p>
+                                <p className="font-inter 2xl:text-[12px] lg:text-[11px] md:text-[10px] sm:text-[8px] text-ellipsis overflow-hidden w-[120px] whitespace-nowrap font-normal text-[#86909C]">
+                                  {ticket.description}
+                                </p>
+                              </div>
+                              <div className="flex-shrink-0">
+                                <p className="font-inter text-[11px] 2xl:whitespace-nowrap lg:whitespace-nowrap md:whitespace-normal sm:whitespace-normal font-normal text-[#878A99]">
+                                  {ticket.time}
+                                </p>
+                              </div>
                             </div>
-                            <p className="font-inter text-[11px] 2xl:whitespace-nowrap lg:whitespace-nowrap md:whitespace-normal sm:whitespace-normal font-normal text-[#878A99]">
-                              {ticket.time}
-                            </p>
                           </div>
                         ))}
                       </div>
