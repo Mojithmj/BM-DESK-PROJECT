@@ -79,17 +79,17 @@ function Pheader({ title, className, showCalendar = true }) {
                 {dateContext.dateRange?.from ? (
                   dateContext.dateRange.to ? (
                     <>
-                      {format(dateContext.dateRange.from, "MMM dd, yyyy")} - {format(dateContext.dateRange.to, "MMM dd, yyyy")}
+                      {format(dateContext.dateRange.from, "MMM dd")} - {format(dateContext.dateRange.to, "MMM dd")}
                     </>
                   ) : (
-                    format(dateContext.dateRange.from, "MMM dd, yyyy")
+                    format(dateContext.dateRange.from, "MMM dd")
                   )
                 ) : (
                   <span>Pick a date</span>
                 )}
               </button>
             </PopoverTrigger>
-            <PopoverContent className="bg-white">
+            <PopoverContent className="bg-white shadow-none absolute -left-[14rem] md:-left-[28rem]  md:w-[33rem]">
               <Select onValueChange={handleDateRangeChange}>
                 <SelectTrigger>
                   <SelectValue placeholder="Select range" />
@@ -100,7 +100,7 @@ function Pheader({ title, className, showCalendar = true }) {
                   <SelectItem value="year">This Year</SelectItem>
                 </SelectContent>
               </Select>
-              <div>
+              <div className="w-full bg-white"> 
                 <Calendar
                   mode="range"
                   defaultMonth={dateContext.dateRange?.from}
