@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import ReusableTable from "../ReusableTable";
 import NewTicket from "../NewTicket";
 import TabsSearchButton from "../TabsSearchButton";
+import { DateProvider, useDate } from "../DateContext";
 import { parse } from "date-fns";
 
 
