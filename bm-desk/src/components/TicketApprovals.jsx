@@ -125,7 +125,7 @@ function TicketApprovals() {
         {" "}
         <div className="flex flex-col gap-6">
           <div>
-            <Pheader title="Ticket Approvals" />
+            <Pheader title="Ticket Approvals" showCalendar={false}/>
           </div>
           {/* Tabs */}
           <div>

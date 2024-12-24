@@ -5,7 +5,8 @@ import Pheader from "./Pheader";
 import { FiSearch } from "react-icons/fi";
 import { Input } from "@/components/ui/input";
 import { IoIosArrowRoundDown } from "react-icons/io";
-
+import { DateProvider, useDate } from "./DateContext";
+ 
 import {
   Table,
   TableBody,
@@ -15,10 +16,11 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-
-function Productivity() {
+ 
+function ProductivityContent() {
   const [activeTab, setActiveTab] = useState("all-time");
-
+  const { dateRange } = useDate();
+ 
   const [data, setData] = useState([
     // Initial data (can be populated from an API or mock data)
     {
@@ -101,55 +103,40 @@ function Productivity() {
       escalated: 1,
       growthRate: "30%",
     },
-
+ 
     // Repeat similar objects as needed
   ]);
   const [loading, setLoading] = useState(false); // To track loading state
   const [visibleCount, setVisibleCount] = useState(6); // Tickets visible count
-
+ 
   const tabs = [
     { value: "all-time", label: "All Time" },
     { value: "this-month", label: "This Month" },
     { value: "this-year", label: "This Year" },
   ];
-
-  // Function to filter data based on activeTabbb
+ 
+ 
+ 
+ 
   const getFilteredData = () => {
-    const currentDate = new Date();
-
-    if (activeTab === "this-month") {
-      return data.filter((item) => {
-        const itemDate = new Date(item.date);
-        return (
-          itemDate.getFullYear() === currentDate.getFullYear() &&
-          itemDate.getMonth() === currentDate.getMonth()
-        );
-      });
-    }
-
-    if (activeTab === "this-year") {
-      return data.filter((item) => {
-        const itemDate = new Date(item.date);
-        return itemDate.getFullYear() === currentDate.getFullYear();
-      });
-    }
-
-    // Default: All Time
-    return data;
+    return data.filter((item) => {
+      const itemDate = new Date(item.date);
+      return itemDate >= dateRange.from && itemDate <= dateRange.to;
+    });
   };
-
+ 
   const filteredData = getFilteredData();
   const visibleData = filteredData.slice(0, visibleCount); // Limit visible data
-
+ 
   const loadMoreData = () => {
     setLoading(true);
-
+ 
     setTimeout(() => {
       setVisibleCount((prevCount) => prevCount + 6); // Show 6 more tickets
       setLoading(false);
     }, 2000);
   };
-
+ 
   return (
     <div>
       <div className="transition-all ml-4 mt-4 duration-300 ease-in-out">
@@ -158,43 +145,8 @@ function Productivity() {
           <div className="">
             <Pheader title="My Productivity" />
           </div>
-
-          {/* Tabs */}
-          {/* <div className="flex justify-between items-center">
-            <div className="">
-              <div className="flex items-center gap-2">
-                {tabs.map((tab) => (
-                  <button
-                    key={tab.value}
-                    onClick={() => setActiveTab(tab.value)}
-                    className={`font-inter text-[16px] font-normal p-[6px] rounded-[4px] px-4 transition-colors ${
-                      activeTab === tab.value
-                        ? "bg-black text-white"
-                        : "bg-gray-50 text-black "
-                    }`}
-                  >
-                    {tab.label}
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            <div className="flex items-center gap-5">
-              <div className="flex items-center gap-2 px-4 py-2 bg-[#F8F9FB] rounded-[3px] border-[1.5px] border-[#F2F3F5] ">
-                <FiSearch className="text-black" />
-                <Input
-                  placeholder="Search"
-                  className="border-none shadow-none !outline-none !p-0 !h-full"
-                />
-              </div>
-              <button
-                type="button"
-                className="text-white bg-blue-600 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-[5px] text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
-              >
-                Export
-              </button>
-            </div>
-          </div> */}
+ 
+          
           <div className="flex flex-col md:flex-col lg:flex-row gap-4 w-full">
             {/* Tabs Section */}
             <div className="w-full lg:w-auto">
@@ -214,7 +166,7 @@ function Productivity() {
                 ))}
               </div>
             </div>
-
+ 
             {/* Search and Export Button Section */}
             <div className="flex flex-row justify-between sm:flex-row items-stretch sm:items-center gap-4 w-full lg:w-auto lg:ml-auto">
               <div className="flex-grow sm:flex-grow-0">
@@ -226,7 +178,7 @@ function Productivity() {
                   />
                 </div>
               </div>
-
+ 
               <div className="shrink-0">
                 <button
                   type="button"
@@ -237,7 +189,7 @@ function Productivity() {
               </div>
             </div>
           </div>
-
+ 
           {/* Table */}
           <div className="max-h-[60vh] overflow-y-auto pr-4">
             <Table className=" border-[1px] !rounded overflow-hidden">
@@ -320,5 +272,16 @@ function Productivity() {
     </div>
   );
 }
-
+ 
+function Productivity() {
+  return (
+    <DateProvider>
+      <ProductivityContent />
+    </DateProvider>
+  );
+}
+ 
+ 
+ 
 export default Productivity;
+ 

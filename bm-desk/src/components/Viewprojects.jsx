@@ -7,11 +7,15 @@ import { FiSearch } from "react-icons/fi";
 import ReusableTable from "./ReusableTable";
 import { IoMdArrowDown } from "react-icons/io";
 import TabsSearchButton from "./TabsSearchButton";
+import { DateProvider, useDate } from "./DateContext";
+import { parse } from "date-fns";
 
-function Closedtickets() {
+
+function Viewprojectcontent() {
   const [activeTab, setActiveTab] = useState("alltickets");
   const [loading, setLoading] = useState(false); // To track loading state
   const [visibleDataCount, setVisibleDataCount] = useState(6); // Number of tickets visible initially
+  const { dateRange } = useDate();
 
   // State to manage table data
   const [data, setData] = useState([
@@ -20,7 +24,7 @@ function Closedtickets() {
       projectname: "Project 1",
       projectmanager: "Reneeja",
       category: "Cordova Cloud Solution",
-      createddate: "20-10-2024",
+      createddate: "24-12-2024",
       enddate: "20-10-2024",
     },
     {
@@ -51,20 +55,11 @@ function Closedtickets() {
   };
   const tabs = [
     { value: "alltickets", label: "All Tickets" },
-    // { value: "major", label: "Major" },
-    // { value: "critical", label: "Critical" },
-    // { value: "minor", label: "Minor" },
+    
   ];
 
   const newHeaders = [
-    // "Sl No",
-    // "Ticket Number",
-    // "Project Name",
-    // "Subject",
-    // "Expected Date",
-    // "Expected Delivery Date",
-    // "Severity",
-    // "Ticket Action",
+   
     {
       id: 1,
       value: "slno",
@@ -98,11 +93,33 @@ function Closedtickets() {
     },
   ];
 
-  const filteredData =
-    activeTab === "alltickets"
-      ? data.slice(0, visibleDataCount) // Show limited data for "All Tickets"
-      : data.filter((ticket) => ticket.severity.toLowerCase() === activeTab);
-
+  const getFilteredData = () => {
+    if (!dateRange?.from || !dateRange?.to) {
+      return data; // Return all data if no valid range is set
+    }
+  
+    let filtered = data.filter((item) => {
+      const createdDate = item.createddate
+        ? parse(item.createddate, "dd-MM-yyyy", new Date())
+        : null;
+      const endDate = item.enddate
+        ? parse(item.enddate, "dd-MM-yyyy", new Date())
+        : null;
+  
+      const fromDate = new Date(dateRange.from.setHours(0, 0, 0, 0));
+      const toDate = new Date(dateRange.to.setHours(23, 59, 59, 999));
+  
+      return (
+        (createdDate && createdDate >= fromDate && createdDate <= toDate) ||
+        (endDate && endDate >= fromDate && endDate <= toDate)
+      );
+    });
+  
+    return filtered;
+  };
+  // Get the filtered data and then slice for visibility
+  const filteredData = getFilteredData();
+  const visibleData = filteredData.slice(0, visibleDataCount);
 
 
     // tabsearcbutton.jsx file detils needed
@@ -134,7 +151,11 @@ function Closedtickets() {
             />
           </div>
           {/* Table */}
-          <ReusableTable headers={newHeaders} data={filteredData} />
+          <ReusableTable
+  headers={newHeaders}
+  data={visibleData} // Show only visible tickets
+  defaultSortConfig={{ key: "expecteddate", direction: "descending" }}
+/>
           {/* Show "Load More" button only for "All Tickets" tab */}
           {activeTab === "alltickets" && visibleDataCount < data.length && (
             <div className="flex justify-start">
@@ -153,4 +174,18 @@ function Closedtickets() {
   );
 }
 
-export default Closedtickets;
+
+
+function Viewproject() {
+  return (
+    <DateProvider>
+      <Viewprojectcontent />
+    </DateProvider>
+  );
+}
+ 
+ 
+ 
+
+export default Viewproject;
+

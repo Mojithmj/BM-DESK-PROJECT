@@ -77,7 +77,7 @@ function Taskmanagement() {
   return (
 <div>
       <div className="transition-all ml-4 mt-4 duration-300 ease-in-out ">
-        <div className="flex flex-col gap-8">
+        <div className="flex flex-col gap-6">
           <div>
             <Pheader title="Task Management" showCalendar={false} />
           </div>
@@ -157,7 +157,7 @@ function Taskmanagement() {
 
         {/* Card */}
         <div className="flex flex-col gap-4 mt-4">
-          <div className="font-semibold 2xl:text-[28px] lg:text-[20px] md:text-[14px] text-[12px] normal font-Inter text-[#4E5969]">
+          <div className="font-semibold 2xl:text-[28px] lg:text-[20px] md:text-[14px] text-[12px] font-inter text-[#4E5969]">
             Support Team
           </div>
           <div className="flex flex-col gap-3 w-full">

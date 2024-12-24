@@ -5,11 +5,14 @@ import { Input } from "@/components/ui/input";
 import ReusableTable from "../ReusableTable";
 import NewTicket from "../NewTicket";
 import TabsSearchButton from "../TabsSearchButton";
+import { parse } from "date-fns";
 
-function EscalatedReport() {
+
+function Escalatedreportcontent() {
   const [activeTab, setActiveTab] = useState("alltickets");
   const [loading, setLoading] = useState(false); // To track loading state
   const [visibleDataCount, setVisibleDataCount] = useState(6); // Number of tickets visible initially
+  const { dateRange } = useDate();
 
   // State to manage table data
   const [data, setData] = useState([
@@ -154,10 +157,50 @@ function EscalatedReport() {
     },
   ];
 
-  const filteredData =
-    activeTab === "alltickets"
-      ? data.slice(0, visibleDataCount) // Show limited data for "All Tickets"
-      : data.filter((ticket) => ticket.severity.toLowerCase() === activeTab);
+  
+const getFilteredData = () => {
+  if (!dateRange?.from || !dateRange?.to) {
+    return data;
+  }
+
+  let filtered = data.filter((item) => {
+    // Parse both dates from the item
+    const expectedDate = item.expecteddate
+      ? parse(item.expecteddate, "dd-MM-yyyy", new Date())
+      : null;
+    const deliveryDate = item.expecteddeliverydate
+      ? parse(item.expecteddeliverydate, "dd-MM-yyyy", new Date())
+      : null;
+
+    // Set time to start of day for comparison
+    const fromDate = new Date(dateRange.from.setHours(0, 0, 0, 0));
+    const toDate = new Date(dateRange.to.setHours(23, 59, 59, 999));
+
+    // Check if either date falls within the range
+    const isExpectedDateInRange = expectedDate && 
+      expectedDate >= fromDate && 
+      expectedDate <= toDate;
+      
+    const isDeliveryDateInRange = deliveryDate && 
+      deliveryDate >= fromDate && 
+      deliveryDate <= toDate;
+
+    return isExpectedDateInRange || isDeliveryDateInRange;
+  });
+
+  // Apply severity filter if not on "alltickets" tab
+  if (activeTab !== "alltickets") {
+    filtered = filtered.filter(
+      (ticket) => ticket.severity.toLowerCase() === activeTab
+    );
+  }
+
+  return filtered;
+};
+
+// Get the filtered data and then slice for visibility
+const filteredData = getFilteredData();
+const visibleData = filteredData.slice(0, visibleDataCount);
 
   const handleSearch = (event) => {
     console.log("Search value:", event.target.value);
@@ -186,13 +229,10 @@ function EscalatedReport() {
         </div>
         {/* Table */}
         <ReusableTable
-          headers={newHeaders}
-          data={filteredData}
-          defaultSortConfig={{
-            key: "expecteddeliverydate",
-            direction: "ascending",
-          }}
-        />
+  headers={newHeaders}
+  data={visibleData} // Show only visible tickets
+  defaultSortConfig={{ key: "expecteddate", direction: "descending" }}
+/>
         {/* Show "Load More" button only for "All Tickets" tab */}
         {activeTab === "alltickets" && visibleDataCount < data.length && (
              <div className="flex justify-start">
@@ -209,5 +249,18 @@ function EscalatedReport() {
     </div>
   );
 }
+
+
+function  EscalatedReport() {
+  return (
+    <DateProvider>
+      < Escalatedreportcontent />
+    </DateProvider>
+  );
+}
+ 
+ 
+ 
+
 
 export default EscalatedReport;

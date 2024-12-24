@@ -4,11 +4,9 @@ import Layout from './components/Layout'
 import Dashboard from './components/Dashboard'
 import Login from './components/Login'
 import AssignedTickets from './components/AssignedTickets';
-import Opentickets from './components/Opentickets';
 import Closedtickets from './components/Closedtickets';
 import Viewproject from './components/Viewprojects';
 import ActionedTickets from './components/ActionedTickets';
-import TicketApprovals from './components/TicketApprovals';
 import AccountSettings from './components/AccountSettings';
 import Editaccountsettings from './components/Editaccountsettings';
 import Privacyaccountsettings from './components/Privacyaccountsettings';
@@ -18,6 +16,8 @@ import EscalatedReport from './components/projectmanager/EscalatedReport';
 import TeamManagementSheet from './components/projectmanager/TeamManagementSheet';
 import Taskmanagement from './components/projectmanager/Taskmanagement';
 import Productivity from './components/Productivity';
+import TicketApprovals from './components/TicketApprovals';
+import Opentickets from './components/Opentickets';
 
 function App() {
 
