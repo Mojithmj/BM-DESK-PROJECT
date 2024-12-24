@@ -27,7 +27,7 @@ function Pheader({ title, className, showCalendar = true }) {
   const dateContext = showCalendar ? useDate() : null;
   const [open, setOpen] = React.useState(false);
 
-  // Early return if date context is needed but not available
+  // Early return if date context is needed but not availables
   if (showCalendar && !dateContext) {
     console.warn("DateProvider is required when showCalendar is true");
     return (
