@@ -95,7 +95,7 @@ function AccountSettings() {
                   <Button
                     key={tab.value}
                     onClick={() => setActiveTab(tab.value)}
-                    className={`font-inter min-w-fit px-4 md:px-6 text-[10px] sm:text-[10px] md:text-[12px] xl:text-[14px] 2xl:text-[16px] flex gap-[8px] font-normal rounded-[4px] transition-colors border-0 shadow-none ${
+                    className={`font-inter min-w-fit px-4 md:px-6 text-[10px] sm:text-[10px] md:text-[12px] xl:text-[14px] 2xl:text-[16px] flex justify-start  gap-[8px] font-normal rounded-[4px] transition-colors border-0 shadow-none  ${
                       activeTab === tab.value
                         ? "bg-[#165DFF] text-[#FFFFFF] hover:bg-[#165DFF] hover:text-[#FFFFFF]"
                         : "bg-[#FFFFFF] text-[#1D2129] hover:bg-[#FFFFFF] hover:text-[#1D2129]"

@@ -82,12 +82,12 @@ function Editaccountsettings({ onInputChange }) {
           <div className="flex flex-col md:flex-row gap-8">
             {/* Tabs - Horizontal on small screens, vertical on md and up */}
             <div className="w-full md:w-auto">
-              <div className="flex md:flex-col gap-4 overflow-x-auto md:overflow-x-visible">
+              <div className="flex md:flex-col gap-1 overflow-x-auto md:overflow-x-visible">
                 {tabs.map((tab) => (
                   <Button
                     key={tab.value}
                     onClick={() => setActiveTab(tab.value)}
-                    className={`font-inter min-w-fit px-4 md:px-6 text-[12px] sm:text-[10px] md:text-[12px] xl:text-[14px] 2xl:text-[16px] flex gap-[8px] font-normal rounded-[4px] transition-colors border-0 shadow-none ${
+                    className={`font-inter min-w-fit px-4 md:px-6 text-[10px] sm:text-[10px] md:text-[12px] xl:text-[14px] 2xl:text-[16px] flex justify-start  gap-[8px] font-normal rounded-[4px] transition-colors border-0 shadow-none  ${
                       activeTab === tab.value
                         ? "bg-[#165DFF] text-[#FFFFFF] hover:bg-[#165DFF] hover:text-[#FFFFFF]"
                         : "bg-[#FFFFFF] text-[#1D2129] hover:bg-[#FFFFFF] hover:text-[#1D2129]"
