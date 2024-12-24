@@ -159,7 +159,7 @@ function TicketsSidebar({ ticket, children }) {
       <SheetTrigger className="text-[#0E42D2] underline cursor-pointer ">
         {children}
       </SheetTrigger>
-      <SheetContent className="bg-white">
+      <SheetContent className="bg-white sm:!w-full">
         <div className="flex flex-col gap-[16px] 2xl:gap-[32px]">
           <div>
             <SheetHeader>
