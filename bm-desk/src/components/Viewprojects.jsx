@@ -10,7 +10,6 @@ import TabsSearchButton from "./TabsSearchButton";
 import { DateProvider, useDate } from "./DateContext";
 import { parse } from "date-fns";
 
-
 function Viewprojectcontent() {
   const [activeTab, setActiveTab] = useState("alltickets");
   const [loading, setLoading] = useState(false); // To track loading state
@@ -53,13 +52,9 @@ function Viewprojectcontent() {
       setLoading(false); // Stop loading
     }, 1000); // Simulate a 1-second delay for loading data
   };
-  const tabs = [
-    { value: "alltickets", label: "All Tickets" },
-    
-  ];
+  const tabs = [{ value: "alltickets", label: "All Tickets" }];
 
   const newHeaders = [
-   
     {
       id: 1,
       value: "slno",
@@ -97,7 +92,7 @@ function Viewprojectcontent() {
     if (!dateRange?.from || !dateRange?.to) {
       return data; // Return all data if no valid range is set
     }
-  
+
     let filtered = data.filter((item) => {
       const createdDate = item.createddate
         ? parse(item.createddate, "dd-MM-yyyy", new Date())
@@ -105,36 +100,34 @@ function Viewprojectcontent() {
       const endDate = item.enddate
         ? parse(item.enddate, "dd-MM-yyyy", new Date())
         : null;
-  
+
       const fromDate = new Date(dateRange.from.setHours(0, 0, 0, 0));
       const toDate = new Date(dateRange.to.setHours(23, 59, 59, 999));
-  
+
       return (
         (createdDate && createdDate >= fromDate && createdDate <= toDate) ||
         (endDate && endDate >= fromDate && endDate <= toDate)
       );
     });
-  
+
     return filtered;
   };
   // Get the filtered data and then slice for visibility
   const filteredData = getFilteredData();
   const visibleData = filteredData.slice(0, visibleDataCount);
 
+  // tabsearcbutton.jsx file detils needed
+  const handleSearch = (event) => {
+    console.log("Search value:", event.target.value);
+  };
 
-    // tabsearcbutton.jsx file detils needed
-    const handleSearch = (event) => {
-      console.log("Search value:", event.target.value);
-    };
-  
-    const handleCreateTicket = () => {
-      console.log("Create New Ticket clicked");
-    };
+  const handleCreateTicket = () => {
+    console.log("Create New Ticket clicked");
+  };
 
   return (
     <div>
       <div className="transition-all ml-4 mt-4 duration-300 ease-in-out">
-   
         <div className="flex flex-col gap-6">
           <div>
             <Pheader title="View Projects" />
@@ -152,29 +145,27 @@ function Viewprojectcontent() {
           </div>
           {/* Table */}
           <ReusableTable
-  headers={newHeaders}
-  data={visibleData} // Show only visible tickets
-  defaultSortConfig={{ key: "expecteddate", direction: "descending" }}
-/>
+            headers={newHeaders}
+            data={visibleData} // Show only visible tickets
+            defaultSortConfig={{ key: "expecteddate", direction: "descending" }}
+          />
           {/* Show "Load More" button only for "All Tickets" tab */}
           {activeTab === "alltickets" && visibleDataCount < data.length && (
             <div className="flex justify-start">
-            <button
-              onClick={loadMoreData}
-              className="text-[#165DFF] -mt-2"
-              disabled={loading}
-            >
-              {loading ? "Loading..." : "Load more Tickets..."}
-            </button>
-          </div>
+              <button
+                onClick={loadMoreData}
+                className="text-[#165DFF] -mt-2"
+                disabled={loading}
+              >
+                {loading ? "Loading..." : "Load more Tickets..."}
+              </button>
+            </div>
           )}
         </div>
       </div>
     </div>
   );
 }
-
-
 
 function Viewproject() {
   return (
@@ -183,9 +174,5 @@ function Viewproject() {
     </DateProvider>
   );
 }
- 
- 
- 
 
 export default Viewproject;
-

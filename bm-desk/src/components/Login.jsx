@@ -10,7 +10,6 @@ function Login() {
   const [mypassword, setMypassword] = useState("");
   const [myusername, setMyusername] = useState("");
   const [error, setError] = useState("");
-  
 
   const navigate = useNavigate();
 
@@ -28,18 +27,18 @@ function Login() {
   // Handle form submission
   const passwordhandle = (e) => {
     e.preventDefault(); // Prevent page reload
-  
+
     // Check if the entered credentials match any valid user
     const isValidUser = validUsers.find(
       (user) => user.username === myusername && user.password === mypassword
     );
-  
+
     if (isValidUser) {
       setError(""); // Clear any existing error messages
 
-      localStorage.setItem("myusername",myusername);
-      localStorage.setItem("mypassword",mypassword)
-  
+      localStorage.setItem("myusername", myusername);
+      localStorage.setItem("mypassword", mypassword);
+
       // Redirect based on the username
       if (isValidUser.username === "mojith") {
         navigate("/adminteammonitoring");
@@ -50,13 +49,16 @@ function Login() {
       setError("Invalid username or password. Please try again");
     }
   };
-  
 
   return (
     <div className="relative flex h-screen">
       <div className="relative hidden md:block">
         <div className="overflow-hidden w-[50vw] h-screen">
-          <img src={group1} alt="Group" className="w-full h-full object-cover" />
+          <img
+            src={group1}
+            alt="Group"
+            className="w-full h-full object-cover"
+          />
         </div>
         <div className="absolute top-0 right-0 p-6 lg:p-8 2xl:p-14">
           <div className="flex gap-2 items-center">

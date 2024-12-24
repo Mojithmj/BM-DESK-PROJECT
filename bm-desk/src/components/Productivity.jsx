@@ -6,7 +6,7 @@ import { FiSearch } from "react-icons/fi";
 import { Input } from "@/components/ui/input";
 import { IoIosArrowRoundDown } from "react-icons/io";
 import { DateProvider, useDate } from "./DateContext";
- 
+
 import {
   Table,
   TableBody,
@@ -16,11 +16,11 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
- 
+
 function ProductivityContent() {
   const [activeTab, setActiveTab] = useState("all-time");
   const { dateRange } = useDate();
- 
+
   const [data, setData] = useState([
     // Initial data (can be populated from an API or mock data)
     {
@@ -103,40 +103,37 @@ function ProductivityContent() {
       escalated: 1,
       growthRate: "30%",
     },
- 
+
     // Repeat similar objects as needed
   ]);
   const [loading, setLoading] = useState(false); // To track loading state
   const [visibleCount, setVisibleCount] = useState(6); // Tickets visible count
- 
+
   const tabs = [
     { value: "all-time", label: "All Time" },
     { value: "this-month", label: "This Month" },
     { value: "this-year", label: "This Year" },
   ];
- 
- 
- 
- 
+
   const getFilteredData = () => {
     return data.filter((item) => {
       const itemDate = new Date(item.date);
       return itemDate >= dateRange.from && itemDate <= dateRange.to;
     });
   };
- 
+
   const filteredData = getFilteredData();
   const visibleData = filteredData.slice(0, visibleCount); // Limit visible data
- 
+
   const loadMoreData = () => {
     setLoading(true);
- 
+
     setTimeout(() => {
       setVisibleCount((prevCount) => prevCount + 6); // Show 6 more tickets
       setLoading(false);
     }, 2000);
   };
- 
+
   return (
     <div>
       <div className="transition-all ml-4 mt-4 duration-300 ease-in-out">
@@ -145,8 +142,7 @@ function ProductivityContent() {
           <div className="">
             <Pheader title="My Productivity" />
           </div>
- 
-          
+
           <div className="flex flex-col md:flex-col lg:flex-row gap-4 w-full">
             {/* Tabs Section */}
             <div className="w-full lg:w-auto">
@@ -166,7 +162,7 @@ function ProductivityContent() {
                 ))}
               </div>
             </div>
- 
+
             {/* Search and Export Button Section */}
             <div className="flex flex-row justify-between sm:flex-row items-stretch sm:items-center gap-4 w-full lg:w-auto lg:ml-auto">
               <div className="flex-grow sm:flex-grow-0">
@@ -178,7 +174,7 @@ function ProductivityContent() {
                   />
                 </div>
               </div>
- 
+
               <div className="shrink-0">
                 <button
                   type="button"
@@ -189,7 +185,7 @@ function ProductivityContent() {
               </div>
             </div>
           </div>
- 
+
           {/* Table */}
           <div className="max-h-[60vh] overflow-y-auto pr-4">
             <Table className=" border-[1px] !rounded overflow-hidden">
@@ -272,7 +268,7 @@ function ProductivityContent() {
     </div>
   );
 }
- 
+
 function Productivity() {
   return (
     <DateProvider>
@@ -280,8 +276,5 @@ function Productivity() {
     </DateProvider>
   );
 }
- 
- 
- 
+
 export default Productivity;
- 
