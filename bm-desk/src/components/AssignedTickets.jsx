@@ -8,15 +8,18 @@ import ReusableTable from "./ReusableTable";
 import NewTicket from "./NewTicket";
 import { Button } from "./ui/button";
 import TabsSearchButton from "./TabsSearchButton";
+import { DateProvider, useDate } from "./DateContext";
+import { parse } from "date-fns";
+
 //data count
-function AssignedTickets() {
+function Assignedticketscontent() {
   // const { isSidebarOpen } = useContext(SidebarContext);
   const [activeTab, setActiveTab] = useState("alltickets");
   const [loading, setLoading] = useState(false);
   const [visibleDataCount, setVisibleDataCount] = useState(6);
+  const { dateRange } = useDate();
 
   // State to manage table data
-
   const [data, setData] = useState([
     {
       id: 1,
@@ -32,7 +35,7 @@ function AssignedTickets() {
       ticketnumber: "TCKT5643",
       projectname: "Project 3",
       subject: "TC Numbering Issue",
-      expecteddate: "20-10-2022",
+      expecteddate: "20-10-2024",
       expecteddeliverydate: "---",
       severity: "Minor",
     },
@@ -41,8 +44,8 @@ function AssignedTickets() {
       ticketnumber: "TCKT5644",
       projectname: "Project 2",
       subject: "To Change The Hierarchy",
-      expecteddate: "20-09-2023",
-      expecteddeliverydate: "02-09-2023",
+      expecteddate: "20-09-2024",
+      expecteddeliverydate: "02-12-2023",
       severity: "Major",
     },
     {
@@ -50,11 +53,42 @@ function AssignedTickets() {
       ticketnumber: "TCKT3333",
       projectname: "Project 4",
       subject: "To Change The Hierarchy",
-      expecteddate: "20-09-2023",
+      expecteddate: "20-12-2023",
       expecteddeliverydate: "02-09-2023",
       severity: "Minor",
     },
   ]);
+
+  // Function to get filtered data based on date range and active tab
+  const getFilteredData = () => {
+    // Log the dateRange to check if it is being set correctly
+    console.log("Date Range:", dateRange);
+
+    // Check if dateRange is set correctly
+    if (!dateRange?.from || !dateRange?.to) {
+      return data; // Return all data if no valid range is set
+    }
+
+    let filtered = data.filter((item) => {
+      // Parsing only the expected date
+      const expectedDate = item.expecteddate 
+          ? parse(item.expecteddate, "dd-MM-yyyy", new Date())
+          : null;
+  
+      // Compare only against expectedDate
+      return expectedDate && expectedDate >= dateRange.from && expectedDate <= dateRange.to;
+  });
+
+    // Tab filter
+    if (activeTab !== "alltickets") {
+      filtered = filtered.filter(
+        (ticket) => ticket.severity.toLowerCase() === activeTab
+      );
+    }
+
+    return filtered;
+};
+
 
   const loadMoreData = () => {
     setLoading(true); // Start loading
@@ -125,12 +159,10 @@ function AssignedTickets() {
     },
   ];
 
-  const filteredData =
-    activeTab === "alltickets"
-      ? data.slice(0, visibleDataCount) // Show limited data for "All Tickets"
-      : data.filter((ticket) => ticket.severity.toLowerCase() === activeTab);
+  const filteredData = getFilteredData();  // Call inside the component
 
-  // tabsearcbutton.jsx file detils needed
+  const visibleData = filteredData.slice(0, visibleDataCount);
+
   const handleSearch = (event) => {
     console.log("Search value:", event.target.value);
   };
@@ -159,13 +191,11 @@ function AssignedTickets() {
 
         {/* Table */}
         <ReusableTable
-          headers={newHeaders}
-          data={filteredData}
-          defaultSortConfig={{
-            key: "expecteddeliverydate",
-            direction: "ascending",
-          }}
-        />
+            headers={newHeaders}
+            data={visibleData}
+            defaultSortConfig={{ key: "closeddate", direction: "ascending" }}
+          />
+          
 
         {/* Load More Button */}
         {activeTab === "alltickets" && visibleDataCount < data.length && (
@@ -181,6 +211,14 @@ function AssignedTickets() {
         )}
       </div>
     </div>
+  );
+}
+
+function AssignedTickets() {
+  return (
+    <DateProvider>
+      <Assignedticketscontent />
+    </DateProvider>
   );
 }
 
