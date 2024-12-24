@@ -621,13 +621,13 @@ function Dashboard() {
 
             {/* 6 card bottom */}
 
-            <div className=" flex flex-col gap-[27px] px-[20px] py-[32px]  border-[1px] border-[#E9EBEC] rounded-2xl">
+            <div className=" flex flex-col gap-[20px] 2xl:gap-[27px]  px-[20px] py-[32px]  border-[1px] border-[#E9EBEC] rounded-2xl">
               <div className="flex justify-between">
-                <div className="text-[#4E5969] font-inter font-semibold normal 2xl:text-[18px] lg:text-[16px] md:text-[12px]">
+                <div className="text-[#4E5969] font-inter font-semibold normal 2xl:text-[18px] lg:text-[16px] md:text-[12px] mt-[-15px]">
                   Recent Tickets
                 </div>
                 {!managername && (
-                  <div className="h-[28px] w-[28px] text-[22px] text-[#181D27] cursor-pointer">
+                  <div className="h-[28px] w-[28px] text-[22px] text-[#181D27] cursor-pointer mt-[-12px]">
                     <HiArrowRight
                       onClick={() => {
                         navigate("/opentickets");
