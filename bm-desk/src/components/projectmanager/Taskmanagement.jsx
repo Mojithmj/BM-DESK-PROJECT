@@ -147,7 +147,7 @@ function Taskmanagement() {
               </div>
             </div>
 
-            {/* TeamManagementSheets */}
+            {/* TeamManagementSheet */}
             <TeamManagementSheet isOpen={isSheetOpen} onClose={closeSheet} />
           </div>
         </div>
