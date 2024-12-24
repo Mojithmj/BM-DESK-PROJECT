@@ -1,5 +1,3 @@
-
-
 import React from "react";
 import { FiSearch } from "react-icons/fi";
 import { Button } from "./ui/button";
@@ -12,7 +10,7 @@ const TabsSearchButton = ({
   setActiveTab,
   onSearch,
   onCreateTicket,
-  createButtonText = "Create New Ticket"
+  createButtonText = "Create New Ticket",
 }) => {
   return (
     <div className="flex flex-col md:flex-col lg:flex-row gap-4 w-full">
@@ -47,7 +45,7 @@ const TabsSearchButton = ({
             />
           </div>
         </div>
-        
+
         <div className="shrink-0">
           <NewTicket
             triggerButton={

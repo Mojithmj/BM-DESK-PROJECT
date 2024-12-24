@@ -42,23 +42,12 @@ function App() {
         <Route path='/actionedtickets' element={<ActionedTickets/>}/>
        
         </Route>
-    
         
         <Route path='/login' element={<Login/>}/>
         <Route path='/productivity' element={<Productivity/>}/>
-        
-        
-        
         <Route path='/privacyaccountsettings' element={<Privacyaccountsettings/>}/>
         <Route path='/actiontickets' element={<ActionTickets/>}/>
         <Route path='/tsheet' element={<TeamManagementSheet/>}/>
-        
-        
-
-        
-        
-        
-
 
       </Routes>
     </BrowserRouter>
