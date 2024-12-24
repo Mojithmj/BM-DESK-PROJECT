@@ -1,37 +1,14 @@
-
-// import React, { createContext, useContext, useState } from "react";
-
-// // Create Context
-// const DateContext = createContext();
-
-// // Custom Hook
-// export const useDate = () => useContext(DateContext);
-
-// // Provider Component
-// export const DateProvider = ({ children }) => {
-//   const [dateRange, setDateRange] = useState({
-//     from: new Date(),
-//     to: new Date(),
-//   });
-
-//   const updateDateRange = (range) => setDateRange(range);
-
-//   return (
-//     <DateContext.Provider value={{ dateRange, updateDateRange }}>
-//       {children}
-//     </DateContext.Provider>
-//   );
-// };
-
-
-//me
-// DateContext.jsx
 import React, { createContext, useContext, useState } from 'react';
+import { startOfYear, endOfYear } from 'date-fns';
 
 const DateContext = createContext();
 
 export function DateProvider({ children }) {
-  const [dateRange, setDateRange] = useState({ from: null, to: null });
+  // 🗓️ Default range set to the current year
+  const [dateRange, setDateRange] = useState({
+    from: startOfYear(new Date()), // January 1st of the current year
+    to: endOfYear(new Date()),     // December 31st of the current year
+  });
 
   const updateDateRange = (range) => {
     setDateRange(range);
