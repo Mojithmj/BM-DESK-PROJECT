@@ -6,6 +6,10 @@ import { HiArrowRight } from "react-icons/hi";
 import Ticketimageone from "../assets/Avatarimageone.png";
 import Ticketimagetwo from "../assets/Avatarimagetwo.png";
 import { useNavigate } from "react-router-dom";
+import AssignedTickets from "./AssignedTickets";
+import Opentickets from "./Opentickets";
+import EscalatedReport from "./projectmanager/EscalatedReport";
+import Closedtickets from "./Closedtickets";
 import {
   Card,
   CardContent,
@@ -26,12 +30,17 @@ import { LuChevronRight } from "react-icons/lu";
 import { Button } from "./ui/button";
 
 function Dashboard() {
+  const [assignedTicketsCount, setAssignedTicketsCount] = useState(0);
+  const [openTicketsCount,setOPenTicketsCount]=useState(0);
+  const [EscalatedTicketsCount,setEscalatedTicketsCount]=useState(0);
+  const [ClosedTicketsCount,setClosedTicketsCount]=useState(0);
   // all time dropdown
   const [DropdownOpen, setDropdownOpen] = useState(false);
   const [alltimeOption, setAlltimeOption] = useState("All Time");
   // today dropdown
   const [todaydrop, setTodaydrop] = useState(false);
   const [selectedOption, setSelectedOption] = useState("Today");
+
 
   const managername = localStorage.getItem("myusername") === "mojith";
   const navigate = useNavigate();
@@ -72,7 +81,7 @@ function Dashboard() {
       title: "Assigned Tickets",
       bgColor: "#E8F3FF",
       svgColor: "#165DFF",
-      count: 32,
+      count: assignedTicketsCount,
       buttonText: "Continue",
       textColor: "#165DFF",
     },
@@ -80,7 +89,7 @@ function Dashboard() {
       title: "To Do",
       bgColor: "#FFF7E8",
       svgColor: "#FF7D00",
-      count: 32,
+      count: openTicketsCount,
       buttonText: "Continue",
       textColor: "#FF7D00",
     },
@@ -91,7 +100,7 @@ function Dashboard() {
       title: "Escalated Tickets",
       bgColor: "#FFECE8",
       svgColor: "#F53F3F",
-      count: 32,
+      count: EscalatedTicketsCount,
       buttonText: "See Report",
       textColor: "#F53F3F",
     },
@@ -185,16 +194,28 @@ function Dashboard() {
   const modifiedCardsData = managername
     ? cardsData.map((card) => {
         if (card.title === "Assigned Tickets") {
-          return { ...card, title: "Completed", buttonText: "See Report" };
+          return { ...card, title: "Completed", buttonText: "See Report", count: ClosedTicketsCount };
         } else if (card.title === "To Do") {
           return { ...card, title: "Re-Opened", buttonText: "See Report" };
-        }
+        } 
         return card;
       })
     : cardsData;
 
   return (
     <div className="transition-all ml-4 mt-4 duration-300 ease-in-out">
+      <div className="hidden">
+        <AssignedTickets onCountUpdate={setAssignedTicketsCount} />
+      </div>
+      <div className="hidden">
+        <Opentickets onCountUpdate={setOPenTicketsCount} />
+      </div>
+      <div className="hidden">
+        <EscalatedReport onCountUpdate={setEscalatedTicketsCount} />
+      </div>
+      <div className="hidden">
+        <Closedtickets  onCountUpdate={setClosedTicketsCount} />
+      </div>
       {/* Activity dashboard */}
       <div className="flex flex-col gap-5">
 
@@ -378,15 +399,29 @@ function Dashboard() {
                     className="text-[48px] md:text-[52px] lg:text-[60px] 2xl:text-[68px] font-semibold font-Inter"
                     style={{ color: card.textColor }}
                   >
-                    {card.count}
+                     {card.count}
                   </div>
                 </div>
                 <div
-                  onClick={() => {
-                    navigate("/assignedtickets");
-                  }}
-                  className="flex items-center justify-end cursor-pointer"
-                >
+      onClick={() => {
+        // Navigate to different paths based on the card title
+        if (card.title === "Assigned Tickets") {
+          navigate("/assignedtickets");  // Navigate to Assigned Tickets page
+        } else if (card.title === "To Do") {
+          navigate("/opentickets");  // Navigate to To Do page
+        } else if (card.title === "Escalated Tickets") {
+          navigate("/escalatedtickets");  // Navigate to Escalated Tickets page
+        }
+        else if (card.title === "Completed") {
+          navigate("/closedtickets");  // Navigate to Escalated Tickets page
+        }
+        else if (card.title === "Re-Opened") {
+          navigate("/opentickets");  // Navigate to Escalated Tickets page
+        }
+        
+      }}
+      className="flex items-center justify-end cursor-pointer"
+    >
                   <div className="font-inter text-[14px]   normal font-semibold text-[#1D2129]">
                     {card.buttonText}
                   </div>

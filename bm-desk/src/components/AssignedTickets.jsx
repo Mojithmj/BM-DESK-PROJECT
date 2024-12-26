@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, {  useState, useContext, useEffect} from "react";
 // import { SidebarContext } from "./Layout";
 
 import { Input } from "@/components/ui/input";
@@ -12,12 +12,18 @@ import { DateProvider, useDate } from "./DateContext";
 import { parse } from "date-fns";
 
 //data count
-function Assignedticketscontent() {
+function Assignedticketscontent({ onCountUpdate }) {
   // const { isSidebarOpen } = useContext(SidebarContext);
   const [activeTab, setActiveTab] = useState("alltickets");
   const [loading, setLoading] = useState(false);
   const [visibleDataCount, setVisibleDataCount] = useState(6);
   const { dateRange } = useDate();
+  useEffect(() => {
+    if (onCountUpdate && data?.length) {
+      onCountUpdate(data.length);
+    }
+  }, [onCountUpdate]);
+  
 
   // State to manage table data
   const [data, setData] = useState([
@@ -214,10 +220,10 @@ function Assignedticketscontent() {
   );
 }
 
-function AssignedTickets() {
+function AssignedTickets({ onCountUpdate }) {
   return (
     <DateProvider>
-      <Assignedticketscontent />
+      <Assignedticketscontent onCountUpdate={onCountUpdate} />
     </DateProvider>
   );
 }

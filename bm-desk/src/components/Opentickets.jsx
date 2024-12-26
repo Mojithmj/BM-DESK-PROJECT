@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect} from "react";
 import Pheader from "./Pheader";
 import { FiSearch } from "react-icons/fi";
 
@@ -9,12 +9,20 @@ import ReusableTable from "./ReusableTable";
 import { DateProvider, useDate } from "./DateContext";
 import { parse } from "date-fns";
 
-function Openticketscontent() {
+function Openticketscontent({ onCountUpdate }) {
+ 
   const [activeTab, setActiveTab] = useState("alltickets");
   const [loading, setLoading] = useState(false); // To track loading state
   const [visibleDataCount, setVisibleDataCount] = useState(6); // Number of tickets visible initially
   const { dateRange } = useDate();
 
+
+
+  useEffect(() => {
+    if (onCountUpdate && data?.length) {
+      onCountUpdate(data.length);
+    }
+  }, [onCountUpdate]);
   // State to manage table data
   const [data, setData] = useState([
     {
@@ -251,10 +259,10 @@ function Openticketscontent() {
   );
 }
 
-function Opentickets() {
+function Opentickets({ onCountUpdate }) {
   return (
     <DateProvider>
-      <Openticketscontent />
+      <Openticketscontent onCountUpdate={onCountUpdate}/>
     </DateProvider>
   );
 }
