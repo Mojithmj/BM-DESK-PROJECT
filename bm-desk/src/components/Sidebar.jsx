@@ -4,12 +4,16 @@ import { RiHomeLine, RiArrowDropDownLine } from "react-icons/ri";
 import { BsGraphUpArrow } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
 import { TbMenuDeep } from "react-icons/tb";
-
+import image1 from "../assets/Group 1.jpg";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
 function Sidebar({ isSidebarOpen, setIsSidebarOpen }) {
   // const { isSidebarOpen, setIsSidebarOpen } = useContext(SidebarContext);
-  const [activePath, setActivePath] = useState(window.location.pathname);
+  // const [activePath, setActivePath] = useState(window.location.pathname);
+  const [activePath, setActivePath] = useState(() => {
+    const currentPath = window.location.pathname;
+    return currentPath === "/" ? "/dashboard" : currentPath;
+  });
   const navigate = useNavigate();
   const [openDropdown, setOpenDropdown] = useState(null);
   const managername = localStorage.getItem("myusername") === "mojith";
@@ -44,8 +48,11 @@ function Sidebar({ isSidebarOpen, setIsSidebarOpen }) {
     }
 
     if (item.path) {
-      setActivePath(item.path);
-      navigate(item.path);
+      // setActivePath(item.path);
+      // navigate(item.path);
+      const path = item.path === "/" ? "/dashboard" : `/dashboard${item.path}`;
+      setActivePath(path);
+      navigate(path);
       if (isMobile) {
         setOpen(false); // Close the sheet
       }
@@ -56,8 +63,11 @@ function Sidebar({ isSidebarOpen, setIsSidebarOpen }) {
   };
 
   const handleMobileSubItemClick = (path) => {
-    setActivePath(path);
-    navigate(path);
+    // setActivePath(path);
+    // navigate(path);
+    const fullPath = `/dashboard${path}`;
+    setActivePath(fullPath);
+    navigate(fullPath);
     setOpen(false); // Close the sheet
     setIsSidebarOpen(false);
   };
@@ -406,7 +416,7 @@ function Sidebar({ isSidebarOpen, setIsSidebarOpen }) {
                     />
                   </svg>
                 ),
-                path: "/teammanagement",
+                path: "/createproject",
                 key: "create_projects",
               },
             ],
@@ -707,9 +717,16 @@ function Sidebar({ isSidebarOpen, setIsSidebarOpen }) {
                 >
                   <div
                     className="group px-6 border border-white py-2 gap-2 flex flex-row items-center text-sm hover:bg-[#E8F3FF] hover:text-[#165DFF] rounded-[4px] hover:border-[1px] hover:border-[#BEDAFF] cursor-pointer"
+                    // onClick={() => {
+                    //   setActivePath(subItem.path);
+                    //   navigate(subItem.path);
+                    //   if (window.innerWidth < 1024) {
+                    //     setIsSidebarOpen(false);
+                    //   }
+                    // }}
                     onClick={() => {
-                      setActivePath(subItem.path);
-                      navigate(subItem.path);
+                      setActivePath(`/dashboard${subItem.path}`);
+                      navigate(`/dashboard${subItem.path}`);
                       if (window.innerWidth < 1024) {
                         setIsSidebarOpen(false);
                       }
@@ -740,10 +757,21 @@ function Sidebar({ isSidebarOpen, setIsSidebarOpen }) {
             </button>
           </SheetTrigger>
           <SheetContent side="left" className="w-[280px] p-4 bg-white">
-            <div className="h-full flex flex-col">
+            <div className="h-full flex flex-col gap-2">
               <div className="h-16 flex items-center">
                 <span className="text-lg font-semibold text-[#4E5969]"></span>
               </div>
+              <h1 className="flex items-center gap-2 mt-[-45px]">
+                <img
+                  src={image1}
+                  alt="BM Desk Logo"
+                  className="z-50 w-[24px] h-[24px] md:w-[20px] md:h-[20px] lg:w-[22px] lg:h-[22px] 2xl:w-[33px] 2xl:h-[33px] object-contain"
+                />
+                <div className="whitespace-nowrap text-[#141414] text-[17px] md:text-[19px] lg:text-[21px] 2xl:text-[27px] font-bold font-Poppins ">
+                  BM Desk
+                  <span className="inline-block w-1 h-1 rounded-full bg-blue-500"></span>
+                </div>
+              </h1>
               <MobileMenuItems />
             </div>
           </SheetContent>
@@ -780,9 +808,6 @@ function Sidebar({ isSidebarOpen, setIsSidebarOpen }) {
 }
 
 export default Sidebar;
-
-
-
 
 // import React, { useState, useEffect } from "react";
 // import { RiHomeLine, RiArrowDropDownLine } from "react-icons/ri";
@@ -1379,7 +1404,6 @@ export default Sidebar;
 //       : []),
 //   ];
 
-
 //   const MenuItem = ({ item, isCollapsed }) => (
 //     <div
 //       className={`mb-2 ${
@@ -1482,7 +1506,7 @@ export default Sidebar;
 //           onClick={toggleSidebar}
 //           className="absolute -right-3 top-6 bg-white border border-gray-200 rounded-full p-1.5 z-50"
 //         >
-//           <HiMenuAlt1 
+//           <HiMenuAlt1
 //             className={`transform transition-transform duration-300 ${
 //               isSidebarOpen ? 'rotate-0' : 'rotate-180'
 //             }`}

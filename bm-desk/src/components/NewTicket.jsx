@@ -39,10 +39,10 @@ export const NewTicket = ({ triggerButton }) => {
       <DialogContent className="bg-white max-h-[90vh] overflow-y-auto border !rounded-[5px]">
         <DialogHeader>
           <div className="grid">
-            <DialogTitle className="text-[#165DFF] text-[20px] sm:text-[18px] md:text-[24px] lg:text-[28px] 2xl:text-[32px]">
+            <DialogTitle className="text-[#165DFF] text-[20px] sm:text-[24px] md:text-[24px] lg:text-[28px] 2xl:text-[32px]">
               New Ticket
             </DialogTitle>
-            <p className="text-[12px] sm:text-[10px] md:text-[12px] xl:text-[14px] 2xl:text-[16px] text-[#4E5969]">
+            <p className="text-[12px] sm:text-[12px] md:text-[12px] xl:text-[14px] 2xl:text-[16px] text-[#4E5969]">
               Submit a New Ticket
             </p>
           </div>
@@ -51,28 +51,28 @@ export const NewTicket = ({ triggerButton }) => {
             <div className="flex flex-col">
               <Label
                 htmlFor="emailAddress"
-                className="mb-2 font-normal text-[12px] sm:text-[10px] md:text-[12px] xl:text-[14px] 2xl:text-[16px]"
+                className="mb-2 font-normal text-[12px] sm:text-[12px] md:text-[12px] xl:text-[14px] 2xl:text-[16px]"
               >
                 Email Address
               </Label>
               <Input
                 id="emailAddress"
                 placeholder="Enter Your Email Address"
-                className="w-full text-[#86909C] placeholder:text-[8px] sm:placeholder:text-[8px] md:placeholder:text-[10px] lg:placeholder:text-[12px] 2xl:placeholder:text-[14px] border border-[#E5E6EB] rounded-[5px]"
+                className="w-full text-[#86909C] placeholder:text-[8px] sm:placeholder:text-[12px] md:placeholder:text-[10px] lg:placeholder:text-[12px] 2xl:placeholder:text-[14px] border border-[#E5E6EB] rounded-[5px]"
               />
             </div>
 
             <div className="flex flex-col">
               <Label
                 htmlFor="instituteName"
-                className="mb-2 font-normal text-[12px] sm:text-[10px] md:text-[12px] xl:text-[14px] 2xl:text-[16px]"
+                className="mb-2 font-normal text-[12px] sm:text-[12px] md:text-[12px] xl:text-[14px] 2xl:text-[16px]"
               >
                 Institute Name
               </Label>
               <Input
                 id="instituteName"
                 placeholder="Enter Your Institute Name"
-                className="w-full text-black placeholder:text-[#86909C] placeholder:text-[8px] sm:placeholder:text-[8px] md:placeholder:text-[10px] lg:placeholder:text-[12px] 2xl:placeholder:text-[14px] border border-[#E5E6EB] rounded-[5px]"
+                className="w-full text-black placeholder:text-[#86909C] placeholder:text-[12px] sm:placeholder:text-[8px] md:placeholder:text-[10px] lg:placeholder:text-[12px] 2xl:placeholder:text-[14px] border border-[#E5E6EB] rounded-[5px]"
               />
             </div>
           </div>
@@ -81,56 +81,56 @@ export const NewTicket = ({ triggerButton }) => {
             <div className="flex flex-col">
               <Label
                 htmlFor="department"
-                className="mb-2 font-normal text-[12px] sm:text-[10px] md:text-[12px] xl:text-[14px] 2xl:text-[16px]"
+                className="mb-2 font-normal text-[12px] sm:text-[12px] md:text-[12px] xl:text-[14px] 2xl:text-[16px]"
               >
                 Department
               </Label>
               <Input
                 id="department"
                 placeholder="Select Project Name from list"
-                className="w-full text-[#86909C] placeholder:text-[8px] sm:placeholder:text-[8px] md:placeholder:text-[10px] lg:placeholder:text-[12px] 2xl:placeholder:text-[14px] border border-[#E5E6EB] rounded-[5px]"
+                className="w-full text-[#86909C] placeholder:text-[8px] sm:placeholder:text-[12px] md:placeholder:text-[10px] lg:placeholder:text-[12px] 2xl:placeholder:text-[14px] border border-[#E5E6EB] rounded-[5px]"
               />
             </div>
 
             <div className="flex flex-col">
               <Label
                 htmlFor="severitylevel"
-                className="mb-2 font-normal text-[12px] sm:text-[10px] md:text-[12px] xl:text-[14px] 2xl:text-[16px]"
+                className="mb-2 font-normal text-[12px] sm:text-[12px] md:text-[12px] xl:text-[14px] 2xl:text-[16px]"
               >
                 Severity Level
               </Label>
               <Input
                 id="severitylevel"
                 placeholder="Select Severity Level from list"
-                className="w-full text-[#86909C] placeholder:text-[8px] sm:placeholder:text-[8px] md:placeholder:text-[10px] lg:placeholder:text-[12px] 2xl:placeholder:text-[14px] border border-[#E5E6EB] rounded-[5px]"
+                className="w-full text-[#86909C] placeholder:text-[8px] sm:placeholder:text-[12px] md:placeholder:text-[10px] lg:placeholder:text-[12px] 2xl:placeholder:text-[14px] border border-[#E5E6EB] rounded-[5px]"
               />
             </div>
 
             <div className="flex flex-col">
               <Label
                 htmlFor="project"
-                className="mb-2 font-normal text-[12px] sm:text-[10px] md:text-[12px] xl:text-[14px] 2xl:text-[16px]"
+                className="mb-2 font-normal text-[12px] sm:text-[12px] md:text-[12px] xl:text-[14px] 2xl:text-[16px]"
               >
                 Project
               </Label>
               <Input
                 id="project"
                 placeholder="Select Project from list"
-                className="w-full text-[#86909C] placeholder:text-[8px] sm:placeholder:text-[8px] md:placeholder:text-[10px] lg:placeholder:text-[12px] 2xl:placeholder:text-[14px] border border-[#E5E6EB] rounded-[5px]"
+                className="w-full text-[#86909C] placeholder:text-[8px] sm:placeholder:text-[12px] md:placeholder:text-[10px] lg:placeholder:text-[12px] 2xl:placeholder:text-[14px] border border-[#E5E6EB] rounded-[5px]"
               />
             </div>
 
             <div className="flex flex-col">
               <Label
                 htmlFor="screennumber"
-                className="mb-2 font-normal text-[12px] sm:text-[10px] md:text-[12px] xl:text-[14px] 2xl:text-[16px]"
+                className="mb-2 font-normal text-[12px] sm:text-[12px] md:text-[12px] xl:text-[14px] 2xl:text-[16px]"
               >
                 Screen Number
               </Label>
               <Input
                 id="screennumber"
                 placeholder="Enter Screen Number"
-                className="w-full text-[#86909C] placeholder:text-[8px] sm:placeholder:text-[8px] md:placeholder:text-[10px] lg:placeholder:text-[12px] 2xl:placeholder:text-[14px] border border-[#E5E6EB] rounded-[5px]"
+                className="w-full text-[#86909C] placeholder:text-[8px] sm:placeholder:text-[12px] md:placeholder:text-[10px] lg:placeholder:text-[12px] 2xl:placeholder:text-[14px] border border-[#E5E6EB] rounded-[5px]"
               />
             </div>
           </div>
@@ -139,21 +139,21 @@ export const NewTicket = ({ triggerButton }) => {
             <div className="flex flex-col">
               <Label
                 htmlFor="ticketsubject"
-                className="mb-2 font-normal text-[12px] sm:text-[10px] md:text-[12px] xl:text-[14px] 2xl:text-[16px]"
+                className="mb-2 font-normal text-[12px] sm:text-[12px] md:text-[12px] xl:text-[14px] 2xl:text-[16px]"
               >
                 Ticket Subject
               </Label>
               <Input
                 id="ticketsubject"
                 placeholder="Enter Ticket Subject"
-                className="w-full text-[#86909C] placeholder:text-[8px] sm:placeholder:text-[8px] md:placeholder:text-[10px] lg:placeholder:text-[12px] 2xl:placeholder:text-[14px] border border-[#E5E6EB] rounded-[5px]"
+                className="w-full text-[#86909C] placeholder:text-[8px] sm:placeholder:text-[12px] md:placeholder:text-[10px] lg:placeholder:text-[12px] 2xl:placeholder:text-[14px] border border-[#E5E6EB] rounded-[5px]"
               />
             </div>
 
             <div className="flex flex-col">
               <Label
                 htmlFor="attachment"
-                className="mb-2 font-normal text-[12px] sm:text-[10px] md:text-[12px] xl:text-[14px] 2xl:text-[16px]"
+                className="mb-2 font-normal text-[12px] sm:text-[12px] md:text-[12px] xl:text-[14px] 2xl:text-[16px]"
               >
                 Select Attachment
               </Label>
@@ -167,7 +167,7 @@ export const NewTicket = ({ triggerButton }) => {
                 />
                 <Input
                   placeholder="Select Attachment"
-                  className="w-full text-[#86909C] placeholder:text-[8px] sm:placeholder:text-[8px] md:placeholder:text-[10px] lg:placeholder:text-[12px] 2xl:placeholder:text-[14px] border border-[#E5E6EB] rounded-[5px] pr-8 cursor-pointer"
+                  className="w-full text-[#86909C] placeholder:text-[8px] sm:placeholder:text-[10px] md:placeholder:text-[10px] lg:placeholder:text-[12px] 2xl:placeholder:text-[14px] border border-[#E5E6EB] rounded-[5px] pr-8 cursor-pointer"
                   readOnly
                   value={selectedFileName}
                   onClick={handleInputClick} // Add click handler to the input
@@ -199,7 +199,7 @@ export const NewTicket = ({ triggerButton }) => {
               </Label>
               <textarea
                 id="ticketDescription"
-                className="w-full h-[100px] outline-none p-2 border border-[#E5E6EB] placeholder:text-[8px] sm:placeholder:text-[8px] md:placeholder:text-[10px] lg:placeholder:text-[12px] 2xl:placeholder:text-[14px] rounded-[5px] resize-none focus"
+                className="w-full h-[100px] outline-none p-2 border border-[#E5E6EB] placeholder:text-[8px] sm:placeholder:text-[10px] md:placeholder:text-[10px] lg:placeholder:text-[12px] 2xl:placeholder:text-[14px] rounded-[5px] resize-none focus"
                 placeholder="Enter Ticket Description"
               />
             </div>

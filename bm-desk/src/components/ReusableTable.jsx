@@ -182,9 +182,9 @@ function ReusableTable({ data, headers, currentTab, defaultSortConfig }) {
                         <DropdownMenuTrigger asChild>
                           
 
-                          <div className="flex items-center bg-[#F8F9FB] rounded-[4px] border-[1.5px] border-[#0E42D2] px-[12px] py-[4px] text-[#0E42D2] gap-[8px] w-fit">
+                          <div className="flex items-center cursor-pointer bg-[#F8F9FB] rounded-[4px] border-[1.5px] border-[#0E42D2] px-[12px] py-[4px] text-[#0E42D2] gap-[8px] w-fit">
                             <Button
-                              className="flex-shrink-0 rounded-[3px] border-none shadow-none !outline-none !p-0 !h-auto font-normal text-[10px] md:text-[12px] lg:text-[12px]"
+                              className="flex-shrink-0 rounded-[3px] border-none shadow-none !outline-none !p-0 !h-auto font-normal text-[10px] md:text-[12px] lg:text-[12px] cursor-pointer"
                               variant="outline"
                             >
                               Action
@@ -238,6 +238,14 @@ function ReusableTable({ data, headers, currentTab, defaultSortConfig }) {
                             className="cursor-pointer"
                           >
                             Management Approval
+                          </DropdownMenuItem>
+                          <DropdownMenuItem
+                            onClick={() =>
+                              handleDropdownSelect("Split Ticket")
+                            }
+                            className="cursor-pointer"
+                          >
+                            Split Ticket
                           </DropdownMenuItem>
                         </DropdownMenuContent>
                       </DropdownMenu>

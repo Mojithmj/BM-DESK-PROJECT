@@ -60,6 +60,7 @@ function ActionTickets({ isOpen, onClose, onSubmit, action }) {
     { value: "rejectticket", label: "Reject Ticket" },
     { value: "resolveticket", label: "Verify & Close" },
     { value: "managementapproval", label: "Management Approval" },
+    { value: "splitticket", label: "Split Ticket" },
   ];
 
   const handleActionChange = (newAction) => {
@@ -163,11 +164,9 @@ function ActionTickets({ isOpen, onClose, onSubmit, action }) {
     document.getElementById("file-input").click();
   };
   const handleDateChange = (selectedDate) => {
-    console.log('Selected date:', selectedDate)
+    console.log("Selected date:", selectedDate);
     // Do something with the selected date
-  }
-
-
+  };
 
   const renderFieldsForAction = () => {
     switch (formData.action) {
@@ -177,47 +176,51 @@ function ActionTickets({ isOpen, onClose, onSubmit, action }) {
             <div className="md:max-h-[68vh] md:overflow-y-auto">
               <div className="flex flex-col gap-2">
                 <div className="flex flex-col gap-1">
-                  <h1 className="text-[#1D2129] text-[12px] font-medium">
+                  <h1 className="text-[#1D2129] text-[12px] sm:text-[10px] md:text-[12px] xl:text-[14px] 2xl:text-[16px] font-medium">
                     Department
                   </h1>
                   <Combobox
                     items={department}
                     placeholder="Select Department"
                     searchPlaceholder="Search department..."
+                    className="placeholder:text-[14px]"
                   />
                 </div>
                 <div className="flex flex-col gap-1">
-                  <h1 className="text-[#1D2129] text-[12px] font-medium">
+                  <h1 className="text-[#1D2129] text-[12px] sm:text-[10px] md:text-[12px] xl:text-[14px] 2xl:text-[16px] font-medium">
                     Category
                   </h1>
                   <Combobox
                     items={category}
                     placeholder="Select Category"
                     searchPlaceholder="Search Category..."
+                    className="placeholder:text-[14px]"
                   />
                 </div>
                 <div className="flex flex-col gap-1">
-                  <h1 className="text-[#1D2129] text-[12px] font-medium">
+                  <h1 className="text-[#1D2129] text-[12px] sm:text-[10px] md:text-[12px] xl:text-[14px] 2xl:text-[16px] font-medium">
                     Project
                   </h1>
                   <Combobox
                     items={project}
                     placeholder="Select Project"
                     searchPlaceholder="Search Project..."
+                    className="placeholder:text-[14px]"
                   />
                 </div>
                 <div className="flex flex-col gap-1">
-                  <h1 className="text-[#1D2129] text-[12px] font-medium">
+                  <h1 className="text-[#1D2129] text-[12px] sm:text-[10px] md:text-[12px] xl:text-[14px] 2xl:text-[16px] font-medium">
                     Project Manager
                   </h1>
                   <Combobox
                     items={projectmanager}
                     placeholder="Select Project Manager"
                     searchPlaceholder="Search Project Manager..."
+                    className="!placeholder:text-[14px]"
                   />
                 </div>
                 <div className="flex flex-col gap-1">
-                  <h1 className="text-[#1D2129] text-[12px] font-medium">
+                  <h1 className="text-[#1D2129] text-[12px] sm:text-[10px] md:text-[12px] xl:text-[14px] 2xl:text-[16px] font-medium">
                     Issue Type
                   </h1>
                   <Combobox
@@ -227,17 +230,7 @@ function ActionTickets({ isOpen, onClose, onSubmit, action }) {
                   />
                 </div>
                 <div className="flex flex-col gap-1">
-                  <h1 className="text-[#1D2129] text-[12px] font-medium">
-                    Issue Type
-                  </h1>
-                  <Combobox
-                    items={issuetype}
-                    placeholder="Select Issue Type"
-                    searchPlaceholder="Search Issue Type..."
-                  />
-                </div>
-                <div className="flex flex-col gap-1">
-                  <h1 className="text-[#1D2129] text-[12px] font-medium">
+                  <h1 className="text-[#1D2129] text-[12px] sm:text-[10px] md:text-[12px] xl:text-[14px] 2xl:text-[16px] font-medium">
                     Required date
                   </h1>
                   {/* <div className="relative flex items-center w-full">
@@ -254,7 +247,7 @@ function ActionTickets({ isOpen, onClose, onSubmit, action }) {
                 </div>
                 <div className="flex flex-col gap-1">
                   <div className="flex flex-col gap-2">
-                    <h1 className="text-[#1D2129] text-[12px] font-medium">
+                    <h1 className="text-[#1D2129] text-[12px] sm:text-[10px] md:text-[12px] xl:text-[14px] 2xl:text-[16px] font-medium">
                       Select Attachment
                     </h1>
 
@@ -291,7 +284,7 @@ function ActionTickets({ isOpen, onClose, onSubmit, action }) {
                   </div>
                 </div>
                 <div className="flex flex-col gap-1">
-                  <h1 className="text-[#1D2129] text-[12px] font-medium">
+                  <h1 className="text-[#1D2129] text-[12px] sm:text-[10px] md:text-[12px] xl:text-[14px] 2xl:text-[16px] font-medium">
                     Description
                   </h1>
                   <Textarea className="border-[#E5E6EB] rounded-[5px] h-[100px]" />
@@ -304,7 +297,7 @@ function ActionTickets({ isOpen, onClose, onSubmit, action }) {
         return (
           <>
             <div className="flex flex-col gap-1">
-              <h1 className="text-[#1D2129] text-[12px] font-medium">
+              <h1 className="text-[#1D2129] text-[12px] sm:text-[10px] md:text-[12px] xl:text-[14px] 2xl:text-[16px] font-medium">
                 Reason For Rejection
               </h1>
               <Textarea className="border-[#E5E6EB] rounded-[5px] h-[100px]" />
@@ -341,7 +334,7 @@ function ActionTickets({ isOpen, onClose, onSubmit, action }) {
             </div> */}
             {/* <Label>Comments</Label> */}
             <div className="flex flex-col gap-1">
-              <h1 className="text-[#1D2129] text-[12px] font-medium">
+              <h1 className="text-[#1D2129] text-[12px] sm:text-[10px] md:text-[12px] xl:text-[14px] 2xl:text-[16px] font-medium">
                 Comments
               </h1>
 
@@ -356,7 +349,7 @@ function ActionTickets({ isOpen, onClose, onSubmit, action }) {
               <div className="flex flex-col">
                 <Label
                   htmlFor="select-category"
-                  className="mb-2 font-medium text-[12px] text-[#1D2129] "
+                  className="mb-2 font-medium text-[12px] sm:text-[10px] md:text-[12px] xl:text-[14px] 2xl:text-[16px] text-[#1D2129] "
                 >
                   Select category
                 </Label>
@@ -371,11 +364,31 @@ function ActionTickets({ isOpen, onClose, onSubmit, action }) {
             <div className="flex flex-col">
               <Label
                 htmlFor="comments"
-                className="mb-2 font-normal text-[12px]"
+                className="mb-2 font-medium text-[12px] sm:text-[10px] md:text-[12px] xl:text-[14px] 2xl:text-[16px] text-[#1D2129] "
               >
                 Comments
               </Label>
               <Textarea className="border-[#E5E6EB] rounded-[5px] h-[100px]" />
+            </div>
+          </>
+        );
+      case "Split Ticket":
+        return (
+          <>
+            <div className="flex flex-col">
+              <div className="flex flex-col">
+                <Label
+                  htmlFor="select-category"
+                  className="mb-2 font-medium text-[12px] sm:text-[10px] md:text-[12px] xl:text-[14px] 2xl:text-[16px] text-[#1D2129] "
+                >
+                  Split Count
+                </Label>
+                <Input
+                  type="text"
+                  placeholder="Enter Split Count"
+                  className="border-[#E5E6EB] rounded-[5px] placeholder:text-[#878A99] placeholder:text-[12px] 2xl:placeholder:text-[14px]"
+                />
+              </div>
             </div>
           </>
         );
@@ -389,7 +402,7 @@ function ActionTickets({ isOpen, onClose, onSubmit, action }) {
       <Sheet open={isOpen} onOpenChange={onClose}>
         <SheetContent className="bg-white md:h-[100vh] md:overflow-y-auto">
           <SheetHeader>
-            <SheetTitle>Ticket Action</SheetTitle>
+            <SheetTitle className="text-[24px] font-bold font-inter text-[#165DFF]">Ticket Action</SheetTitle>
           </SheetHeader>
           <div className="grid grid-cols-1 gap-4 py-4">
             {/* Action dropdown using Popover */}
@@ -399,7 +412,7 @@ function ActionTickets({ isOpen, onClose, onSubmit, action }) {
                   variant="outline"
                   role="combobox"
                   aria-expanded={popoverOpen}
-                  className="w-full justify-between text-[#165DFF] bg-[#E8F3FF] text-[12px] md:text-[12px] lg:text-[12px] 2xl:text-[14px] border-[#E8F3FF] hover:text-[#165DFF] hover:bg-[#E8F3FF] font-normal !rounded-[5px]"
+                  className="w-full justify-between text-[#165DFF] bg-[#E8F3FF] text-[12px] 2xl:text-[14px] border-[#E8F3FF] hover:text-[#165DFF] hover:bg-[#E8F3FF] font-normal !rounded-[5px]"
                 >
                   {dropdownValue}
                   <RiArrowDropDownLine className="opacity-50 size-1" />

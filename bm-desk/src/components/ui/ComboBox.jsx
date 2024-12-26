@@ -36,13 +36,12 @@ export function Combobox({
 
   // Determine button styles based on selection state
   const buttonStyles = cn(
-    "w-full justify-between rounded-[5px] font-normal text-[12px]",
+    "w-full justify-between rounded-[5px] font-normal text-[12px] 2xl:text-[14px]",
     value 
       ? "bg-[#E8F3FF] text-[#165DFF] border-[#E8F3FF] hover:bg-[#E8F3FF] hover:text-[#165DFF]" 
       : "border-[#E5E6EB] text-[#878A99]",
     className
   );
-
   return (
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
@@ -61,7 +60,7 @@ export function Combobox({
           )} />
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="w-[510px] p-0 bg-white">
+      <PopoverContent className="w-[500px] p-0 bg-white">
         <Command>
           <CommandInput 
             placeholder={searchPlaceholder} 
