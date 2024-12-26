@@ -10,8 +10,14 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 function Sidebar({ isSidebarOpen, setIsSidebarOpen }) {
   // const { isSidebarOpen, setIsSidebarOpen } = useContext(SidebarContext);
   // const [activePath, setActivePath] = useState(window.location.pathname);
+  // const [activePath, setActivePath] = useState(() => {
+  //   const currentPath = window.location.pathname;
+  //   return currentPath === "/" ? "/dashboard" : currentPath;
+  // });
+  // Change this part near the top of your component
   const [activePath, setActivePath] = useState(() => {
     const currentPath = window.location.pathname;
+    // Ensure we always store the full path including /dashboard
     return currentPath === "/" ? "/dashboard" : currentPath;
   });
   const navigate = useNavigate();
@@ -36,28 +42,83 @@ function Sidebar({ isSidebarOpen, setIsSidebarOpen }) {
     };
   }, [open]); // Only re-run if open state changes
 
+  // const handleItemClick = (item, isMobile = false) => {
+  //   if (item.dropdown) {
+  //     if (isMobile) {
+  //       setMobileOpenDropdown(
+  //         mobileOpenDropdown === item.label ? null : item.label
+  //       );
+  //     } else {
+  //       setOpenDropdown(openDropdown === item.label ? null : item.label);
+  //     }
+  //   }
+
+  //   if (item.path) {
+  //     // setActivePath(item.path);
+  //     // navigate(item.path);
+  //     const path = item.path === "/" ? "/dashboard" : `/dashboard${item.path}`;
+  //     setActivePath(path);
+  //     navigate(path);
+  //     if (isMobile) {
+  //       setOpen(false); // Close the sheet
+  //     }
+  //     if (window.innerWidth < 1024) {
+  //       setIsSidebarOpen(false);
+  //     }
+  //   }
+  // };
+
+  // const handleItemClick = (item, isMobile = false) => {
+  //   if (item.dropdown) {
+  //     if (isMobile) {
+  //       setMobileOpenDropdown(
+  //         mobileOpenDropdown === item.label ? null : item.label
+  //       );
+  //     } else {
+  //       setOpenDropdown(openDropdown === item.label ? null : item.label);
+  //     }
+  //     return; // Add this to prevent navigation when clicking dropdown items
+  //   }
+
+  //   if (item.path) {
+  //     const fullPath =
+  //       item.path === "/" ? "/dashboard" : `/dashboard${item.path}`;
+  //     setActivePath(fullPath); // Set the full path
+  //     navigate(fullPath);
+
+  //     if (isMobile) {
+  //       setOpen(false);
+  //     }
+  //     if (window.innerWidth < 1024) {
+  //       setIsSidebarOpen(false);
+  //     }
+  //   }
+  // };
   const handleItemClick = (item, isMobile = false) => {
     if (item.dropdown) {
+      // Toggle dropdown
       if (isMobile) {
-        setMobileOpenDropdown(
-          mobileOpenDropdown === item.label ? null : item.label
-        );
+        setMobileOpenDropdown(mobileOpenDropdown === item.label ? null : item.label);
       } else {
         setOpenDropdown(openDropdown === item.label ? null : item.label);
       }
-    }
-
-    if (item.path) {
-      // setActivePath(item.path);
-      // navigate(item.path);
-      const path = item.path === "/" ? "/dashboard" : `/dashboard${item.path}`;
-      setActivePath(path);
-      navigate(path);
-      if (isMobile) {
-        setOpen(false); // Close the sheet
-      }
-      if (window.innerWidth < 1024) {
-        setIsSidebarOpen(false);
+    } else {
+      // If clicking a non-dropdown item, close any open dropdown
+      setOpenDropdown(null);
+      setMobileOpenDropdown(null);
+      
+      // Navigate to the path
+      if (item.path) {
+        const fullPath = item.path === "/" ? "/dashboard" : `/dashboard${item.path}`;
+        setActivePath(fullPath);
+        navigate(fullPath);
+        
+        if (isMobile) {
+          setOpen(false);
+        }
+        if (window.innerWidth < 1024) {
+          setIsSidebarOpen(false);
+        }
       }
     }
   };
@@ -73,11 +134,26 @@ function Sidebar({ isSidebarOpen, setIsSidebarOpen }) {
   };
 
   const menuItems = [
-    {
-      label: "Dashboards",
-      icon: <RiHomeLine />,
-      path: "/",
-    },
+    ...(managername
+      ? [
+        {
+          label: "Dashboards",
+          icon: <RiHomeLine />,
+          path: "/adminteammonitoring",
+        },
+        ]
+      : [
+        {
+          label: "Dashboards",
+          icon: <RiHomeLine />,
+          path: "/",
+        },
+        ]),
+    // {
+    //   label: "Dashboards",
+    //   icon: <RiHomeLine />,
+    //   path: "/",
+    // },
     // Conditional Task Management/Productivity section
     ...(managername
       ? [
@@ -680,7 +756,8 @@ function Sidebar({ isSidebarOpen, setIsSidebarOpen }) {
         <div
           key={index}
           className={`mb-2 ${
-            activePath === item.path
+            activePath ===
+            (item.path === "/" ? "/dashboard" : `/dashboard${item.path}`)
               ? "bg-[#E8F3FF] text-[#165DFF] rounded-[4px] border-[1px] border-[#BEDAFF]"
               : "text-[#4E5969]"
           }`}
@@ -710,7 +787,7 @@ function Sidebar({ isSidebarOpen, setIsSidebarOpen }) {
                 <div
                   key={subIndex}
                   className={`${
-                    activePath === subItem.path
+                    activePath === `/dashboard${subItem.path}`
                       ? "bg-[#E8F3FF] text-[#165DFF] rounded-[4px] border-[1px] border-[#BEDAFF]"
                       : "text-[#4E5969]"
                   }`}
@@ -718,8 +795,9 @@ function Sidebar({ isSidebarOpen, setIsSidebarOpen }) {
                   <div
                     className="group px-6 border border-white py-2 gap-2 flex flex-row items-center text-sm hover:bg-[#E8F3FF] hover:text-[#165DFF] rounded-[4px] hover:border-[1px] hover:border-[#BEDAFF] cursor-pointer"
                     // onClick={() => {
-                    //   setActivePath(subItem.path);
-                    //   navigate(subItem.path);
+                    //   const fullPath = `/dashboard${subItem.path}`;
+                    //   setActivePath(fullPath);
+                    //   navigate(fullPath);
                     //   if (window.innerWidth < 1024) {
                     //     setIsSidebarOpen(false);
                     //   }
