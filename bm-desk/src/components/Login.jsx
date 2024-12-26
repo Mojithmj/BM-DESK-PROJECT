@@ -20,8 +20,8 @@ function Login() {
 
   // List of valid username-password combinations
   const validUsers = [
-    { username: "mojith", password: "1234" },
-    { username: "ramduth", password: "1234" },
+    { username: "projectmanager", password: "1234" },
+    { username: "supportuser", password: "1234" },
   ];
 
   // Handle form submission
@@ -40,10 +40,10 @@ function Login() {
       localStorage.setItem("mypassword", mypassword);
 
       // Redirect based on the username
-      if (isValidUser.username === "mojith") {
+      if (isValidUser.username === "projectmanager") {
         navigate("/dashboard/adminteammonitoring", { replace: true });
-      } else if (isValidUser.username === "ramduth") {
-        navigate("/dashboard", { replace: true }); // Redirect to '/assignedtickets' for Ramduth
+      } else if (isValidUser.username === "supportuser") {
+        navigate("/dashboard", { replace: true }); // Redirect to '/assignedtickets' for supportuser
       }
     } else {
       setError("Invalid username or password. Please try again");

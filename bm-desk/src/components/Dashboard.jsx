@@ -41,7 +41,7 @@ function Dashboard() {
   const [todaydrop, setTodaydrop] = useState(false);
   const [selectedOption, setSelectedOption] = useState("Today");
 
-  const managername = localStorage.getItem("myusername") === "mojith";
+  const managername = localStorage.getItem("myusername") === "projectmanager";
   const navigate = useNavigate();
 
   // all time dropdown
