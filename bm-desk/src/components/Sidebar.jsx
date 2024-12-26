@@ -22,7 +22,7 @@ function Sidebar({ isSidebarOpen, setIsSidebarOpen }) {
   });
   const navigate = useNavigate();
   const [openDropdown, setOpenDropdown] = useState(null);
-  const managername = localStorage.getItem("myusername") === "mojith";
+  const managername = localStorage.getItem("myusername") === "projectmanager";
   const [mobileOpenDropdown, setMobileOpenDropdown] = useState(null);
   const [open, setOpen] = useState(false);
 
