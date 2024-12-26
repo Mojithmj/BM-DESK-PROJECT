@@ -101,7 +101,7 @@ function Escalatedreportcontent({ onCountUpdate }) {
     setTimeout(() => {
       setVisibleDataCount((prevCount) => prevCount + 6); // Show 6 more tickets
       setLoading(false); // Stop loading
-    }, 1000); // Simulate a 1-second delay for loading data
+    }, 1000); // Simulate a 1-second delay for loading datas
   };
 
   const tabs = [
