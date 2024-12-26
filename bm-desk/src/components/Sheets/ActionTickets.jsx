@@ -402,7 +402,9 @@ function ActionTickets({ isOpen, onClose, onSubmit, action }) {
       <Sheet open={isOpen} onOpenChange={onClose}>
         <SheetContent className="bg-white md:h-[100vh] md:overflow-y-auto">
           <SheetHeader>
-            <SheetTitle className="text-[24px] font-bold font-inter text-[#165DFF]">Ticket Action</SheetTitle>
+            <SheetTitle className="text-[24px] font-bold font-inter text-[#165DFF]">
+              Ticket Action
+            </SheetTitle>
           </SheetHeader>
           <div className="grid grid-cols-1 gap-4 py-4">
             {/* Action dropdown using Popover */}
