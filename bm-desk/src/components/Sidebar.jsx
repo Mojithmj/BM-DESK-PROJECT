@@ -26,7 +26,7 @@ function Sidebar({ isSidebarOpen, setIsSidebarOpen }) {
   const [mobileOpenDropdown, setMobileOpenDropdown] = useState(null);
   const [open, setOpen] = useState(false);
 
-  // Add resize event listener to close sheet when screen width is >= 1024px
+  // Add resize event listener to close sheet when screen width is >= 
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth >= 1024 && open) {
