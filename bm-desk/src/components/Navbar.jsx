@@ -4,18 +4,9 @@ import { FiSearch } from "react-icons/fi";
 import { PiBellThin } from "react-icons/pi";
 import Avatarimage from "../assets/Avatar.png";
 import { IoIosArrowDropdownCircle } from "react-icons/io";
-import { IoSettingsOutline } from "react-icons/io5";
 import Ticketimageone from "../assets/Avatarimageone.png";
 import Ticketimagetwo from "../assets/Avatarimagetwo.png";
 import { useNavigate } from "react-router-dom";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
 
 function Navbar() {
   const [circleDropdown, setCircleDropdown] = useState(false);
@@ -24,9 +15,7 @@ function Navbar() {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const openDialog = () => setIsDialogOpen(true);
 
-  const toggleDropdown = () => {
-    setCircleDropdown((prev) => !prev);
-  };
+  const toggleDropdown = () => setCircleDropdown((prev) => !prev);
 
   const handleOutsideClick = (event) => {
     if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
@@ -37,38 +26,29 @@ function Navbar() {
   // Close dropdown when clicking outside
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-        setCircleDropdown(false);
+      // Check if click is on the notification bell itself or anywhere inside the dropdown
+      const isNotificationBell = notifydropdownRef.current && notifydropdownRef.current.contains(event.target);
+      // Check if click is inside the search area
+      const isSearchArea = event.target.closest('.notification-search-area');
+      
+      if (!isNotificationBell && !isSearchArea) {
+        setNotifyCircleDropdown(false);
       }
     };
-
+  
     document.addEventListener("mousedown", handleClickOutside);
-
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
-
-  // notification drop down
+  
+  // Notification dropdown
   const [notifycircleDropdown, setNotifyCircleDropdown] = useState(false);
   const notifydropdownRef = useRef(null);
 
-  const [notifyisDialogOpen, setNotifyisDialogOpen] = useState(false);
-  const notifyopenDialog = () => setNotifyisDialogOpen(true);
+  const [searchQuery, setSearchQuery] = useState("");  // State for search query
 
-  const notifytoggleDropdown = () => {
-    setNotifyCircleDropdown((prev) => !prev);
-  };
-
-  const notifyhandleOutsideClick = (event) => {
-    if (
-      notifydropdownRef.current &&
-      !notifydropdownRef.current.contains(event.target)
-    ) {
-      setNotifyCircleDropdown(false);
-    }
-  };
-
+  // Sample tickets (notifications)
   const tickets = [
     {
       image: Ticketimageone,
@@ -100,9 +80,30 @@ function Navbar() {
       description: "Ticket - TICKT-7424 has been resolved",
       time: "Sept 06",
     },
+    {
+      image: Ticketimagetwo,
+      title: "Ticket 3453",
+      description: "Ticket - TICKT-7425 has been resolved",
+      time: "3 hours",
+    },
+    {
+      image: Ticketimageone,
+      title: "Ticket 3454",
+      description: "Ticket - TICKT-7426 has been resolved",
+      time: "Yesterday",
+    },
   ];
 
   const navigate = useNavigate();
+
+  // Filter tickets based on search query
+  const filteredTickets = tickets.filter((ticket) => {
+    return (
+      ticket.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      ticket.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      ticket.time.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+  });
 
   return (
     <div className="w-full bg-white">
@@ -135,62 +136,66 @@ function Navbar() {
         {/* Right Section: Icons and Profile */}
         <div className="flex items-center gap-4">
           {/* Notification Bell - Hidden below md */}
-          <div ref={notifydropdownRef} className="hidden md:block">
-            <PiBellThin
-              onClick={notifytoggleDropdown}
-              className="text-[23px] lg:text-[27px] 2xl:text-[31px] cursor-pointer"
-            />
+          <div ref={notifydropdownRef} className="hidden md:block relative">
+  <PiBellThin
+    onClick={() => setNotifyCircleDropdown((prev) => !prev)}
+    className="text-[23px] lg:text-[27px] 2xl:text-[31px] cursor-pointer"
+  />
           </div>
 
           {/* Notifications Dropdown */}
           {notifycircleDropdown && (
-            <div className="absolute px-[16px] 2xl:py-[32px] lg:py-[28px] top-10 right-64 bg-white border border-gray-300 shadow-md rounded mt-1">
-              <div className="flex flex-col gap-4">
-                <div className="flex flex-col gap-5">
-                  <div className="flex text-[#165DFF] font-Inter font-normal 2xl:text-[16px] lg:text-[16px] md:text-[12px] sm:text-[10px]  px-[12px] py-[8px] border-b-2 border-[#165DFF]  justify-center">
-                    Notifications
-                  </div>
-                  <div className="flex gap-2">
-                    <div className="border-[2px] w-full">
-                      <input
-                        type="text"
-                        placeholder="Search Notifications"
-                        className="bg-transparent placeholder-[#878A99] border-none outline-none text-sm font-normal px-[16px] py-[8px] rounded-[4px] border-[1px] border-[#BEDAFF]"
-                      />
-                    </div>
+  <div className="absolute px-[16px] 2xl:py-[32px] lg:py-[28px] top-10 right-64 bg-white border border-gray-300 shadow-md rounded mt-1">
+    <div className="flex flex-col gap-4">
+      <div className="flex flex-col gap-5">
+        <div className="flex text-[#165DFF] font-Inter font-normal 2xl:text-[16px] lg:text-[16px] md:text-[12px] sm:text-[10px] px-[12px] py-[8px] border-b-2 border-[#165DFF] justify-center">
+          Notifications
+        </div>
+        {/* Add notification-search-area class here */}
+        <div className="flex gap-2 notification-search-area">
+          <div className="border-[2px] w-full">
+            <input
+              type="text"
+              placeholder="Search Notifications"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="bg-transparent placeholder-[#878A99] border-none outline-none text-sm font-normal px-[16px] py-[8px] rounded-[4px] border-[1px] border-[#BEDAFF]"
+            />
+          </div>
                     <div className="bg-[#BEDAFF] rounded-[3px] px-[13px] py-[10px] justify-center text-[#165DFF]">
                       <FiSearch className="w-[10px] h-[10px] md:w-[13px] md:h-[13px] lg:w-[18px] lg:h-[18px] 2xl:w-[20px] 2xl:h-[20px]" />
                     </div>
                   </div>
                 </div>
 
-                {/* ticket component */}
+                {/* Ticket component */}
                 <div className="h-[270px] max-h-[280px] overflow-y-auto pr-2">
                   <div className="w-full max-w-[400px] sm:max-w-[600px] md:max-w-[800px] lg:max-w-[900px]">
                     <div className="flex flex-col gap-[16px]">
-                      {tickets.map((ticket, index) => (
-                        <div
-                          key={index}
-                          className="flex items-center gap-[16px]"
-                        >
-                          <img
-                            src={ticket.image}
-                            className="rounded-[64px] w-[40px] h-[40px]"
-                            alt={`Ticket ${index + 1}`}
-                          />
-                          <div className="flex flex-col flex-grow">
-                            <p className="font-Inter text-[14px] normal font-semibold text-[#1D2129]">
-                              {ticket.title}
-                            </p>
-                            <p className="font-Inter text-[12px] normal font-normal text-[#86909C]">
-                              {ticket.description}
+                      {filteredTickets.length > 0 ? (
+                        filteredTickets.map((ticket, index) => (
+                          <div key={index} className="flex items-center gap-[16px]">
+                            <img
+                              src={ticket.image}
+                              className="rounded-[64px] w-[40px] h-[40px]"
+                              alt={`Ticket ${index + 1}`}
+                            />
+                            <div className="flex flex-col flex-grow">
+                              <p className="font-Inter text-[14px] normal font-semibold text-[#1D2129]">
+                                {ticket.title}
+                              </p>
+                              <p className="font-Inter text-[12px] normal font-normal text-[#86909C]">
+                                {ticket.description}
+                              </p>
+                            </div>
+                            <p className="font-Inter text-[11px] whitespace-nowrap normal font-normal text-[#878A99]">
+                              {ticket.time}
                             </p>
                           </div>
-                          <p className="font-Inter text-[11px] whitespace-nowrap normal font-normal text-[#878A99]">
-                            {ticket.time}
-                          </p>
-                        </div>
-                      ))}
+                        ))
+                      ) : (
+                        <p className="text-center text-gray-500">No notifications found</p>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -206,11 +211,7 @@ function Navbar() {
           >
             {/* Avatar Image */}
             <div>
-              <img
-                className="w-[40px] h-[40px]"
-                src={Avatarimage}
-                alt="Profile"
-              />
+              <img className="w-[40px] h-[40px]" src={Avatarimage} alt="Profile" />
             </div>
             {/* User Name and Email - Hidden below md */}
             <div className="hidden md:block text-[14px] font-medium">
@@ -239,7 +240,7 @@ function Navbar() {
                     onClick={(e) => {
                       e.stopPropagation();
                       setCircleDropdown(false);
-                      navigate("/dashboard/accountsettings");
+                      navigate("/accountsettings");
                     }}
                   >
                     Account Settings
