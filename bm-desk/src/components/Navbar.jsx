@@ -240,7 +240,7 @@ function Navbar() {
                     onClick={(e) => {
                       e.stopPropagation();
                       setCircleDropdown(false);
-                      navigate("/accountsettings");
+                      navigate("/dashboard/accountsettings");
                     }}
                   >
                     Account Settings
