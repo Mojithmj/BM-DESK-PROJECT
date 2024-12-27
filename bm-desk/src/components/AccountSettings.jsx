@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect} from "react";
 import Avatarimage from "../assets/Avatar Image.png";
 import { FaCamera } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
@@ -17,11 +17,26 @@ function AccountSettings() {
     if (file) {
       const reader = new FileReader();
       reader.onload = (e) => {
-        setProfilePic(e.target.result); // Update profile picture with the new image
+        const imageData = e.target.result;
+        setProfilePic(imageData);
+        localStorage.setItem('userProfileImage', imageData); // Save to localStorage
+        
+        // Dispatch event to update other components
+        window.dispatchEvent(new CustomEvent('profileImageUpdate', {
+          detail: { image: imageData }
+        }));
       };
-      reader.readAsDataURL(file); // Read file as a data URL
+      reader.readAsDataURL(file);
     }
   };
+  
+  // Add useEffect to load saved image
+  useEffect(() => {
+    const savedImage = localStorage.getItem('userProfileImage');
+    if (savedImage) {
+      setProfilePic(savedImage);
+    }
+  }, []);
 
   const tabs = [
     { value: "profile", label: "Profile" },

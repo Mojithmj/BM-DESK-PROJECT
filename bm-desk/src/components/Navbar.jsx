@@ -9,6 +9,7 @@ import Ticketimagetwo from "../assets/Avatarimagetwo.png";
 import { useNavigate } from "react-router-dom";
 
 function Navbar() {
+  const [profileImage, setProfileImage] = useState(Avatarimage);
   const [circleDropdown, setCircleDropdown] = useState(false);
   const dropdownRef = useRef(null);
 
@@ -22,6 +23,23 @@ function Navbar() {
       setCircleDropdown(false);
     }
   };
+
+  useEffect(() => {
+    // Load initial image
+    const savedImage = localStorage.getItem('userProfileImage');
+    if (savedImage) {
+      setProfileImage(savedImage);
+    }
+    const handleImageUpdate = (e) => {
+      setProfileImage(e.detail.image);
+    };
+
+    window.addEventListener('profileImageUpdate', handleImageUpdate);
+
+    return () => {
+      window.removeEventListener('profileImageUpdate', handleImageUpdate);
+    };
+  }, []);
 
   // Close dropdown when clicking outside
   useEffect(() => {
@@ -226,11 +244,11 @@ function Navbar() {
           >
             {/* Avatar Image */}
             <div>
-              <img
-                className="w-[40px] h-[40px]"
-                src={Avatarimage}
-                alt="Profile"
-              />
+            <img
+    className="w-[40px] h-[40px] rounded-full object-cover"
+    src={profileImage || Avatarimage}
+    alt="Profile"
+  />
             </div>
             {/* User Name and Email - Hidden below md */}
             <div className="hidden md:block text-[14px] font-medium">
