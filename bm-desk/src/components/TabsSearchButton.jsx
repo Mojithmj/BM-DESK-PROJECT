@@ -21,7 +21,7 @@ const TabsSearchButton = ({
             <Button
               key={tab.value}
               onClick={() => setActiveTab(tab.value)}
-              className={`font-inter text-[12px] sm:text-[10px] md:text-[12px] xl:text-[14px] 2xl:text-[16px] font-normal p-[6px] rounded-[4px] px-4 transition-colors border-0 shadow-none ${
+              className={`font-inter text-[12px] sm:text-[10px] md:text-[12px] xl:text-[14px] 2xl:text-[16px] font-normal p-[6px] rounded-[4px] 2xl:px-4 xl:px-4 lg:px-4 md:px-4 px-[10px] transition-colors border-0 shadow-none ${
                 activeTab === tab.value
                   ? "bg-black text-white hover:bg-black"
                   : "bg-gray-50 text-black"
@@ -38,11 +38,19 @@ const TabsSearchButton = ({
         <div className="flex-grow sm:flex-grow-0">
           <div className="flex items-center gap-2 px-4 py-2 bg-[#F8F9FB] rounded-[3px] border-[1.5px] border-[#E5EBE9] w-full">
             <FiSearch className="text-black shrink-0" />
-            <Input
-              placeholder="Search Ticket"
-              className="border-none shadow-none !outline-none !p-0 !h-full placeholder:text-[14px] w-full"
-              onChange={onSearch}
-            />
+           {/* Desktop and Tablet Placeholder */}
+  <Input
+    placeholder="Search Ticket"
+    className="hidden md:block border-none shadow-none !outline-none !p-0 !h-full placeholder:text-[14px] w-full"
+    onChange={onSearch}
+  />
+
+  {/* Mobile Placeholder */}
+  <Input
+    placeholder="Search"
+    className="block md:hidden border-none shadow-none !outline-none !p-0 !h-full placeholder:text-[14px] w-full"
+    onChange={onSearch}
+  />
           </div>
         </div>
 

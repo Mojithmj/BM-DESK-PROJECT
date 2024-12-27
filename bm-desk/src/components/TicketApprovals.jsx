@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect  } from "react";
 import Pheader from "./Pheader";
 import { FiSearch } from "react-icons/fi";
 import { Input } from "@/components/ui/input";
@@ -6,10 +6,20 @@ import ReusableTable from "./ReusableTable";
 import NewTicket from "./NewTicket";
 import TabsSearchButton from "./TabsSearchButton";
 
-function TicketApprovals() {
+
+function TicketApprovals({ onCountUpdate }) {
+  
   const [activeTab, setActiveTab] = useState("alltickets");
   const [loading, setLoading] = useState(false); // To track loading state
   const [visibleDataCount, setVisibleDataCount] = useState(6); // Number of tickets visible initially
+  
+useEffect(() => {
+if(onCountUpdate && data?.length){
+  onCountUpdate(data.length)
+}
+
+}, [onCountUpdate])
+
 
   const tabs = [
     { value: "alltickets", label: "All Tickets" },

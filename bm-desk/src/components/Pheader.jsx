@@ -72,7 +72,7 @@ function Pheader({ title, className, showCalendar = true }) {
   };
 
   return (
-    <div className="flex justify-between items-center font-inter text-[20px] md:text-[24px] lg:text-[28px] 2xl:text-[32px] font-semibold leading-[46.76px] tracking-[-1px] text-left custom-underline-position custom-decoration-skip">
+    <div className="flex justify-between items-center font-inter text-[20px] md:text-[24px] lg:text-[28px] 2xl:text-[32px] font-semibold leading-[46.76px] 2xl:tracking-[-1px] xl:tracking-[-1px] lg:tracking-[-1px] md:tracking-[-1px] tracking-[-2px] text-left custom-underline-position custom-decoration-skip">
       <h1 className="text-[#4E5969] flex items-start">{title}</h1>
       {showCalendar && dateContext?.dateRange && (
         <div className={className}>
