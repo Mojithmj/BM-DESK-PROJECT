@@ -172,122 +172,257 @@ function ActionTickets({ isOpen, onClose, onSubmit, action }) {
     switch (formData.action) {
       case "Assign Ticket":
         return (
+          // <>
+          //   <div className="md:max-h-[65vh] md:overflow-y-auto">
+          //     <div className="flex flex-col gap-2">
+          //       <div className="flex flex-col gap-1">
+          //         <h1 className="text-[#1D2129] text-[12px] sm:text-[10px] md:text-[12px] xl:text-[14px] 2xl:text-[16px] font-medium">
+          //           Department
+          //         </h1>
+          //         <Combobox
+          //           items={department}
+          //           placeholder="Select Department"
+          //           searchPlaceholder="Search department..."
+          //           className="placeholder:text-[14px]"
+          //         />
+          //       </div>
+          //       <div className="flex flex-col gap-1">
+          //         <h1 className="text-[#1D2129] text-[12px] sm:text-[10px] md:text-[12px] xl:text-[14px] 2xl:text-[16px] font-medium">
+          //           Category
+          //         </h1>
+          //         <Combobox
+          //           items={category}
+          //           placeholder="Select Category"
+          //           searchPlaceholder="Search Category..."
+          //           className="placeholder:text-[14px]"
+          //         />
+          //       </div>
+          //       <div className="flex flex-col gap-1">
+          //         <h1 className="text-[#1D2129] text-[12px] sm:text-[10px] md:text-[12px] xl:text-[14px] 2xl:text-[16px] font-medium">
+          //           Project
+          //         </h1>
+          //         <Combobox
+          //           items={project}
+          //           placeholder="Select Project"
+          //           searchPlaceholder="Search Project..."
+          //           className="placeholder:text-[14px]"
+          //         />
+          //       </div>
+          //       <div className="flex flex-col gap-1">
+          //         <h1 className="text-[#1D2129] text-[12px] sm:text-[10px] md:text-[12px] xl:text-[14px] 2xl:text-[16px] font-medium">
+          //           Project Manager
+          //         </h1>
+          //         <Combobox
+          //           items={projectmanager}
+          //           placeholder="Select Project Manager"
+          //           searchPlaceholder="Search Project Manager..."
+          //           className="!placeholder:text-[14px]"
+          //         />
+          //       </div>
+          //       <div className="flex flex-col gap-1">
+          //         <h1 className="text-[#1D2129] text-[12px] sm:text-[10px] md:text-[12px] xl:text-[14px] 2xl:text-[16px] font-medium">
+          //           Issue Type
+          //         </h1>
+          //         <Combobox
+          //           items={issuetype}
+          //           placeholder="Select Issue Type"
+          //           searchPlaceholder="Search Issue Type..."
+          //         />
+          //       </div>
+          //       <div className="flex flex-col gap-1">
+          //         <h1 className="text-[#1D2129] text-[12px] sm:text-[10px] md:text-[12px] xl:text-[14px] 2xl:text-[16px] font-medium">
+          //           Required date
+          //         </h1>
+          //         {/* <div className="relative flex items-center w-full">
+          //           <Input
+          //             type="text"
+          //             placeholder="Enter Required Date"
+          //             className="border-[#E5E6EB] rounded-[5px] w-full placeholder:text-xs text-[#878A99] pr-8"
+          //           />
+          //           <RiArrowDropDownLine className="absolute right-2 text-[#878A99] text-[14px] pointer-events-none mr-2" />
+          //         </div> */}
+          //         <div className="w-full ">
+          //           <DatePickerInput onChange={handleDateChange} />
+          //         </div>
+          //       </div>
+          //       <div className="flex flex-col gap-1">
+          //         <div className="flex flex-col gap-2">
+          //           <h1 className="text-[#1D2129] text-[12px] sm:text-[10px] md:text-[12px] xl:text-[14px] 2xl:text-[16px] font-medium">
+          //             Select Attachment
+          //           </h1>
+
+          //           <div className="relative flex flex-row items-center">
+          //             <Input
+          //               type="text"
+          //               placeholder="Select Attachment"
+          //               className="pr-10 pl-3 border border-[#E5E6EB] rounded-[5px] w-full placeholder:text-[12px] text-[#878A99] cursor-pointer"
+          //               value={selectedFile ? selectedFile.name : ""}
+          //               readOnly
+          //               onClick={() =>
+          //                 document.getElementById("file-input").click()
+          //               } // Trigger file input click
+          //             />
+          //             <ImAttachment
+          //               className="absolute right-2 text-gray-500 cursor-pointer w-3.5 h-3 mr-1"
+          //               onClick={handleAttachmentClick}
+          //             />
+          //             {/* Hidden file input */}
+          //             <input
+          //               id="file-input"
+          //               type="file"
+          //               className="hidden"
+          //               onChange={handleFileChange}
+          //             />
+          //           </div>
+
+          //           {/* Display the file below the input */}
+          //           {selectedFile && (
+          //             <div className="text-[12px] text-[#1D2129] mt-0">
+          //               <strong>Attached:</strong> {selectedFile.name}
+          //             </div>
+          //           )}
+          //         </div>
+          //       </div>
+          //       <div className="flex flex-col gap-1">
+          //         <h1 className="text-[#1D2129] text-[12px] sm:text-[10px] md:text-[12px] xl:text-[14px] 2xl:text-[16px] font-medium">
+          //           Description
+          //         </h1>
+          //         <Textarea className="border-[#E5E6EB] rounded-[5px] h-[100px]" />
+          //       </div>
+          //     </div>
+          //   </div>
+          //   <div className="absolute bottom-0 left-5 w-[94%] top-[520px]">
+          //     <div className="absolute bottom-8 right-6">
+          //       <div className="flex flex-row gap-2">
+          //         <Button className="bg-[#FFFFFF] text-[#165DFF] text-[12px] border border-[#165DFF] rounded-[4px] px-[8px] py-[16px] w-[100px] 2xl:w-[136px] 2xl:h-[39px] h-[37px] ">
+          //           Clear
+          //         </Button>
+          //         <Button className="bg-[#165DFF] text-[#FFFFFF] text-[12px] rounded-[4px] px-[8px] py-[16px] w-[100px] 2xl:w-[136px] 2xl:h-[39px] h-[37px] hover:bg-[#165DFF] hover:text-[#FFFFFF]">
+          //           Submit
+          //         </Button>
+          //       </div>
+          //     </div>
+          //   </div>
+          // </>
           <>
-            <div className="md:max-h-[68vh] md:overflow-y-auto">
-              <div className="flex flex-col gap-2">
-                <div className="flex flex-col gap-1">
-                  <h1 className="text-[#1D2129] text-[12px] sm:text-[10px] md:text-[12px] xl:text-[14px] 2xl:text-[16px] font-medium">
-                    Department
-                  </h1>
-                  <Combobox
-                    items={department}
-                    placeholder="Select Department"
-                    searchPlaceholder="Search department..."
-                    className="placeholder:text-[14px]"
-                  />
-                </div>
-                <div className="flex flex-col gap-1">
-                  <h1 className="text-[#1D2129] text-[12px] sm:text-[10px] md:text-[12px] xl:text-[14px] 2xl:text-[16px] font-medium">
-                    Category
-                  </h1>
-                  <Combobox
-                    items={category}
-                    placeholder="Select Category"
-                    searchPlaceholder="Search Category..."
-                    className="placeholder:text-[14px]"
-                  />
-                </div>
-                <div className="flex flex-col gap-1">
-                  <h1 className="text-[#1D2129] text-[12px] sm:text-[10px] md:text-[12px] xl:text-[14px] 2xl:text-[16px] font-medium">
-                    Project
-                  </h1>
-                  <Combobox
-                    items={project}
-                    placeholder="Select Project"
-                    searchPlaceholder="Search Project..."
-                    className="placeholder:text-[14px]"
-                  />
-                </div>
-                <div className="flex flex-col gap-1">
-                  <h1 className="text-[#1D2129] text-[12px] sm:text-[10px] md:text-[12px] xl:text-[14px] 2xl:text-[16px] font-medium">
-                    Project Manager
-                  </h1>
-                  <Combobox
-                    items={projectmanager}
-                    placeholder="Select Project Manager"
-                    searchPlaceholder="Search Project Manager..."
-                    className="!placeholder:text-[14px]"
-                  />
-                </div>
-                <div className="flex flex-col gap-1">
-                  <h1 className="text-[#1D2129] text-[12px] sm:text-[10px] md:text-[12px] xl:text-[14px] 2xl:text-[16px] font-medium">
-                    Issue Type
-                  </h1>
-                  <Combobox
-                    items={issuetype}
-                    placeholder="Select Issue Type"
-                    searchPlaceholder="Search Issue Type..."
-                  />
-                </div>
-                <div className="flex flex-col gap-1">
-                  <h1 className="text-[#1D2129] text-[12px] sm:text-[10px] md:text-[12px] xl:text-[14px] 2xl:text-[16px] font-medium">
-                    Required date
-                  </h1>
-                  {/* <div className="relative flex items-center w-full">
-                    <Input
-                      type="text"
-                      placeholder="Enter Required Date"
-                      className="border-[#E5E6EB] rounded-[5px] w-full placeholder:text-xs text-[#878A99] pr-8"
-                    />
-                    <RiArrowDropDownLine className="absolute right-2 text-[#878A99] text-[14px] pointer-events-none mr-2" />
-                  </div> */}
-                  <div className="w-full ">
-                    <DatePickerInput onChange={handleDateChange} />
-                  </div>
-                </div>
-                <div className="flex flex-col gap-1">
-                  <div className="flex flex-col gap-2">
-                    <h1 className="text-[#1D2129] text-[12px] sm:text-[10px] md:text-[12px] xl:text-[14px] 2xl:text-[16px] font-medium">
-                      Select Attachment
+            <div className="flex flex-col h-full relative">
+              {/* Scrollable content area - added sm:max-h-[80vh] for mobile */}
+              <div className="max-h-[80vh] sm:max-h-[80vh] md:max-h-[65vh] overflow-y-auto flex-1">
+                <div className="flex flex-col gap-2">
+                  <div className="flex flex-col gap-1">
+                    <h1 className="text-[#1D2129] text-[12px] md:text-[14px] 2xl:text-[16px] font-medium">
+                      Department
                     </h1>
-
-                    <div className="relative flex flex-row items-center">
-                      <Input
-                        type="text"
-                        placeholder="Select Attachment"
-                        className="pr-10 pl-3 border border-[#E5E6EB] rounded-[5px] w-full placeholder:text-[12px] text-[#878A99] cursor-pointer"
-                        value={selectedFile ? selectedFile.name : ""}
-                        readOnly
-                        onClick={() =>
-                          document.getElementById("file-input").click()
-                        } // Trigger file input click
-                      />
-                      <ImAttachment
-                        className="absolute right-2 text-gray-500 cursor-pointer w-3.5 h-3 mr-1"
-                        onClick={handleAttachmentClick}
-                      />
-                      {/* Hidden file input */}
-                      <input
-                        id="file-input"
-                        type="file"
-                        className="hidden"
-                        onChange={handleFileChange}
-                      />
+                    <Combobox
+                      items={department}
+                      placeholder="Select Department"
+                      searchPlaceholder="Search department..."
+                      className="placeholder:text-[14px]"
+                    />
+                  </div>
+                  <div className="flex flex-col gap-1">
+                    <h1 className="text-[#1D2129] text-[12px] md:text-[14px] 2xl:text-[16px]  font-medium">
+                      Category
+                    </h1>
+                    <Combobox
+                      items={category}
+                      placeholder="Select Category"
+                      searchPlaceholder="Search Category..."
+                      className="placeholder:text-[14px]"
+                    />
+                  </div>
+                  <div className="flex flex-col gap-1">
+                    <h1 className="text-[#1D2129] text-[12px] md:text-[14px] 2xl:text-[16px]  font-medium">
+                      Project
+                    </h1>
+                    <Combobox
+                      items={project}
+                      placeholder="Select Project"
+                      searchPlaceholder="Search Project..."
+                      className="placeholder:text-[14px]"
+                    />
+                  </div>
+                  <div className="flex flex-col gap-1">
+                    <h1 className="text-[#1D2129] text-[12px] md:text-[14px] 2xl:text-[16px]  font-medium">
+                      Project Manager
+                    </h1>
+                    <Combobox
+                      items={projectmanager}
+                      placeholder="Select Project Manager"
+                      searchPlaceholder="Search Project Manager..."
+                      className="!placeholder:text-[14px]"
+                    />
+                  </div>
+                  <div className="flex flex-col gap-1">
+                    <h1 className="text-[#1D2129] text-[12px] md:text-[14px] 2xl:text-[16px]  font-medium">
+                      Issue Type
+                    </h1>
+                    <Combobox
+                      items={issuetype}
+                      placeholder="Select Issue Type"
+                      searchPlaceholder="Search Issue Type..."
+                    />
+                  </div>
+                  <div className="flex flex-col gap-1">
+                    <h1 className="text-[#1D2129] text-[12px] md:text-[14px] 2xl:text-[16px]  font-medium">
+                      Required date
+                    </h1>
+                    <div className="w-full">
+                      <DatePickerInput onChange={handleDateChange} />
                     </div>
-
-                    {/* Display the file below the input */}
-                    {selectedFile && (
-                      <div className="text-[12px] text-[#1D2129] mt-0">
-                        <strong>Attached:</strong> {selectedFile.name}
+                  </div>
+                  <div className="flex flex-col gap-1">
+                    <div className="flex flex-col gap-2">
+                      <h1 className="text-[#1D2129] text-[12px] md:text-[14px] 2xl:text-[16px]  font-medium">
+                        Select Attachment
+                      </h1>
+                      <div className="relative flex flex-row items-center">
+                        <Input
+                          type="text"
+                          placeholder="Select Attachment"
+                          className="pr-10 pl-3 border border-[#E5E6EB] rounded-[5px] w-full placeholder:text-[12px] text-[#878A99] cursor-pointer"
+                          value={selectedFile ? selectedFile.name : ""}
+                          readOnly
+                          onClick={() =>
+                            document.getElementById("file-input").click()
+                          }
+                        />
+                        <ImAttachment
+                          className="absolute right-2 text-gray-500 cursor-pointer w-3.5 h-3 mr-1"
+                          onClick={handleAttachmentClick}
+                        />
+                        <input
+                          id="file-input"
+                          type="file"
+                          className="hidden"
+                          onChange={handleFileChange}
+                        />
                       </div>
-                    )}
+                      {selectedFile && (
+                        <div className="text-[12px] text-[#1D2129] mt-0">
+                          <strong>Attached:</strong> {selectedFile.name}
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                  <div className="flex flex-col gap-1">
+                    <h1 className="text-[#1D2129] text-[12px] md:text-[14px] 2xl:text-[16px]  font-medium">
+                      Description
+                    </h1>
+                    <Textarea className="border-[#E5E6EB] rounded-[5px] h-[100px]" />
                   </div>
                 </div>
-                <div className="flex flex-col gap-1">
-                  <h1 className="text-[#1D2129] text-[12px] sm:text-[10px] md:text-[12px] xl:text-[14px] 2xl:text-[16px] font-medium">
-                    Description
-                  </h1>
-                  <Textarea className="border-[#E5E6EB] rounded-[5px] h-[100px]" />
+              </div>
+
+              {/* Fixed button container */}
+              <div className="sticky bottom-0 left-0 bg-white w-full py-4 mt-auto border-t">
+                <div className="flex flex-row gap-2 justify-end px-4">
+                  <Button className="bg-[#FFFFFF] text-[#165DFF] text-[12px] border border-[#165DFF] rounded-[4px] px-[8px] py-[16px] w-[100px] 2xl:w-[136px] 2xl:h-[39px] h-[37px]">
+                    Clear
+                  </Button>
+                  <Button className="bg-[#165DFF] text-[#FFFFFF] text-[12px] rounded-[4px] px-[8px] py-[16px] w-[100px] 2xl:w-[136px] 2xl:h-[39px] h-[37px] hover:bg-[#165DFF] hover:text-[#FFFFFF]">
+                    Submit
+                  </Button>
                 </div>
               </div>
             </div>
@@ -297,10 +432,22 @@ function ActionTickets({ isOpen, onClose, onSubmit, action }) {
         return (
           <>
             <div className="flex flex-col gap-1">
-              <h1 className="text-[#1D2129] text-[12px] sm:text-[10px] md:text-[12px] xl:text-[14px] 2xl:text-[16px] font-medium">
+              <h1 className="text-[#1D2129] text-[12px] md:text-[14px] 2xl:text-[16px]  font-medium">
                 Reason For Rejection
               </h1>
               <Textarea className="border-[#E5E6EB] rounded-[5px] h-[100px]" />
+            </div>
+            <div className="absolute bottom-0 left-5 w-[94%] top-[520px]">
+              <div className="absolute bottom-8 right-6">
+                <div className="flex flex-row gap-2">
+                  <Button className="bg-[#FFFFFF] text-[#165DFF] text-[12px] border border-[#165DFF] rounded-[4px] px-[8px] py-[16px] w-[100px] 2xl:w-[136px] 2xl:h-[39px] h-[37px] ">
+                    Clear
+                  </Button>
+                  <Button className="bg-[#165DFF] text-[#FFFFFF] text-[12px] rounded-[4px] px-[8px] py-[16px] w-[100px] 2xl:w-[136px] 2xl:h-[39px] h-[37px] hover:bg-[#165DFF] hover:text-[#FFFFFF]">
+                    Submit
+                  </Button>
+                </div>
+              </div>
             </div>
           </>
         );
@@ -334,41 +481,67 @@ function ActionTickets({ isOpen, onClose, onSubmit, action }) {
             </div> */}
             {/* <Label>Comments</Label> */}
             <div className="flex flex-col gap-1">
-              <h1 className="text-[#1D2129] text-[12px] sm:text-[10px] md:text-[12px] xl:text-[14px] 2xl:text-[16px] font-medium">
+              <h1 className="text-[#1D2129] text-[12px] md:text-[14px] 2xl:text-[16px]  font-medium">
                 Comments
               </h1>
 
               <Textarea className="border-[#E5E6EB] rounded-[5px] h-[100px]" />
+            </div>
+            <div className="absolute bottom-0 left-5 w-[94%] top-[520px]">
+              <div className="absolute bottom-8 right-6">
+                <div className="flex flex-row gap-2">
+                  <Button className="bg-[#FFFFFF] text-[#165DFF] text-[12px] border border-[#165DFF] rounded-[4px] px-[8px] py-[16px] w-[100px] 2xl:w-[136px] 2xl:h-[39px] h-[37px] ">
+                    Clear
+                  </Button>
+                  <Button className="bg-[#165DFF] text-[#FFFFFF] text-[12px] rounded-[4px] px-[8px] py-[16px] w-[100px] 2xl:w-[136px] 2xl:h-[39px] h-[37px] hover:bg-[#165DFF] hover:text-[#FFFFFF]">
+                    Submit
+                  </Button>
+                </div>
+              </div>
             </div>
           </>
         );
       case "Management Approval":
         return (
           <>
-            <div className="flex flex-col">
+            <div>
+              <div className="flex flex-col">
+                <div className="flex flex-col">
+                  <Label
+                    htmlFor="select-category"
+                    className="mb-2 font-medium text-[12px] md:text-[14px] 2xl:text-[16px]  text-[#1D2129] "
+                  >
+                    Select category
+                  </Label>
+                  <Combobox
+                    items={items}
+                    placeholder="Select Category"
+                    searchPlaceholder="Search framework..."
+                  />
+                </div>
+              </div>
+
               <div className="flex flex-col">
                 <Label
-                  htmlFor="select-category"
-                  className="mb-2 font-medium text-[12px] sm:text-[10px] md:text-[12px] xl:text-[14px] 2xl:text-[16px] text-[#1D2129] "
+                  htmlFor="comments"
+                  className="mb-2 font-medium text-[12px] md:text-[14px] 2xl:text-[16px]  text-[#1D2129] "
                 >
-                  Select category
+                  Comments
                 </Label>
-                <Combobox
-                  items={items}
-                  placeholder="Select Category"
-                  searchPlaceholder="Search framework..."
-                />
+                <Textarea className="border-[#E5E6EB] rounded-[5px] h-[100px]" />
               </div>
             </div>
-
-            <div className="flex flex-col">
-              <Label
-                htmlFor="comments"
-                className="mb-2 font-medium text-[12px] sm:text-[10px] md:text-[12px] xl:text-[14px] 2xl:text-[16px] text-[#1D2129] "
-              >
-                Comments
-              </Label>
-              <Textarea className="border-[#E5E6EB] rounded-[5px] h-[100px]" />
+            <div className="absolute bottom-0 left-5 w-[94%] top-[520px]">
+              <div className="absolute bottom-8 right-6">
+                <div className="flex flex-row gap-2">
+                  <Button className="bg-[#FFFFFF] text-[#165DFF] text-[12px] border border-[#165DFF] rounded-[4px] px-[8px] py-[16px] w-[100px] 2xl:w-[136px] 2xl:h-[39px] h-[37px] ">
+                    Clear
+                  </Button>
+                  <Button className="bg-[#165DFF] text-[#FFFFFF] text-[12px] rounded-[4px] px-[8px] py-[16px] w-[100px] 2xl:w-[136px] 2xl:h-[39px] h-[37px] hover:bg-[#165DFF] hover:text-[#FFFFFF]">
+                    Submit
+                  </Button>
+                </div>
+              </div>
             </div>
           </>
         );
@@ -379,7 +552,7 @@ function ActionTickets({ isOpen, onClose, onSubmit, action }) {
               <div className="flex flex-col">
                 <Label
                   htmlFor="select-category"
-                  className="mb-2 font-medium text-[12px] sm:text-[10px] md:text-[12px] xl:text-[14px] 2xl:text-[16px] text-[#1D2129] "
+                  className="mb-2 font-medium text-[12px] md:text-[14px] 2xl:text-[16px]  text-[#1D2129] "
                 >
                   Split Count
                 </Label>
@@ -388,6 +561,18 @@ function ActionTickets({ isOpen, onClose, onSubmit, action }) {
                   placeholder="Enter Split Count"
                   className="border-[#E5E6EB] rounded-[5px] placeholder:text-[#878A99] placeholder:text-[12px] 2xl:placeholder:text-[14px]"
                 />
+              </div>
+              <div className="absolute bottom-0 left-5 w-[94%] top-[520px]">
+                <div className="absolute bottom-8 right-6">
+                  <div className="flex flex-row gap-2">
+                    <Button className="bg-[#FFFFFF] text-[#165DFF] text-[12px] border border-[#165DFF] rounded-[4px] px-[8px] py-[16px] w-[100px] 2xl:w-[136px] 2xl:h-[39px] h-[37px] ">
+                      Reset
+                    </Button>
+                    <Button className="bg-[#165DFF] text-[#FFFFFF] text-[12px] rounded-[4px] px-[8px] py-[16px] w-[100px] 2xl:w-[136px] 2xl:h-[39px] h-[37px] hover:bg-[#165DFF] hover:text-[#FFFFFF]">
+                      Split
+                    </Button>
+                  </div>
+                </div>
               </div>
             </div>
           </>
@@ -400,7 +585,7 @@ function ActionTickets({ isOpen, onClose, onSubmit, action }) {
   return (
     <div>
       <Sheet open={isOpen} onOpenChange={onClose}>
-        <SheetContent className="bg-white md:h-[100vh] md:overflow-y-auto">
+        <SheetContent className="bg-white md:h-[100vh]">
           <SheetHeader>
             <SheetTitle className="text-[24px] font-bold font-inter text-[#165DFF]">
               Ticket Action
@@ -442,22 +627,7 @@ function ActionTickets({ isOpen, onClose, onSubmit, action }) {
             {/* Render dynamic form fields based on selected action */}
             {renderFieldsForAction()}
           </div>
-          <SheetFooter className="">
-            <div className="flex flex-row gap-3">
-              <Button
-                type="button"
-                className="bg-white text-[#165DFF] rounded border border-[#165DFF] text-[14px]"
-              >
-                Clear
-              </Button>
-              <Button
-                onClick={handleSubmit}
-                className="bg-[#165DFF] text-white rounded text-[14px] hover:bg-[#165DFF] hover:text-white"
-              >
-                Submit
-              </Button>
-            </div>
-          </SheetFooter>
+          <SheetFooter className=""></SheetFooter>
         </SheetContent>
       </Sheet>
     </div>

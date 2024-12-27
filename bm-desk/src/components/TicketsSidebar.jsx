@@ -45,7 +45,7 @@ function TicketsSidebar({ ticket, children }) {
           <div className="flex items-center justify-between">
             <div className="flex flex-col">
               <p className="text-[12px] md:text-[13px] 2xl:text-[13px] text-[#343A40] pl-1">
-                 {ticket.ticketNumber}
+                {ticket.ticketNumber}
               </p>
               <p className="text-[10px] md:text-[12px] 2xl:text-[12px] text-[#878A99] pl-1">
                 {ticket.description}
@@ -260,66 +260,44 @@ function TicketsSidebar({ ticket, children }) {
               <div className="p-4 text-[12px] md:text-[12px] lg:text-[12px] 2xl:text-[16px]">
                 {/* Basic Info Tab */}
                 {activeTab === "basicinfo" && (
-                  <div className="flex flex-col gap-2 2xl:gap-[20px] font-normal text-[12px] sm:text-[10px] md:text-[12px] xl:text-[14px] 2xl:text-[16px]">
-                    <p className="text-[#1D2129]">
-                      <strong className=" text-[#86909C] font-normal">
-                        Ticket Number:
-                      </strong>
-                      {ticket.ticketnumber}
-                    </p>
-                    <p className="text-[#1D2129]">
-                      <strong className="text-[#86909C] font-normal">
-                        Project Name:
-                      </strong>
-                      {ticket.projectname}
-                    </p>
-                    <p className="text-[#1D2129]">
-                      <strong className="text-[#86909C] font-normal">
-                        Subject:
-                      </strong>{" "}
-                      {ticket.subject}
-                    </p>
-                    <p className="text-[#1D2129]">
-                      <strong className="text-[#86909C] font-normal">
-                        Expected Date:
-                      </strong>
-                      {ticket.expecteddate}
-                    </p>
-                    <p className="text-[#1D2129]">
-                      <strong className="text-[#86909C] font-normal">
-                        Expected Delivery Date:
-                      </strong>
-                      {ticket.expecteddeliverydate}
-                    </p>
-                    <p className="text-[#1D2129]">
-                      <strong className="text-[#86909C] font-normal">
-                        Severity:
-                      </strong>
-                      <span
-                        style={getSeverityStyle(ticket.severity)}
-                        className="px-2 py-1 rounded-[5px]"
-                      >
-                        {ticket.severity}
-                      </span>
-                    </p>
-                    <p className="text-[#1D2129]">
-                      <strong className="text-[#86909C] font-normal">
-                        Attachment:
-                      </strong>
-                      <span
-                        style={attachstyle(ticket.attach)}
-                        className="px-2 py-1 rounded-[5px]"
-                      >
-                        {ticket.attachment || "--"}
-                      </span>
-                      {/* {ticket.attachment || "--"} */}
-                    </p>
-                    <p className="text-[#1D2129]">
-                      <strong className="text-[#86909C] font-normal">
-                        Description:{" "}
-                      </strong>{" "}
-                      {ticket.description || "NA"}
-                    </p>
+                  <div className="flex flex-row gap-8 ">
+                    {/* Labels Column */}
+                    <div className="flex flex-col gap-3 2xl:gap-[20px] text-[14px] 2xl:text-[16px] text-gray-500">
+                      <div>Ticket Number</div>
+                      <div>Project Name</div>
+                      <div>Subject</div>
+                      <div>Expected Date</div>
+                      <div>Expected Delivery Date</div>
+                      <div>Severity</div>
+                      <div>Attachment</div>
+                      <div>Description</div>
+                    </div>
+
+                    {/* Values Column */}
+                    <div className="flex flex-col gap-3 2xl:gap-[20px] text-[14px] 2xl:text-[16px] text-[#1D2129]">
+                      <div>{ticket.ticketnumber}</div>
+                      <div>{ticket.projectname}</div>
+                      <div>{ticket.subject}</div>
+                      <div>{ticket.expecteddate}</div>
+                      <div>{ticket.expecteddeliverydate}</div>
+                      <div>
+                        <span
+                          style={getSeverityStyle(ticket.severity)}
+                          className="px-2 py-1 rounded"
+                        >
+                          {ticket.severity}
+                        </span>
+                      </div>
+                      <div>
+                        <span
+                          style={attachstyle(ticket.attach)}
+                          className="px-2 py-1 rounded"
+                        >
+                          {ticket.attachment || "--"}
+                        </span>
+                      </div>
+                      <div>{ticket.description || "NA"}</div>
+                    </div>
                   </div>
                 )}
 

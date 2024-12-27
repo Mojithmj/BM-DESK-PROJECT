@@ -19,74 +19,74 @@ import Productivity from './components/Productivity';
 import TicketApprovals from './components/TicketApprovals';
 import Opentickets from './components/Opentickets';
 
-// function App() {
 
-//   return (
-//     <div>
-//     <BrowserRouter>
-//       <Routes>
-//         <Route path="/" element={<Layout />}> 
-//         <Route index element={<Dashboard/>}/>
-//         <Route path='/productivity' element={<Productivity/>}/>
-//         <Route path='/opentickets' element={<Opentickets/>}/>
-//         <Route path='/closedtickets' element={<Closedtickets/>}/>
-//         <Route path='/viewproject' element={<Viewproject/>}/>
-//         <Route path='/ticketapprovals' element={<TicketApprovals/>}/>
-//         <Route path='/assignedtickets' element={<AssignedTickets/>}/>
-//         <Route path='/accountsettings' element={<AccountSettings/>}/>
-//         <Route path='/editaccountsettings' element={<Editaccountsettings/>}/>
-//         <Route path='/adminteammonitoring' element={<AdminTeamMonitoring/>}/>
-//         <Route path='/escalatedreports' element={<EscalatedReport/>}/>
-//         <Route path='/teammanagement' element={<Taskmanagement/>}/>
-//         <Route path='/actionedtickets' element={<ActionedTickets/>}/>
-       
-//         </Route>
-        
-//         <Route path='/login' element={<Login/>}/>
-//         <Route path='/productivity' element={<Productivity/>}/>
-//         <Route path='/privacyaccountsettings' element={<Privacyaccountsettings/>}/>
-//         <Route path='/actiontickets' element={<ActionTickets/>}/>
-//         <Route path='/tsheet' element={<TeamManagementSheet/>}/>
-
-//       </Routes>
-//     </BrowserRouter>
-//   </div>
-//   )
-// }
 function App() {
+
   return (
     <div>
-      <BrowserRouter>
-        <Routes>
-          {/* Make login the default route */}
-          <Route path="/" element={<Login />} />
-          <Route path="/login" element={<Login />} />
-          
-          {/* Nest all protected routes under a layout */}
-          <Route path="/dashboard" element={<Layout />}>
-            <Route index element={<Dashboard />} />
-            <Route path="productivity" element={<Productivity />} />
-            <Route path="opentickets" element={<Opentickets />} />
-            <Route path="closedtickets" element={<Closedtickets />} />
-            <Route path="viewproject" element={<Viewproject />} />
-            <Route path="ticketapprovals" element={<TicketApprovals />} />
-            <Route path="assignedtickets" element={<AssignedTickets />} />
-            <Route path="accountsettings" element={<AccountSettings />} />
-            <Route path="editaccountsettings" element={<Editaccountsettings />} />
-            <Route path="adminteammonitoring" element={<AdminTeamMonitoring />} />
-            <Route path="escalatedreports" element={<EscalatedReport />} />
-            <Route path="teammanagement" element={<Taskmanagement />} />
-            <Route path="actionedtickets" element={<ActionedTickets />} />
-          </Route>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Layout />}> 
+        <Route index element={<Dashboard/>}/>
+        <Route path='/productivity' element={<Productivity/>}/>
+        <Route path='/opentickets' element={<Opentickets/>}/>
+        <Route path='/closedtickets' element={<Closedtickets/>}/>
+        <Route path='/viewproject' element={<Viewproject/>}/>
+        <Route path='/ticketapprovals' element={<TicketApprovals/>}/>
+        <Route path='/assignedtickets' element={<AssignedTickets/>}/>
+        <Route path='/accountsettings' element={<AccountSettings/>}/>
+        <Route path='/editaccountsettings' element={<Editaccountsettings/>}/>
+        <Route path='/adminteammonitoring' element={<AdminTeamMonitoring/>}/>
+        <Route path='/escalatedreports' element={<EscalatedReport/>}/>
+        <Route path='/teammanagement' element={<Taskmanagement/>}/>
+        <Route path='/actionedtickets' element={<ActionedTickets/>}/>
+       
+        </Route>
+        
+        <Route path='/login' element={<Login/>}/>
+        <Route path='/privacyaccountsettings' element={<Privacyaccountsettings/>}/>
+        <Route path='/actiontickets' element={<ActionTickets/>}/>
+        <Route path='/tsheet' element={<TeamManagementSheet/>}/>
 
-          {/* Stand-alone routes */}
-          <Route path="/privacyaccountsettings" element={<Privacyaccountsettings />} />
-          <Route path="/actiontickets" element={<ActionTickets />} />
-          <Route path="/tsheet" element={<TeamManagementSheet />} />
-        </Routes>
-      </BrowserRouter>
-    </div>
-  );
+      </Routes>
+    </BrowserRouter>
+  </div>
+  )
 }
-
 export default App
+// function App() {
+//   return (
+//     <div>
+//       <BrowserRouter>
+//         <Routes>
+//           {/* Make login the default route */}
+//           <Route path="/" element={<Login />} />
+//           <Route path="/login" element={<Login />} />
+          
+//           {/* Nest all protected routes under a layout */}
+//           <Route path="/dashboard" element={<Layout />}>
+//             <Route index element={<Dashboard />} />
+//             <Route path="productivity" element={<Productivity />} />
+//             <Route path="opentickets" element={<Opentickets />} />
+//             <Route path="closedtickets" element={<Closedtickets />} />
+//             <Route path="viewproject" element={<Viewproject />} />
+//             <Route path="ticketapprovals" element={<TicketApprovals />} />
+//             <Route path="assignedtickets" element={<AssignedTickets />} />
+//             <Route path="accountsettings" element={<AccountSettings />} />
+//             <Route path="editaccountsettings" element={<Editaccountsettings />} />
+//             <Route path="adminteammonitoring" element={<AdminTeamMonitoring />} />
+//             <Route path="escalatedreports" element={<EscalatedReport />} />
+//             <Route path="teammanagement" element={<Taskmanagement />} />
+//             <Route path="actionedtickets" element={<ActionedTickets />} />
+//           </Route>
+
+//           {/* Stand-alone routes */}
+//           <Route path="/privacyaccountsettings" element={<Privacyaccountsettings />} />
+//           <Route path="/actiontickets" element={<ActionTickets />} />
+//           <Route path="/tsheet" element={<TeamManagementSheet />} />
+//         </Routes>
+//       </BrowserRouter>
+//     </div>
+//   );
+// }
+

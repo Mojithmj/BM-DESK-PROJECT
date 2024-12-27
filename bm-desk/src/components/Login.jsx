@@ -41,9 +41,9 @@ function Login() {
 
       // Redirect based on the username
       if (isValidUser.username === "projectmanager") {
-        navigate("/dashboard/adminteammonitoring", { replace: true });
+        navigate("/adminteammonitoring");
       } else if (isValidUser.username === "supportuser") {
-        navigate("/dashboard", { replace: true }); // Redirect to '/assignedtickets' for supportuser
+        navigate("/"); // Redirect to '/assignedtickets' for Ramduth
       }
     } else {
       setError("Invalid username or password. Please try again");
