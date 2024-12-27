@@ -64,11 +64,22 @@ function Sidebar({ isSidebarOpen, setIsSidebarOpen }) {
   };
 
   const menuItems = [
-    {
-      label: "Dashboards",
-      icon: <RiHomeLine />,
-      path: "/",
-    },
+
+    ...(managername
+      ? [
+        {
+          label: "Dashboards",
+          icon: <RiHomeLine />,
+          path: "/adminteammonitoring",
+        },
+        ]
+      : [
+        {
+          label: "Dashboards",
+          icon: <RiHomeLine />,
+          path: "/",
+        },
+        ]),
     // Conditional Task Management/Productivity section
     ...(managername
       ? [

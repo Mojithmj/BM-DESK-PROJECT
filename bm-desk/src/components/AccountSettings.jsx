@@ -174,7 +174,7 @@ function AccountSettings() {
                         Personal & Profile Information Settings
                       </p>
                     </div>
-                    <div onClick={() => navigate("/dashboard/editaccountsettings")}>
+                    <div onClick={() => navigate("/editaccountsettings")}>
                       <Button className="gap-[8px] bg-[#1D2129] rounded-[4px] text-[#FFFFFF] flex items-center hover:bg-[#1D2129] hover:text-[#FFFFFF]">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"

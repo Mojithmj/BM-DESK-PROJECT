@@ -30,11 +30,11 @@ function AdminTeamMonitoring() {
   const navigate = useNavigate();
 
   const cardData = [
-    { text: "Created tickets", value: "7000", path: "/dashboard/opentickets" },
-    { text: "Open Tickets", value: openTicketsCount, path: "/dashboard/opentickets" },
-    { text: "Closed tickets", value: closedTicketsCount, path: "/dashboard/closedtickets" },
-    { text: "Escalated tickets", value:EscalatedTicketsCount , path: "/dashboard/escalatedreports" },
-    { text: "For Approvals", value: ticketapprovalsCount, path: "/dashboard/ticketapprovals" },
+    { text: "Created tickets", value: "7000", path: "/opentickets" },
+    { text: "Open Tickets", value: openTicketsCount, path: "/opentickets" },
+    { text: "Closed tickets", value: closedTicketsCount, path: "/closedtickets" },
+    { text: "Escalated tickets", value:EscalatedTicketsCount , path: "/escalatedreports" },
+    { text: "For Approvals", value: ticketapprovalsCount, path: "/ticketapprovals" },
   ];
 
   const supportTeamData = [
@@ -62,7 +62,7 @@ function AdminTeamMonitoring() {
           strokeLinejoin="round"
         />
       </svg>),
-      path:"/dashboard"
+      path:"/"
     },
     
     {

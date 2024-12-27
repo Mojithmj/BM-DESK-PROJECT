@@ -409,15 +409,15 @@ function Dashboard() {
                     onClick={() => {
                       // Navigate to different paths based on the card title
                       if (card.title === "Assigned Tickets") {
-                        navigate("/dashboard/assignedtickets"); // Navigate to Assigned Tickets page
+                        navigate("/assignedtickets"); // Navigate to Assigned Tickets page
                       } else if (card.title === "To Do") {
-                        navigate("/dashboard/opentickets"); // Navigate to To Do page
+                        navigate("/opentickets"); // Navigate to To Do page
                       } else if (card.title === "Escalated Tickets") {
                         navigate("/escalatedtickets"); // Navigate to Escalated Tickets page
                       } else if (card.title === "Completed") {
-                        navigate("/dashboard/closedtickets"); // Navigate to Escalated Tickets page
+                        navigate("/closedtickets"); // Navigate to Escalated Tickets page
                       } else if (card.title === "Re-Opened") {
-                        navigate("/dashboard/opentickets"); // Navigate to Escalated Tickets page
+                        navigate("/opentickets"); // Navigate to Escalated Tickets page
                       }
                     }}
                     className="flex items-center justify-end cursor-pointer"
