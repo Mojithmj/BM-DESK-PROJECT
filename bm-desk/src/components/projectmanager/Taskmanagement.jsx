@@ -121,7 +121,8 @@ function Taskmanagement() {
                   className={`border border-[#165DFF] hover:bg-[#165DFF] rounded-[4px] items-center px-1 py-1 sm:px-2 sm:py-1 md:px-3 md:py-2 ${
                     selectedButton === "createUser"
                       ? "bg-[#165DFF] text-[#FFFFFF]"
-                      : "hover:bg-[#FFFFFF] hover:text-[#165DFF] text-[#165DFF]"
+                      : "hover:bg-[#165DFF] hover:text-[#FFFFFF] text-[#165DFF]"
+
                   }`}
                 >
                   <span className="font-Inter text-[10px] sm:text-[12px] md:text-[14px] 2xl:text-[16px] font-normal whitespace-nowrap">
@@ -154,7 +155,7 @@ function Taskmanagement() {
 
         {/* Card */}
         <div className="flex flex-col gap-4 mt-4">
-          <div className="font-semibold 2xl:text-[28px] lg:text-[20px] md:text-[14px] text-[12px] normal font-Inter text-[#4E5969]">
+          <div className="font-semibold 2xl:text-[28px] lg:text-[20px] md:text-[14px] text-[12px] normal font-inter text-[#4E5969]">
             Support Team
           </div>
           <div className="flex flex-col gap-3 w-full">

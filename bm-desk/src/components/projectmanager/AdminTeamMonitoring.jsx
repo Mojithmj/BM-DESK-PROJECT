@@ -10,8 +10,16 @@ import red from "../../assets/Red.svg";
 import { PiGreaterThan } from "react-icons/pi";
 import { RiArrowDropDownLine } from "react-icons/ri";
 import { useNavigate } from "react-router-dom";
+import Opentickets from "../Opentickets";
+import Closedtickets from "../Closedtickets";
+import EscalatedReport from "../projectmanager/EscalatedReport";
+import TicketApprovals from "../TicketApprovals";
 
 function AdminTeamMonitoring() {
+  const [openTicketsCount, setOPenTicketsCount] = useState(0);
+  const [closedTicketsCount,setClosedTicketsCount]=useState(0);
+  const [EscalatedTicketsCount, setEscalatedTicketsCount] = useState(0);
+  const [ticketapprovalsCount,setTicketapprovalsCount]=useState(0)
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [alltimeOption, setAlltimeOption] = useState("All Time");
 
@@ -22,11 +30,11 @@ function AdminTeamMonitoring() {
   const navigate = useNavigate();
 
   const cardData = [
-    { text: "Created tickets", value: "7500", path: "/dashboard/opentickets" },
-    { text: "Open Tickets", value: "6578", path: "/dashboard/opentickets" },
-    { text: "Closed tickets", value: "12546", path: "/dashboard/closedtickets" },
-    { text: "Escalated tickets", value: "564", path: "/dashboard/escalatedreports" },
-    { text: "For Approvals", value: "1546", path: "/dashboard/ticketapprovals" },
+    { text: "Created tickets", value: "7000", path: "/dashboard/opentickets" },
+    { text: "Open Tickets", value: openTicketsCount, path: "/dashboard/opentickets" },
+    { text: "Closed tickets", value: closedTicketsCount, path: "/dashboard/closedtickets" },
+    { text: "Escalated tickets", value:EscalatedTicketsCount , path: "/dashboard/escalatedreports" },
+    { text: "For Approvals", value: ticketapprovalsCount, path: "/dashboard/ticketapprovals" },
   ];
 
   const supportTeamData = [
@@ -139,7 +147,20 @@ function AdminTeamMonitoring() {
 
 
   return (
+    
     <div className="transition-all ml-4 mt-4 duration-300 ease-in-out">
+      <div className="hidden">
+        <Opentickets onCountUpdate={setOPenTicketsCount} />
+      </div>
+      <div className="hidden">
+        <Closedtickets onCountUpdate={setClosedTicketsCount} />
+      </div>
+      <div className="hidden">
+        <EscalatedReport onCountUpdate={setEscalatedTicketsCount} />
+      </div>
+      <div className="hidden">
+        <TicketApprovals onCountUpdate={setTicketapprovalsCount} />
+      </div>
       {/* Header Section */}
       <div className="relative w-full">
         <div className="flex flex-row items-center justify-between">
