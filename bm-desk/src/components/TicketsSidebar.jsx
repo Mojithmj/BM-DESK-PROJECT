@@ -119,6 +119,16 @@ function TicketsSidebar({ ticket, children }) {
       date: "Sep 12",
       message: "Ticket - TICKT-1256 has been resolved by John D",
     },
+    {
+      ticketNumber: "7892",
+      date: "Sep 12",
+      message: "Ticket - TICKT-1256 has been resolved by John D",
+    },
+    {
+      ticketNumber: "7892",
+      date: "Sep 12",
+      message: "Ticket - TICKT-1256 has been resolved by John D",
+    },
     // Add more ticket history items as needed
   ];
   const comments = [
@@ -137,6 +147,26 @@ function TicketsSidebar({ ticket, children }) {
     {
       ticketNumber: "7891",
       date: "Sep 20",
+      message: "Ticket - TICKT-1256 has been resolved by John D",
+    },
+    {
+      ticketNumber: "7892",
+      date: "Sep 12",
+      message: "Ticket - TICKT-1256 has been resolved by John D",
+    },
+    {
+      ticketNumber: "7892",
+      date: "Sep 12",
+      message: "Ticket - TICKT-1256 has been resolved by John D",
+    },
+    {
+      ticketNumber: "7892",
+      date: "Sep 12",
+      message: "Ticket - TICKT-1256 has been resolved by John D",
+    },
+    {
+      ticketNumber: "7892",
+      date: "Sep 12",
       message: "Ticket - TICKT-1256 has been resolved by John D",
     },
     {
@@ -211,8 +241,14 @@ function TicketsSidebar({ ticket, children }) {
         <SheetTrigger className="text-[#0E42D2] underline cursor-pointer ">
           {children}
         </SheetTrigger>
-        <SheetContent className="bg-white sm:!w-full">
-          <div className="flex flex-col gap-[10px] 2xl:gap-[32px]">
+        {/* <SheetContent className="bg-white sm:!w-full">
+          <div className="flex flex-col gap-[10px] 2xl:gap-[32px]"> */}
+        <SheetContent className="bg-white sm:!w-full flex flex-col">
+
+          {/* Add flex-col */}
+          <div className="flex flex-col gap-[10px] 2xl:gap-[32px] flex-1 overflow-y-auto">
+
+            {/* Add flex-1 and overflow */}
             <div>
               <SheetHeader>
                 <SheetTitle className="text-[#165DFF] sm:text-[18px] md:text-[24px] lg:text-[28px] 2xl:text-[32px] font-medium font-inter mt-2">
@@ -220,7 +256,6 @@ function TicketsSidebar({ ticket, children }) {
                 </SheetTitle>
               </SheetHeader>
             </div>
-
             <div className="flex flex-col gap-[10px] 2xl:gap-[32px]">
               <div className="flex items-center font-inter text-[12px] sm:text-[10px] md:text-[12px] xl:text-[14px] 2xl:text-[16px]font-semibold text-[#1D2129] justify-between gap-1 px-4 py-2 relative">
                 {tabs.map((tab, index) => (
@@ -257,10 +292,10 @@ function TicketsSidebar({ ticket, children }) {
                 />
               </div>
 
-              <div className="p-4 text-[12px] md:text-[12px] lg:text-[12px] 2xl:text-[16px]">
+              <div className="pl-4 pt-4 pb-4 pr-0 text-[12px] md:text-[12px] lg:text-[12px] 2xl:text-[16px]">
                 {/* Basic Info Tab */}
                 {activeTab === "basicinfo" && (
-                  <div className="flex flex-row gap-8 ">
+                  <div className="flex flex-row gap-12 ">
                     {/* Labels Column */}
                     <div className="flex flex-col gap-3 2xl:gap-[20px] text-[14px] 2xl:text-[16px] text-gray-500">
                       <div>Ticket Number</div>
@@ -376,7 +411,7 @@ function TicketsSidebar({ ticket, children }) {
                 )}
 
                 {activeTab === "tickethistory" && (
-                  <div className="flex flex-col gap-5">
+                  <div className="flex flex-col gap-5  h-[375px]  overflow-y-auto pr-2">
                     {ticketHistory.map((history, index) => (
                       <div className="flex mb-4" key={index}>
                         <div>
@@ -403,7 +438,7 @@ function TicketsSidebar({ ticket, children }) {
                     ))}
                   </div>
                 )}
-                {activeTab === "comments" && (
+                {/* {activeTab === "comments" && (
                   <div className="flex flex-col gap-5">
                     {comments.map((history, index) => (
                       <div className="flex mb-4" key={index}>
@@ -426,12 +461,34 @@ function TicketsSidebar({ ticket, children }) {
                           <p className="text-[10px] md:text-[12px] lg:text-[12px] 2xl:text-[16px] text-[#878A99] w-[300px]">
                             {history.message}
                           </p>
-                          {/* <p
-                      className="text-[10px] md:text-[12px] lg:text-[12px] 2xl:text-[16px] text-[#878A99] w-[300px] overflow-hidden text-ellipsis whitespace-nowrap  "  // hover:overflow-visible hover:whitespace-normal for white space
-                      title={history.message} // Tooltip for full message
-                    >
-                      {history.message}
-                    </p> */}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )} */}
+                {activeTab === "comments" && (
+                  <div className="flex flex-col gap-5 h-full md:max-h-[375px] overflow-y-auto pr-2">
+                    {comments.map((history, index) => (
+                      <div className="flex mb-4" key={index}>
+                        <div className="FLEX flex-shrink-0">
+                          <img
+                            className="w-[40px] h-[40px]"
+                            src={image1}
+                            alt="User Avatar"
+                          />
+                        </div>
+                        <div className="ml-3 flex-grow">
+                          <div className="flex justify-between">
+                            <p className="text-[10px] md:text-[12px] lg:text-[12px] 2xl:text-[16px] text-[#343A40]">
+                              Ticket {history.ticketNumber}
+                            </p>
+                            <p className="text-[10px] md:text-[12px] lg:text-[12px] 2xl:text-[16px] text-[#878A99]">
+                              {history.date}
+                            </p>
+                          </div>
+                          <p className="text-[10px] md:text-[12px] lg:text-[12px] 2xl:text-[16px] text-[#878A99] w-[300px]">
+                            {history.message}
+                          </p>
                         </div>
                       </div>
                     ))}
@@ -479,18 +536,15 @@ function TicketsSidebar({ ticket, children }) {
               </div>
             </div>
           </div>
-
-          <div>
-            <div className="absolute bottom-0 left-5 w-[94%] top-[520px] h-[1px] bg-[#E5E6EB]" />
-            <div className="absolute bottom-10 right-9">
-              <div className="flex gap-2 justify-end text-[10px] md:text-[12px] lg:text-[12px] 2xl:text-[16px]">
-                <Button className="text-[#165DFF] border border-[#165DFF] rounded-[3px]">
-                  Cancel
-                </Button>
-                <Button className="text-[#FFFFFF] bg-[#165DFF] border border-[#165DFF] rounded-[3px] hover:bg-[#165DFF] hover:text-[#FFFFFF]">
-                  Send Reminder
-                </Button>
-              </div>
+          <div className="absolute bottom-0 left-5 w-[94%] top-[520px] h-[1px] bg-[#E5E6EB]" />
+          <div className="absolute bottom-10 right-9">
+            <div className="flex gap-2 justify-end text-[10px] md:text-[12px] lg:text-[12px] 2xl:text-[16px]">
+              <Button className="text-[#165DFF] border border-[#165DFF] rounded-[3px]">
+                Cancel
+              </Button>
+              <Button className="text-[#FFFFFF] bg-[#165DFF] border border-[#165DFF] rounded-[3px] hover:bg-[#165DFF] hover:text-[#FFFFFF]">
+                Send Reminder
+              </Button>
             </div>
           </div>
         </SheetContent>
