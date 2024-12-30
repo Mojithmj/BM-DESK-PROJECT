@@ -62,6 +62,16 @@ function Navbar() {
     };
   }, []);
 
+  useEffect(() => {
+    if (circleDropdown) {
+      document.addEventListener('mousedown', handleOutsideClick);
+    }
+    
+    return () => {
+      document.removeEventListener('mousedown', handleOutsideClick);
+    };
+  }, [circleDropdown]);
+
   // Notification dropdown
   const [notifycircleDropdown, setNotifyCircleDropdown] = useState(false);
   const notifydropdownRef = useRef(null);
@@ -256,7 +266,7 @@ function Navbar() {
               <p className="text-[13px] text-[#71717A]">Eva@example.com</p>
             </div>
             {/* Dropdown Icon - Hidden below md */}
-            <IoIosArrowDropdownCircle className="hidden md:block text-[18px] lg:text-[21px] 2xl:text-[26px]" />
+            <IoIosArrowDropdownCircle  className="hidden md:block text-[18px] lg:text-[21px] 2xl:text-[26px]" />
 
             {/* Dropdown Menu */}
             {circleDropdown && (
