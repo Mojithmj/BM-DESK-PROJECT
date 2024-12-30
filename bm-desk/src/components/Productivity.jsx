@@ -184,86 +184,10 @@ function ProductivityContent() {
               </div>
             </div>
           </div>
-          {/* Table */}
-          {/* <div className="max-h-[60vh] overflow-y-auto pr-4">
-            <Table className=" border-[1px] !rounded overflow-hidden">
-              <TableHeader>
-                <TableRow className="bg-[#F2F3F5] hover:bg-[#4E5969] pointer-events-none">
-                  <TableHead className="text-[#4E5969] px-2 py-[15px] text-[12px]">
-                    Sl No
-                  </TableHead>
-                  <TableHead className="text-[#4E5969] px-2 py-[15px] text-[12px]">
-                    Recording Date
-                  </TableHead>
-                  <TableHead className="text-[#4E5969] px-2 py-[15px] text-[12px]">
-                    Assigned Tickets
-                  </TableHead>
-                  <TableHead className="text-[#4E5969] px-2 py-[15px] text-[12px]">
-                    Self-assigned Tickets
-                  </TableHead>
-                  <TableHead className="text-[#4E5969] px-2 py-[15px] text-[12px]">
-                    Resolved Tickets
-                  </TableHead>
-                  <TableHead className="text-[#4E5969] px-2 py-[15px] text-[12px]">
-                    Returned Tickets
-                  </TableHead>
-                  <TableHead className="text-[#4E5969] px-2 py-[15px] text-[12px]">
-                    Escalated
-                  </TableHead>
-                  <TableHead className="text-[#4E5969] px-2 py-[15px] text-[12px]">
-                    Growth rate
-                  </TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {visibleData.map((row, index) => (
-                  <TableRow key={row.id}>
-                    <TableCell className="text-[#1D2129] px-2 py-[15px]">
-                      {index + 1}
-                    </TableCell>
-                    <TableCell className="text-[#1D2129] px-2 py-[15px]">
-                      {row.date}
-                    </TableCell>
-                    <TableCell className="text-[#1D2129] px-2 py-[15px]">
-                      {row.assignedTickets}
-                    </TableCell>
-                    <TableCell className="text-[#1D2129] px-2 py-[15px]">
-                      {row.selfAssignedTickets}
-                    </TableCell>
-                    <TableCell className="text-[#1D2129] px-2 py-[15px]">
-                      {row.resolvedTickets}
-                    </TableCell>
-                    <TableCell className="text-[#1D2129] px-2 py-[15px]">
-                      {row.returnedTickets}
-                    </TableCell>
-                    <TableCell className="text-[#1D2129] px-2 py-[15px]">
-                      {row.escalated}
-                    </TableCell>
-                    <TableCell>
-                      <div className="flex items-center">
-                        <IoIosArrowRoundDown className="bg-[#FFECE8] text-[#F53F3F]" />
-                        <div className=" px-2 py-[15px] text-[#F53F3F] font-bold ">
-                          {row.growthRate}
-                        </div>
-                      </div>
-                    </TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-            {visibleData.length < filteredData.length && (
-              <button
-                onClick={loadMoreData}
-                className="text-blue-600 mt-4"
-                disabled={loading}
-              >
-                {loading ? "Loading..." : "Load More Data"}
-              </button>
-            )}
-          </div> */}
 
-          <div className="max-h-[60vh] overflow-y-auto pr-4">
-            <div className="border border-[#E5E6EB] rounded">
+          <div className="relative h-[60vh]">
+  <div className="overflow-y-auto h-full pb-16 pr-4">
+    <div className="border border-[#E5E6EB] rounded">
               <Table>
                 <TableHeader>
                   <TableRow className="bg-[#F2F3F5] hover:bg-[#4E5969] pointer-events-none border-b border-[#E5E6EB]">
@@ -332,16 +256,19 @@ function ProductivityContent() {
                   ))}
                 </TableBody>
               </Table>
-            </div>
+              </div>
+  </div>
             {visibleData.length < filteredData.length && (
-              <button
-                onClick={loadMoreData}
-                className="text-blue-600 mt-4"
-                disabled={loading}
-              >
-                {loading ? "Loading..." : "Load More Data"}
-              </button>
-            )}
+    <div className="absolute bottom-0 left-0 right-4 bg-white py-2">
+      <button
+        onClick={loadMoreData}
+        className="text-blue-600 mt-4"
+        disabled={loading}
+      >
+        {loading ? "Loading..." : "Load More Data"}
+      </button>
+    </div>
+  )}
           </div>
         </div>
       </div>

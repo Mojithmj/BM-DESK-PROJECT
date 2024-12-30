@@ -1,13 +1,53 @@
-import React, { useState } from "react";
-import Avatariamge from "../assets/Avatar Image.png";
+import React, { useState, useEffect} from "react";
+import Avatarimage from "../assets/Avatar Image.png";
 import { FaCamera } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 import Privacyaccountsettings from "./Privacyaccountsettings";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 
 function Editaccountsettings({ onInputChange }) {
   const [activeTab, setActiveTab] = useState("profile");
+  const [profilePic, setProfilePic] = useState();
+  const [newProfilePic, setNewProfilePic] = useState(null); 
+  const [inputState, setInputState]=useState()
 
+  const handleImageChange = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const imageData = e.target.result;
+        setProfilePic(imageData);        // Show preview
+        setNewProfilePic(imageData);     // Store for later
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+  const saveImage = () => {
+    if (newProfilePic) {
+      localStorage.setItem('userProfileImage', newProfilePic);
+      window.dispatchEvent(new CustomEvent('profileImageUpdate', {
+        detail: { image: newProfilePic }
+      }));
+      setNewProfilePic(null);  // Clear staged image
+    }
+  };
+  const discardChanges = () => {
+    const savedImage = localStorage.getItem('userProfileImage') ;
+    setProfilePic(savedImage);
+    setNewProfilePic(null);
+  };
+  
+  // Add useEffect to load saved image
+  useEffect(() => {
+    const savedImage = localStorage.getItem('userProfileImage');
+    if (savedImage) {
+      setProfilePic(savedImage);
+    }
+  }, []);
+
+  
   const tabs = [
     {
       value: "profile",
@@ -104,25 +144,7 @@ function Editaccountsettings({ onInputChange }) {
             <div className="flex-1 h-[calc(85vh_-_130px)] overflow-y-auto overflow-x-hidden pr-3">
               {activeTab === "profile" && (
                 <div className="flex flex-col gap-10">
-                  {/* Profile Content */}
-                  {/* <div className="flex flex-col sm:flex-row justify-between w-full gap-4">
-                    <div>
-                      <p className="text-[#4E5969] text-[10px] 2xl:text-[20px] lg:text-[16px] md:text-[14px] sm:text-[12px] font-medium">
-                        Profile Settings
-                      </p>
-                      <p className="text-[#4E5969] text-[12px] sm:text-[10px] md:text-[12px] xl:text-[14px] 2xl:text-[16px] font-normal">
-                        Personal & Profile Information Settings
-                      </p>
-                    </div>
-                    <div className="flex gap-[14px]">
-                      <Button className="text-[#1D2129] text-[12px] sm:text-[10px] md:text-[12px] xl:text-[14px] 2xl:text-[16px] font-normal px-[16px] py-[8px] rounded-[4px] border-[1px] border-[#1D2129]">
-                        Discard
-                      </Button>
-                      <Button className="gap-[10px] bg-[#1D2129] rounded-[4px] text-[#FFFFFF] hover:bg-[#1D2129] hover:text-[#FFFFFF] flex items-center px-4 py-2">
-                        Save Changes
-                      </Button>
-                    </div>
-                  </div> */}
+                  
 
                   <div className="flex justify-between w-full items-center">
                     <div>
@@ -134,10 +156,10 @@ function Editaccountsettings({ onInputChange }) {
                       </p>
                     </div>
                     <div className="flex gap-[14px] shrink-0">
-                      <Button className="text-[#1D2129] text-[12px] sm:text-[10px] md:text-[12px] xl:text-[14px] 2xl:text-[16px] font-normal px-[16px] py-[8px] rounded-[4px] border-[1px] border-[#1D2129]">
+                      <Button onClick={discardChanges} className="text-[#1D2129] text-[12px] sm:text-[10px] md:text-[12px] xl:text-[14px] 2xl:text-[16px] font-normal px-[16px] py-[8px] rounded-[4px] border-[1px] border-[#1D2129]">
                         Discard
                       </Button>
-                      <Button className="gap-[10px] bg-[#1D2129] rounded-[4px] text-[#FFFFFF] hover:bg-[#1D2129] hover:text-[#FFFFFF] flex items-center px-4 py-2">
+                      <Button onClick={saveImage} className="gap-[10px] bg-[#1D2129] rounded-[4px] text-[#FFFFFF] hover:bg-[#1D2129] hover:text-[#FFFFFF] flex items-center px-4 py-2">
                         Save Changes
                       </Button>
                     </div>
@@ -146,12 +168,20 @@ function Editaccountsettings({ onInputChange }) {
                   {/* Avatar */}
                   <div className="relative">
                     <img
-                      src={Avatariamge}
-                      alt="Avatar"
-                      className="w-[120px] h-[120px] md:w-[80px] md:h-[80px]"
+                      src={profilePic}
+                      className="w-[120px] h-[120px] md:w-[80px] md:h-[80px] rounded-full object-cover"
                     />
-                    <div className="absolute bottom-0 left-20 text-[#656565] bg-white p-[9px] rounded-full text-sm">
-                      <FaCamera />
+                    <div className="absolute bottom-0 left-[80px] md:left-[55px] lg:left-[55px] 2xl:left-[80px] text-[#656565] bg-white p-[7px] rounded-full border border-[#CED4DA] text-sm">
+                      <label htmlFor="file-upload" className="cursor-pointer">
+                        <FaCamera />
+                      </label>
+                      <input
+                        id="file-upload"
+                        type="file"
+                        accept="image/*"
+                        onChange={handleImageChange}
+                        className="hidden"
+                      />
                     </div>
                   </div>
 

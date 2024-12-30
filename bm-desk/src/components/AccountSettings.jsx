@@ -10,33 +10,9 @@ import { Button } from "./ui/button";
 function AccountSettings() {
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState("profile");
-  const [profilePic, setProfilePic] = useState(Avatarimage); // Default profile image
+  const savedImage = localStorage.getItem('userProfileImage')
 
-  const handleImageChange = (event) => {
-    const file = event.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        const imageData = e.target.result;
-        setProfilePic(imageData);
-        localStorage.setItem('userProfileImage', imageData); // Save to localStorage
-        
-        // Dispatch event to update other components
-        window.dispatchEvent(new CustomEvent('profileImageUpdate', {
-          detail: { image: imageData }
-        }));
-      };
-      reader.readAsDataURL(file);
-    }
-  };
-  
-  // Add useEffect to load saved image
-  useEffect(() => {
-    const savedImage = localStorage.getItem('userProfileImage');
-    if (savedImage) {
-      setProfilePic(savedImage);
-    }
-  }, []);
+ 
 
   const tabs = [
     { value: "profile", label: "Profile" },
@@ -199,22 +175,11 @@ function AccountSettings() {
                   {/* Avatar section */}
                   <div className="relative">
                     <img
-                      src={profilePic}
+                      src={savedImage}
                       alt="Avatar"
                       className="w-[120px] h-[120px] md:w-[80px] md:h-[80px] rounded-full object-cover"
                     />
-                    <div className="absolute bottom-0 left-[80px] md:left-[55px] lg:left-[55px] 2xl:left-[80px] text-[#656565] bg-white p-[7px] rounded-full border border-[#CED4DA] text-sm">
-                      <label htmlFor="file-upload" className="cursor-pointer">
-                        <FaCamera />
-                      </label>
-                      <input
-                        id="file-upload"
-                        type="file"
-                        accept="image/*"
-                        onChange={handleImageChange}
-                        className="hidden"
-                      />
-                    </div>
+                   
                   </div>
 
                   {/* Input fields */}

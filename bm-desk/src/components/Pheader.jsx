@@ -1,9 +1,7 @@
 import React from "react";
 import { useDate } from "./DateContext";
 import {
-  addDays,
   startOfMonth,
-
   endOfMonth,
   startOfYear,
   endOfYear,
@@ -15,20 +13,13 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { Calendar } from "@/components/ui/calendar";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 
 function Pheader({ title, className, showCalendar = true }) {
-  // Only try to use the date context if showCalendar is true
   const dateContext = showCalendar ? useDate() : null;
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = React.useState(false); // Controls the Popover
+  const [showCustomCalendar, setShowCustomCalendar] = React.useState(false); // Toggles Custom Calendar
+  const [tempSelectedDates, setTempSelectedDates] = React.useState({}); // Temporarily store selected dates
 
-  // Early return if date contexts are needed but not availables
   if (showCalendar && !dateContext) {
     console.warn("DateProvider is required when showCalendar is true");
     return (
@@ -39,50 +30,64 @@ function Pheader({ title, className, showCalendar = true }) {
   }
 
   const handleDateRangeChange = (value) => {
-    if (!dateContext?.updateDateRange) return;
     const today = new Date();
+    setShowCustomCalendar(false);
 
     switch (value) {
       case "today":
-        dateContext.updateDateRange({ from: today, to: today });
+        dateContext?.updateDateRange({ from: today, to: today });
+        setOpen(false); // Close dialog
         break;
       case "month":
-        dateContext.updateDateRange({
+        dateContext?.updateDateRange({
           from: startOfMonth(today),
           to: endOfMonth(today),
         });
+        setOpen(false); // Close dialog
         break;
       case "year":
-        dateContext.updateDateRange({
+        dateContext?.updateDateRange({
           from: startOfYear(today),
           to: endOfYear(today),
         });
+        setOpen(false); // Close dialog
+        break;
+      case "custom":
+        setShowCustomCalendar(true);
         break;
       default:
         break;
     }
-    setOpen(false);
   };
 
   const handleCalendarSelect = (selectedDate) => {
-    if (!dateContext?.updateDateRange) return;
+    if (selectedDate?.from && !selectedDate?.to) {
+      // If only 'from' is selected, store it temporarily
+      setTempSelectedDates(selectedDate);
+    }
+
     if (selectedDate?.from && selectedDate?.to) {
-      dateContext.updateDateRange(selectedDate);
+      // If both 'from' and 'to' are selected, update context and close
+      dateContext?.updateDateRange(selectedDate);
+      setTempSelectedDates({});
+      setShowCustomCalendar(false);
+      setOpen(false); // Close dialog
     }
   };
 
   return (
-    <div className="flex justify-between items-center font-inter text-[20px] md:text-[24px] lg:text-[28px] 2xl:text-[32px] font-semibold leading-[46.76px] 2xl:tracking-[-1px] xl:tracking-[-1px] lg:tracking-[-1px] md:tracking-[-1px] tracking-[-2px] text-left custom-underline-position custom-decoration-skip">
-      <h1 className="text-[#4E5969] flex items-start">{title}</h1>
+    <div className="flex justify-between items-center font-inter text-[20px] md:text-[24px] lg:text-[28px] 2xl:text-[32px] font-semibold leading-[46.76px]">
+      <h1 className="text-[#4E5969]">{title}</h1>
       {showCalendar && dateContext?.dateRange && (
         <div className={className}>
           <Popover open={open} onOpenChange={setOpen}>
             <PopoverTrigger asChild>
-              <button className="w-full flex items-center gap-3 leading-none justify-start text-sm text-left font-normal bg-blue-50 hover:bg-blue-50 px-4 py-2">
+              <button className="w-full flex items-center gap-3 text-sm font-normal bg-blue-50 hover:bg-blue-50 px-4 py-2">
                 {dateContext.dateRange?.from ? (
                   dateContext.dateRange.to ? (
                     <>
-                      {format(dateContext.dateRange.from, "MMM dd")} - {format(dateContext.dateRange.to, "MMM dd")}
+                      {format(dateContext.dateRange.from, "MMM dd")} -{" "}
+                      {format(dateContext.dateRange.to, "MMM dd")}
                     </>
                   ) : (
                     format(dateContext.dateRange.from, "MMM dd")
@@ -92,26 +97,43 @@ function Pheader({ title, className, showCalendar = true }) {
                 )}
               </button>
             </PopoverTrigger>
-            <PopoverContent className="bg-white shadow-none absolute -left-[14rem] md:-left-[28rem]  md:w-[33rem]">
-              <Select onValueChange={handleDateRangeChange}>
-                <SelectTrigger>
-                  <SelectValue placeholder="Select range" />
-                </SelectTrigger>
-                <SelectContent className="bg-white">
-                  <SelectItem value="today">Today</SelectItem>
-                  <SelectItem value="month">This Month</SelectItem>
-                  <SelectItem value="year">This Year</SelectItem>
-                </SelectContent>
-              </Select>
-              <div className="w-full bg-white"> 
+            <PopoverContent className="bg-white shadow-md p-4">
+              {!showCustomCalendar ? (
+                <div className="flex flex-col gap-2 font-inter font-normal">
+                  <button
+                    className="hover:bg-[#E8F3FF]"
+                    onClick={() => handleDateRangeChange("today")}
+                  >
+                    Today
+                  </button>
+                  <button
+                    className="hover:bg-[#E8F3FF]"
+                    onClick={() => handleDateRangeChange("month")}
+                  >
+                    This Month
+                  </button>
+                  <button
+                    className="hover:bg-[#E8F3FF]"
+                    onClick={() => handleDateRangeChange("year")}
+                  >
+                    This Year
+                  </button>
+                  <button
+                    className="hover:bg-[#E8F3FF]"
+                    onClick={() => handleDateRangeChange("custom")}
+                  >
+                    Custom
+                  </button>
+                </div>
+              ) : (
                 <Calendar
                   mode="range"
-                  defaultMonth={dateContext.dateRange?.from}
-                  selected={dateContext.dateRange}
+                  defaultMonth={dateContext.dateRange?.from || new Date()}
+                  selected={tempSelectedDates || dateContext.dateRange}
                   onSelect={handleCalendarSelect}
                   numberOfMonths={2}
                 />
-              </div>
+              )}
             </PopoverContent>
           </Popover>
         </div>
