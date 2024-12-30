@@ -357,7 +357,73 @@ function ReusableTable({ data, headers, currentTab, defaultSortConfig }) {
                         </Badge>
                       ) : header.value === "ticketaction" ? (
                         <DropdownMenu>
-                          {/* ... rest of the dropdown menu code remains the same ... */}
+                          <DropdownMenuTrigger asChild>
+                            <div className="flex items-center cursor-pointer bg-[#F8F9FB] rounded-[4px] border-[1.5px] border-[#0E42D2] px-[12px] py-[4px] text-[#0E42D2] gap-[8px] w-fit">
+                              <Button
+                                className="flex-shrink-0 rounded-[3px] border-none shadow-none !outline-none !p-0 !h-auto font-normal text-[10px] md:text-[12px] lg:text-[12px] cursor-pointer"
+                                variant="outline"
+                              >
+                                Action
+                              </Button>
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="20"
+                                height="20"
+                                viewBox="0 0 20 20"
+                                fill="none"
+                                className="flex-shrink-0"
+                              >
+                                <path
+                                  d="M5 7.5L10 12.5L15 7.5"
+                                  stroke="#0E42D2"
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                />
+                              </svg>
+                            </div>
+                          </DropdownMenuTrigger>
+                          <DropdownMenuContent className="bg-white rounded-[10px] ">
+                            <DropdownMenuItem
+                              onClick={() =>
+                                handleDropdownSelect("Assign Ticket")
+                              }
+                              className="cursor-pointer"
+                            >
+                              Assign Ticket
+                            </DropdownMenuItem>
+                            <DropdownMenuItem
+                              onClick={() =>
+                                handleDropdownSelect("Reject Ticket")
+                              }
+                              className="cursor-pointer"
+                            >
+                              Reject Ticket
+                            </DropdownMenuItem>
+                            <DropdownMenuItem
+                              onClick={() =>
+                                handleDropdownSelect("Verify & Close")
+                              }
+                              className="cursor-pointer"
+                            >
+                              Verify & Close
+                            </DropdownMenuItem>
+                            <DropdownMenuItem
+                              onClick={() =>
+                                handleDropdownSelect("Management Approval")
+                              }
+                              className="cursor-pointer"
+                            >
+                              Management Approval
+                            </DropdownMenuItem>
+                            <DropdownMenuItem
+                              onClick={() =>
+                                handleDropdownSelect("Split Ticket")
+                              }
+                              className="cursor-pointer"
+                            >
+                              Split Ticket
+                            </DropdownMenuItem>
+                          </DropdownMenuContent>
                         </DropdownMenu>
                       ) : header.value === "slno" ? (
                         rowIndex + 1
