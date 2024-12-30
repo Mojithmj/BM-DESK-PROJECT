@@ -6,6 +6,7 @@ import { FiSearch } from "react-icons/fi";
 import { Input } from "@/components/ui/input";
 import { IoIosArrowRoundDown } from "react-icons/io";
 import { DateProvider, useDate } from "./DateContext";
+import { Button } from "./ui/button";
 
 import {
   Table,
@@ -137,12 +138,10 @@ function ProductivityContent() {
   return (
     <div>
       <div className="transition-all ml-4 mt-4 duration-300 ease-in-out">
-        {" "}
         <div className="flex flex-col gap-6">
           <div className="">
             <Pheader title="My Productivity" />
           </div>
-
           <div className="flex flex-col md:flex-col lg:flex-row gap-4 w-full">
             {/* Tabs Section */}
             <div className="w-full lg:w-auto">
@@ -176,18 +175,17 @@ function ProductivityContent() {
               </div>
 
               <div className="shrink-0">
-                <button
+                <Button
                   type="button"
-                  className="text-white bg-blue-600 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-[5px] text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 w-full sm:w-auto"
+                  className="text-white bg-[#165DFF]  hover:bg-[#165DFF]  font-medium rounded-[5px] text-sm px-4 py-2 w-full sm:w-auto"
                 >
                   Export
-                </button>
+                </Button>
               </div>
             </div>
           </div>
-
           {/* Table */}
-          <div className="max-h-[60vh] overflow-y-auto pr-4">
+          {/* <div className="max-h-[60vh] overflow-y-auto pr-4">
             <Table className=" border-[1px] !rounded overflow-hidden">
               <TableHeader>
                 <TableRow className="bg-[#F2F3F5] hover:bg-[#4E5969] pointer-events-none">
@@ -253,6 +251,88 @@ function ProductivityContent() {
                 ))}
               </TableBody>
             </Table>
+            {visibleData.length < filteredData.length && (
+              <button
+                onClick={loadMoreData}
+                className="text-blue-600 mt-4"
+                disabled={loading}
+              >
+                {loading ? "Loading..." : "Load More Data"}
+              </button>
+            )}
+          </div> */}
+
+          <div className="max-h-[60vh] overflow-y-auto pr-4">
+            <div className="border border-[#E5E6EB] rounded">
+              <Table>
+                <TableHeader>
+                  <TableRow className="bg-[#F2F3F5] hover:bg-[#4E5969] pointer-events-none border-b border-[#E5E6EB]">
+                    <TableHead className="text-[#4E5969] px-2 py-[15px] text-[12px]">
+                      Sl No
+                    </TableHead>
+                    <TableHead className="text-[#4E5969] px-2 py-[15px] text-[12px]">
+                      Recording Date
+                    </TableHead>
+                    <TableHead className="text-[#4E5969] px-2 py-[15px] text-[12px]">
+                      Assigned Tickets
+                    </TableHead>
+                    <TableHead className="text-[#4E5969] px-2 py-[15px] text-[12px]">
+                      Self-assigned Tickets
+                    </TableHead>
+                    <TableHead className="text-[#4E5969] px-2 py-[15px] text-[12px]">
+                      Resolved Tickets
+                    </TableHead>
+                    <TableHead className="text-[#4E5969] px-2 py-[15px] text-[12px]">
+                      Returned Tickets
+                    </TableHead>
+                    <TableHead className="text-[#4E5969] px-2 py-[15px] text-[12px]">
+                      Escalated
+                    </TableHead>
+                    <TableHead className="text-[#4E5969] px-2 py-[15px] text-[12px]">
+                      Growth rate
+                    </TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  {visibleData.map((row, index) => (
+                    <TableRow
+                      key={row.id}
+                      className="border-b border-[#E5E6EB]"
+                    >
+                      <TableCell className="text-[#1D2129] px-2 py-[15px]">
+                        {index + 1}
+                      </TableCell>
+                      <TableCell className="text-[#1D2129] px-2 py-[15px]">
+                        {row.date}
+                      </TableCell>
+                      <TableCell className="text-[#1D2129] px-2 py-[15px]">
+                        {row.assignedTickets}
+                      </TableCell>
+                      <TableCell className="text-[#1D2129] px-2 py-[15px]">
+                        {row.selfAssignedTickets}
+                      </TableCell>
+                      <TableCell className="text-[#1D2129] px-2 py-[15px]">
+                        {row.resolvedTickets}
+                      </TableCell>
+                      <TableCell className="text-[#1D2129] px-2 py-[15px]">
+                        {row.returnedTickets}
+                      </TableCell>
+                      <TableCell className="text-[#1D2129] px-2 py-[15px]">
+                        {row.escalated}
+                      </TableCell>
+                      <TableCell>
+                        <div className="flex items-center">
+                          <IoIosArrowRoundDown className="bg-[#FFECE8] text-[#F53F3F]" />
+                          <div className="px-2 py-[15px] text-[#F53F3F] font-bold">
+                            {row.growthRate}
+                          </div>
+                        </div>
+                      </TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </div>
             {visibleData.length < filteredData.length && (
               <button
                 onClick={loadMoreData}

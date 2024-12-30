@@ -440,7 +440,7 @@ function ActionTickets({ isOpen, onClose, onSubmit, action }) {
             <div className="absolute bottom-0 left-5 w-[94%] top-[520px]">
               <div className="absolute bottom-8 right-6">
                 <div className="flex flex-row gap-2">
-                  <Button className="bg-[#FFFFFF] text-[#165DFF] text-[12px] border border-[#165DFF] rounded-[4px] px-[8px] py-[16px] w-[100px] 2xl:w-[136px] 2xl:h-[39px] h-[37px] ">
+                  <Button className=" bg-[#FFFFFF] text-[#165DFF] text-[12px] border border-[#165DFF] rounded-[4px] px-[8px] py-[16px] w-[100px] 2xl:w-[136px] 2xl:h-[39px] h-[37px] ">
                     Clear
                   </Button>
                   <Button className="bg-[#165DFF] text-[#FFFFFF] text-[12px] rounded-[4px] px-[8px] py-[16px] w-[100px] 2xl:w-[136px] 2xl:h-[39px] h-[37px] hover:bg-[#165DFF] hover:text-[#FFFFFF]">

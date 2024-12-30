@@ -418,7 +418,7 @@ function Sidebar({ isSidebarOpen, setIsSidebarOpen }) {
                     />
                   </svg>
                 ),
-                path: "/teammanagement",
+                path: "/createproject",
                 key: "create_projects",
               },
             ],
