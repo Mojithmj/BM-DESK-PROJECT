@@ -1,5 +1,6 @@
 import React from "react";
 import { useDate } from "./DateContext";
+import { cn } from "@/lib/utils";
 import {
   startOfMonth,
   endOfMonth,
@@ -97,7 +98,10 @@ function Pheader({ title, className, showCalendar = true }) {
                 )}
               </button>
             </PopoverTrigger>
-            <PopoverContent className="bg-white shadow-md p-4">
+            <PopoverContent className={cn(
+    "bg-white shadow-md p-2 -translate-x-4",
+    !showCustomCalendar && "w-36"
+  )}>
               {!showCustomCalendar ? (
                 <div className="flex flex-col gap-2 font-inter font-normal">
                   <button
@@ -126,6 +130,7 @@ function Pheader({ title, className, showCalendar = true }) {
                   </button>
                 </div>
               ) : (
+                
                 <Calendar
                   mode="range"
                   defaultMonth={dateContext.dateRange?.from || new Date()}
@@ -133,6 +138,7 @@ function Pheader({ title, className, showCalendar = true }) {
                   onSelect={handleCalendarSelect}
                   numberOfMonths={2}
                 />
+                
               )}
             </PopoverContent>
           </Popover>

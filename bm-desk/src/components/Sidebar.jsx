@@ -378,49 +378,49 @@ function Sidebar({ isSidebarOpen, setIsSidebarOpen }) {
                 path: "/viewproject",
                 key: "view_projects",
               },
-              {
-                label: "Create Projects",
-                icon: (
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="21"
-                    viewBox="0 0 20 21"
-                    fill="none"
-                  >
-                    <path
-                      d="M18.3333 14.4501V4.39174C18.3333 3.39174 17.5167 2.65008 16.525 2.73341H16.475C14.725 2.88341 12.0667 3.77508 10.5833 4.70841L10.4417 4.80008C10.2 4.95008 9.80001 4.95008 9.55834 4.80008L9.35001 4.67508C7.86667 3.75008 5.21667 2.86674 3.46667 2.72508C2.475 2.64174 1.66667 3.39174 1.66667 4.38341V14.4501C1.66667 15.2501 2.31667 16.0001 3.11667 16.1001L3.35834 16.1334C5.16667 16.3751 7.95834 17.2917 9.55834 18.1667L9.59167 18.1834C9.81667 18.3084 10.175 18.3084 10.3917 18.1834C11.9917 17.3001 14.7917 16.3751 16.6083 16.1334L16.8833 16.1001C17.6833 16.0001 18.3333 15.2501 18.3333 14.4501Z"
-                      stroke="currentColor"
-                      stroke-width="1.5"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                    <path
-                      d="M10 5.07422V17.5742"
-                      stroke="currentColor"
-                      stroke-width="1.5"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                    <path
-                      d="M6.45833 7.57422H4.58333"
-                      stroke="currentColor"
-                      stroke-width="1.5"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                    <path
-                      d="M7.08333 10.0742H4.58333"
-                      stroke="currentColor"
-                      stroke-width="1.5"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                  </svg>
-                ),
-                path: "/createproject",
-                key: "create_projects",
-              },
+              // {
+              //   label: "Create Projects",
+              //   icon: (
+              //     <svg
+              //       xmlns="http://www.w3.org/2000/svg"
+              //       width="20"
+              //       height="21"
+              //       viewBox="0 0 20 21"
+              //       fill="none"
+              //     >
+              //       <path
+              //         d="M18.3333 14.4501V4.39174C18.3333 3.39174 17.5167 2.65008 16.525 2.73341H16.475C14.725 2.88341 12.0667 3.77508 10.5833 4.70841L10.4417 4.80008C10.2 4.95008 9.80001 4.95008 9.55834 4.80008L9.35001 4.67508C7.86667 3.75008 5.21667 2.86674 3.46667 2.72508C2.475 2.64174 1.66667 3.39174 1.66667 4.38341V14.4501C1.66667 15.2501 2.31667 16.0001 3.11667 16.1001L3.35834 16.1334C5.16667 16.3751 7.95834 17.2917 9.55834 18.1667L9.59167 18.1834C9.81667 18.3084 10.175 18.3084 10.3917 18.1834C11.9917 17.3001 14.7917 16.3751 16.6083 16.1334L16.8833 16.1001C17.6833 16.0001 18.3333 15.2501 18.3333 14.4501Z"
+              //         stroke="currentColor"
+              //         stroke-width="1.5"
+              //         stroke-linecap="round"
+              //         stroke-linejoin="round"
+              //       />
+              //       <path
+              //         d="M10 5.07422V17.5742"
+              //         stroke="currentColor"
+              //         stroke-width="1.5"
+              //         stroke-linecap="round"
+              //         stroke-linejoin="round"
+              //       />
+              //       <path
+              //         d="M6.45833 7.57422H4.58333"
+              //         stroke="currentColor"
+              //         stroke-width="1.5"
+              //         stroke-linecap="round"
+              //         stroke-linejoin="round"
+              //       />
+              //       <path
+              //         d="M7.08333 10.0742H4.58333"
+              //         stroke="currentColor"
+              //         stroke-width="1.5"
+              //         stroke-linecap="round"
+              //         stroke-linejoin="round"
+              //       />
+              //     </svg>
+              //   ),
+              //   path: "/createproject",
+              //   key: "create_projects",
+              // },
             ],
           },
         ]

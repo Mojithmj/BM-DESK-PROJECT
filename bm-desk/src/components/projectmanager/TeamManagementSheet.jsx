@@ -7,6 +7,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import { cn } from "@/lib/utils";
 
 import { Label } from "../ui/label";
 import {
@@ -23,8 +24,14 @@ function TeamManagementSheet({ isOpen, onClose }) {
     <div>
       <Sheet open={isOpen} onOpenChange={onClose}>
         {/* Make the sheet content responsive */}
-        <SheetContent className="bg-white w-[400px] sm:w-[350px] md:w-[400px] lg:w-[450px] xl:w-[500px] 2xl:w-[600px]">
-          <div className="flex flex-col gap-14 top-3">
+        <SheetContent
+  className={cn(
+    "bg-white w-full max-w-[100vw] sm:w-[350px] md:w-[400px] lg:w-[450px] xl:w-[500px] 2xl:w-[600px]",
+    "p-4 sm:p-6 overflow-y-auto"
+  )}
+>
+
+          <div className="flex flex-col 2xl:gap-16 gap-12 top-3">
             <div>
               <SheetHeader>
                 <SheetTitle className="text-[20px] sm:text-[18px] md:text-[24px] lg:text-[28px] 2xl:text-[32px] font-semibold text-[#4E5969] font-inter">
@@ -34,10 +41,10 @@ function TeamManagementSheet({ isOpen, onClose }) {
             </div>
 
             {/* Form content */}
-            <div className="flex flex-col gap-7">
+            <div className="flex flex-col gap-5 2xl:gap-7">
               {/* Assign to */}
               <div className="flex flex-col gap-2">
-                <Label className="text-[#212529] font-medium text-[16px]">
+                <Label className="text-[#212529] font-inter font-medium text-[16px]">
                   Assign to
                 </Label>
                 <Select>
@@ -54,7 +61,7 @@ function TeamManagementSheet({ isOpen, onClose }) {
 
               {/* Category */}
               <div className="flex flex-col gap-2">
-                <Label className="text-[#212529] font-medium text-[16px]">
+                <Label className="text-[#212529] font- inter font-medium text-[16px]">
                   Category
                 </Label>
                 <Select>
@@ -71,7 +78,7 @@ function TeamManagementSheet({ isOpen, onClose }) {
 
               {/* Project Name */}
               <div className="flex flex-col gap-2">
-                <Label className="text-[#212529] font-medium text-[16px]">
+                <Label className="text-[#212529] font-inter font-medium text-[16px]">
                   Project Name
                 </Label>
                 <Select>
@@ -87,13 +94,13 @@ function TeamManagementSheet({ isOpen, onClose }) {
               </div>
 
               {/* Buttons */}
-              <div className="absolute left-6 w-[94%] top-[420px] sm:top-[450px] md:top-[480px]">
+              <div className="absolute left-6 w-[94%] top-[390px]  2xl:top-[430px]">
                 <div className="absolute ">
-                  <div className="flex flex-row gap-2">
-                    <Button className="bg-[#FFFFFF] text-[#165DFF] text-[12px] border border-[#165DFF] rounded-[3px]">
+                  <div className="flex flex-row gap-2 rounded-sm">
+                    <Button className="bg-[#FFFFFF] text-[#165DFF] font-inter font-normal 2xl:text-[16px] text-[14px] border border-[#165DFF] rounded-[3px]">
                       Discard
                     </Button>
-                    <Button className="bg-[#165DFF] text-[#FFFFFF] text-[12px] rounded-[3px] hover:bg-[#165DFF] hover:text-[#FFFFFF]">
+                    <Button className="bg-[#165DFF] text-[#FFFFFF] font-inter font-normal 2xl:text-[16px] text-[14px] rounded-[3px] hover:bg-[#165DFF] hover:text-[#FFFFFF]">
                       Assign Tickets
                     </Button>
                   </div>
