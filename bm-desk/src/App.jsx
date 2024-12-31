@@ -18,6 +18,7 @@ import Taskmanagement from './components/projectmanager/Taskmanagement';
 import Productivity from './components/Productivity';
 import TicketApprovals from './components/TicketApprovals';
 import Opentickets from './components/Opentickets';
+import NewProject from './components/projectmanager/NewProject';
 
 
 function App() {
@@ -46,7 +47,8 @@ function App() {
         <Route path='/login' element={<Login/>}/>
         <Route path='/privacyaccountsettings' element={<Privacyaccountsettings/>}/>
         <Route path='/actiontickets' element={<ActionTickets/>}/>
-        <Route path='/tsheet' element={<TeamManagementSheet/>}/>
+        <Route path='/tsheet' element={<TeamManagementSheet/>}/>  
+        <Route path='/newproject' element={<NewProject/>}/>
 
       </Routes>
     </BrowserRouter>
