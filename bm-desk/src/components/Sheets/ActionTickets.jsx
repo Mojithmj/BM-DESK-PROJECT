@@ -317,7 +317,7 @@ function ActionTickets({ isOpen, onClose, onSubmit, action }) {
         return (
           // Your existing Reject Ticket JSX
           <>
-            <div className="flex flex-col gap-1">
+            <div className="flex flex-col gap-1 2xl:gap-2">
               <h1 className="text-[#1D2129] text-[12px] md:text-[14px] 2xl:text-[16px]  font-medium">
                 Reason For Rejection
               </h1>
@@ -341,7 +341,7 @@ function ActionTickets({ isOpen, onClose, onSubmit, action }) {
       case "Verify & Close":
         return (
           <>
-            <div className="flex flex-col gap-1">
+            <div className="flex flex-col gap-1 2xl:gap-2">
               <h1 className="text-[#1D2129] text-[12px] md:text-[14px] 2xl:text-[16px]  font-medium">
                 Comments
               </h1>
@@ -366,7 +366,7 @@ function ActionTickets({ isOpen, onClose, onSubmit, action }) {
         return (
           <>
             <div className="flex flex-col">
-              <div className="flex flex-col">
+              <div className="flex flex-col gap-1 2xl:gap-2">
                 <Label
                   htmlFor="select-category"
                   className="mb-2 font-medium text-[12px] md:text-[14px] 2xl:text-[16px]  text-[#1D2129] "
@@ -397,9 +397,8 @@ function ActionTickets({ isOpen, onClose, onSubmit, action }) {
       case "Management Approval":
         return (
           <>
-            <div>
-              <div className="flex flex-col">
-                <div className="flex flex-col">
+            <div className="flex flex-col gap-[16px] 2xl:gap-[24px]">
+                <div className="flex flex-col gap-1 2xl:gap-2">
                   <Label
                     htmlFor="select-category"
                     className="mb-2 font-medium text-[12px] md:text-[14px] 2xl:text-[16px]  text-[#1D2129] "
@@ -412,7 +411,7 @@ function ActionTickets({ isOpen, onClose, onSubmit, action }) {
                     searchPlaceholder="Search framework..."
                   />
                 </div>
-              </div>
+           
 
               <div className="flex flex-col">
                 <Label
